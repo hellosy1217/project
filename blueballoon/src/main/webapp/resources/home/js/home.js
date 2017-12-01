@@ -19,6 +19,7 @@
     }
     return "function" != typeof window.CustomEvent && (o.prototype = window.Event.prototype, void (window.CustomEvent = o))
 }();
+
 function Func() {
     var e = this;
     e.check_string = function(e, t) {
