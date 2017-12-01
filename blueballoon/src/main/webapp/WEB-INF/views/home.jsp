@@ -378,8 +378,8 @@
 							d="M10.21 11.5H10a6.5 6.5 0 0 0-5.5 3.4.5.5 0 1 0 .88.48 5.5 5.5 0 0 1 4.69-2.87h.15a5.5 5.5 0 0 1 4.69 2.62.5.5 0 0 0 .85-.52 6.5 6.5 0 0 0-5.55-3.11zm-.29-1H10A3.5 3.5 0 0 0 13.42 7v-.09a3.5 3.5 0 0 0-3.5-3.41h-.09A3.5 3.5 0 0 0 6.42 7v.09a3.5 3.5 0 0 0 3.5 3.41zm-.06-6h.07a2.5 2.5 0 0 1 2.5 2.43V7A2.5 2.5 0 0 1 10 9.5h-.08a2.5 2.5 0 0 1-2.5-2.43V7a2.5 2.5 0 0 1 2.43-2.5z"></path></svg>
 					<nav>
 						<ul>
-							<li><a href="https://www.tourradar.com/login">Log In</a></li>
-							<li><a href="https://www.tourradar.com/registration">Sign
+							<li><a href="member/login">Log In</a></li>
+							<li><a href="member/join">Sign
 									Up</a></li>
 							<li><a href="https://www.tourradar.com/login">Manage
 									Bookings</a></li>
