@@ -1,41 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
 <title>Login to TourRadar</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="MSThemeCompatible" content="Yes">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description"
-	content="Login to your account to see your travel credits, get your invite link and check the latest tour deals.">
-<meta name="verify-v1"
-	content="VUsFWU+3N62XSVjPdjN1wlexMILvanrOgxD9sjSDGy4=">
-<meta name="msvalidate.01" content="9AFB316338D4B9651B5EB4E85F1EDF2A">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="robots" content="noindex, follow">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="//cdn.tourradar.com/images/fav/apple-touch-icon.png">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-194x194.png"
-	sizes="194x194">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/android-chrome-192x192.png"
-	sizes="192x192">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/svg+xml"
-	href="//cdn.tourradar.com/images/fav/favicon.svg" sizes="any">
-<link rel="mask-icon"
-	href="//cdn.tourradar.com/images/fav/safari-pinned-tab.svg"
-	color="#409cd1">
-<link rel="manifest" href="/manifest.json">
-<link rel="shortcut icon" href="/favicon.ico">
-<meta name="apple-mobile-web-app-title" content="TourRadar">
-<meta name="application-name" content="TourRadar">
-<meta name="msapplication-config" content="/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="member/login">
 <link rel="stylesheet"
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/user/member/login3.css"
 	type="text/css" media="all">
@@ -45,8 +14,6 @@
 <link
 	href="${pageContext.request.contextPath}/resources/member/css/login2.css"
 	rel="stylesheet" />
-
-
 <script
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.r51AHJCBdXk.O/m=signin_annotation/exm=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCM7u4NfTrsdn7d2NcaEWtiqMp0Kqg/cb=gapi.loaded_1"
 	async=""></script>
@@ -54,94 +21,6 @@
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.r51AHJCBdXk.O/m=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCM7u4NfTrsdn7d2NcaEWtiqMp0Kqg/cb=gapi.loaded_0"
 	async=""></script>
 <script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-NSMPC"></script>
-<script>
-	(function() {
-		(function(i, s, o, g, r) {
-			i['CRMTracker'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-		})(window, 0, 0, 0, 'tracker');
-		tracker(
-				"setConfig",
-				{
-					"endpoint" : "https:\/\/omnimove.tourradar.com\/api\/t1718764771\/v1168584277",
-					"compression" : false,
-					"localId" : "5a219aa5ccb6d",
-					"keys" : {
-						"cookieId" : "tracking__session_id"
-					}
-				});
-		tracker("setParameters", []);
-		tracker("setPageValue", null);
-		tracker("track");
-	})();
-</script>
-<script>
-	window.addEventListener
-			&& addEventListener(
-					"error",
-					function(e) {
-						window
-								.setTimeout(
-										function() {
-											if (document.documentElement.className
-													.match(/translated/)) {
-												return;
-											}
-
-											e
-													&& window.tracker
-													&& tracker(
-															'addEvent',
-															'JSError',
-															(e.filename || 'code'),
-															(e.message || 'No message'),
-															{
-																filename : e.filename,
-																lineno : e.lineno,
-																colono : e.colono,
-																error : e.error
-															});
-
-											var info = {
-												"url" : document.location.href,
-												"languge" : navigator.language,
-												"useragent" : navigator.userAgent,
-												"platform" : navigator.platform,
-												"oscpu" : navigator.oscpu,
-												"referrer" : document.referrer,
-												"error[message]" : e.message,
-												"error[colno]" : e.colno,
-												"error[lineno]" : e.lineno,
-												"error[filename]" : e.filename,
-												"error[stack]" : e.error ? e.error.stack
-														: null
-											};
-
-											var encodedInfo = [];
-											for ( var key in info) {
-												var value = info[key];
-												value = ((typeof value === 'undefined') || value === null) ? ''
-														: encodeURIComponent(value);
-												encodedInfo
-														.push(encodeURIComponent(key)
-																+ '=' + value);
-											}
-											var postParams = encodedInfo
-													.join('&');
-
-											var request = new XMLHttpRequest();
-											request.open('POST',
-													'/utils/jserror', true);
-											request
-													.setRequestHeader(
-															'Content-Type',
-															'application/x-www-form-urlencoded; charset=UTF-8');
-											request.send(postParams);
-										}, 1);
-					});
-</script>
 </head>
 <body class="reg-page-bg ">
 	<script>
@@ -150,26 +29,6 @@
 			'Cr-SiteType' : 'd'
 		});
 	</script>
-	<!-- Google Tag Manager -->
-	<noscript>&lt;iframe
-		src="//www.googletagmanager.com/ns.html?id=GTM-NSMPC" height="0"
-		width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
-	<script>
-		(function(w, d, s, l, i) {
-			w[l] = w[l] || [];
-			w[l].push({
-				'gtm.start' : new Date().getTime(),
-				event : 'gtm.js'
-			});
-			var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l='
-					+ l
-					: '';
-			j.async = true;
-			j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-			f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-NSMPC');
-	</script>
-	<!-- End Google Tag Manager -->
 	<div id="fb-root" class=" fb_reset">
 		<script async="" src="https://connect.facebook.net/en_US/all.js"></script>
 		<div
@@ -193,7 +52,7 @@
 			<header class="reg-page-header">
 				<div class="c">
 					<div class="logo" style="margin-right: 0px;">
-						<a href="/"> <img
+						<a href="member/join"> <img
 							src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/logo1.png"
 							width="170" height="35">
 						</a>
@@ -285,207 +144,11 @@
 			}, 10);
 		</script>
 	</div>
-	<div id="pdf_v3">
-		<div
-			id="pnum_25 2 booking-promotion-code=GOEXBA|booking-promotion-code=7LHRLT|booking-promotion-code=7FGZSB|booking-promotion-code=8QlDFT|booking-promotion-code=REALADV|booking-promotion-code=BOYCOTTBFEES|booking-promotion-code=GETAWAY15|booking-promotion-code=BEACTIVE15 0"
-			class="popup_ pnum_25" data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
+	<div class="hidden" id="traveller_success_id"></div>
 	</div>
-	<div id="pdf_v3">
-		<div id="pnum_32 2 #contest=travel-my-way 0" class="popup_ pnum_32"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_33 2 #contest=quick-escape 0" class="popup_ pnum_33"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_34 2 #contest=california-dreaming 0"
-			class="popup_ pnum_34" data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_35 2 #contest=thailand-experience 0"
-			class="popup_ pnum_35" data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_36 2 #contest=back2roots 0" class="popup_ pnum_36"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_37 2 #contest=hidden-gem 0" class="popup_ pnum_37"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_40 2 #contest=wonderlands 0" class="popup_ pnum_40"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_41 2 #contest=live-like-a-local 0"
-			class="popup_ pnum_41" data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="pdf_v3">
-		<div id="pnum_55 2 #flightcentre 0" class="popup_ pnum_55"
-			data-count="1">
-			<a href="#pdf_v3_popup" id="pdf_v3_link" onclick="return false"></a>
-			<div class="hidden">
-				<div id="pdf_v3_popup" class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div id="traveller_login">
-		<div id="login-top">
-			<div>
-				Members pay <span></span>
-			</div>
-			<div>when booking this departure</div>
-		</div>
-		<div id="login-hidden" class="hidden">$59</div>
-		<div class="close">X</div>
-		<div class="title">Sign up</div>
-		<div class="buttons">
-			<div class="facebook-up"></div>
-			<div class="google-up" id="signin_google">
-				<div class="invisible"></div>
-			</div>
-		</div>
-		<div id="or">
-			<div>Or</div>
-		</div>
-		<div id="form_login" style="display: none;">
-			<form class="clearfix" onsubmit="return false">
-				<input type="email" id="email" placeholder="Email" def="1"
-					deftext="Email"><input id="password_vis" value="Password"><input
-					id="password_hid" value="" type="password"><input
-					class="button button-green" id="submit" type="submit"
-					value="Log In">
-			</form>
-			<div class="link">
-				<div>
-					<a href="#" onclick="return false">Forgot password?</a>
-				</div>
-				<div>
-					Don't have an account yet? <a href="#" onclick="return false">Sign
-						up here</a>
-				</div>
-			</div>
-		</div>
-		<div id="form_signup" class="" style="display: block;">
-			<form class="clearfix" onsubmit="return false">
-				<input id="name" value="Name" def="1" deftext="Name" maxlength="100"><input
-					type="email" id="email" placeholder="Email" def="1" deftext="Email"
-					maxlength="100"><input id="password_vis" value="Password"><input
-					id="password_hid" value="" type="password"><input
-					id="password_repeat_vis" value="Repeat password"><input
-					id="password_repeat_hid" value="" type="password">
-				<div id="grey">
-					By creating an account, you're agreeing with our <a
-						href="/terms-conditions" target="_blank">Terms and Conditions</a>
-				</div>
-				<input class="button button-green" id="submit" type="submit"
-					value="Sign Up">
-			</form>
-			<div class="link">
-				<div>&nbsp;</div>
-				<div>
-					Already have an account? <a href="#" onclick="return false">Log
-						in</a>
-				</div>
-			</div>
-		</div>
-		<div class="hidden" id="traveller_success_id"></div>
-	</div>
-	<div id="svg_content_load" style="display: none"></div>
 	<script type="text/javascript" src="https://apis.google.com/js/plus.js"
 		gapi_processed="true"></script>
 	<script type="text/javascript"
 		src="//cdn.tourradar.com//include/js/responsive.min.js?v=1512138643"></script>
-	<script
-		src="//cdn.tourradar.com/include/pw/responsive/script.v1512151717.min.js"
-		async=""></script>
-	<script type="text/javascript">
-		var IntRespHF = setInterval(function() {
-			if (typeof $ == 'function') {
-				clearInterval(IntRespHF);
-				$(document).ready(function() {
-					resp_hf = new RespHF();
-					resp_hf.init();
-				});
-			}
-		}, 10);
-	</script>
-	<div id="fancybox-tmp"></div>
-	<div id="fancybox-loading">
-		<div></div>
-	</div>
-	<div id="fancybox-overlay"></div>
-	<div id="fancybox-wrap">
-		<div id="fancybox-outer">
-			<div class="fancybox-bg" id="fancybox-bg-n"></div>
-			<div class="fancybox-bg" id="fancybox-bg-ne"></div>
-			<div class="fancybox-bg" id="fancybox-bg-e"></div>
-			<div class="fancybox-bg" id="fancybox-bg-se"></div>
-			<div class="fancybox-bg" id="fancybox-bg-s"></div>
-			<div class="fancybox-bg" id="fancybox-bg-sw"></div>
-			<div class="fancybox-bg" id="fancybox-bg-w"></div>
-			<div class="fancybox-bg" id="fancybox-bg-nw"></div>
-			<div id="fancybox-content"></div>
-			<a id="fancybox-close"></a>
-			<div id="fancybox-title"></div>
-			<a href="javascript:;" id="fancybox-left"><span class="fancy-ico"
-				id="fancybox-left-ico"></span></a><a href="javascript:;"
-				id="fancybox-right"><span class="fancy-ico"
-				id="fancybox-right-ico"></span></a>
-		</div>
-	</div>
-	<iframe name="oauth2relay1119370473" id="oauth2relay1119370473"
-		src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=https%3A%2F%2Fwww.tourradar.com&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.ko.r51AHJCBdXk.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCM7u4NfTrsdn7d2NcaEWtiqMp0Kqg#rpctoken=793413737&amp;forcesecure=1"
-		tabindex="-1" aria-hidden="true"
-		style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
 </body>
-<link type="text/css" rel="stylesheet"
-	href="//cdn.tourradar.com/include/pw/responsive/async.v1512151717.css">
 </html>

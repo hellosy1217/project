@@ -2,15 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Booking Tours Made Easy - BlueBalloon: Search, Compare &
+	Book Tours Online</title>
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css"
 	rel="stylesheet" />
 <link
-	href="${pageContext.request.contextPath}/resources/home/css/home2.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
+	rel="stylesheet" />
+<link
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
 	rel="stylesheet" />
 <script
-	src="${pageContext.request.contextPath}/resources/home/js/home.js"
+	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/1.js"
 	async=""></script>
 </head>
 <body class="tb" data-b-sale="">
@@ -29,7 +33,7 @@
 		<div class="c">
 			<div class="logo" style="margin-right: 0px;">
 				<a href="/"> <img
-					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/logo1.png"
+					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/png/logo1.png"
 					width="170" height="35">
 				</a>
 			</div>
@@ -379,8 +383,7 @@
 					<nav>
 						<ul>
 							<li><a href="member/login">Log In</a></li>
-							<li><a href="member/join">Sign
-									Up</a></li>
+							<li><a href="member/join">Sign Up</a></li>
 							<li><a href="https://www.tourradar.com/login">Manage
 									Bookings</a></li>
 						</ul>
