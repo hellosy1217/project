@@ -4,15 +4,14 @@
 <head>
 <title>Login to TourRadar</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet"
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/user/member/login3.css"
-	type="text/css" media="all">
 <link
 	href="${pageContext.request.contextPath}/resources/member/css/login1.css"
 	rel="stylesheet" />
 <link
-	href="${pageContext.request.contextPath}/resources/member/css/login2.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
+	rel="stylesheet" />
+<link
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
 	rel="stylesheet" />
 <script
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.r51AHJCBdXk.O/m=signin_annotation/exm=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCM7u4NfTrsdn7d2NcaEWtiqMp0Kqg/cb=gapi.loaded_1"
@@ -23,12 +22,6 @@
 <script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-NSMPC"></script>
 </head>
 <body class="reg-page-bg ">
-	<script>
-		dataLayer = [];
-		dataLayer.push({
-			'Cr-SiteType' : 'd'
-		});
-	</script>
 	<div id="fb-root" class=" fb_reset">
 		<script async="" src="https://connect.facebook.net/en_US/all.js"></script>
 		<div
@@ -49,16 +42,7 @@
 	</div>
 	<div id="content" class="clearfix wrapc ">
 		<div class="reg-page tag-login clearfix">
-			<header class="reg-page-header">
-				<div class="c">
-					<div class="logo" style="margin-right: 0px;">
-						<a href="member/join"> <img
-							src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/logo1.png"
-							width="170" height="35">
-						</a>
-					</div>
-				</div>
-			</header>
+			<%@include file="../../header2.jsp" %>
 			<div class="inside" id="tag-login"
 				style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w">
@@ -79,11 +63,11 @@
 						</div>
 						<div class="b-lnk forgot">
 							<a href="https://www.tourradar.com/registration/reset_password">
-								Forgot your password? </a>
+								비밀번호를 잊으셨나요? </a>
 						</div>
 						<div class="b-lnk last">
-							Don't have an account yet? <a
-								href="https://www.tourradar.com/registration">Sign up here</a>
+							아직 계정이 없으신가요? <a href="https://www.tourradar.com/registration">지금
+								가입하세요!</a>
 						</div>
 						<input class="hidden" type="submit">
 					</form>
