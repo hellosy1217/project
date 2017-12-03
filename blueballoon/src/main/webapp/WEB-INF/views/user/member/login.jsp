@@ -5,10 +5,10 @@
 <title>Login to TourRadar</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link
-	href="${pageContext.request.contextPath}/resources/member/css/login1.css"
+	href="${pageContext.request.contextPath}/resources/user/member/css/login1.css"
 	rel="stylesheet" />
 <link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512324069.css"
 	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"

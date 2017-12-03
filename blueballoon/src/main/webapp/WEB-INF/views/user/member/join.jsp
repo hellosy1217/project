@@ -12,7 +12,7 @@
 	href="${pageContext.request.contextPath}/resources/member/css/join2.css"
 	rel="stylesheet" />
 <link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512324069.css"
 	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"

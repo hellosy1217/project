@@ -11,7 +11,7 @@
 	rel="stylesheet" />
 	
 <link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512322334.css"
 	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
@@ -44,7 +44,7 @@
 			alt="Booking Tours Made Easy - TourRadar - Search, Compare &amp; Book Group Tours Online">
 			<div class="im">
 				<video id="video" preload="auto" autoplay="true" loop="loop"
-					muted="muted" volume="0" style="width: 100%" height="640">
+					muted="muted" volume="0" style="width: 100%">
 					<source
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.mp4">
 				</video>
