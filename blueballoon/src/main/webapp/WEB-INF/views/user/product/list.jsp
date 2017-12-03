@@ -3,10 +3,10 @@
 <head>
 <title>10 Best Italy Tours &amp; Trips 2017/2018 - BlueBalloon</title>
 <link
-	href="${pageContext.request.contextPath}/resources/product/css/list1.css"
+	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css"
 	rel="stylesheet" />
 <link
-	href="${pageContext.request.contextPath}/resources/product/css/list2.css"
+	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css"
 	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"

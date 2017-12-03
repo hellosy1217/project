@@ -9,7 +9,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css"
 	rel="stylesheet" />
-
+	
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512233635.css"
 	rel="stylesheet" />
@@ -21,7 +21,7 @@
 	async=""></script>
 </head>
 <body class="tb" data-b-sale="">
-	<%@ include file="header1.jsp"%>
+<%@ include file="header1.jsp"%>
 	<div itemscope itemtype="http://schema.org/Organization">
 		<meta itemprop="name" content="TourRadar">
 		<meta itemprop="logo"

@@ -11,4 +11,9 @@ public class ProductController {
 	public String list() {
 		return "user/product/list";
 	}
+	
+	@RequestMapping(value = "product/content", method = RequestMethod.GET)
+	public String content() {
+		return "user/product/content";
+	}
 }

@@ -3,16 +3,15 @@
 		<span class="hide-lg pull-left"><a
 			href="why-top=best-selection.html">BEST SELECTION &amp; PRICES</a></span><span
 			class="hide-sm pull-left"><a href="product/list">BEST
-				SELECTION</a></span><span class="hide-sm"><a
-			href="why-top=best-prices.html">BEST PRICES</a></span><span
-			class="pull-right"><a href="why-top=trusted-payments.html">TRUSTED
-				PAYMENTS</a></span>
+				SELECTION</a></span><span class="hide-sm"><a href="product/content">BEST
+				PRICES</a></span><span class="pull-right"><a
+			href="why-top=trusted-payments.html">TRUSTED PAYMENTS</a></span>
 	</div>
 </div>
 <header>
 	<div class="c">
 		<div class="logo" style="margin-right: 0px;">
-			<a href="/"> <img
+			<a href="/blueballoon"> <img
 				src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/png/logo1.png"
 				width="170" height="35">
 			</a>
@@ -364,8 +363,7 @@
 					<ul>
 						<li><a href="member/login">Log In</a></li>
 						<li><a href="member/join">Sign Up</a></li>
-						<li><a href="https://www.tourradar.com/login">Manage
-								Bookings</a></li>
+						<li><a href="member/login">Manage Bookings</a></li>
 					</ul>
 				</nav></li>
 			<li class="dropdown support" style="padding-top: 20px;"><div
