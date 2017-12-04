@@ -64,6 +64,10 @@
 				<!-- selected 연구 더해보기...ㅠㅠ -->
 				<select id="city" name="cate_city">
 						<option>수정할 시를 선택해주세요.</option>
+						<c:forEach var="dto" items="${getCategory}"> 
+							<option value="${dto.cate_city}">${dto.cate_city}</option>
+								<c:if test="${dto.cate_city == getCategory.cate_city }"></c:if>
+						</c:forEach>
 				</select></td>
 			</tr>
 			<tr>

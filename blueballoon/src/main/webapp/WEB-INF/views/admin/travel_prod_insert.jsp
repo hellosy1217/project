@@ -1,9 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample4_roadAddress').value = fullRoadAddr;
+                document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
+
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    //예상되는 도로명 주소에 조합형 주소를 추가한다.
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+
+                } else {
+                    document.getElementById('guide').innerHTML = '';
+                }
+            }
+        }).open();
+    }
+</script>
 <div align="center">
-   <form name="f" action="trval_prod_insert" method="post"
+   <form name="f" action="travel_prod_insert" method="post"
       enctype="multipart/form-data">
       <table width="700" class="outline">
          <caption>상품 등록</caption>
@@ -12,10 +65,10 @@
             <td>
                <select name="prod_cate" class="box">
                   <c:forEach var="dto" items="${cateList}">
-                     <option value="">
-                        
+                     <option value="${dto.cate_state}${dto.cate_city}">${dto.cate_state},${dto.cate_city}
                      </option>
                   </c:forEach>
+                  
                </select>
             </td>
          </tr>
@@ -25,41 +78,31 @@
          </tr>
          <tr>
             <th class="m2">판매자 이메일</th>
-            <td><input type="text" name="prod_email" class="box"></td>
+            <td><input type="email" name="prod_email" class="box"></td>
          </tr>
          <tr>
             <th class="m2">판매자 전화번호</th>
-            <td><input type="text" name="prod_hp" class="box"></td>
-         </tr>
-         <tr>
-            <th class="m2">인원</th>
-            <td>
-               <select name="prod_person" class="box">
-                  <option>최소 인원을 선택해주세요.</option>
-                  <option value="min">1</option>
-               </select>
-               <select name="prod_person" class="box">
-                  <option>최대 인원을 선택해주세요.</option>
-                  <option value="max">2</option>
-               </select>
-            </td>
+            <td><input type="text" name="prod_hp" class="box" 
+            placeholder="예) 010-1111-2222"> " - " 포함 전체 자리를 입력해주세요.</td>
          </tr>
          <tr>
             <th class="m2">상품 가격</th>
             <td><input type="text" name="prod_price" class="box"></td>
          </tr>
          <tr>
-            <th class="m2">상품 예약 날짜</th>
-            <td><input type="text" name="book_date" class="box"></td>
-         </tr>
-         <tr>
             <th class="m2">이미지</th>
             <td><input type="file" name="prod_img"></td>
-         </tr>
+         </tr> 
          <tr>
-            <th class="m2">주소</th>
-            <td><input type="text" name="prod_address1" class="box"></td>
-         </tr>
+					<th>우편번호</th>
+					<td>
+					   <input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="text" name="prod_address1" id="sample4_roadAddress" placeholder="도로명주소">
+						<input type="text" name="prod_address1" id="sample4_jibunAddress" placeholder="지번주소">
+						<span id="guide" style="color:#999"></span>
+					</td>
+				</tr>
          <tr>
             <th class="m2">상세 주소</th>
             <td><input type="text" name="prod_address2" class="box"></td>
@@ -72,8 +115,8 @@
             <th class="m2">상품 분류</th>
             <td>
                <select name="prod_pick" class="box">
-                  <option>상품을 선택해주세요.</option>
-                  <option value="1">경로</option>
+                  <option>상품을 분류해주세요.</option>
+                  <option value="1">지역</option>
                   <option value="2">맛집</option>
                   <option value="3">숙소</option>
                </select>
