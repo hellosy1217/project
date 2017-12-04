@@ -150,4 +150,5 @@ public class AdminController {
 		String [] url = {"travel_prod_list","travel_prod_edit?prod_num="+dto.getProd_num()};
 		return cm.resMassege(res, msg, url);
 	}
+	
 }
