@@ -42,7 +42,7 @@
 	</div>
 	<div id="content" class="clearfix wrapc ">
 		<div class="reg-page tag-login clearfix">
-			<%@include file="../../header2.jsp" %>
+			<%@include file="../../header2.jsp"%>
 			<div class="inside" id="tag-login"
 				style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w">
@@ -62,12 +62,10 @@
 								id="g_send"><span class="title">Log in</span></a>
 						</div>
 						<div class="b-lnk forgot">
-							<a href="https://www.tourradar.com/registration/reset_password">
-								비밀번호를 잊으셨나요? </a>
+							<a href="find"> 비밀번호를 잊으셨나요? </a>
 						</div>
 						<div class="b-lnk last">
-							아직 계정이 없으신가요? <a href="https://www.tourradar.com/registration">지금
-								가입하세요!</a>
+							아직 계정이 없으신가요? <a href="join">지금 가입하세요!</a>
 						</div>
 						<input class="hidden" type="submit">
 					</form>
