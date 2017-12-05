@@ -124,7 +124,7 @@
 		data-onpage="15" data-destination="Morocco">
 	<div class="mapply">
 		<div class="sb but">Sort: Popularity</div>
-		<div class="fl but">Filters</div>
+		<div class="fl but">Filter</div>
 	</div>
 	<div class="header">
 		<div class="bgimg bg-all">
