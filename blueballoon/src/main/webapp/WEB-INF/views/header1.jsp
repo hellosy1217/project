@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="ups">
 	<div class="c">
 		<span class="hide-lg pull-left"><a
@@ -11,9 +13,7 @@
 <header>
 	<div class="c">
 		<div class="logo" style="margin-right: 0px;">
-			<a href="/blueballoon"> <img
-				src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
-				width="170" height="35">
+			<a href="/blueballoon"> <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png" width="170" height="35">
 			</a>
 		</div>
 		<div class="tagln-search">
@@ -27,354 +27,92 @@
 				</div>
 			</div>
 		</div>
-		<ul>
-			<li class="dropdown fill" data-type="destinations"><a href="#">Destinations</a>
+		<ul style="margin-left: 277px;">
+			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
 				<nav class="">
 					<ul class="top">
-						<li data-type="africa"><a href="/d/africa"><span>Africa</span></a>
+						<li data-type="africa"><a href="product/list?cate_city='서울특별시'"><span>서울특별시</span></a>
 							<ul class="bot">
-								<li><a href="/d/morocco">Morocco</a></li>
-								<li><a href="/d/egypt">Egypt</a></li>
-								<li><a href="/d/south-africa">South Africa</a></li>
-								<li><a href="/d/madagascar">Madagascar</a></li>
-								<li><a href="/d/kenya">Kenya</a></li>
-								<li><a href="/d/namibia">Namibia</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
-							</ul></li>
-						<li data-type="asia"><a href="/d/asia"><span>Asia</span></a>
-							<ul class="bot">
-								<li><a href="/d/thailand">Thailand</a></li>
-								<li><a href="/d/malaysia">Malaysia</a></li>
-								<li><a href="/d/singapore">Singapore</a></li>
-								<li><a href="/d/india">India</a></li>
-								<li><a href="/d/vietnam">Vietnam</a></li>
-								<li><a href="/d/cambodia">Cambodia</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
+								<li><a href="product/list?cate_state='강남구'">강남구</a></li>
+								<li><a href="product/list?cate_state='종로구'">종로구</a></li>
+								<li><a href="product/list?cate_state='마포구'">마포구</a></li>
+								<li><a href="product/list?cate_state='중구'">중구</a></li>
+								<li><a href="product/list?cate_state='용산구'">용산구</a></li>
 							</ul></li>
 						<li data-type="australia-oceania"><a
-							href="/d/australia-oceania"><span>Australia &amp; NZ</span></a>
+							href="product/list?cate_city='경기도'"><span>경기도</span></a>
 							<ul class="bot">
-								<li><a href="/d/new-zealand">New Zealand</a></li>
-								<li><a href="/d/australia">Australia</a></li>
-								<li><a href="/d/fiji">Fiji</a></li>
-								<li><a href="/d/papua-new-guinea">Papua New Guinea</a></li>
+								<li><a href="product/list?cate_state='용인시'">용인시</a></li>
+								<li><a href="product/list?cate_state='파주시'">파주시</a></li>
+								<li><a href="product/list?cate_state='의정부시'">의정부시</a></li>
+								<li><a href="product/list?cate_state='수원시'">수원시</a></li>
+								<li><a href="product/list?cate_state='인천광역시">인천광역시</a></li>
 							</ul></li>
-						<li data-type="europe"><a href="/d/europe"><span>Europe</span></a>
+						<li data-type="asia"><a href="/d/asia"><span>강원도</span></a>
 							<ul class="bot">
-								<li><a href="/d/iceland">Iceland</a></li>
-								<li><a href="/d/italy">Italy</a></li>
-								<li><a href="/d/spain">Spain</a></li>
-								<li><a href="/d/greece">Greece</a></li>
-								<li><a href="/d/ireland">Ireland</a></li>
-								<li><a href="/d/scotland">Scotland</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
+								<li><a href="/d/thailand">평창시</a></li>
+								<li><a href="/d/malaysia">춘천시</a></li>
+								<li><a href="/d/singapore">강릉시</a></li>
+								<li><a href="/d/india">횡성시</a></li>
+								<li><a href="/d/vietnam">양양시</a></li>
 							</ul></li>
-						<li data-type="north-america"><a href="/d/north-america"><span>North
-									America</span></a>
+						<li data-type="europe"><a href="/d/europe"><span>경상도</span></a>
 							<ul class="bot">
-								<li><a href="/d/usa">USA</a></li>
-								<li><a href="/d/canada">Canada</a></li>
-								<li><a href="/d/greenland">Greenland</a></li>
+								<li><a href="/d/iceland">부산광역시</a></li>
+								<li><a href="/d/italy">거제시</a></li>
+								<li><a href="/d/spain">통영시</a></li>
+								<li><a href="/d/greece">남해시</a></li>
+								<li><a href="/d/ireland">대구광역시</a></li>
+								<li><a href="/d/scotland">울산광역시</a></li>
 							</ul></li>
-						<li data-type="latin-america"><a href="/d/latin-america"><span>Latin
-									America</span></a>
+						<li data-type="north-america"><a href="/d/north-america"><span>전라도</span></a>
 							<ul class="bot">
-								<li><a href="/d/peru">Peru</a></li>
-								<li><a href="/d/cuba">Cuba</a></li>
-								<li><a href="/d/mexico">Mexico</a></li>
-								<li><a href="/d/costa-rica">Costa Rica</a></li>
-								<li><a href="/d/ecuador">Ecuador</a></li>
-								<li><a href="/d/brazil">Brazil</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
+								<li><a href="/d/usa">광주광역시</a></li>
+								<li><a href="/d/canada">순천시</a></li>
+								<li><a href="/d/greenland">여수시</a></li>
+								<li><a href="/d/greenland">전주시</a></li>
+								<li><a href="/d/greenland">남원시</a></li>
 							</ul></li>
-					</ul>
-					<ul class="all hid">
-						<li class="return"><div class="arrow top grey"></div> <span></span></li>
-						<li data-type="africa"><ul>
-								<li><a href="/d/botswana">Botswana</a></li>
-								<li><a href="/d/egypt">Egypt</a></li>
-								<li><a href="/d/ethiopia">Ethiopia</a></li>
-								<li><a href="/d/ghana">Ghana</a></li>
-								<li><a href="/d/kenya">Kenya</a></li>
-								<li><a href="/d/madagascar">Madagascar</a></li>
-								<li><a href="/d/malawi">Malawi</a></li>
-								<li><a href="/d/morocco">Morocco</a></li>
-								<li><a href="/d/namibia">Namibia</a></li>
-								<li><a href="/d/rwanda">Rwanda</a></li>
-								<li><a href="/d/senegal">Senegal</a></li>
-								<li><a href="/d/seychelles">Seychelles</a></li>
-								<li><a href="/d/south-africa">South Africa</a></li>
-								<li><a href="/d/tanzania">Tanzania</a></li>
-								<li><a href="/d/tunisia">Tunisia</a></li>
-								<li><a href="/d/uganda">Uganda</a></li>
-								<li><a href="/d/zambia">Zambia</a></li>
-								<li><a href="/d/zimbabwe">Zimbabwe</a></li>
+						<li data-type="latin-america"><a href="/d/latin-america"><span>충청도</span></a>
+							<ul class="bot">
+								<li><a href="/d/peru">대전광역시</a></li>
+								<li><a href="/d/cuba">보령시</a></li>
+								<li><a href="/d/mexico">천안시</a></li>
+								<li><a href="/d/costa-rica">청주시</a></li>
 							</ul></li>
-						<li data-type="asia"><ul>
-								<li><a href="/d/armenia">Armenia</a></li>
-								<li><a href="/d/bhutan">Bhutan</a></li>
-								<li><a href="/d/cambodia">Cambodia</a></li>
-								<li><a href="/d/china">China</a></li>
-								<li><a href="/d/cyprus">Cyprus</a></li>
-								<li><a href="/d/georgia">Georgia</a></li>
-								<li><a href="/d/india">India</a></li>
-								<li><a href="/d/indonesia">Indonesia</a></li>
-								<li><a href="/d/iran">Iran</a></li>
-								<li><a href="/d/israel">Israel</a></li>
-								<li><a href="/d/japan">Japan</a></li>
-								<li><a href="/d/jordan">Jordan</a></li>
-								<li><a href="/d/kazakhstan">Kazakhstan</a></li>
-								<li><a href="/d/korea-south">Korea, South</a></li>
-								<li><a href="/d/kyrgyzstan">Kyrgyzstan</a></li>
-								<li><a href="/d/laos">Laos</a></li>
-								<li><a href="/d/malaysia">Malaysia</a></li>
-								<li><a href="/d/maldives">Maldives</a></li>
-								<li><a href="/d/mongolia">Mongolia</a></li>
-								<li><a href="/d/myanmar-burma">Myanmar (Burma)</a></li>
-								<li><a href="/d/nepal">Nepal</a></li>
-								<li><a href="/d/oman">Oman</a></li>
-								<li><a href="/d/pakistan">Pakistan</a></li>
-								<li><a href="/d/philippines">Philippines</a></li>
-								<li><a href="/d/russia">Russia</a></li>
-								<li><a href="/d/singapore">Singapore</a></li>
-								<li><a href="/d/sri-lanka">Sri Lanka</a></li>
-								<li><a href="/d/taiwan">Taiwan</a></li>
-								<li><a href="/d/tajikistan">Tajikistan</a></li>
-								<li><a href="/d/thailand">Thailand</a></li>
-								<li><a href="/d/turkey">Turkey</a></li>
-								<li><a href="/d/united-arab-emirates">United Arab
-										Emirates</a></li>
-								<li><a href="/d/uzbekistan">Uzbekistan</a></li>
-								<li><a href="/d/vietnam">Vietnam</a></li>
-							</ul></li>
-						<li data-type="australia-oceania"><ul>
-								<li><a href="/d/australia">Australia</a></li>
-								<li><a href="/d/fiji">Fiji</a></li>
-								<li><a href="/d/new-zealand">New Zealand</a></li>
-								<li><a href="/d/papua-new-guinea">Papua New Guinea</a></li>
-							</ul></li>
-						<li data-type="europe"><ul>
-								<li><a href="/d/albania">Albania</a></li>
-								<li><a href="/d/andorra">Andorra</a></li>
-								<li><a href="/d/austria">Austria</a></li>
-								<li><a href="/d/belgium">Belgium</a></li>
-								<li><a href="/d/bosnia">Bosnia</a></li>
-								<li><a href="/d/bulgaria">Bulgaria</a></li>
-								<li><a href="/d/croatia">Croatia</a></li>
-								<li><a href="/d/czech-republic">Czech Republic</a></li>
-								<li><a href="/d/england">England</a></li>
-								<li><a href="/d/estonia">Estonia</a></li>
-								<li><a href="/d/finland">Finland</a></li>
-								<li><a href="/d/france">France</a></li>
-								<li><a href="/d/germany">Germany</a></li>
-								<li><a href="/d/greece">Greece</a></li>
-								<li><a href="/d/hungary">Hungary</a></li>
-								<li><a href="/d/iceland">Iceland</a></li>
-								<li><a href="/d/ireland">Ireland</a></li>
-								<li><a href="/d/italy">Italy</a></li>
-								<li><a href="/d/macedonia">Macedonia</a></li>
-								<li><a href="/d/malta">Malta</a></li>
-								<li><a href="/d/montenegro">Montenegro</a></li>
-								<li><a href="/d/netherlands">Netherlands</a></li>
-								<li><a href="/d/norway">Norway</a></li>
-								<li><a href="/d/poland">Poland</a></li>
-								<li><a href="/d/portugal">Portugal</a></li>
-								<li><a href="/d/romania">Romania</a></li>
-								<li><a href="/d/russia">Russia</a></li>
-								<li><a href="/d/scotland">Scotland</a></li>
-								<li><a href="/d/slovakia">Slovakia</a></li>
-								<li><a href="/d/slovenia">Slovenia</a></li>
-								<li><a href="/d/spain">Spain</a></li>
-								<li><a href="/d/svalbard">Svalbard</a></li>
-								<li><a href="/d/sweden">Sweden</a></li>
-								<li><a href="/d/switzerland">Switzerland</a></li>
-								<li><a href="/d/turkey">Turkey</a></li>
-							</ul></li>
-						<li data-type="north-america"><ul>
-								<li><a href="/d/canada">Canada</a></li>
-								<li><a href="/d/greenland">Greenland</a></li>
-								<li><a href="/d/usa">USA</a></li>
-							</ul></li>
-						<li data-type="latin-america"><ul>
-								<li><a href="/d/argentina">Argentina</a></li>
-								<li><a href="/d/belize">Belize</a></li>
-								<li><a href="/d/bolivia">Bolivia</a></li>
-								<li><a href="/d/brazil">Brazil</a></li>
-								<li><a href="/d/chile">Chile</a></li>
-								<li><a href="/d/colombia">Colombia</a></li>
-								<li><a href="/d/costa-rica">Costa Rica</a></li>
-								<li><a href="/d/cuba">Cuba</a></li>
-								<li><a href="/d/dominican-republic">Dominican Republic</a></li>
-								<li><a href="/d/ecuador">Ecuador</a></li>
-								<li><a href="/d/guatemala">Guatemala</a></li>
-								<li><a href="/d/guyana">Guyana</a></li>
-								<li><a href="/d/honduras">Honduras</a></li>
-								<li><a href="/d/jamaica">Jamaica</a></li>
-								<li><a href="/d/mexico">Mexico</a></li>
-								<li><a href="/d/nicaragua">Nicaragua</a></li>
-								<li><a href="/d/panama">Panama</a></li>
-								<li><a href="/d/peru">Peru</a></li>
-								<li><a href="/d/puerto-rico">Puerto Rico</a></li>
-								<li><a href="/d/uruguay">Uruguay</a></li>
+						<li data-type="latin-america"><a href="/d/latin-america"><span>제주도</span></a>
+							<ul class="bot">
+								<li><a href="/d/peru">제주시</a></li>
+								<li><a href="/d/cuba">서귀포시</a></li>
 							</ul></li>
 					</ul>
 				</nav></li>
-			<li class="dropdown fill" data-type="styles"><a href="#">Travel
-					Types</a>
-				<nav class="">
-					<ul class="top">
-						<li data-type="nature-adventure"><a
-							href="/e/nature-adventure"><span>Adventure</span></a>
-							<ul class="bot">
-								<li><a href="/f/adventure">Adventure</a></li>
-								<li><a href="/f/hiking-trekking">Hiking &amp; Trekking</a></li>
-								<li><a href="/f/overland-truck">Overland truck</a></li>
-								<li><a href="/f/bicycle">Bicycle</a></li>
-								<li><a href="/f/wildlife">Wildlife</a></li>
-								<li><a href="/f/safari">Safari</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
-							</ul></li>
-						<li data-type="cultural"><a href="/e/cultural"><span>Cultural</span></a>
-							<ul class="bot">
-								<li><a href="/f/discovery">Discovery</a></li>
-								<li><a href="/f/in-depth-cultural">In-depth Cultural</a></li>
-								<li><a href="/f/coach-bus">Coach/Bus</a></li>
-								<li><a href="/f/family">Family</a></li>
-								<li><a href="/f/train-rail">Train &amp; Rail</a></li>
-								<li><a href="/f/food-culinary">Food &amp; Culinary</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
-							</ul></li>
-						<li data-type="marine"><a href="/e/marine"><span>Marine</span></a>
-							<ul class="bot">
-								<li><a href="/f/river-cruise">River Cruise</a></li>
-								<li><a href="/f/sailing">Sailing</a></li>
-								<li><a href="/f/polar-arctic-antartica-cruise">Polar /
-										Antartica</a></li>
-								<li><a href="/f/ocean-cruise">Ocean Cruise</a></li>
-								<li><a href="/f/boat">Boat</a></li>
-							</ul></li>
-						<li data-type="festival-events"><a href="/e/festival-events"><span><span
-									class="wide">Festival &amp; </span>Events</span></a>
-							<ul class="bot">
-								<li><a href="/f/christmas-new-year">Christmas &amp; New
-										Year</a></li>
-								<li><a href="/f/anzac-day">Anzac Day</a></li>
-								<li><a href="/f/oktoberfest">Oktoberfest</a></li>
-								<li><a href="/f/oberammergau-passion-play">Oberammergau
-										Passion Play</a></li>
-								<li><a href="/f/new-years">New Years</a></li>
-								<li><a href="/f/tomatina">Tomatina</a></li>
-								<li class="see-all"><a href="#">See all</a></li>
-							</ul></li>
-						<li data-type="independent"><a href="/e/independent"><span>Independent</span></a>
-							<ul class="bot">
-								<li><a href="/f/hop-on-off">Hop On/Off</a></li>
-								<li><a href="/f/self-guided">Self-Guided</a></li>
-								<li><a href="/f/flexi">Flexi</a></li>
-								<li><a href="/f/private-custom">Private &amp; Custom</a></li>
-								<li><a href="/f/self-drive">Self Drive</a></li>
-							</ul></li>
-						<li data-type="special-interest"><a
-							href="/e/special-interest"><span>Special Interest</span></a>
-							<ul class="bot">
-								<li><a href="/f/volunteer-community">Volunteer/Community</a></li>
-								<li><a href="/f/gay-travel">Gay Travel</a></li>
-								<li><a href="/f/photography">Photography</a></li>
-							</ul></li>
-					</ul>
-					<ul class="all hid">
-						<li class="return"><div class="arrow top grey"></div> <span></span></li>
-						<li data-type="nature-adventure"><ul>
-								<li><a href="/f/adventure">Adventure</a></li>
-								<li><a href="/f/hiking-trekking">Hiking &amp; Trekking</a></li>
-								<li><a href="/f/overland-truck">Overland truck</a></li>
-								<li><a href="/f/bicycle">Bicycle</a></li>
-								<li><a href="/f/wildlife">Wildlife</a></li>
-								<li><a href="/f/safari">Safari</a></li>
-								<li><a href="/f/ski-snowboard-snow">Ski, Snowboard
-										&amp; Snow</a></li>
-								<li><a href="/f/jeep-4wd">Jeep &amp; 4WD</a></li>
-								<li><a href="/f/beach">Beach</a></li>
-								<li><a href="/f/surfing">Surfing</a></li>
-								<li><a href="/f/kayak-canoe">Kayak &amp; Canoe</a></li>
-								<li><a href="/f/multi-sport">Multi-sport</a></li>
-								<li><a href="/f/diving">Diving</a></li>
-							</ul></li>
-						<li data-type="cultural"><ul>
-								<li><a href="/f/discovery">Discovery</a></li>
-								<li><a href="/f/in-depth-cultural">In-depth Cultural</a></li>
-								<li><a href="/f/coach-bus">Coach/Bus</a></li>
-								<li><a href="/f/family">Family</a></li>
-								<li><a href="/f/train-rail">Train &amp; Rail</a></li>
-								<li><a href="/f/food-culinary">Food &amp; Culinary</a></li>
-								<li><a href="/f/historical">Historical</a></li>
-								<li><a href="/f/local-living">Local Living</a></li>
-								<li><a href="/f/wine-tasting">Wine tasting</a></li>
-								<li><a href="/f/other">Other </a></li>
-							</ul></li>
-						<li data-type="marine"><ul>
-								<li><a href="/f/river-cruise">River Cruise</a></li>
-								<li><a href="/f/sailing">Sailing</a></li>
-								<li><a href="/f/polar-arctic-antartica-cruise">Polar /
-										Antartica</a></li>
-								<li><a href="/f/ocean-cruise">Ocean Cruise</a></li>
-								<li><a href="/f/boat">Boat</a></li>
-							</ul></li>
-						<li data-type="festival-events"><ul>
-								<li><a href="/f/christmas-new-year">Christmas &amp; New
-										Year</a></li>
-								<li><a href="/f/anzac-day">Anzac Day</a></li>
-								<li><a href="/f/oktoberfest">Oktoberfest</a></li>
-								<li><a href="/f/oberammergau-passion-play">Oberammergau
-										Passion Play</a></li>
-								<li><a href="/f/new-years">New Years</a></li>
-								<li><a href="/f/tomatina">Tomatina</a></li>
-								<li><a href="/f/european-christmas-markets">European
-										Christmas Markets</a></li>
-								<li><a href="/f/san-fermin">San Fermin (Pamplona)</a></li>
-								<li><a href="/f/hogmanay">Hogmanay</a></li>
-								<li><a href="/f/rio-carnival">Rio Carnival</a></li>
-								<li><a href="/f/easter">Easter</a></li>
-								<li><a href="/f/batalla-del-vino">Batalla del Vino</a></li>
-								<li><a href="/f/st-patrick-s-day">St Patrick's Day</a></li>
-							</ul></li>
-						<li data-type="independent"><ul>
-								<li><a href="/f/hop-on-off">Hop On/Off</a></li>
-								<li><a href="/f/self-guided">Self-Guided</a></li>
-								<li><a href="/f/flexi">Flexi</a></li>
-								<li><a href="/f/private-custom">Private &amp; Custom</a></li>
-								<li><a href="/f/self-drive">Self Drive</a></li>
-							</ul></li>
-						<li data-type="special-interest"><ul>
-								<li><a href="/f/volunteer-community">Volunteer/Community</a></li>
-								<li><a href="/f/gay-travel">Gay Travel</a></li>
-								<li><a href="/f/photography">Photography</a></li>
-							</ul></li>
+
+			<li class="dropdown profile"><a href="#">여행코스</a>
+				<nav>
+					<ul class="bot">
+						<li><a href="https://www.tourradar.com/members/profile">맛집</a></li>
+						<li><a href="/wishlists/traveller/439173">숙박</a></li>
+						<li><a
+							href="https://www.tourradar.com/members/profile#block-bookings">관광지</a></li>
+						<li><a href="https://www.tourradar.com/members/settings">패키지
+								여행</a></li>
+						<li class="sep"><a
+							href="https://www.tourradar.com/members/logout?type=web">여행후기</a></li>
 					</ul>
 				</nav></li>
-			<li class="deals"><a class="deals" href="/deals">Deals</a></li>
-			<li class="dropdown profile"><svg
+			<li class="dropdown profile" style="padding-top: 22px;"><svg
 					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						<path fill="rgb(204,204,204)"
+                  <path fill="rgb(204,204,204)"
 						d="M9.74 0A10 10 0 1 0 20 9.74 10 10 0 0 0 9.74 0zm.5 19A9 9 0 1 1 19 9.76 9 9 0 0 1 10.24 19z"></path>
-						<path fill="rgb(204,204,204)"
-						d="M10.21 11.5H10a6.5 6.5 0 0 0-5.5 3.4.5.5 0 1 0 .88.48 5.5 5.5 0 0 1 4.69-2.87h.15a5.5 5.5 0 0 1 4.69 2.62.5.5 0 0 0 .85-.52 6.5 6.5 0 0 0-5.55-3.11zm-.29-1H10A3.5 3.5 0 0 0 13.42 7v-.09a3.5 3.5 0 0 0-3.5-3.41h-.09A3.5 3.5 0 0 0 6.42 7v.09a3.5 3.5 0 0 0 3.5 3.41zm-.06-6h.07a2.5 2.5 0 0 1 2.5 2.43V7A2.5 2.5 0 0 1 10 9.5h-.08a2.5 2.5 0 0 1-2.5-2.43V7a2.5 2.5 0 0 1 2.43-2.5z"></path></svg>
+                  <path fill="rgb(204,204,204)"
+						d="M10.21 11.5H10a6.5 6.5 0 0 0-5.5 3.4.5.5 0 1 0 .88.48 5.5 5.5 0 0 1 4.69-2.87h.15a5.5 5.5 0 0 1 4.69 2.62.5.5 0 0 0 .85-.52 6.5 6.5 0 0 0-5.55-3.11zm-.29-1H10A3.5 3.5 0 0 0 13.42 7v-.09a3.5 3.5 0 0 0-3.5-3.41h-.09A3.5 3.5 0 0 0 6.42 7v.09a3.5 3.5 0 0 0 3.5 3.41zm-.06-6h.07a2.5 2.5 0 0 1 2.5 2.43V7A2.5 2.5 0 0 1 10 9.5h-.08a2.5 2.5 0 0 1-2.5-2.43V7a2.5 2.5 0 0 1 2.43-2.5z"></path>
+               </svg>
 				<nav>
-					<ul>
-						<li><a href="member/login">Log In</a></li>
-						<li><a href="member/join">Sign Up</a></li>
-						<li><a href="member/login">Manage Bookings</a></li>
-					</ul>
-				</nav></li>
-			<li class="dropdown support" style="padding-top: 20px;"><div
-					class="phone">+82 000 000 0000</div> <a href="/contact"
-				class="desc">Contact us</a>
-				<nav>
-					<ul>
-						<li style="padding-bottom: 20px;"><a href="/help">Help
-								Center</a></li>
-						<li style="padding-bottom: 20px;"><a href="/contact">Contact
-								Us</a></li>
+					<ul class="bot">
+						<li><a href="https://www.tourradar.com/login">로그인</a></li>
+						<li><a href="https://www.tourradar.com/registration">회원가입</a></li>
+						<li><a href="https://www.tourradar.com/login">예약관리</a></li>
 					</ul>
 				</nav></li>
 		</ul>
