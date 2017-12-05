@@ -7,11 +7,11 @@
 <title>Booking Tours Made Easy - BlueBalloon: Search, Compare &
 	Book Tours Online</title>
 <link
-	href="${pageContext.request.contextPath}/resources/home/css/home1.css"
-	rel="stylesheet" />
+	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=1"
+	rel="stylesheet" type="text/css"/>
 
 <link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512440696.css"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512456645.css"
 	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
@@ -44,7 +44,7 @@
 			alt="Booking Tours Made Easy - TourRadar - Search, Compare &amp; Book Group Tours Online">
 			<div class="im">
 				<video id="video" preload="auto" autoplay="true" loop="loop"
-					muted="muted" volume="0" style="width: 100%; height: 640px;">
+					muted="muted" volume="0" style="width: 100%;">
 					<source src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.mp4">
 				</video>
 			</div>

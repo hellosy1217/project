@@ -55,4 +55,17 @@ public class MemberController {
 		return mav;
 	}
 
+	@RequestMapping(value = "member_edit", method = RequestMethod.GET)
+	public String edit() {
+		return "user/member/edit";
+	}
+
+	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
+	public ModelAndView editPro(HttpServletRequest arg0) {
+
+		// 채워야 함
+
+		return mav;
+	}
+
 }

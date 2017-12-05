@@ -3,8 +3,6 @@
 <html lang="en">
 <head>
 <title>Sign up - BlueBalloon</title>
-<script type="text/javascript"
-	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
 <link
 	href="${pageContext.request.contextPath}/resources/member/css/join1.css"
 	rel="stylesheet" />
@@ -20,6 +18,8 @@
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/ttip.min.css"
 	rel="stylesheet" />
+<script type="text/javascript"
+	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
 </head>
 <body class="reg-page-bg ">
 	<div id="content" class="clearfix wrapc ">

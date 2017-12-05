@@ -54,10 +54,28 @@ body, html {
 	padding: 0
 }
 
-body:not (.resp ), html:not (.resp ){
-	min-width: 963px
-}
+body
+:not
+ 
+(
+.resp
+ 
+),
+html
+:not
+ 
+(
+.resp
+ 
+){
+min-width
+:
+ 
+963
+px
 
+
+}
 body.resp, html.resp {
 	min-width: 320px
 }
@@ -190,7 +208,6 @@ iframe[name=cj_conversion] {
 	position: fixed
 }
 
-
 div.arrow {
 	background-repeat: no-repeat;
 	background-size: 100% 100%
@@ -238,6 +255,40 @@ span.initials {
 	color: #fff;
 	display: block;
 	text-align: center
+}
+
+.ups {
+	position: relative;
+	z-index: 2;
+	background-color: #fff;
+	height: 30px;
+	line-height: 30px;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1.3px
+}
+
+.ups .c {
+	max-width: 1164px;
+	margin: auto;
+	padding: 0 10px;
+	text-align: center
+}
+
+.ups .c .pull-left {
+	float: left
+}
+
+.ups .c .pull-right {
+	float: right
+}
+
+.ups .hide-sm {
+	display: none
+}
+
+.ups .hide-lg {
+	display: inline
 }
 
 header {
@@ -361,23 +412,117 @@ header ul li {
 	margin-bottom: -1px
 }
 
-header ul li:not ([data-type] ){
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	-webkit-flex-direction: column;
-	flex-direction: column;
-	-webkit-box-pack: center;
-	-moz-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center
-}
+header
+ 
+ul
+ 
+li
+:not
+ 
+(
+[
+data-type
+]
+ 
+){
+display
+:
+ 
+-webkit-box
+;
 
+	
+display
+:
+ 
+-moz-box
+;
+
+	
+display
+:
+ 
+-ms-flexbox
+;
+
+	
+display
+:
+ 
+-webkit-flex
+;
+
+	
+display
+:
+ 
+flex
+;
+
+	
+-webkit-box-orient
+:
+ 
+vertical
+;
+
+	
+-moz-box-orient
+:
+ 
+vertical
+;
+
+	
+-webkit-flex-direction
+:
+ 
+column
+;
+
+	
+flex-direction
+:
+ 
+column
+;
+
+	
+-webkit-box-pack
+:
+ 
+center
+;
+
+	
+-moz-box-pack
+:
+ 
+center
+;
+
+	
+-ms-flex-pack
+:
+ 
+center
+;
+
+	
+-webkit-justify-content
+:
+ 
+center
+;
+
+	
+justify-content
+:
+ 
+center
+
+
+}
 header ul li.dropdown nav {
 	display: none
 }
@@ -480,11 +625,11 @@ footer .cop a {
 }
 
 @media ( max-width :970px) {
-	body.resp footer .lnk .c, body.resp footer .rlk.bottom,
-		body.resp header .desc:not (.tab ), body.resp header .dropdown.fill,
-		body.resp header .ls-links, body.resp header .phone:not (.tab ), body.resp header .profile,
-		body.resp header .tagln, body.resp header ul li.dropdown.support:hover nav,
-		body.resp header ul li.dropdown.support nav {
+	body.resp footer .lnk .c, body.resp footer .rlk.bottom, body.resp header .desc:not 
+		(.tab ), body.resp header .dropdown.fill, body.resp header .ls-links,
+		body.resp header .phone:not (.tab ), body.resp header .profile, body.resp header .tagln,
+		body.resp header ul li.dropdown.support:hover nav, body.resp header ul li.dropdown.support nav
+		{
 		display: none
 	}
 	body.resp header .t-menu {
@@ -505,79 +650,111 @@ footer .cop a {
 		position: fixed;
 		width: 260px
 	}
-	body.resp nav.header:not (.open ){
-		left: -260px
-	}
-	body.resp footer .lnk {
-		height: 250px
-	}
-	body.resp footer .lnk img.left {
-		left: -75px
-	}
-	body.resp footer .lnk img.right {
-		right: -75px
-	}
-	body.resp footer form {
-		width: 100%
-	}
-	body.resp footer .press {
-		margin-bottom: 0
-	}
-	body.resp footer .rlk {
-		-webkit-box-orient: vertical;
-		-moz-box-orient: vertical;
-		-webkit-flex-direction: column;
-		flex-direction: column
-	}
-	body.resp footer .rlk>div {
-		text-align: center;
-		border-bottom: 1px solid #ccc;
-		width: 100%
-	}
-	body.resp footer .rlk>div:not (.open ) ul {
-		display: none
-	}
-	body.resp footer .rlk>div h4 .arrow {
-		position: relative;
-		right: 30px;
-		top: 7px;
-		width: 10px;
-		height: 5px;
-		float: right
-	}
-	body.resp footer .rlk>div ul {
-		margin-bottom: 20px
-	}
-	body.resp footer .rlk>div li a {
-		font-size: 14px
-	}
-	body.resp footer .f {
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: reverse;
-		-moz-box-orient: vertical;
-		-moz-box-direction: reverse;
-		-webkit-flex-direction: column-reverse;
-		flex-direction: column-reverse;
-		border-top: none;
-		margin: 0;
-		padding: 20px
-	}
-	body.resp footer .soc {
-		margin-top: 30px
-	}
-	body.resp footer .fb-like {
-		margin: 30px auto;
-		float: none;
-		display: block
-	}
-	body.resp footer .cards {
-		text-align: center
-	}
-	body.resp footer .cop {
-		font-size: 10px
-	}
+	body
+	.resp
+	 
+	nav
+	.header
+	:not
+	 
+	(
+	.open
+	 
+	){
+	left
+	:
+	 
+	-260
+	px
+	
+	
 }
 
+body.resp footer .lnk {
+	height: 250px
+}
+
+body.resp footer .lnk img.left {
+	left: -75px
+}
+
+body.resp footer .lnk img.right {
+	right: -75px
+}
+
+body.resp footer form {
+	width: 100%
+}
+
+body.resp footer .press {
+	margin-bottom: 0
+}
+
+body.resp footer .rlk {
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-webkit-flex-direction: column;
+	flex-direction: column
+}
+
+body.resp footer .rlk>div {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	width: 100%
+}
+
+body.resp footer .rlk>div:not (.open ) ul {
+	display: none
+}
+
+body.resp footer .rlk>div h4 .arrow {
+	position: relative;
+	right: 30px;
+	top: 7px;
+	width: 10px;
+	height: 5px;
+	float: right
+}
+
+body.resp footer .rlk>div ul {
+	margin-bottom: 20px
+}
+
+body.resp footer .rlk>div li a {
+	font-size: 14px
+}
+
+body.resp footer .f {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: reverse;
+	-moz-box-orient: vertical;
+	-moz-box-direction: reverse;
+	-webkit-flex-direction: column-reverse;
+	flex-direction: column-reverse;
+	border-top: none;
+	margin: 0;
+	padding: 20px
+}
+
+body.resp footer .soc {
+	margin-top: 30px
+}
+
+body.resp footer .fb-like {
+	margin: 30px auto;
+	float: none;
+	display: block
+}
+
+body.resp footer .cards {
+	text-align: center
+}
+
+body.resp footer .cop {
+	font-size: 10px
+}
+
+}
 @media ( min-width :771px) {
 	body.resp footer .press a.mob {
 		display: none
@@ -603,7 +780,6 @@ footer .cop a {
 		padding-top: 10px;
 		margin-right: 0px;
 	}
-	
 	body.resp header .c a.phone {
 		margin: 20px 50px 0 0
 	}
@@ -831,7 +1007,6 @@ main .top {
 	margin-top: -128px;
 	min-height: 640px
 }
-
 
 main .top .im {
 	background-repeat: no-repeat;

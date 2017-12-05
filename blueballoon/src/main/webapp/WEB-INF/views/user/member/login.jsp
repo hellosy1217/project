@@ -62,7 +62,7 @@
 								id="g_send"><span class="title">Log in</span></a>
 						</div>
 						<div class="b-lnk forgot">
-							<a href="find"> 비밀번호를 잊으셨나요? </a>
+							<a href="member_find"> 비밀번호를 잊으셨나요? </a>
 						</div>
 						<div class="b-lnk last">
 							아직 계정이 없으신가요? <a href="member_join">지금 가입하세요!</a>

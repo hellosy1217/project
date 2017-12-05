@@ -20,25 +20,14 @@
 	rel="stylesheet" />
 </head>
 <body class="reg-page-bg ">
-	<script>dataLayer = []; dataLayer.push ({'Cr-SiteType': 'd'});
- </script>
+	<script>
+		dataLayer = [];
+		dataLayer.push({
+			'Cr-SiteType' : 'd'
+		});
+	</script>
 	<div id="fb-root" class=" fb_reset">
-		<script async="" src="https://connect.facebook.net/en_US/all.js"></script>
-		<div
-			style="position: absolute; top: -10000px; height: 0px; width: 0px;">
-			<div>
-				<iframe name="fb_xdm_frame_https" frameborder="0"
-					allowtransparency="true" allowfullscreen="true" scrolling="no"
-					id="fb_xdm_frame_https" aria-hidden="true"
-					title="Facebook Cross Domain Communication Frame" tabindex="-1"
-					src="https://staticxx.facebook.com/connect/xd_arbiter/r/lY4eZXm_YWu.js?version=42#channel=f37e9479e90064e&amp;origin=https%3A%2F%2Fwww.tourradar.com"
-					style="border: none;"></iframe>
-			</div>
-		</div>
-		<div
-			style="position: absolute; top: -10000px; height: 0px; width: 0px;">
-			<div></div>
-		</div>
+		<script async="" src="https://connect.facebook.net/en_US/all.js"></script>xw
 	</div>
 	<div id="content" class="clearfix wrapc ">
 		<div class="reg-page reset-password clearfix">
@@ -136,50 +125,6 @@
 	<script
 		src="//cdn.tourradar.com/include/pw/responsive/script.v1512389251.min.js"
 		async=""></script>
-	<script type="text/javascript">
-
-var IntRespHF = setInterval (function() {
- if (typeof $ == 'function') {
- clearInterval (IntRespHF);
- $(document).ready (function() {
- resp_hf = new RespHF();
- resp_hf.init();
- });
- }
-}, 10);
-
-</script>
-	<div id="fancybox-tmp"></div>
-	<div id="fancybox-loading">
-		<div></div>
-	</div>
-	<div id="fancybox-overlay"></div>
-	<div id="fancybox-wrap">
-		<div id="fancybox-outer">
-			<div class="fancybox-bg" id="fancybox-bg-n"></div>
-			<div class="fancybox-bg" id="fancybox-bg-ne"></div>
-			<div class="fancybox-bg" id="fancybox-bg-e"></div>
-			<div class="fancybox-bg" id="fancybox-bg-se"></div>
-			<div class="fancybox-bg" id="fancybox-bg-s"></div>
-			<div class="fancybox-bg" id="fancybox-bg-sw"></div>
-			<div class="fancybox-bg" id="fancybox-bg-w"></div>
-			<div class="fancybox-bg" id="fancybox-bg-nw"></div>
-			<div id="fancybox-content"></div>
-			<a id="fancybox-close"></a>
-			<div id="fancybox-title"></div>
-			<a href="javascript:;" id="fancybox-left"><span class="fancy-ico"
-				id="fancybox-left-ico"></span></a><a href="javascript:;"
-				id="fancybox-right"><span class="fancy-ico"
-				id="fancybox-right-ico"></span></a>
-		</div>
-	</div>
-	<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","806188949420761");fbq("track","PageView");</script>
-	<noscript>&lt;img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=806188949420761&amp;amp;ev=PageView&amp;amp;noscript=1"&gt;</noscript>
-	<div style="display: none; visibility: hidden;">
-		<script>(function(b,c,e,g,d){var f,a;b[d]=b[d]||[];f=function(){var a={ti:"5089755"};a.q=b[d];b[d]=new UET(a);b[d].push("pageLoad")};a=c.createElement(e);a.src=g;a.async=1;a.onload=a.onreadystatechange=function(){var b=this.readyState;b&&"loaded"!==b&&"complete"!==b||(f(),a.onload=a.onreadystatechange=null)};c=c.getElementsByTagName(e)[0];c.parentNode.insertBefore(a,c)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
-		<noscript></noscript>
-	</div>
 	<div
 		style="width: 0px; height: 0px; display: none; visibility: hidden;"
 		id="batBeacon0.3351171164012936">
