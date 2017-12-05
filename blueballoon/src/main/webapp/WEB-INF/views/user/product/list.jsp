@@ -157,7 +157,7 @@
 					<p>Visiting Morocco reveals an enticing new world, with tour
 						packages that stop in destinations like Marrakesh, Fez and
 						Casablanca. While exploring this North African country, you can
-						discover mosques and bazaars. Don’t miss the chance to go trekking
+						discover mosques and bazaars. Do’t miss the chance to go trekking
 						across the Sahara on the back of a camel!</p>
 				</div>
 			</div>
