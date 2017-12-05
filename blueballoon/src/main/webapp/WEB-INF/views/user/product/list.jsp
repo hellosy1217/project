@@ -162,7 +162,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>    
 	<div>
 		<div class="unlock sale-line m-s filter-hidden">
 			<div>
@@ -189,7 +189,7 @@
 					<option value="ppddesc">Highest price/day first</option>
 					<option value="lenasc">Duration ascending</option>
 					<option value="lendesc">Duration descending</option>
-					<option value="deals">Biggest Deals</option></select>
+					<option value="deals">Biggest Dels</option></select>
 			</div>
 			<ul id="radio">
 				<li class="title">Sort by</li>
