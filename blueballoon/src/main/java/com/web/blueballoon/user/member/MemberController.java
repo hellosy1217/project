@@ -16,12 +16,12 @@ public class MemberController {
 
 	private ModelAndView mav = new ModelAndView();
 
-	@RequestMapping(value = "member/login", method = RequestMethod.GET)
+	@RequestMapping(value = "member_login", method = RequestMethod.GET)
 	public String login() {
 		return "user/member/login";
 	}
 
-	@RequestMapping(value = "member/login", method = RequestMethod.POST)
+	@RequestMapping(value = "member_login", method = RequestMethod.POST)
 	public ModelAndView loginPro(HttpServletRequest arg0) {
 
 		// 채워야 함
@@ -29,12 +29,12 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "member/join", method = RequestMethod.GET)
+	@RequestMapping(value = "member_join", method = RequestMethod.GET)
 	public String join() {
 		return "user/member/join";
 	}
 
-	@RequestMapping(value = "member/join", method = RequestMethod.POST)
+	@RequestMapping(value = "member_join", method = RequestMethod.POST)
 	public ModelAndView joinPro(HttpServletRequest arg0) {
 
 		// 채워야 함
@@ -42,12 +42,12 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "member/find", method = RequestMethod.GET)
+	@RequestMapping(value = "member_find", method = RequestMethod.GET)
 	public String find() {
 		return "user/member/find";
 	}
 
-	@RequestMapping(value = "member/find", method = RequestMethod.POST)
+	@RequestMapping(value = "member_find", method = RequestMethod.POST)
 	public ModelAndView findPro(HttpServletRequest arg0) {
 
 		// 채워야 함

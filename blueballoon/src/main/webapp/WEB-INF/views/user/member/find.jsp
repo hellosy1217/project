@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
-<title>Reset Password - TourRadar</title>
+<title>Reset Password - BlueBalloon</title>
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
 	rel="stylesheet" />

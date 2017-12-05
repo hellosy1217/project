@@ -86,11 +86,10 @@
 							<a class="reg-page-button" href="#" onclick="return false"
 								id="g_send"><span class="title">Sign up</span></a>
 						</div>
-						<input class="hidden" type="submit">
 					</form>
 					<div id="message-sign-in"></div>
 					<div class="b-lnk">
-						Already have an account? <a href="member/login">Log in</a>
+						Already have an account? <a href="member_login">Log in</a>
 					</div>
 				</div>
 			</div>

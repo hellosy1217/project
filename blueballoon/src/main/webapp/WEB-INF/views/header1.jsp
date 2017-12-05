@@ -4,10 +4,10 @@
 	<div class="c">
 		<span class="hide-lg pull-left"><a
 			href="why-top=best-selection.html">BEST SELECTION &amp; PRICES</a></span><span
-			class="hide-sm pull-left"><a href="product/list">BEST
-				SELECTION</a></span><span class="hide-sm"><a href="product/content">BEST
+			class="hide-sm pull-left"><a href="product_list">BEST
+				SELECTION</a></span><span class="hide-sm"><a href="product_content">BEST
 				PRICES</a></span><span class="pull-right"><a
-			href="why-top=trusted-payments.html">TRUSTED PAYMENTS</a></span>
+			href="admin_index">TRUSTED PAYMENTS</a></span>
 	</div>
 </div>
 <header>
@@ -31,22 +31,22 @@
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
 				<nav class="">
 					<ul class="top">
-						<li data-type="africa"><a href="product/list?cate_city='서울특별시'"><span>서울특별시</span></a>
+						<li data-type="africa"><a href="product_list?cate_city='서울특별시'"><span>서울특별시</span></a>
 							<ul class="bot">
-								<li><a href="product/list?cate_state='강남구'">강남구</a></li>
-								<li><a href="product/list?cate_state='종로구'">종로구</a></li>
-								<li><a href="product/list?cate_state='마포구'">마포구</a></li>
-								<li><a href="product/list?cate_state='중구'">중구</a></li>
-								<li><a href="product/list?cate_state='용산구'">용산구</a></li>
+								<li><a href="product_list?cate_state='강남구'">강남구</a></li>
+								<li><a href="product_list?cate_state='종로구'">종로구</a></li>
+								<li><a href="product_list?cate_state='마포구'">마포구</a></li>
+								<li><a href="product_list?cate_state='중구'">중구</a></li>
+								<li><a href="product_list?cate_state='용산구'">용산구</a></li>
 							</ul></li>
 						<li data-type="australia-oceania"><a
-							href="product/list?cate_city='경기도'"><span>경기도</span></a>
+							href="product_list?cate_city='경기도'"><span>경기도</span></a>
 							<ul class="bot">
-								<li><a href="product/list?cate_state='용인시'">용인시</a></li>
-								<li><a href="product/list?cate_state='파주시'">파주시</a></li>
-								<li><a href="product/list?cate_state='의정부시'">의정부시</a></li>
-								<li><a href="product/list?cate_state='수원시'">수원시</a></li>
-								<li><a href="product/list?cate_state='인천광역시">인천광역시</a></li>
+								<li><a href="product_list?cate_state='용인시'">용인시</a></li>
+								<li><a href="product_list?cate_state='파주시'">파주시</a></li>
+								<li><a href="product_list?cate_state='의정부시'">의정부시</a></li>
+								<li><a href="product_list?cate_state='수원시'">수원시</a></li>
+								<li><a href="product_list?cate_state='인천광역시">인천광역시</a></li>
 							</ul></li>
 						<li data-type="asia"><a href="/d/asia"><span>강원도</span></a>
 							<ul class="bot">
@@ -110,9 +110,9 @@
                </svg>
 				<nav>
 					<ul class="bot">
-						<li><a href="https://www.tourradar.com/login">로그인</a></li>
-						<li><a href="https://www.tourradar.com/registration">회원가입</a></li>
-						<li><a href="https://www.tourradar.com/login">예약관리</a></li>
+						<li><a href="member_login">로그인</a></li>
+						<li><a href="member_join">회원가입</a></li>
+						<li><a href="book_">예약관리</a></li>
 					</ul>
 				</nav></li>
 		</ul>
