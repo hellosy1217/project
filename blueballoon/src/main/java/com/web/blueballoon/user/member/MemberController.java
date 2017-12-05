@@ -41,5 +41,18 @@ public class MemberController {
 
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "member/find", method = RequestMethod.GET)
+	public String find() {
+		return "user/member/find";
+	}
+
+	@RequestMapping(value = "member/find", method = RequestMethod.POST)
+	public ModelAndView findPro(HttpServletRequest arg0) {
+
+		// 채워야 함
+
+		return mav;
+	}
+
 }
