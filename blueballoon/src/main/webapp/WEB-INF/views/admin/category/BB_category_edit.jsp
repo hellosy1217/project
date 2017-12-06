@@ -43,7 +43,7 @@
 	}
 </script>
 <div align="center">
-	<form name="f" action="travel_category_edit" method="post">
+	<form name="f" action="BB_category_edit" method="post">
 	<input type="hidden" name="cate_num" value="${param.cate_num}">
 		<table border="1" width="300">
 			<caption>여행 지역 카테고리 수정</caption>
