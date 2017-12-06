@@ -70,9 +70,12 @@ public class AdminController {
 	//여행 지역 카테고리 수정
 	@RequestMapping(value="BB_category_edit", method=RequestMethod.GET)
 	public ModelAndView viewEditBBCategoryDTO(@RequestParam String cate_num) {
+		System.out.println("cate_num : " + cate_num);
 		BBCategoryDTO dto = adminMapper.getBBCategoryDTO(Integer.parseInt(cate_num));
+		System.out.println("cate_state : "+ dto.getCate_state());
 		int state = cateInput.decodeState(dto.getCate_state());
 		dto.setCate_state(Integer.toString(state));
+		System.out.println("state : " + state);
 		if(state == -1) {
 			return new ModelAndView("redirect:BB_category_list");
 		}

@@ -47,7 +47,8 @@
 			<tr>
 				<th>카테고리 도</th>
 				<td>
-				<select onchange="categoryChange(this)" name="cate_state" title="등록할 '도'를 선택해 주세요.">
+				<select onchange="categoryChange(this)" name="cate_state">
+						<option>등록할 '도'를 선택해 주세요.</option>
 						<option value="0">서울특별시</option>
 						<option value="1">강원도</option>
 						<option value="2">경기도</option>
@@ -60,7 +61,7 @@
 			<tr>
 				<th>카테고리 시</th>
 				<td>
-				<select id="city" name="cate_city" title="등록할 '시'를 선택해주세요.">
+				<select id="city" name="cate_city">
 				</select></td>
 			</tr>
 			<tr>
