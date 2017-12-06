@@ -1,14 +1,13 @@
-package com.web.blueballoon.service;
+package com.web.blueballoon.admin.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.web.blueballoon.model.TravelCategory;
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.TravelMemberDTO;
-import com.web.blueballoon.model.TravelProductDTO;
+import com.web.blueballoon.model.BBProductDTO;
 
 @Service
 public class AdminMapper {
@@ -35,45 +34,45 @@ public class AdminMapper {
 		return sqlSession.selectList("booking_list",member_id);
 	}*/
 	//여행지역 카테고리 목록
-	public List<TravelCategory> listTravelCategory(){
-		return  sqlSession.selectList("listTravelCategory");
+	public List<BBCategoryDTO> listBBCategoryDTO(){
+		return  sqlSession.selectList("listBBCategoryDTO");
 	}
 	//여행지역 카테고리 등록
-	public int insertTravelCategory(TravelCategory dto) {
+	public int insertBBCategoryDTO(BBCategoryDTO dto) {
 		System.out.println("도: "+dto.getCate_state()+" / 시:"+dto.getCate_city());
-		return sqlSession.insert("insertTravelCategory",dto);
+		return sqlSession.insert("insertBBCategoryDTO",dto);
 	}
 	//여행지역 카테고리 삭제
-	public int deleteTravelCategory(int tCate_num) {
-		return sqlSession.delete("deleteTravelCategory",tCate_num);
+	public int deleteBBCategoryDTO(int tCate_num) {
+		return sqlSession.delete("deleteBBCategoryDTO",tCate_num);
 	}
 	//getCategory
-	public TravelCategory getTravelCategory(int tCate_num) {
-		return sqlSession.selectOne("getTravelCategory",tCate_num);
+	public BBCategoryDTO getBBCategoryDTO(int tCate_num) {
+		return sqlSession.selectOne("getBBCategoryDTO",tCate_num);
 	}
 	//여행지역 카테고리 수정
-	public int editTravelCategory(TravelCategory dto) {
-		return sqlSession.update("editTravelCategory",dto);
+	public int editBBCategoryDTO(BBCategoryDTO dto) {
+		return sqlSession.update("editBBCategoryDTO",dto);
 	}
 	//여행 상품 등록
-	public int insertTravelProduct(TravelProductDTO dto) {
-		return sqlSession.insert("insertTravelProduct",dto);
+	public int insertBBProduct(BBProductDTO dto) {
+		return sqlSession.insert("insertBBProduct",dto);
 	}
 	//여행 상품 삭제
-	public int deleteTravelProduct(int prod_num) {
-		return sqlSession.delete("deleteTravelProduct",prod_num);
+	public int deleteBBProduct(int prod_num) {
+		return sqlSession.delete("deleteBBProduct",prod_num);
 	}
 	//여행 상품 목록
-	public List<TravelProductDTO> listTravelProduct(){
-		return sqlSession.selectList("listTravelProduct");
+	public List<BBProductDTO> listBBProduct(){
+		return sqlSession.selectList("listBBProduct");
 	}
-	//getTravelProduct
-	public TravelProductDTO getTravelProduct(int prod_num) {
-		return sqlSession.selectOne("getTravelProduct",prod_num);
+	//getBBProduct
+	public BBProductDTO getBBProduct(int prod_num) {
+		return sqlSession.selectOne("getBBProduct",prod_num);
 	}
 	//여행 상품 수정 
-	public int editTravelProduct(TravelProductDTO dto) {
-		return sqlSession.update("editTravelProduct",dto);
+	public int editBBProduct(BBProductDTO dto) {
+		return sqlSession.update("editBBProduct",dto);
 	}
 	
 }

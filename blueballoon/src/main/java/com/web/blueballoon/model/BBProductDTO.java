@@ -1,6 +1,6 @@
 package com.web.blueballoon.model;
 
-public class TravelProductDTO {
+public class BBProductDTO {
 	private int prod_num;
 	private String prod_name;
 	private String prod_email;

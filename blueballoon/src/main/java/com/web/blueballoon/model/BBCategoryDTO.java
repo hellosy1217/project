@@ -1,6 +1,6 @@
 package com.web.blueballoon.model;
 
-public class TravelCategory {
+public class BBCategoryDTO {
 	private int cate_num;
 	private String cate_city;
 	private String cate_state;
