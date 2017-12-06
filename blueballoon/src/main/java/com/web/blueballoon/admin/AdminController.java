@@ -47,15 +47,16 @@ public class AdminController {
 	// 여행 지역 카테고리 등록
 	@RequestMapping(value="BB_category_insert",method=RequestMethod.POST)
 	public ModelAndView insertCategory(HttpServletRequest req, @ModelAttribute BBCategoryDTO dto) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("UTF-8");
 		if(dto.getCate_state()==null || dto.getCate_state().trim().equals("") || dto.getCate_city()==null || dto.getCate_city().trim().equals("")) {
-			return new ModelAndView("redirect:travel_category_insert");
+			return new ModelAndView("redirect:BB_category_insert");
 		}
 		// 도, 시가 추가될 시 util에 추가!
 		String values = cateInput.configState(Integer.parseInt(dto.getCate_state()));
 		dto.setCate_state(values);
 		int res = adminMapper.insertBBCategoryDTO(dto);
 		String [] msg = {"여행 카테고리 등록 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
-		String [] url = {"travel_category_list","travel_category_insert"};
+		String [] url = {"BB_category_list","BB_category_insert"};
 		return cm.resMassege(res, msg, url);
 	}
 	//여행 지역 카테고리 삭제
@@ -94,7 +95,7 @@ public class AdminController {
 	@RequestMapping(value="BB_category_list")
 	public ModelAndView listBBCategoryDTO() {
 		List<BBCategoryDTO> list = adminMapper.listBBCategoryDTO();
-		mav.addObject("BBCategoryDTO",list);
+		mav.addObject("BBCategory",list);
 		mav.setViewName("admin/category/BB_category_list"); return mav;
 	}
 	

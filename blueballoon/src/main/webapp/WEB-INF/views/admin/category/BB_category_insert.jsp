@@ -9,7 +9,7 @@
 		var city_1 = [ "평창시", "춘천시", "강릉시", "횡성시" ,"양양시"];
 		var city_2 = [ "용인시", "파주시", "의정부시", "수원특별시", "인천광역시" ];
 		var city_3 = [ "부산광역시", "거제시", "통영시", "남해시", "대구광역시", "울산광역시"  ];
-		var city_4 = ["광주광역시", "춘천시", "여수시", "전주시", "남원시"];
+		var city_4 = ["광주광역시", "순천시", "여수시", "전주시", "남원시"];
 		var city_5 = ["제주시", "서귀포시" ];
 		var city_6 = [ "대전광역시","보령시", "천안시", "청주시" ];
 		var target = document.getElementById("city");
@@ -39,8 +39,9 @@
 		}
 	}
 </script>
+
 <div align="center">
-	<form name="f" action="travel_category_insert" method="post">
+	<form name="f" action="BB_category_insert" method="post">
 		<table border="1" width="300">
 			<caption>여행 지역 카테고리 등록</caption>
 			<tr>

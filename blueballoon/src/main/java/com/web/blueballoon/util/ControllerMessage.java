@@ -15,7 +15,7 @@ public class ControllerMessage {
 			mav.addObject("msg",msg[1]);
 			mav.addObject("url",url[1]);
 		}
-		mav.setViewName("message");
+		mav.setViewName("admin/message");
 		return mav;
 	}
 }
