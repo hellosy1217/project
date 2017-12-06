@@ -5,12 +5,10 @@
 <mapper namespace="com.web.blueballoon.model">
 <!-- 지역 카테고리 -->
 	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
-		select * from bb_category order by cate_num desc
+		select * from bb_category 
 	</select>
 	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
-		insert into
-		bb_category values(bb_cate_seq.nextval, #{cate_state},
-		#{cate_city})
+		insert into bb_category values(bb_cate_seq.nextval, #{cate_state}, #{cate_city})
 	</insert>
 	<delete id="deleteBBCategoryDTO" parameterType="int">
 		delete from bb_category where cate_num = #{cate_num}
@@ -43,10 +41,10 @@
 	</select>
 	<update id="editBBProduct" parameterType="BBProductDTO">
 		update from bb_product set prod_name = #{prod_name}, prod_email =
-		#{prod_email} , prod_hp = #{prod_hp},
-		prod_person = #{prod_person} ,
+		#{prod_email} , prod_hp = #{prod_hp}, prod_person = #{prod_person} ,
 		prod_price = #{prod_price}, prod_img = #{prod_img}, prod_address1 =
 		#{prod_address1} , prod_address2 = #{prod_address2},
 		prod_content = #{prod_content}, prod_pick = #{prod_pick}
 	</update>
+	
 </mapper>

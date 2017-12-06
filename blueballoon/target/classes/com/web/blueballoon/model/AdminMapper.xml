@@ -5,37 +5,19 @@
 <mapper namespace="com.web.blueballoon.model">
 <!-- 지역 카테고리 -->
 	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
-<<<<<<< HEAD
-		select * from bb_category order by cate_num desc
-=======
-		select * from travel_category order by cate_num desc
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
+		select * from bb_category 
 	</select>
 	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
-		insert into
-		bb_category values(bb_cate_seq.nextval, #{cate_state},
-		#{cate_city})
+		insert into bb_category values(bb_cate_seq.nextval, #{cate_state}, #{cate_city})
 	</insert>
 	<delete id="deleteBBCategoryDTO" parameterType="int">
-<<<<<<< HEAD
 		delete from bb_category where cate_num = #{cate_num}
-=======
-		delete from travel_category where cate_num = #{cate_num}
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
 	</delete>
 	<select id="getBBCategoryDTO" parameterType="int" resultType="BBCategoryDTO">
-<<<<<<< HEAD
 		select * from bb_category where cate_num = #{cate_num}
-=======
-		select * from travel_category where cate_num = #{cate_num}
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
 	</select>
 	<update id="editBBCategoryDTO" parameterType="BBCategoryDTO">
-<<<<<<< HEAD
 		update bb_category set cate_state = #{cate_state} , cate_city =
-=======
-		update travel_category set cate_state = #{cate_state} , cate_city =
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
 		#{cate_city} where cate_num = #{cate_num}
 	</update>
 	<!-- 여행 상품 -->
@@ -48,35 +30,21 @@
 		#{prod_address2}, #{prod_content}, #{prod_pick})
 	</insert>
 	<delete id="deleteBBProduct" parameterType="int">
-<<<<<<< HEAD
 		delete * from bb_product where prod_num = #{prod_num}
-=======
-		delete * from
-		travel_product where prod_num = #{prod_num}
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
 	</delete>
 	<select id="listBBProduct" resultType="BBProductDTO">
 		select * from
 		bb_product order by prod_num desc
 	</select>
 	<select id="getBBProduct" parameterType="int" resultType="BBProductDTO">
-<<<<<<< HEAD
 		select * from bb_product where prod_num = #{prod_num}
-=======
-		select * from travel_product where prod_num = #{prod_num}
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
 	</select>
 	<update id="editBBProduct" parameterType="BBProductDTO">
-<<<<<<< HEAD
 		update from bb_product set prod_name = #{prod_name}, prod_email =
-=======
-		update from
-		travel_product set prod_name = #{prod_name}, prod_email =
->>>>>>> branch 'master' of https://github.com/hellosy1217/project.git
-		#{prod_email} , prod_hp = #{prod_hp},
-		prod_person = #{prod_person} ,
+		#{prod_email} , prod_hp = #{prod_hp}, prod_person = #{prod_person} ,
 		prod_price = #{prod_price}, prod_img = #{prod_img}, prod_address1 =
 		#{prod_address1} , prod_address2 = #{prod_address2},
 		prod_content = #{prod_content}, prod_pick = #{prod_pick}
 	</update>
+	
 </mapper>
