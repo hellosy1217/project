@@ -1,6 +1,6 @@
 <%@ page language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="top.jsp"%> 
+<%@ include file="../top.jsp"%> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 	function categoryChange(e) {
@@ -70,4 +70,4 @@
 		</table>
 	</form>
 </div>
-<%@ include file="bottom.jsp"%>
+<%@ include file="../bottom.jsp"%>

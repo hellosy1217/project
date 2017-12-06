@@ -37,7 +37,8 @@
 <body class=" ">
 	<%@include file="../../header2.jsp"%>
 	<div id="fb-root"></div>
-	<div id="content" class="clearfix profile ">
+	<!-- 이 부분인데 모르겠어요 -->
+	<div id="content" class="clearfix profile" style="padding-top: 20px;">
 		<div id="content_details"
 			class="clearfix profile profile-settings container-fluid">
 			<div class="row-fluid">
@@ -103,7 +104,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="profile-left span12" id="block-logout">
+					<div class="profile-left span12" id="block-logout" style="margin-bottom: 50px">
 						<h2>Log out</h2>
 						<p>By logging out of TourRadar I will no longer be able to use
 							all of TourRadar's features.</p>
