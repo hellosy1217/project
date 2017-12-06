@@ -4,7 +4,7 @@
 			</tr>
 			<tr height="10%">
 				<td colspan="6" align="center">
-					Korea Project
+					BlueBalloon
 				</td>
 			</tr>
 		</table>
