@@ -34,6 +34,11 @@ public class AdminController {
 		return "admin/admin_index";
 	}
 	
+	@RequestMapping(value="home")
+	public String Home() {
+		return "home";
+	}
+	
 	//==============<<<여행 지역 카테고리 관련>>>======================== 
 	@RequestMapping(value="BB_category_insert", method=RequestMethod.GET)
 	public String viewBBCategoryDTO() {

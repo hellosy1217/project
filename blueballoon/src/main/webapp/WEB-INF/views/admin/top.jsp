@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<font size="6">BlueBallon(admin)</font><br>
+			<a href = "home">메인홈</a>
 		<table border="1" width="800" height="600">
 			<tr height="10%">
 				<th width="15%"><a href="BB_member_list">회원 목록</a></th>
