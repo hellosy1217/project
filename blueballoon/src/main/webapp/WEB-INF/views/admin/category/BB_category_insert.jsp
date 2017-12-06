@@ -1,7 +1,8 @@
 <%@ page language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="top.jsp"%> 
+<%@ include file="../top.jsp"%> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
 <script type="text/javascript">
 	function categoryChange(e) {
 		var city_0 = [ "강남구", "종로구", "마포구", "중구" ,"용산구"];
@@ -43,10 +44,9 @@
 		<table border="1" width="300">
 			<caption>여행 지역 카테고리 등록</caption>
 			<tr>
-				<th bgcolor="yellow">카테고리 도</th>
+				<th>카테고리 도</th>
 				<td>
-				<select onchange="categoryChange(this)" name="state">
-						<option>등록할 도를 선택해주세요.</option>
+				<select onchange="categoryChange(this)" name="cate_state" title="등록할 '도'를 선택해 주세요.">
 						<option value="0">서울특별시</option>
 						<option value="1">강원도</option>
 						<option value="2">경기도</option>
@@ -57,17 +57,16 @@
 				</select> </td>
 			</tr>
 			<tr>
-				<th bgcolor="yellow">카테고리 시</th>
+				<th>카테고리 시</th>
 				<td>
-				<select id="city" name="city">
-						<option>둥록할 시를 선택해주세요.</option>
+				<select id="city" name="cate_city" title="등록할 '시'를 선택해주세요.">
 				</select></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center" class="m2"><input type="submit"
+				<td colspan="2" align="center"><input type="submit"
 					value="등록"> <input type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>
 </div>
-<%@ include file="bottom.jsp"%>
+<%@ include file="../bottom.jsp"%>

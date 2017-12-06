@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
+<%@ include file="../top.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
+	rel="stylesheet" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -56,41 +61,42 @@
     }
 </script>
 <div align="center">
-   <form name="f" action="travel_prod_insert" method="post"
+   <form name="f" action="BB_prod_insert" method="post"
       enctype="multipart/form-data">
-      <table width="700" class="outline">
+      <table width="700">
          <caption>상품 등록</caption>
          <tr>
-            <th class="m2" width="20%">카테고리</th>
+            <th width="20%">카테고리</th>
             <td>
-               <select name="prod_cate" class="box">
+               <select id="category" name="prod_cate">
+                  <c:if test="${empty cateList}">
+                  	<option>등록된 카테고리가 없습니다.</option>
+                  </c:if>
                   <c:forEach var="dto" items="${cateList}">
-                     <option value="${dto.cate_state}${dto.cate_city}">${dto.cate_state},${dto.cate_city}
-                     </option>
+                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
                   </c:forEach>
-                  
                </select>
             </td>
          </tr>
          <tr>
-            <th class="m2">상품명</th>
-            <td><input type="text" name="prod_name" class="box"></td>
+            <th>상품명</th>
+            <td><input type="text" name="prod_name"></td>
          </tr>
          <tr>
-            <th class="m2">판매자 이메일</th>
-            <td><input type="email" name="prod_email" class="box"></td>
+            <th>판매자 이메일</th>
+            <td><input type="email" name="prod_email"></td>
          </tr>
          <tr>
-            <th class="m2">판매자 전화번호</th>
-            <td><input type="text" name="prod_hp" class="box" 
+            <th>판매자 전화번호</th>
+            <td><input type="text" name="prod_hp"
             placeholder="예) 010-1111-2222"> " - " 포함 전체 자리를 입력해주세요.</td>
          </tr>
          <tr>
-            <th class="m2">상품 가격</th>
-            <td><input type="text" name="prod_price" class="box"></td>
+            <th>상품 가격</th>
+            <td><input type="text" name="prod_price"></td>
          </tr>
          <tr>
-            <th class="m2">이미지</th>
+            <th>이미지</th>
             <td><input type="file" name="prod_img"></td>
          </tr> 
          <tr>
@@ -104,17 +110,17 @@
 					</td>
 				</tr>
          <tr>
-            <th class="m2">상세 주소</th>
-            <td><input type="text" name="prod_address2" class="box"></td>
+            <th>상세 주소</th>
+            <td><input type="text" name="prod_address2" ></td>
          </tr>
          <tr>
-            <th class="m2">상품 정보</th>
+            <th>상품 정보</th>
             <td><textarea name="prod_content" rows="4" cols="60"></textarea></td>
          </tr>
          <tr>
-            <th class="m2">상품 분류</th>
+            <th>상품 분류</th>
             <td>
-               <select name="prod_pick" class="box">
+               <select name="prod_pick">
                   <option>상품을 분류해주세요.</option>
                   <option value="1">지역</option>
                   <option value="2">맛집</option>
@@ -123,10 +129,11 @@
             </td>
          </tr>
          <tr>
-            <td colspan="2" class="m1"><input type="submit" value="상품 등록">
+            <td colspan="2"><input type="submit" value="상품 등록">
                <input type="reset" value="취 소"></td>
          </tr>
       </table>
    </form>
 </div>
 
+<%@ include file="../bottom.jsp"%>

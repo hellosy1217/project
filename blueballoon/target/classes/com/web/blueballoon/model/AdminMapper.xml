@@ -4,53 +4,49 @@
 
 <mapper namespace="com.web.blueballoon.model">
 <!-- 지역 카테고리 -->
-	<select id="listTravelCategory" resultType="TravelCategory">
-		select * from travel_category order by cate_num desc
+	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
+		select * from bb_category order by cate_num desc
 	</select>
-	<insert id="insertTravelCategory" parameterType="TravelCategory">
+	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
 		insert into
-		travel_category values(travel_cate_seq.nextval, #{cate_state},
+		bb_category values(bb_cate_seq.nextval, #{cate_state},
 		#{cate_city})
 	</insert>
-	<delete id="deleteTravelCategory" parameterType="int">
-		delete from travel_category where cate_num = #{cate_num}
+	<delete id="deleteBBCategoryDTO" parameterType="int">
+		delete from bb_category where cate_num = #{cate_num}
 	</delete>
-	<select id="getTravelCategory" parameterType="int" resultType="TravelCategory">
-		select * from travel_category where cate_num = #{cate_num}
+	<select id="getBBCategoryDTO" parameterType="int" resultType="BBCategoryDTO">
+		select * from bb_category where cate_num = #{cate_num}
 	</select>
-	<update id="editTravelCategory" parameterType="TravelCategory">
-		update travel_category set cate_state = #{cate_state} , cate_city =
+	<update id="editBBCategoryDTO" parameterType="BBCategoryDTO">
+		update bb_category set cate_state = #{cate_state} , cate_city =
 		#{cate_city} where cate_num = #{cate_num}
 	</update>
 	<!-- 여행 상품 -->
-	<insert id="insertTravelProduct" parameterType="TravelProductDTO">
+	<insert id="insertBBProduct" parameterType="BBProductDTO">
 		insert into
-		travel_product values(travel_prod_seq.nextval, #{prod_num},
+		bb_product values(bb_prod_seq.nextval, #{prod_num},
 		#{prod_name}, #{prod_email}, #{prod_hp} , #{prod_person},
 		#{prod_price}, #{book_date}, #{prod_img},
 		#{prod_address1},
 		#{prod_address2}, #{prod_content}, #{prod_pick})
 	</insert>
-	<delete id="deleteTravelProduct" parameterType="int">
-		delete * from
-		travel_product where prod_num = #{prod_num}
+	<delete id="deleteBBProduct" parameterType="int">
+		delete * from bb_product where prod_num = #{prod_num}
 	</delete>
-	<select id="listTravelProduct" resultType="TravelProductDTO">
+	<select id="listBBProduct" resultType="BBProductDTO">
 		select * from
-		travel_product order by prod_num desc
+		bb_product order by prod_num desc
 	</select>
-	<select id="getTravelProduct" parameterType="int" resultType="TravelProductDTO">
-		select * from travel_product where prod_num = #{prod_num}
+	<select id="getBBProduct" parameterType="int" resultType="BBProductDTO">
+		select * from bb_product where prod_num = #{prod_num}
 	</select>
-	<update id="editTravelProduct" parameterType="TravelProductDTO">
-		update from
-		travel_product set prod_name = #{prod_name}, prod_email =
+	<update id="editBBProduct" parameterType="BBProductDTO">
+		update from bb_product set prod_name = #{prod_name}, prod_email =
 		#{prod_email} , prod_hp = #{prod_hp},
 		prod_person = #{prod_person} ,
-		prod_price = #{prod_price}, prod_img = #{prod_img},
-		prod_address1 =
+		prod_price = #{prod_price}, prod_img = #{prod_img}, prod_address1 =
 		#{prod_address1} , prod_address2 = #{prod_address2},
-		prod_content =
-		#{prod_content}, prod_pick = #{prod_pick}
+		prod_content = #{prod_content}, prod_pick = #{prod_pick}
 	</update>
 </mapper>

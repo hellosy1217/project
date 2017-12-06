@@ -1,8 +1,11 @@
 <%@ page language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="top.jsp"%> 
+<%@ include file="../top.jsp"%> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
+	rel="stylesheet" /> 
 <script type="text/javascript">
 	function categoryChange(e) {
 		var city_0 = [ "강남구", "종로구", "마포구", "중구" ,"용산구"];
@@ -45,7 +48,7 @@
 		<table border="1" width="300">
 			<caption>여행 지역 카테고리 수정</caption>
 			<tr>
-				<th bgcolor="yellow">카테고리 도</th>
+				<th>카테고리 도</th>
 				<td>
 				<select onchange="categoryChange(this)" name="cate_state">
 						<option>등록할 도를 선택해주세요.</option>
@@ -59,22 +62,16 @@
 				</select> </td>
 			</tr>
 			<tr>
-				<th bgcolor="yellow">카테고리 시</th>
+				<th>카테고리 시</th>
 				<td>
 				<!-- selected 연구 더해보기...ㅠㅠ -->
-				<select id="city" name="cate_city">
-						<option>수정할 시를 선택해주세요.</option>
-						<c:forEach var="dto" items="${getCategory}"> 
-							<option value="${dto.cate_city}">${dto.cate_city}</option>
-								<c:if test="${dto.cate_city == getCategory.cate_city }"></c:if>
-						</c:forEach>
+				<select id="city" name="cate_city" title="수정할 시를 선택해주세요.">
 				</select></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center" class="m2"><input type="submit"
-					value="수정"> <input type="reset" value="취소"></td>
+				<td colspan="2" align="center"><input type="submit" value="수정"> <input type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>
 </div>
-<%@ include file="bottom.jsp"%>
+<%@ include file="../bottom.jsp"%>
