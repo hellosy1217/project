@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,49 +9,49 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-    //º» ¿¹Á¦¿¡¼­´Â µµ·Î¸í ÁÖ¼Ò Ç¥±â ¹æ½Ä¿¡ ´ëÇÑ ¹ı·É¿¡ µû¶ó, ³»·Á¿À´Â µ¥ÀÌÅÍ¸¦ Á¶ÇÕÇÏ¿© ¿Ã¹Ù¸¥ ÁÖ¼Ò¸¦ ±¸¼ºÇÏ´Â ¹æ¹ıÀ» ¼³¸íÇÕ´Ï´Ù.
+    //ë³¸ ì˜ˆì œì—ì„œëŠ” ë„ë¡œëª… ì£¼ì†Œ í‘œê¸° ë°©ì‹ì— ëŒ€í•œ ë²•ë ¹ì— ë”°ë¼, ë‚´ë ¤ì˜¤ëŠ” ë°ì´í„°ë¥¼ ì¡°í•©í•˜ì—¬ ì˜¬ë°”ë¥¸ ì£¼ì†Œë¥¼ êµ¬ì„±í•˜ëŠ” ë°©ë²•ì„ ì„¤ëª…í•©ë‹ˆë‹¤.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
-                // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+                // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-                // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-                // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                var fullRoadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-                var extraRoadAddr = ''; // µµ·Î¸í Á¶ÇÕÇü ÁÖ¼Ò º¯¼ö
+                // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+                // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                var fullRoadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+                var extraRoadAddr = ''; // ë„ë¡œëª… ì¡°í•©í˜• ì£¼ì†Œ ë³€ìˆ˜
 
-                // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-                if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
+                // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+                if(data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)){
                     extraRoadAddr += data.bname;
                 }
-                // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
                 if(data.buildingName !== '' && data.apartment === 'Y'){
                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                 }
-                // µµ·Î¸í, Áö¹ø Á¶ÇÕÇü ÁÖ¼Ò°¡ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                // ë„ë¡œëª…, ì§€ë²ˆ ì¡°í•©í˜• ì£¼ì†Œê°€ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
                 if(extraRoadAddr !== ''){
                     extraRoadAddr = ' (' + extraRoadAddr + ')';
                 }
-                // µµ·Î¸í, Áö¹ø ÁÖ¼ÒÀÇ À¯¹«¿¡ µû¶ó ÇØ´ç Á¶ÇÕÇü ÁÖ¼Ò¸¦ Ãß°¡ÇÑ´Ù.
+                // ë„ë¡œëª…, ì§€ë²ˆ ì£¼ì†Œì˜ ìœ ë¬´ì— ë”°ë¼ í•´ë‹¹ ì¡°í•©í˜• ì£¼ì†Œë¥¼ ì¶”ê°€í•œë‹¤.
                 if(fullRoadAddr !== ''){
                     fullRoadAddr += extraRoadAddr;
                 }
 
-                // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-                document.getElementById('sample4_postcode').value = data.zonecode; //5ÀÚ¸® »õ¿ìÆí¹øÈ£ »ç¿ë
+                // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+                document.getElementById('sample4_postcode').value = data.zonecode; //5ìë¦¬ ìƒˆìš°í¸ë²ˆí˜¸ ì‚¬ìš©
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;
                 document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
 
-                // »ç¿ëÀÚ°¡ '¼±ÅÃ ¾ÈÇÔ'À» Å¬¸¯ÇÑ °æ¿ì, ¿¹»ó ÁÖ¼Ò¶ó´Â Ç¥½Ã¸¦ ÇØÁØ´Ù.
+                // ì‚¬ìš©ìê°€ 'ì„ íƒ ì•ˆí•¨'ì„ í´ë¦­í•œ ê²½ìš°, ì˜ˆìƒ ì£¼ì†Œë¼ëŠ” í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
                 if(data.autoRoadAddress) {
-                    //¿¹»óµÇ´Â µµ·Î¸í ÁÖ¼Ò¿¡ Á¶ÇÕÇü ÁÖ¼Ò¸¦ Ãß°¡ÇÑ´Ù.
+                    //ì˜ˆìƒë˜ëŠ” ë„ë¡œëª… ì£¼ì†Œì— ì¡°í•©í˜• ì£¼ì†Œë¥¼ ì¶”ê°€í•œë‹¤.
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    document.getElementById('guide').innerHTML = '(¿¹»ó µµ·Î¸í ÁÖ¼Ò : ' + expRoadAddr + ')';
+                    document.getElementById('guide').innerHTML = '(ì˜ˆìƒ ë„ë¡œëª… ì£¼ì†Œ : ' + expRoadAddr + ')';
 
                 } else if(data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
-                    document.getElementById('guide').innerHTML = '(¿¹»ó Áö¹ø ÁÖ¼Ò : ' + expJibunAddr + ')';
+                    document.getElementById('guide').innerHTML = '(ì˜ˆìƒ ì§€ë²ˆ ì£¼ì†Œ : ' + expJibunAddr + ')';
 
                 } else {
                     document.getElementById('guide').innerHTML = '';
@@ -64,13 +64,13 @@
    <form name="f" action="BB_prod_insert" method="post"
       enctype="multipart/form-data">
       <table width="700">
-         <caption>»óÇ° µî·Ï</caption>
+         <caption>ìƒí’ˆ ë“±ë¡</caption>
          <tr>
-            <th width="20%">Ä«Å×°í¸®</th>
+            <th width="20%">ì—¬í–‰ ìƒí’ˆ ì§€ì—­</th>
             <td>
                <select id="category" name="prod_cate">
                   <c:if test="${empty cateList}">
-                  	<option>µî·ÏµÈ Ä«Å×°í¸®°¡ ¾ø½À´Ï´Ù.</option>
+                  	<option>ë“±ë¡ëœ ì¹´í…Œê³ ë¦¬ê°€ ì—†ìŠµë‹ˆë‹¤.</option>
                   </c:if>
                   <c:forEach var="dto" items="${cateList}">
                      <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
@@ -79,58 +79,58 @@
             </td>
          </tr>
          <tr>
-            <th>»óÇ°¸í</th>
+            <th>ìƒí’ˆëª…</th>
             <td><input type="text" name="prod_name"></td>
          </tr>
          <tr>
-            <th>ÆÇ¸ÅÀÚ ÀÌ¸ŞÀÏ</th>
+            <th>íŒë§¤ì ì´ë©”ì¼</th>
             <td><input type="email" name="prod_email"></td>
          </tr>
          <tr>
-            <th>ÆÇ¸ÅÀÚ ÀüÈ­¹øÈ£</th>
+            <th>íŒë§¤ì ì „í™”ë²ˆí˜¸</th>
             <td><input type="text" name="prod_hp"
-            placeholder="¿¹) 010-1111-2222"> " - " Æ÷ÇÔ ÀüÃ¼ ÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</td>
+            placeholder="ì˜ˆ) 010-1111-2222"> " - " í¬í•¨ ì „ì²´ ìë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</td>
          </tr>
          <tr>
-            <th>»óÇ° °¡°İ</th>
+            <th>ìƒí’ˆ ê°€ê²©</th>
             <td><input type="text" name="prod_price"></td>
          </tr>
          <tr>
-            <th>ÀÌ¹ÌÁö</th>
+            <th>ì´ë¯¸ì§€</th>
             <td><input type="file" name="prod_img"></td>
          </tr> 
          <tr>
-					<th>¿ìÆí¹øÈ£</th>
+					<th>ìš°í¸ë²ˆí˜¸</th>
 					<td>
-					   <input type="text" id="sample4_postcode" placeholder="¿ìÆí¹øÈ£">
-						<input type="button" onclick="sample4_execDaumPostcode()" value="¿ìÆí¹øÈ£ Ã£±â"><br>
-						<input type="text" name="prod_address1" id="sample4_roadAddress" placeholder="µµ·Î¸íÁÖ¼Ò">
-						<input type="text" name="prod_address1" id="sample4_jibunAddress" placeholder="Áö¹øÁÖ¼Ò">
+					   <input type="text" id="sample4_postcode" placeholder="ìš°í¸ë²ˆí˜¸">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°"><br>
+						<input type="text" name="prod_address1" id="sample4_roadAddress" placeholder="ë„ë¡œëª…ì£¼ì†Œ">
+						<input type="text" name="prod_address1" id="sample4_jibunAddress" placeholder="ì§€ë²ˆì£¼ì†Œ">
 						<span id="guide" style="color:#999"></span>
 					</td>
 				</tr>
          <tr>
-            <th>»ó¼¼ ÁÖ¼Ò</th>
+            <th>ìƒì„¸ ì£¼ì†Œ</th>
             <td><input type="text" name="prod_address2" ></td>
          </tr>
          <tr>
-            <th>»óÇ° Á¤º¸</th>
+            <th>ìƒí’ˆ ì •ë³´</th>
             <td><textarea name="prod_content" rows="4" cols="60"></textarea></td>
          </tr>
          <tr>
-            <th>»óÇ° ºĞ·ù</th>
+            <th>ìƒí’ˆ ë¶„ë¥˜</th>
             <td>
                <select name="prod_pick">
-                  <option>»óÇ°À» ºĞ·ùÇØÁÖ¼¼¿ä.</option>
-                  <option value="1">Áö¿ª</option>
-                  <option value="2">¸ÀÁı</option>
-                  <option value="3">¼÷¼Ò</option>
+                  <option>ìƒí’ˆì„ ë¶„ë¥˜í•´ì£¼ì„¸ìš”.</option>
+                  <option value="1">ì§€ì—­</option>
+                  <option value="2">ë§›ì§‘</option>
+                  <option value="3">ìˆ™ì†Œ</option>
                </select>
             </td>
          </tr>
          <tr>
-            <td colspan="2"><input type="submit" value="»óÇ° µî·Ï">
-               <input type="reset" value="Ãë ¼Ò"></td>
+            <td colspan="2"><input type="submit" value="ìƒí’ˆ ë“±ë¡">
+               <input type="reset" value="ì·¨ ì†Œ"></td>
          </tr>
       </table>
    </form>

@@ -104,8 +104,10 @@ public class AdminController {
 	
 	//==============<<<<여행 상품  관련>>>======================== 
 	@RequestMapping(value="BB_prod_insert", method=RequestMethod.GET)
-	public String viewBBProduct() {
-		return "admin/product/BB_prod_insert";
+	public ModelAndView viewBBProduct() {
+		List<BBCategoryDTO> list = adminMapper.listBBCategoryDTO();
+		mav.addObject("cateList", list);
+		mav.setViewName("admin/product/BB_prod_insert"); return mav;
 	}
 	//여행 상품 등록 
 	@RequestMapping(value="BB_prod_insert", method=RequestMethod.POST)
@@ -115,7 +117,9 @@ public class AdminController {
 			mav.addObject("url","BB_prod_insert");
 			mav.setViewName("admin/message"); return mav;
 		}
+		
 		int res = adminMapper.insertBBProduct(dto);
+		
 		String [] msg = {"여행상품 등록 완료! 여행상품 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
 		String [] url = {"BB_prod_list","BB_prod_insert"};
 		return cm.resMassege(res, msg, url);
