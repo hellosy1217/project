@@ -10,8 +10,10 @@ public class BBProductDTO {
 	private String book_date;
 	private int prod_img;
 	private String prod_cate;
-	private String prod_address1;
-	private String prod_address2;
+	private String prod_post_number;
+	private String prod_road_address;
+	private String prod_old_address;
+	private String prod_detail_address;
 	private String prod_content;
 	private int prod_pick;
 
@@ -87,20 +89,36 @@ public class BBProductDTO {
 		this.prod_cate = prod_cate;
 	}
 
-	public String getProd_address1() {
-		return prod_address1;
+	public String getProd_post_number() {
+		return prod_post_number;
 	}
 
-	public void setProd_address1(String prod_address1) {
-		this.prod_address1 = prod_address1;
+	public void setProd_post_number(String prod_post_number) {
+		this.prod_post_number = prod_post_number;
 	}
 
-	public String getProd_address2() {
-		return prod_address2;
+	public String getProd_road_address() {
+		return prod_road_address;
 	}
 
-	public void setProd_address2(String prod_address2) {
-		this.prod_address2 = prod_address2;
+	public void setProd_road_address(String prod_road_address) {
+		this.prod_road_address = prod_road_address;
+	}
+
+	public String getProd_old_address() {
+		return prod_old_address;
+	}
+
+	public void setProd_old_address(String prod_old_address) {
+		this.prod_old_address = prod_old_address;
+	}
+
+	public String getProd_detail_address() {
+		return prod_detail_address;
+	}
+
+	public void setProd_detail_address(String prod_detail_address) {
+		this.prod_detail_address = prod_detail_address;
 	}
 
 	public String getProd_content() {
