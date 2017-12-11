@@ -16,4 +16,9 @@ public class ProductController {
 	public String content() {
 		return "user/product/content";
 	}
+	
+	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
+	public String booking() {
+		return "user/product/booking";
+	}
 }

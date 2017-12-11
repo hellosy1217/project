@@ -2,18 +2,18 @@
 	pageEncoding="UTF-8"%>
 <div class="ups">
 	<div class="c">
-		<span class="hide-lg pull-left"><a
-			href="why-top=best-selection.html">BEST SELECTION &amp; PRICES</a></span><span
-			class="hide-sm pull-left"><a href="product_list">BEST
-				SELECTION</a></span><span class="hide-sm"><a href="product_content">BEST
-				PRICES</a></span><span class="pull-right"><a
-			href="admin_index">TRUSTED PAYMENTS</a></span>
+		<span class="hide-sm pull-left"><a href="product_booking">일단은
+				booking</a></span><span class="hide-sm"><a href="product_content">일단은
+				content</a></span><span class="pull-right"><a href="admin_index">일단은
+				admin</a></span>
 	</div>
 </div>
 <header>
 	<div class="c">
 		<div class="logo" style="margin-right: 0px;">
-			<a href="member_edit"> <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png" width="170" height="35">
+			<a href="member_edit"> <img
+				src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
+				width="170" height="35">
 			</a>
 		</div>
 		<div class="tagln-search">
@@ -31,7 +31,8 @@
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
 				<nav class="">
 					<ul class="top">
-						<li data-type="africa"><a href="product_list?cate_city='서울특별시'"><span>서울특별시</span></a>
+						<li data-type="africa"><a
+							href="product_list?cate_city='서울특별시'"><span>서울특별시</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='강남구'">강남구</a></li>
 								<li><a href="product_list?cate_state='종로구'">종로구</a></li>
@@ -50,40 +51,40 @@
 							</ul></li>
 						<li data-type="asia"><a href="/d/asia"><span>강원도</span></a>
 							<ul class="bot">
-								<li><a href="/d/thailand">평창시</a></li>
-								<li><a href="/d/malaysia">춘천시</a></li>
-								<li><a href="/d/singapore">강릉시</a></li>
-								<li><a href="/d/india">횡성시</a></li>
-								<li><a href="/d/vietnam">양양시</a></li>
+								<li><a href="product_list?cate_state='평창시'">평창시</a></li>
+								<li><a href="product_list?cate_state='춘천시'">춘천시</a></li>
+								<li><a href="product_list?cate_state='강릉시'">강릉시</a></li>
+								<li><a href="product_list?cate_state='횡성시'">횡성시</a></li>
+								<li><a href="product_list?cate_state='양양시'">양양시</a></li>
 							</ul></li>
 						<li data-type="europe"><a href="/d/europe"><span>경상도</span></a>
 							<ul class="bot">
-								<li><a href="/d/iceland">부산광역시</a></li>
-								<li><a href="/d/italy">거제시</a></li>
-								<li><a href="/d/spain">통영시</a></li>
-								<li><a href="/d/greece">남해시</a></li>
-								<li><a href="/d/ireland">대구광역시</a></li>
-								<li><a href="/d/scotland">울산광역시</a></li>
+								<li><a href="product_list?cate_state='부산광역시'">부산광역시</a></li>
+								<li><a href="product_list?cate_state='거제시'">거제시</a></li>
+								<li><a href="product_list?cate_state='통영시'">통영시</a></li>
+								<li><a href="product_list?cate_state='남해시'">남해시</a></li>
+								<li><a href="product_list?cate_state='대구광역시'">대구광역시</a></li>
+								<li><a href="product_list?cate_state='울산광역시'">울산광역시</a></li>
 							</ul></li>
 						<li data-type="north-america"><a href="/d/north-america"><span>전라도</span></a>
 							<ul class="bot">
-								<li><a href="/d/usa">광주광역시</a></li>
-								<li><a href="/d/canada">순천시</a></li>
-								<li><a href="/d/greenland">여수시</a></li>
-								<li><a href="/d/greenland">전주시</a></li>
-								<li><a href="/d/greenland">남원시</a></li>
+								<li><a href="product_list?cate_state='광주광역시'">광주광역시</a></li>
+								<li><a href="product_list?cate_state='순천시'">순천시</a></li>
+								<li><a href="product_list?cate_state='여수시'">여수시</a></li>
+								<li><a href="product_list?cate_state='전주시'">전주시</a></li>
+								<li><a href="product_list?cate_state='남원시'">남원시</a></li>
 							</ul></li>
 						<li data-type="latin-america"><a href="/d/latin-america"><span>충청도</span></a>
 							<ul class="bot">
-								<li><a href="/d/peru">대전광역시</a></li>
-								<li><a href="/d/cuba">보령시</a></li>
-								<li><a href="/d/mexico">천안시</a></li>
-								<li><a href="/d/costa-rica">청주시</a></li>
+								<li><a href="product_list?cate_state='대전광역시'">대전광역시</a></li>
+								<li><a href="product_list?cate_state='보령시'">보령시</a></li>
+								<li><a href="product_list?cate_state='천안시'">천안시</a></li>
+								<li><a href="product_list?cate_state='청주시'">청주시</a></li>
 							</ul></li>
 						<li data-type="latin-america"><a href="/d/latin-america"><span>제주도</span></a>
 							<ul class="bot">
-								<li><a href="/d/peru">제주시</a></li>
-								<li><a href="/d/cuba">서귀포시</a></li>
+								<li><a href="product_list?cate_state='제주시'">제주시</a></li>
+								<li><a href="product_list?cate_state='서귀포시'">서귀포시</a></li>
 							</ul></li>
 					</ul>
 				</nav></li>
@@ -91,14 +92,11 @@
 			<li class="dropdown profile"><a href="#">여행코스</a>
 				<nav>
 					<ul class="bot">
-						<li><a href="https://www.tourradar.com/members/profile">맛집</a></li>
-						<li><a href="/wishlists/traveller/439173">숙박</a></li>
-						<li><a
-							href="https://www.tourradar.com/members/profile#block-bookings">관광지</a></li>
-						<li><a href="https://www.tourradar.com/members/settings">패키지
-								여행</a></li>
-						<li class="sep"><a
-							href="https://www.tourradar.com/members/logout?type=web">여행후기</a></li>
+						<li><a href="product_list?prod_pick=2">맛집</a></li>
+						<li><a href="product_list?prod_pick=3">숙박</a></li>
+						<li><a href="product_list?prod_pick=1">관광지</a></li>
+						<li><a href="package_list">패키지 여행</a></li>
+						<li class="sep"><a href="board_list">여행후기</a></li>
 					</ul>
 				</nav></li>
 			<li class="dropdown profile" style="padding-top: 22px;"><svg
