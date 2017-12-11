@@ -1,6 +1,5 @@
-@charset "UTF-8";
-
-.cf {
+<
+style>.cf {
 	overflow: auto
 }
 
@@ -1407,8 +1406,7 @@ main .book .right .p-resume {
 
 main .book .right .p-resume .amount-due {
 	border-top: 1px solid #ccc;
-	padding-top: 20px 0;
-	padding-bottom: 40px 0;
+	padding: 20px 0;
 	line-height: 24px
 }
 
@@ -4111,3 +4109,6 @@ main .calendar .dates.loading:after {
 		line-height: 23px
 	}
 }
+</
+style
+>
