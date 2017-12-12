@@ -1110,11 +1110,12 @@ main h4 {
 main .steps {
 	width: 100%;
 	padding-top: 40px;
-	padding-bottom: 30px
+	padding-bottom: 30px;
+	display: block;
 }
 
 main .steps li {
-	width: 50%;
+	width: 48.99%;
 	text-align: center;
 	display: inline-block;
 	color: #999;
@@ -1206,12 +1207,12 @@ main .steps li:last-child:before {
 }
 
 main .step {
-	display: none
+	display: block
 }
 
 main[data-step="1"] .step.step1, main[data-step="2"] .step.step2, main[data-step="3"] .step.step3
 	{
-	display: block
+	display: none
 }
 
 main .s-main-title {

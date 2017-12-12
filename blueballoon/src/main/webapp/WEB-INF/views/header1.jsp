@@ -49,7 +49,7 @@
 								<li><a href="product_list?cate_state='수원시'">수원시</a></li>
 								<li><a href="product_list?cate_state='인천광역시">인천광역시</a></li>
 							</ul></li>
-						<li data-type="asia"><a href="/d/asia"><span>강원도</span></a>
+						<li data-type="asia"><a href="product_list?cate_city='강원도'"><span>강원도</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='평창시'">평창시</a></li>
 								<li><a href="product_list?cate_state='춘천시'">춘천시</a></li>
@@ -57,7 +57,7 @@
 								<li><a href="product_list?cate_state='횡성시'">횡성시</a></li>
 								<li><a href="product_list?cate_state='양양시'">양양시</a></li>
 							</ul></li>
-						<li data-type="europe"><a href="/d/europe"><span>경상도</span></a>
+						<li data-type="europe"><a href="product_list?cate_city='경상도'"><span>경상도</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='부산광역시'">부산광역시</a></li>
 								<li><a href="product_list?cate_state='거제시'">거제시</a></li>
@@ -66,7 +66,7 @@
 								<li><a href="product_list?cate_state='대구광역시'">대구광역시</a></li>
 								<li><a href="product_list?cate_state='울산광역시'">울산광역시</a></li>
 							</ul></li>
-						<li data-type="north-america"><a href="/d/north-america"><span>전라도</span></a>
+						<li data-type="north-america"><a href="product_list?cate_city='전라도'"><span>전라도</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='광주광역시'">광주광역시</a></li>
 								<li><a href="product_list?cate_state='순천시'">순천시</a></li>
@@ -74,14 +74,14 @@
 								<li><a href="product_list?cate_state='전주시'">전주시</a></li>
 								<li><a href="product_list?cate_state='남원시'">남원시</a></li>
 							</ul></li>
-						<li data-type="latin-america"><a href="/d/latin-america"><span>충청도</span></a>
+						<li data-type="latin-america"><a href="product_list?cate_city='충청도'"><span>충청도</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='대전광역시'">대전광역시</a></li>
 								<li><a href="product_list?cate_state='보령시'">보령시</a></li>
 								<li><a href="product_list?cate_state='천안시'">천안시</a></li>
 								<li><a href="product_list?cate_state='청주시'">청주시</a></li>
 							</ul></li>
-						<li data-type="latin-america"><a href="/d/latin-america"><span>제주도</span></a>
+						<li data-type="latin-america"><a href="product_list?cate_city='제주도'"><span>제주도</span></a>
 							<ul class="bot">
 								<li><a href="product_list?cate_state='제주시'">제주시</a></li>
 								<li><a href="product_list?cate_state='서귀포시'">서귀포시</a></li>
