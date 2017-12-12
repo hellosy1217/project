@@ -1,5 +1,6 @@
-<
-style>.cf {
+@charset "UTF-8";
+
+.cf {
 	overflow: auto
 }
 
@@ -967,8 +968,12 @@ footer .cop a {
 	visibility: hidden
 }
 
+body, html {
+	min-width: 1024px
+}
+
 .fully-hidden {
-	display: none !important
+	display: none
 }
 
 .c {
@@ -976,6 +981,10 @@ footer .cop a {
 	max-width: 1164px;
 	margin: 0 auto;
 	padding: 0 12px
+}
+
+.sale-line {
+	margin-bottom: 20px
 }
 
 header {
@@ -1063,27 +1072,27 @@ header .right a.tel {
 	color: #333
 }
 
-header .right a.mail {
-	background-image:
-		url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 16c0 .55-.45 1-1 1H2c-.55 0-1-.45-1-1V4c0-.1.03-.16.05-.24l8.6 8.6c.1.1.22.14.35.14.13 0 .26-.05.35-.15l8.6-8.6c.02.1.05.16.05.25v12zM18 3c.1 0 .16.03.24.05L10 11.3 1.76 3.04C1.84 3.03 1.9 3 2 3h16zm0-1H2C.9 2 0 2.9 0 4v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z' fill='%23409cd1' fill-rule='evenodd'/%3E%3C/svg%3E")
+header .right a.help {
+	font-size: 12px;
+	margin-left: 35px;
+	padding-right: 30px;
+	position: relative
 }
 
-header .right a.help, header .right a.mail {
+header .right a.help:after {
+	position: absolute;
+	content: "";
 	width: 20px;
 	height: 20px;
-	margin-top: 9px;
-	margin-left: 20px;
+	right: 0;
+	top: 6px;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle fill='%23409CD1' cx='10' cy='10' r='10'/%3E%3Cpath d='M7.7 5.1c.6-.4 1.3-.6 2.2-.6 1.1 0 2 .3 2.7.8.8.6 1.1 1.3 1.1 2.4.1.5-.1 1.1-.4 1.6-.2.2-.6.6-1.1 1l-.5.4c-.3.2-.5.5-.6.8-.1.3-.1.5-.1.8H9c0-.8.1-1.4.2-1.7.2-.3.5-.7 1-1.1l.6-.4.4-.4c.2-.3.3-.6.3-.9 0-.4-.1-.7-.4-1-.2-.3-.6-.5-1.1-.5-.6 0-1 .2-1.2.6-.3.3-.4.7-.4 1.2H6.3c0-1.4.5-2.4 1.4-3zM9 13.4h2.2v2.1H9v-2.1z' fill='%23fff'/%3E%3C/svg%3E");
 	background-repeat: no-repeat
 }
 
-header .right a.help {
-	padding-right: 30px;
-	background-image:
-		url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23409cd1' fill-rule='evenodd'%3E%3Cpath d='M10 20c5.52 0 10-4.48 10-10S15.52 0 10 0 0 4.48 0 10s4.48 10 10 10m0-1c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9'/%3E%3Cpath d='M9.5 10v2c0 .28.22.5.5.5s.5-.22.5-.5v-2c0-.28-.22-.5-.5-.5s-.5.22-.5.5m0 5c0-.28.22-.5.5-.5s.5.22.5.5-.22.5-.5.5-.5-.22-.5-.5'/%3E%3Cpath d='M9.5 15h.5-1c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1h.5zM7.64 6.17C8 5.2 8.9 4.5 10 4.5a2.5 2.5 0 0 1 0 5c-.28 0-.5.22-.5.5s.22.5.5.5c1.93 0 3.5-1.57 3.5-3.5S11.93 3.5 10 3.5a3.5 3.5 0 0 0-3.3 2.33c-.1.26.04.55.3.64.27.1.55-.04.64-.3z'/%3E%3C/g%3E%3C/svg%3E")
-}
-
 main {
-	padding: 0 0 40px
+	padding: 20px 0 40px
 }
 
 main h1, main h3, main h4 {
@@ -1093,8 +1102,10 @@ main h1, main h3, main h4 {
 }
 
 main h1 {
-	font-size: 24px;
-	line-height: 36px
+	font-family: Georgia, Nimbus Roman No9 L, serif;
+	font-size: 36px;
+	line-height: 42px;
+	font-weight: 400
 }
 
 main h3 {
@@ -1103,204 +1114,28 @@ main h3 {
 }
 
 main h4 {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 23px
 }
 
-main .steps {
-	width: 100%;
-	padding-top: 40px;
-	padding-bottom: 30px;
-	display: block;
-}
-
-main .steps li {
-	width: 48.99%;
-	text-align: center;
-	display: inline-block;
-	color: #999;
+main .fline {
 	position: relative;
-	font-size: 10px;
-	line-height: 21px;
-	cursor: pointer;
-	text-transform: uppercase;
-	-webkit-transition: 1s ease-in-out;
-	-moz-transition: 1s ease-in-out;
-	-ms-transition: 1s ease-in-out;
-	-o-transition: 1s ease-in-out;
-	transition: 1s ease-in-out
+	padding-right: 160px
 }
 
-main .steps li:after {
-	content: "";
-	height: 6px;
-	width: 100%;
-	top: -13px;
-	background: #ccc
-}
-
-main .steps li:after, main .steps li:before {
+main .fline .but {
 	position: absolute;
-	left: 0;
-	-webkit-transition: .5s ease-in-out;
-	-moz-transition: .5s ease-in-out;
-	-ms-transition: .5s ease-in-out;
-	-o-transition: .5s ease-in-out;
-	transition: .5s ease-in-out
-}
-
-main .steps li:before {
-	content: "2";
-	width: 20px;
-	height: 20px;
-	top: -19px;
-	background-color: #ccc;
-	border-radius: 50%;
-	color: #fff;
-	text-align: center;
-	line-height: 20px;
-	z-index: 2;
+	width: 140px;
 	right: 0;
-	margin: 0 auto
-}
-
-main .steps li.active {
-	color: #409cd1;
-	font-weight: 700
-}
-
-main .steps li.active:after, main .steps li.active:before {
-	background-color: #409cd1;
-	font-weight: 400
-}
-
-main .steps li.active:after {
-	border-right: 6px solid #409cd1;
-	border-radius: 6px;
-	z-index: 1
-}
-
-main .steps li.active:last-child:after {
-	border-right: none
-}
-
-main .steps li:first-child {
-	width: 25%;
-	text-align: left
-}
-
-main .steps li:first-child:before {
-	content: "1";
-	right: auto;
-	left: -2px
-}
-
-main .steps li:last-child {
-	width: 25%;
-	text-align: right
-}
-
-main .steps li:last-child:before {
-	content: "3";
-	left: auto;
-	right: -2px
-}
-
-main .step {
-	display: block
-}
-
-main[data-step="1"] .step.step1, main[data-step="2"] .step.step2, main[data-step="3"] .step.step3
-	{
-	display: none
-}
-
-main .s-main-title {
-	text-align: center;
-	padding: 30px 80px;
-	border-bottom: 1px solid #ccc
-}
-
-main .s-main-title h1 {
-	font-size: 16px;
-	line-height: 23px
-}
-
-main .s-main-title .op_name {
-	font-size: 12px;
-	color: #999;
-	margin-top: 5px
-}
-
-main .s-main-title .step-text {
-	font-size: 24px;
-	line-height: 36px;
-	margin-bottom: 10px;
-	font-weight: 700
-}
-
-main .s-dates .departure {
-	position: relative;
-	border-bottom: 1px solid #ccc
-}
-
-main .s-dates .departure .date {
-	text-align: center;
-	padding: 30px;
-	width: 50%;
-	display: inline-block
-}
-
-main .s-dates .departure .date:first-child {
-	border-right: 1px solid #ccc
-}
-
-main .s-dates .departure .city {
-	font-size: 12px;
-	line-height: 14px;
-	color: #999
-}
-
-main .s-dates .departure .day {
-	font-size: 24px;
-	line-height: 29px;
-	margin-bottom: 10px
-}
-
-main .s-dates .departure .month {
-	line-height: 20px;
-	font-size: 12px;
-	margin-bottom: 5px
-}
-
-main .s-dates .departure .length {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	z-index: 1;
-	border: 1px solid #ccc;
-	border-radius: 50%;
-	color: #999;
-	font-size: 12px;
-	line-height: 14px;
-	padding: 10px;
-	text-align: center;
 	top: 50%;
-	left: 50%;
-	margin-top: -25px;
-	margin-left: -25px;
-	background: #fff
-}
-
-main #seats .seats {
-	min-height: 16px
-}
-
-main #seats .seats strong span {
-	vertical-align: baseline
+	margin-top: -16px
 }
 
 main .info {
+	padding: 20px 0;
+	border: 1px solid #ccc;
+	border-right: none;
+	border-left: none;
 	width: 100%
 }
 
@@ -1318,7 +1153,7 @@ main .pr b {
 }
 
 main .book {
-	position: relative
+	margin-top: 30px
 }
 
 main .book>div {
@@ -1330,17 +1165,7 @@ main .book .right {
 	width: 360px;
 	max-width: 32%;
 	float: right;
-	position: absolute;
-	top: 0;
-	right: 0
-}
-
-main .book .right .block {
-	padding: 30px 40px
-}
-
-main .book .right h4 {
-	padding-bottom: 10px
+	position: relative
 }
 
 main .book .right .info {
@@ -1348,15 +1173,41 @@ main .book .right .info {
 	border-bottom: none
 }
 
-main .book .right .show-prices {
-	font-size: 14px;
-	line-height: 23px;
-	display: none
+main .book .right .info.travellers {
+	margin-top: 0;
+	border: none;
+	font-weight: 700;
+	padding: 30px 0 10px
+}
+
+main .book .right .info.travellers.padding {
+	padding-bottom: 70px
+}
+
+main .book .right .info.travellers .pr {
+	margin-right: 0
 }
 
 main .book .right .prices li {
 	line-height: 23px;
-	padding-top: 10px
+	padding-top: 2px;
+	padding-bottom: 4px
+}
+
+main .book .right .prices li:first-child {
+	padding-top: 0
+}
+
+main .book .right .prices li.blue {
+	font-weight: 700;
+	color: #409cd1;
+	padding-top: 10px;
+	padding-bottom: 0
+}
+
+main .book .right .prices li.pt {
+	border-top: 1px solid #ccc;
+	padding-top: 2px
 }
 
 main .book .right .prices li .icon {
@@ -1374,89 +1225,48 @@ main .book .right .prices.final li .stext {
 	padding: 0
 }
 
-main .book .right .wc {
-	padding-bottom: 20px;
-	padding-top: 0
-}
-
-main .book .right .wc h4 {
-	font-size: 14px;
-	padding-bottom: 5px
-}
-
-main .book .right .wc div {
+main .book .right .blue {
 	padding-top: 20px;
-	width: 100%;
-	border-top: 1px solid #ccc
-}
-
-main .book .right .wc div span {
-	line-height: 23px;
-	display: block
-}
-
-main .book .right .p-explain {
-	padding-top: 20px
-}
-
-main .book .right .p-resume {
-	padding-top: 0;
-	padding-bottom: 0;
+	padding-bottom: 20px;
+	margin-top: -20px;
 	margin-bottom: 0
 }
 
-main .book .right .p-resume .amount-due {
-	border-top: 1px solid #ccc;
-	padding: 20px 0;
-	line-height: 24px
-}
-
-main .book .right .p-resume .amount-due.bottom-line {
-	border-bottom: 1px solid #ccc
-}
-
-main .book .right .p-resume .text {
+main .book .right .blue .text {
 	display: inline-block
 }
 
-main .book .right .p-resume .text>b {
+main .book .right .blue .text>b {
 	display: block;
 	margin-bottom: 3px
 }
 
-main .book .right .p-resume .pr {
-	font-size: 18px;
-	line-height: 24px;
-	max-width: none;
-	margin-top: 2px
+main .book .right .blue .pr {
+	font-size: 24px;
+	line-height: 35px;
+	margin-top: -7px;
+	max-width: none
 }
 
-main .book .right .p-resume .pr.px16 {
+main .book .right .blue .pr.px20 {
+	font-size: 20px
+}
+
+main .book .right .blue .pr.px16 {
 	font-size: 16px
-}
-
-main .book .right .p-resume .pr.fly-button {
-	display: none
 }
 
 main .book .left {
 	width: 750px;
-	max-width: 66%;
-	background: #fff
+	max-width: 66%
 }
 
-main .book .left.next-block {
-	background: #f5f5f5;
-	margin-top: 20px
-}
-
-main .book .left .block.faq {
-	padding-bottom: 0
+main .book .left .block {
+	padding-bottom: 40px
 }
 
 main .book .left .block.faq .head {
-	margin-bottom: 0;
-	text-align: center
+	margin-bottom: 0
 }
 
 main .book .left .block.faq .question {
@@ -1471,41 +1281,11 @@ main .book .left .block.faq .question:nth-child(2) {
 
 main .book .left .block.faq .question .q-title {
 	padding-bottom: 20px;
-	font-weight: 700;
-	cursor: pointer;
-	padding-right: 36px;
-	position: relative
-}
-
-main .book .left .block.faq .question .q-title:after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	margin-top: -17px;
-	right: 0;
-	background-repeat: no-repeat;
-	width: 33px;
-	height: 14px;
-	background-size: contain;
-	background-image:
-		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9.5' height='5' viewBox='0 0 19 10'%3E%3Cpath fill='%23999' d='M17.7.2c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1l-8.6 8.5c-.3.3-.8.3-1.1 0L.5 1.3C.2 1 .2.5.5.2c.3-.3.8-.3 1.1 0L9.7 8l8-7.8z'/%3E%3C/svg%3E")
-}
-
-main .book .left .block.faq .question .q-title.show:after {
-	-ms-transform: rotate(180deg);
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-	transform: rotate(180deg)
+	font-weight: 700
 }
 
 main .book .left .block.faq .question .q-answer {
-	display: none;
 	padding-bottom: 20px
-}
-
-main .book .left .block.faq .question .q-answer.show {
-	display: block
 }
 
 main .book .left .block.agents {
@@ -1598,14 +1378,6 @@ main .book .left .block.agents .t .wp.active span {
 	position: absolute
 }
 
-main .book .left .block.price-main {
-	border-top: 1px solid #ccc
-}
-
-main .book .left .block.price-main.no-top {
-	border-top: none
-}
-
 main .book .left .block.price-main .promo:not ([data-value=""] ):not ([data-value=none]
 	){
 	position: relative
@@ -1630,118 +1402,6 @@ main .book .left .block.price-main .promo .green {
 main .book .left .block.price-main .promo .no {
 	float: none;
 	margin-left: 40px
-}
-
-main .book .left .block.information {
-	padding-top: 0;
-	padding-bottom: 60px
-}
-
-main .book .left .block.travellers-list {
-	padding-bottom: 0
-}
-
-main .book .left .block.travellers-list .traveller {
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 10px
-}
-
-main .book .left .block.travellers-list .traveller h4 {
-	margin-bottom: 30px;
-	position: relative;
-	cursor: pointer
-}
-
-main .book .left .block.travellers-list .traveller h4:after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	margin-top: -7px;
-	right: 0;
-	background-repeat: no-repeat;
-	width: 33px;
-	height: 14px;
-	background-size: contain;
-	background-image:
-		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9.5' height='5' viewBox='0 0 19 10'%3E%3Cpath fill='%23999' d='M17.7.2c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1l-8.6 8.5c-.3.3-.8.3-1.1 0L.5 1.3C.2 1 .2.5.5.2c.3-.3.8-.3 1.1 0L9.7 8l8-7.8z'/%3E%3C/svg%3E")
-}
-
-main .book .left .block.travellers-list .traveller.close h4:after {
-	-ms-transform: rotate(180deg);
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-	transform: rotate(180deg)
-}
-
-main .book .left .block.travellers-list .traveller.close .fields {
-	display: none
-}
-
-main .book .left .block.travellers-info {
-	border-bottom: 1px solid #ccc
-}
-
-main .book .left .block.travellers-info .travellers-info-list.list {
-	-webkit-column-count: 2;
-	-moz-column-count: 2;
-	column-count: 2
-}
-
-main .book .left .block.travellers-info .travellers-info-list.list .l-trav-info
-	{
-	width: auto
-}
-
-main .book .left .block.travellers-info .travellers-info-list .l-trav-info
-	{
-	line-height: 23px;
-	margin-bottom: 10px;
-	padding-right: 80px;
-	position: relative;
-	width: 50%
-}
-
-main .book .left .block.travellers-info .travellers-info-list .l-trav-info a
-	{
-	position: absolute;
-	top: 0;
-	right: 50px
-}
-
-main .book .left .block.travellers-info .travellers-info-list .l-trav-info .gray
-	{
-	color: #999
-}
-
-main .book .left .block.next {
-	border-top: 1px solid #ccc
-}
-
-main .book .left .block.next.step2 {
-	border-top: none
-}
-
-main .book .left .next-button {
-	max-width: 360px;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center
-}
-
-main .book .left .next-button .but {
-	font-size: 18px;
-	line-height: 22px;
-	padding: 16px;
-	width: 100%
-}
-
-main .book .left .next-button .notice {
-	width: 100%;
-	font-size: 12px;
-	line-height: 18px;
-	margin-top: 10px;
-	color: #999
 }
 
 main .book input {
@@ -1916,7 +1576,7 @@ main .book .checkbox label {
 	position: relative;
 	cursor: pointer;
 	line-height: 20px;
-	font-size: 10px;
+	font-size: 12px;
 	min-height: 22px;
 	display: block
 }
@@ -2005,7 +1665,33 @@ main .book textarea {
 
 main .book .block {
 	background: #fff;
-	padding: 30px 60px
+	padding: 30px;
+	margin-bottom: 20px
+}
+
+main .book .block.terms {
+	margin-top: 20px
+}
+
+main .book .block.terms .text {
+	margin: 10px 0 0;
+	padding: 0;
+	font-size: 12px;
+	line-height: 20px
+}
+
+main .book .block.terms .text a {
+	vertical-align: baseline
+}
+
+main .book .block.terms .text.grey {
+	margin-top: 0;
+	color: #999
+}
+
+main .book .block.blue {
+	background: #409cd1;
+	color: #fff
 }
 
 main .book .block:last-child {
@@ -2024,8 +1710,21 @@ main .book .block h3 {
 	display: inline-block
 }
 
+main .book .block .point {
+	width: 30px;
+	height: 30px;
+	border: 2px solid #409cd1;
+	line-height: 26px;
+	text-align: center;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 20px;
+	color: #409cd1;
+	font-weight: 700
+}
+
 main .book .block .head {
-	margin-bottom: 20px
+	margin-bottom: 30px
 }
 
 main .book .block .icon {
@@ -2094,6 +1793,16 @@ main .book .block .fields.margin {
 
 main .book .block .fields .row {
 	display: table-row
+}
+
+main .book .block .fields .row.travin .icon {
+	position: absolute
+}
+
+main .book .block .fields .row.travin .cell, main .book .block .fields .row.travin .cell.title
+	{
+	padding: 0 0 30px;
+	vertical-align: top
 }
 
 main .book .block .fields .row .cell {
@@ -2165,33 +1874,38 @@ main .book .block .fields .row.pbr.vis {
 	display: table-row
 }
 
-main .book .block.departure {
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 20px;
-	padding-top: 20px
-}
-
 main .book .block.departure .date {
 	margin-left: 20px
 }
 
-main .book .block.departure .change {
-	width: 180px;
-	float: right;
-	text-align: right
+main .book .block.departure .head .date {
+	margin-left: 51px;
+	font-weight: 400;
+	color: #999;
+	display: block
 }
 
-main .book .block.departure .with-calendar {
-	margin-bottom: 10px
+main .book .block.departure .head .change {
+	margin-left: 51px;
+	width: auto;
+	float: none;
+	display: block;
+	font-size: 12px;
+	padding-top: 7px
+}
+
+main .book .block.departure .change {
+	width: 180px;
+	float: right
+}
+
+main .book .block.departure .seats {
+	margin-top: 30px
 }
 
 main .book .block.departure .icon.seats:after {
 	background-image:
 		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cg fill='%23CCC'%3E%3Ccircle cx='10' cy='5' r='5'/%3E%3Ccircle cx='10' cy='21' r='10'/%3E%3C/g%3E%3C/svg%3E")
-}
-
-main .book .block.departure .icon.seats.orange {
-	color: #f39a2d
 }
 
 main .book .block.departure .icon.seats.orange:after {
@@ -2209,7 +1923,7 @@ main .book .block.departure .icon.guaranteed:after {
 }
 
 main .book .block.departure .icon.instant {
-	margin-bottom: 10px
+	margin-top: 10px
 }
 
 main .book .block.departure .icon.instant:after {
@@ -2255,24 +1969,34 @@ main .book .block.departure .info {
 	margin-top: 30px
 }
 
+main .book .block.departure .info .stext, main .book .block.payment .info .stext
+	{
+	position: absolute;
+	bottom: -12px;
+	margin-top: 0
+}
+
+main .book .block.departure .info .best-price .stext, main .book .block.departure .info .earn .stext,
+	main .book .block.departure .info .no-fees .stext, main .book .block.payment .info .best-price .stext,
+	main .book .block.payment .info .earn .stext, main .book .block.payment .info .no-fees .stext
+	{
+	cursor: pointer
+}
+
 main .book .block.type {
-	border-bottom: 1px solid #ccc
+	padding-bottom: 60px
 }
 
 main .book .block.type .buy {
 	text-align: center;
-	margin: 0
+	margin: 0 0 30px
 }
 
 main .book .block.type .buy .radio {
 	position: relative;
 	margin: 0;
 	width: auto;
-	max-width: 48%
-}
-
-main .book .block.type .buy .radio:first-child {
-	margin-right: 4%
+	max-width: 50%
 }
 
 main .book .block.type .buy .radio.disabled {
@@ -2300,9 +2024,8 @@ main .book .block.type .buy .radio.disabled .lemma {
 }
 
 main .book .block.type .buy .radio .check {
-	top: 22px;
-	left: 50%;
-	margin-left: -12px;
+	top: 10px;
+	left: 20px;
 	background: #fff
 }
 
@@ -2312,29 +2035,32 @@ main .book .block.type .buy .radio input {
 
 main .book .block.type .buy .radio input:checked ~label{
 	border-color: #409cd1;
-	z-index: 3
+	background: #409cd1;
+	color: #fff
 }
 
 main .book .block.type .buy .radio input:checked ~.check {
 	z-index: 2
 }
 
-main .book .block.type .buy .radio input#book ~label:after, main .book .block.type .buy .radio input#hold
-	~label:after {
+main .book .block.type .buy .radio input#book ~label:after {
 	content: attr(data-text)
+}
+
+main .book .block.type .buy .radio input#hold ~label:after {
+	content: "No credit card details necessary"
 }
 
 main .book .block.type .buy .radio label {
 	padding: 12px;
-	font-size: 14px;
-	line-height: 100px;
+	font-size: 16px;
+	line-height: 19px;
 	display: inline-block;
 	width: 320px;
 	position: relative;
 	border: 1px solid #ccc;
 	border-radius: 1px;
-	max-width: 100%;
-	height: 115px
+	max-width: 100%
 }
 
 main .book .block.type .buy .radio label:after {
@@ -2343,23 +2069,33 @@ main .book .block.type .buy .radio label:after {
 	font-size: 12px;
 	line-height: 15px;
 	width: 100%;
+	top: 100%;
 	margin-top: 10px;
-	padding-right: 10px;
-	padding-left: 10px;
 	left: 0;
-	top: 65px;
-	color: #999;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box
-}
-
-main .book .block.type .buy .radio label .text.show-mob {
-	display: none
+	color: #333
 }
 
 main .book .block.type .buy .radio:nth-child(2) {
 	margin-left: -1px
+}
+
+main .book .block.details .sign {
+	padding-right: 40px;
+	position: relative;
+	float: right;
+	line-height: 30px
+}
+
+main .book .block.details .sign:after {
+	position: absolute;
+	content: "";
+	width: 30px;
+	height: 30px;
+	right: 0;
+	top: 0;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle fill='%23409CD1' cx='15' cy='15' r='15'/%3E%3Cg fill='%23fff'%3E%3Cpath d='M15 5.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zM7.5 22c0-4.2 3.3-7.5 7.5-7.5 4.1 0 7.4 3.3 7.4 7.5H7.5z'/%3E%3C/g%3E%3C/svg%3E");
+	background-repeat: no-repeat
 }
 
 main .book .block.details .in {
@@ -2379,7 +2115,8 @@ main .book .block.details .info .icon {
 }
 
 main .book .block.details .solo {
-	width: auto
+	width: 41%;
+	text-align: right
 }
 
 main .book .block.details .solo a {
@@ -2388,23 +2125,21 @@ main .book .block.details .solo a {
 }
 
 main .book .block.details .quantity {
-	width: 67%;
-	text-align: right
+	width: 26%
 }
 
 main .book .block.details .quantity input {
-	width: 80px;
-	height: 43px;
+	width: 68px;
+	height: 32px;
 	text-align: center;
-	text-indent: 0;
-	vertical-align: top
+	text-indent: 0
 }
 
 main .book .block.details .number {
-	width: 43px;
-	height: 43px;
+	width: 32px;
+	height: 32px;
 	border: 2px solid #409cd1;
-	line-height: 39px;
+	line-height: 28px;
 	border-radius: 50%;
 	display: inline-block;
 	color: #409cd1;
@@ -2420,7 +2155,7 @@ main .book .block.details .number:after {
 }
 
 main .book .block.details .number.plus {
-	margin-left: -21.5px
+	margin-left: -16px
 }
 
 main .book .block.details .number.plus:after {
@@ -2428,11 +2163,12 @@ main .book .block.details .number.plus:after {
 }
 
 main .book .block.details .number.minus {
-	margin-right: -21.5px
+	margin-right: -16px
 }
 
 main .book .block.details .number.minus:after {
-	content: "\2212"
+	content: "\2212";
+	line-height: 29px
 }
 
 main .book .block.details .number.disabled, main .book .block.details .number.grey
@@ -2443,6 +2179,7 @@ main .book .block.details .number.disabled, main .book .block.details .number.gr
 }
 
 main .book .block.details .traveller {
+	margin-top: 30px;
 	position: relative
 }
 
@@ -2452,66 +2189,58 @@ main .book .block.details .traveller>b {
 }
 
 main .book .block.details .traveller.additional {
+	border-top: 1px solid #ccc;
+	margin-top: 15px;
 	padding-top: 30px
 }
 
-main .book .block .info {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: justify;
-	-moz-box-pack: justify;
-	-ms-flex-pack: justify;
-	-webkit-justify-content: space-between;
-	justify-content: space-between
-}
-
 main .book .block .info .col {
+	width: 33%;
 	display: inline-block;
+	margin-right: .5%;
 	vertical-align: top;
-	line-height: 20px;
-	cursor: pointer
+	line-height: 23px
 }
 
 main .book .block .info .col .text {
 	margin-left: 30px;
 	display: inline-block;
 	position: relative;
-	text-align: left;
-	text-transform: uppercase;
-	font-size: 10px;
-	color: #999
+	text-align: left
 }
 
 main .book .block .info .col .text:after {
 	content: "";
 	position: absolute;
 	left: -30px;
-	top: 0;
+	top: 1px;
 	width: 20px;
 	height: 20px;
-	border: 1px solid #96bc34;
-	border-radius: 50%;
-	background-position: 50%;
-	background-repeat: no-repeat;
-	background-size: 14px 9px;
 	background-image:
-		url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 15 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.89 10c-.16 0-.31-.06-.43-.17L.18 5.71c-.24-.23-.24-.6 0-.83s.63-.23.86 0l3.85 3.7L13.62.17c.24-.23.63-.23.87 0s.24.61 0 .83L5.32 9.83c-.12.11-.27.17-.43.17' fill='%2396bc34' fill-rule='evenodd'/%3E%3C/svg%3E")
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle fill='%2396BC34' cx='10' cy='10' r='10'/%3E%3Cpath d='M5 10.7l1.6-1.6 1.6 1.6L12.9 6l1.7 1.6L8.2 14 5 10.7' fill='%23fff'/%3E%3C/svg%3E");
+	background-repeat: no-repeat
 }
 
-main .book .block.payment.hold .logos, main .book .block.payment.hold .payment-fields,
-	main .book .block.payment.hold h3 {
+main .book .block .info .col:nth-child(3n+2) {
+	text-align: center
+}
+
+main .book .block .info .col:nth-child(3n+3) {
+	margin-right: 0;
+	text-align: right
+}
+
+main .book .block .info .col:nth-child(n+4) {
+	margin-top: 20px
+}
+
+main .book .block.payment.hold .head, main .book .block.payment.hold .info,
+	main .book .block.payment.hold .payment-fields {
 	display: none
 }
 
 main .book .block.payment.hold .head {
 	width: 100%
-}
-
-main .book .block.payment.hold .end {
-	padding-top: 0
 }
 
 main .book .block.payment .end {
@@ -2524,8 +2253,7 @@ main .book .block.payment .logos {
 
 main .book .block.payment .logos img {
 	max-height: 20px;
-	margin-left: 7px;
-	cursor: pointer
+	margin-left: 7px
 }
 
 main .book .block.payment .payment-fields {
@@ -2571,6 +2299,114 @@ main .book .block.billing .same {
 	float: right
 }
 
+main .book .block.fbk h2 {
+	font-size: 18px;
+	line-height: 47px;
+	margin-bottom: 30px
+}
+
+main .book .block.fbk h2 img {
+	float: right
+}
+
+main .book .block.fbk .con {
+	position: relative
+}
+
+main .book .block.fbk .con .ar {
+	cursor: pointer;
+	position: absolute;
+	width: 14px;
+	height: 34px;
+	top: 50%;
+	margin-top: -17px;
+	right: 0
+}
+
+main .book .block.fbk .con .ar:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: -10px;
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	width: 34px;
+	height: 14px;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg width='34' height='14' viewBox='0 0 34 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.3.15c.27-.2.63-.2.9 0l16 11.97a.75.75 0 0 1-.9 1.2L16.75 1.7 1.2 13.34a.75.75 0 0 1-.9-1.2l16-12z' fill='%23CCC' fill-rule='evenodd'/%3E%3C/svg%3E");
+	background-position: top;
+	background-repeat: no-repeat
+}
+
+main .book .block.fbk .con .ar.lef {
+	left: 0;
+	right: auto
+}
+
+main .book .block.fbk .con .ar.lef:after {
+	-ms-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg)
+}
+
+main .book .block.fbk .con .ar:hover {
+	-ms-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1)
+}
+
+main .book .block.fbk ul {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	left: 0
+}
+
+main .book .block.fbk ul.many {
+	padding: 0 50px
+}
+
+main .book .block.fbk ul li {
+	width: 100%;
+	top: 0;
+	position: relative;
+	height: auto
+}
+
+main .book .block.fbk ul li.inactive {
+	height: 0;
+	position: absolute
+}
+
+main .book .block.fbk ul li * {
+	line-height: 23px
+}
+
+main .book .block.fbk ul li .title {
+	margin-bottom: 10px
+}
+
+main .book .block.fbk ul li .title a {
+	color: #333
+}
+
+main .book .block.fbk ul li .title span {
+	float: right;
+	font-size: 12px;
+	color: #ccc
+}
+
+main .book .block.fbk ul li .comment {
+	font-style: italic
+}
+
 main .book .block .end {
 	text-align: center;
 	width: 100%;
@@ -2580,15 +2416,12 @@ main .book .block .end {
 main .book .block .end .terms-agree {
 	line-height: 20px;
 	font-size: 12px;
-	text-align: left;
-	color: #999
+	text-align: left
 }
 
 main .book .block .end .terms-agree a {
 	vertical-align: baseline;
-	color: #999;
-	font-size: 12px;
-	line-height: 20px;
+	color: #333;
 	text-decoration: underline
 }
 
@@ -2603,36 +2436,11 @@ main .book .block .end .but {
 main .book .block .end .notice {
 	margin-top: 10px;
 	font-size: 12px;
-	line-height: 20px;
-	color: #999
+	line-height: 20px
 }
 
 main .book .block .end .notice b {
 	vertical-align: baseline
-}
-
-main .book .terms {
-	text-align: center;
-	font-size: 10px;
-	line-height: 14px;
-	color: #999;
-	padding: 0 20px
-}
-
-main .book .terms .text {
-	margin: 10px 0 0
-}
-
-main .book .terms .text a {
-	color: #999;
-	vertical-align: baseline;
-	text-decoration: underline
-}
-
-main .book .accommodation .more-radio, main .book .extras .more-radio {
-	margin: 10px auto 0;
-	display: block;
-	text-align: center
 }
 
 main .book .accommodation .types .stext, main .book .methods .types .stext
@@ -2735,13 +2543,6 @@ main .book .accommodation .radio input[type=radio]:checked ~.label .beds,
 	background-color: #409cd1
 }
 
-main .book .accommodation .radio input[type=radio]:checked ~.check:after,
-	main .book .methods .radio input[type=radio]:checked ~.check:after {
-	background: #409cd1;
-	color: #fff;
-	content: "Selected"
-}
-
 main .book .accommodation .radio .beds, main .book .methods .radio .beds
 	{
 	background: #ccc;
@@ -2750,6 +2551,7 @@ main .book .accommodation .radio .beds, main .book .methods .radio .beds
 	padding: 0 9px 0 30px;
 	line-height: 26px;
 	border-radius: 2px;
+	margin-right: 10px;
 	font-weight: 400;
 	font-size: 15px;
 	position: relative
@@ -2794,10 +2596,10 @@ main .book .accommodation .radio .beds span, main .book .methods .radio .beds sp
 	margin-right: 7px
 }
 
-main .book .accommodation .radio .label, main .book .accommodation .radio label,
-	main .book .methods .radio .label, main .book .methods .radio label {
+main .book .accommodation .radio .label, main .book .methods .radio .label
+	{
 	margin: -20px;
-	padding: 20px 170px 20px 20px
+	padding: 20px 20px 20px 60px
 }
 
 main .book .accommodation .radio.disabled:after, main .book .methods .radio.disabled:after
@@ -2820,37 +2622,14 @@ main .book .accommodation .radio:last-child, main .book .methods .radio:last-chi
 
 main .book .accommodation .radio .descr, main .book .methods .radio .descr
 	{
-	width: 80%;
-	max-width: calc(100% - 70px)
+	width: 80%
 }
 
 main .book .accommodation .radio .check, main .book .methods .radio .check
 	{
+	left: 20px;
 	top: 50%;
-	margin-top: -23px;
-	border-width: 1px;
-	width: 130px;
-	border-radius: 0;
-	line-height: 33px;
-	height: 46px;
-	right: 20px;
-	left: auto;
-	font-size: 16px
-}
-
-main .book .accommodation .radio .check:after, main .book .methods .radio .check:after
-	{
-	position: absolute;
-	width: 100%;
-	top: 0;
-	left: 0;
-	content: "Select";
-	line-height: 46px
-}
-
-main .book .accommodation .radio .check:before, main .book .methods .radio .check:before
-	{
-	content: none
+	margin-top: -12px
 }
 
 main .book .accommodation .radio b, main .book .methods .radio b {
@@ -2860,26 +2639,18 @@ main .book .accommodation .radio b, main .book .methods .radio b {
 
 main .book .accommodation .radio b div, main .book .methods .radio b div
 	{
+	display: inline-block;
 	vertical-align: baseline
-}
-
-main .book .accommodation .radio b div.name, main .book .methods .radio b div.name
-	{
-	margin-top: 5px
 }
 
 main .book .accommodation .radio .pr, main .book .methods .radio .pr {
 	position: absolute;
-	right: 170px;
+	right: 20px;
 	top: 50%;
 	margin-top: -12px;
 	font-size: 18px;
 	line-height: 24px;
 	max-width: none
-}
-
-main .book .accommodation {
-	padding-top: 0
 }
 
 main .book .accommodation .types .stext.checkbox {
@@ -2889,11 +2660,6 @@ main .book .accommodation .types .stext.checkbox {
 main .book .accommodation .types .stext.checkbox.error {
 	margin-bottom: 0;
 	text-decoration: underline
-}
-
-main .book .accommodation .types .stext.checkbox.error label {
-	margin: -20px;
-	padding: 20px
 }
 
 main .book .accommodation .types .stext.checkbox span {
@@ -3068,6 +2834,35 @@ main .book .extras .more {
 	display: block
 }
 
+main .promo {
+	margin-top: 20px
+}
+
+main .promo:not (.des ){
+	position: absolute;
+	width: 100%;
+	background: #e7f3f9;
+	left: 0;
+	margin: -53px 0 0
+}
+
+main .promo:not (.des ) li {
+	padding: 20px 30px !important;
+	margin: 0
+}
+
+main .promo .blue.txt {
+	color: #409cd1;
+	display: block;
+	margin-bottom: 5px;
+	padding: 10px 0 0
+}
+
+main .promo .green span {
+	color: #333;
+	font-weight: 400
+}
+
 main .promo .radio {
 	width: 100%
 }
@@ -3104,10 +2899,50 @@ main .promo .no {
 	color: #999
 }
 
+main .title-route {
+	font-size: 30px;
+	line-height: 32px;
+	margin-bottom: 15px
+}
+
+main .route {
+	width: 100%
+}
+
+main .route li {
+	position: relative;
+	padding: 5px 0;
+	font-weight: 700;
+	line-height: 20px;
+	z-index: 0
+}
+
+main .route li b {
+	display: block;
+	margin-bottom: 5px
+}
+
+main .route li span {
+	color: #999;
+	display: block;
+	font-weight: 400
+}
+
+main .route li:first-child {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 5px
+}
+
+main .route li:last-child {
+	padding-bottom: 0;
+	padding-top: 0;
+	margin-top: 5px
+}
+
 main .calendar {
 	text-align: center;
-	position: relative;
-	margin-top: 10px
+	position: relative
 }
 
 main .calendar .months {
@@ -3412,704 +3247,3 @@ main .calendar .dates.loading:after {
 		height: 135px
 	}
 }
-
-@media ( max-width :1023px) {
-	.cf {
-		overflow: auto
-	}
-	body header .tag {
-		display: none
-	}
-	body header .c {
-		padding-right: 20px;
-		padding-left: 20px
-	}
-	body main .c {
-		padding-right: 0;
-		padding-left: 0
-	}
-	body main .steps {
-		background: #fff;
-		padding-right: 60px;
-		padding-left: 60px;
-		padding-bottom: 0
-	}
-	body main[data-step="2"] .right {
-		display: none
-	}
-	body main[data-step="3"] .book .show-prices {
-		display: block
-	}
-	body main[data-step="3"] .book .price-main .prices {
-		display: none
-	}
-	body main[data-step="3"] .book .price-main.show .prices {
-		display: block
-	}
-	body main[data-step="3"] .book .price-main.show .show-prices {
-		display: none
-	}
-	body main .book .left {
-		width: 100%;
-		max-width: 100%
-	}
-	body main .book .left .block.faq {
-		margin-top: -20px;
-		border-top: 1px solid #ccc
-	}
-	body main .book .left .block.travellers-info {
-		border-bottom: none
-	}
-	body main .book .left .block.payment {
-		border-top: 1px solid #ccc
-	}
-	body main .book .left .next-button {
-		max-width: 100%
-	}
-	body main .book .right {
-		width: 100%;
-		position: relative;
-		max-width: 100%;
-		border-top: 1px solid #ccc;
-		float: none
-	}
-	body main .book .right h4 {
-		font-size: 18px;
-		line-height: 24px
-	}
-	body main .book .right .block {
-		padding-right: 60px;
-		padding-left: 60px
-	}
-	body main .book .right .p-resume .pr.fly-button {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		left: 0;
-		background: #409cd1;
-		color: #fff;
-		z-index: 99;
-		height: 55px;
-		line-height: 55px;
-		padding: 0 20px;
-		-webkit-transition: top .2s ease-in-out, color .5s;
-		-moz-transition: top .2s ease-in-out, color .5s;
-		-ms-transition: top .2s ease-in-out, color .5s;
-		-o-transition: top .2s ease-in-out, color .5s;
-		transition: top .2s ease-in-out, color .5s;
-		margin-top: 0
-	}
-	body main .book .right .p-resume .pr.fly-button:after {
-		content: "See Price Breakdown";
-		top: 11.5px;
-		right: 20px;
-		position: absolute;
-		line-height: 14px;
-		font-size: 14px;
-		padding: 8px 10px;
-		border: 1px solid #fff;
-		color: #fff
-	}
-	body main .book .right .p-resume .pr.fly-button.show {
-		display: block
-	}
-	body main .book .right .p-resume .pr b {
-		font-weight: 700
-	}
-	body main .book .checkbox span {
-		top: 50%;
-		margin-top: -11px
-	}
-	body main .book .block.accommodation .types .stext.checkbox span {
-		top: 50%;
-		margin-top: -8px
-	}
-	body main .book .block.accommodation .types .form .row .cell:nth-child(2) input
-		{
-		margin-right: 15px
-	}
-	body main .book .block.details .with-tip .tip {
-		margin-left: -70px
-	}
-	body main .book .block .end .but {
-		width: 100%
-	}
-	body .popup.help .layout {
-		padding-top: 10px
-	}
-	body .popup.help .left, body .popup.help .right {
-		width: 100%;
-		max-width: 100%;
-		height: auto
-	}
-	body .popup.help .left {
-		padding-right: 0;
-		padding-top: 66px
-	}
-	body .popup.help .left .title {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		background: #fff;
-		left: 0;
-		padding-top: 30px;
-		border-bottom: 1px solid #ccc;
-		padding-left: 12px;
-		z-index: 1
-	}
-	body .popup.help .left .question .q-answer {
-		display: none
-	}
-	body .popup.help .left .question .q-answer.show {
-		display: block
-	}
-	body .popup.help .right {
-		border: none;
-		position: static
-	}
-	body .popup.help .right .support {
-		position: static;
-		-ms-transform: translateY(0);
-		-webkit-transform: translateY(0);
-		-moz-transform: translateY(0);
-		-o-transform: translateY(0);
-		transform: translateY(0);
-		margin: 30px auto 0
-	}
-	body .popup.help .close {
-		top: 34px;
-		right: 20px
-	}
-	body .popup.trans .c {
-		min-width: 768px
-	}
-	body .popup.trans .pic {
-		max-width: 100%;
-		height: auto
-	}
-	body .popup.trans .pic img {
-		max-width: 100%
-	}
-	body .popup.trans .pic .arrow {
-		display: block
-	}
-	body .popup.trans ul.hl {
-		padding-bottom: 40px
-	}
-}
-
-@media ( max-width :767px) {
-	.cf {
-		overflow: auto
-	}
-	body.resp header .c {
-		height: auto
-	}
-	body, body * {
-		-webkit-tap-highlight-color: transparent
-	}
-	body header .c {
-		height: auto
-	}
-	body header.partner .c {
-		padding: 0
-	}
-	body header.partner .in-p .p-logos {
-		display: none
-	}
-	body header.partner .in-p .sec {
-		font-size: 12px;
-		text-align: center
-	}
-	body header.partner .in-p .sec img {
-		display: block;
-		margin: 0 auto
-	}
-	body header.partner .right {
-		margin-top: 5px
-	}
-	body header.partner .right a.help {
-		width: 20px;
-		height: 20px;
-		margin-left: 20px;
-		margin-top: 7px;
-		padding: 0
-	}
-	body main .steps {
-		padding-right: 10px;
-		padding-left: 10px
-	}
-	body main .steps li {
-		white-space: nowrap
-	}
-	body main h1 {
-		padding: 0 10px;
-		font-size: 18px;
-		line-height: 26px
-	}
-	body main h3 {
-		font-size: 16px;
-		line-height: 23px
-	}
-	body main .s-main-title {
-		padding: 20px
-	}
-	body main .s-main-title .step-text {
-		font-size: 18px;
-		line-height: 26px
-	}
-	body main .s-dates .departure .date {
-		padding-right: 20px;
-		padding-left: 20px;
-		padding-top: 20px;
-		text-align: right
-	}
-	body main .s-dates .departure .date:first-child {
-		padding-right: 20px;
-		text-align: left
-	}
-	body main .book select {
-		width: 220px
-	}
-	body main .book .input-grp select:first-of-type, body main .book .input-grp select:last-of-type
-		{
-		width: 60px;
-		max-width: 60px;
-		background-position: 88%
-	}
-	body main .book .input-grp select:nth-of-type(2) {
-		width: 100px;
-		max-width: 100px;
-		background-position: 88%
-	}
-	body main .book .block .info {
-		-ms-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		flex-wrap: wrap;
-		width: 220px;
-		margin: 0 auto
-	}
-	body main .book .block.details .radio {
-		width: 110px
-	}
-	body main .book input:not ([type=number] ){
-		padding-right: 35px
-	}
-	body main .book .right.open {
-		padding-bottom: 50px;
-		padding-top: 59px
-	}
-	body main .book .right.open .block.blue .text {
-		margin-right: 10px;
-		margin-top: -12px
-	}
-	body main .book .right.open .block.blue .pr {
-		line-height: 18px
-	}
-	body main .book .right.open .block.blue .pr:after {
-		bottom: -16px
-	}
-	body main .book .right .block {
-		padding-right: 20px;
-		padding-left: 20px
-	}
-	body main .book .left .block.travellers-info .travellers-info-list .l-trav-info
-		{
-		width: 100%
-	}
-	body main .book .left .block.travellers-info .travellers-info-list.list
-		{
-		-webkit-column-count: 1;
-		-moz-column-count: 1;
-		column-count: 1
-	}
-	body main .book .left .block.travellers-info .travellers-info-list.list .l-trav-info
-		{
-		width: 100%
-	}
-	body main .book .left .block.price-main .prices.promo .link, body main .book .left .block.price-main .prices.promo:not
-		([data-value=""] ):not ([data-value=none] ) .link {
-		position: static
-	}
-	body main .book .left .block.price-main .prices.promo .discount .green {
-		display: block;
-		margin-bottom: 5px
-	}
-	body main .book .left .block.information {
-		padding-bottom: 40px
-	}
-	body main .book .block {
-		padding-right: 20px;
-		padding-left: 20px
-	}
-	body main .book .block h3 {
-		display: block
-	}
-	body main .book .block .point {
-		margin-left: -10px;
-		float: left
-	}
-	body main .book .block.departure .head .change, body main .book .block.departure .head .date
-		{
-		margin-top: 0;
-		margin-left: 40px
-	}
-	body main .book .block.departure .date {
-		display: inline-block;
-		line-height: 32px;
-		margin-left: -40px;
-		margin-top: 10px;
-		min-width: auto
-	}
-	body main .book .block.departure .change {
-		width: 110px
-	}
-	body main .book .block .info .col {
-		width: 100%;
-		margin: 0 0 10px;
-		text-align: left
-	}
-	body main .book .block .info .col:last-child {
-		margin-bottom: 0
-	}
-	body main .book .block.type .buy .radio {
-		vertical-align: top
-	}
-	body main .book .block.details .info {
-		padding: 20px 0
-	}
-	body main .book .block.details .in {
-		width: calc(100% - 150px)
-	}
-	body main .book .block.details .in.quantity {
-		width: 140px
-	}
-	body main .book .block.details b.in {
-		width: 60%
-	}
-	body main .book .block.details .solo {
-		text-align: center;
-		margin-top: 20px;
-		width: 225px
-	}
-	body main .book .block.details .with-tip.max-pax {
-		margin-bottom: 0
-	}
-	body main .book .block.details .with-tip .tip {
-		width: 250px;
-		margin-left: -45px
-	}
-	body main .book .block.billing .same {
-		float: none;
-		display: block;
-		margin-top: 30px;
-		margin-bottom: -30px
-	}
-	body main .book .block .fields {
-		display: block
-	}
-	body main .book .block .fields.invis {
-		padding-bottom: 40px
-	}
-	body main .book .block .fields .row {
-		display: block
-	}
-	body main .book .block .fields .row.travin .icon {
-		position: relative
-	}
-	body main .book .block .fields .row.travin .cell {
-		padding: 0
-	}
-	body main .book .block .fields .row.travin .cell.title {
-		padding: 0 0 10px
-	}
-	body main .book .block .fields .row .cell {
-		display: block;
-		padding-bottom: 0
-	}
-	body main .book .block .fields .row .cell.title {
-		padding-top: 20px;
-		padding-bottom: 10px
-	}
-	body main .book .block .fields .row .cell.title .title-info {
-		position: absolute;
-		left: 122px;
-		bottom: 10px
-	}
-	body main .book .block .fields .row .cell .age-tip {
-		margin: 10px 0 0;
-		max-width: 100%
-	}
-	body main .book .block .fields .row .cell .sidebar.icon {
-		margin-top: 20px;
-		max-width: 100%;
-		margin-left: 0
-	}
-	body main .book .block .fields .row .cell.offer {
-		position: relative;
-		left: auto;
-		max-width: none;
-		margin: 5px 0
-	}
-	body main .book .block .fields .row .cell.offer .stext {
-		margin: 0;
-		max-width: none
-	}
-	body main .book .block .fields .row.pad .cell {
-		padding-top: 0
-	}
-	body main .book .block .fields .row.pad .cell.title {
-		padding-top: 40px
-	}
-	body main .book .block .fields .row.pbr {
-		display: none
-	}
-	body main .book .block .fields .row.pbr.vis {
-		display: block
-	}
-	body main .book .block.payment .logos {
-		margin-top: 20px;
-		float: none
-	}
-	body main .book .block.payment select#payment_method {
-		width: 160px
-	}
-	body main .book .block.payment .payment-fields {
-		padding-top: 10px
-	}
-	body main .book .block.payment .payment-fields [data-field=paymentMethod] .add .secure
-		{
-		right: -100px
-	}
-	body main .book .block.payment .payment-fields [data-field=paymentMethod] .add .secure .tip
-		{
-		padding: 12px;
-		width: 200px
-	}
-	body main .book .block.fbk h2 {
-		font-size: 14px;
-		line-height: 23px;
-		margin-bottom: 20px;
-		margin-top: 0
-	}
-	body main .book .block.fbk h2 img {
-		width: 90px;
-		height: auto
-	}
-	body main .book .block.fbk ul.many {
-		padding: 0 30px
-	}
-	body main .book .block.fbk ul li .title span {
-		display: none
-	}
-	body main .book .methods .radio label {
-		padding-left: 10px;
-		padding-right: 10px;
-		padding-bottom: 66px
-	}
-	body main .book .methods .radio .descr {
-		width: 100%
-	}
-	body main .book .methods .radio .check {
-		right: -1px;
-		left: auto;
-		width: calc(100% + 2px);
-		top: auto !important;
-		bottom: -1px
-	}
-	body main .book .accommodation .transport .list {
-		padding: 0 20px
-	}
-	body main .book .accommodation .transport .list .left-arrow, body main .book .accommodation .transport .list .right-arrow
-		{
-		width: 100px;
-		height: 20px;
-		top: 40px
-	}
-	body main .book .accommodation .transport .list .right-arrow {
-		right: -37px
-	}
-	body main .book .accommodation .transport .list .left-arrow {
-		left: -37px
-	}
-	body main .book .accommodation .transport .list .image {
-		width: 100px
-	}
-	body main .book .accommodation .transport .list .image img {
-		width: 100px;
-		height: 100px
-	}
-	body main .book .accommodation .radio .label {
-		padding-left: 10px;
-		padding-right: 10px;
-		padding-bottom: 66px
-	}
-	body main .book .accommodation .radio .pr {
-		right: 10px
-	}
-	body main .book .accommodation .radio .check {
-		right: -1px;
-		left: auto;
-		width: calc(100% + 2px);
-		top: auto !important;
-		bottom: -1px
-	}
-	body main .book .accommodation .types .form {
-		margin-top: 5px
-	}
-	body main .book .accommodation .types .form .row .pcell {
-		display: block
-	}
-	body main .book .accommodation .types .form .row .cell {
-		display: block;
-		padding-bottom: 5px
-	}
-	body main .book .extras .radio {
-		padding: 0
-	}
-	body main .book .extras .radio .check {
-		position: relative;
-		top: auto;
-		left: auto;
-		margin: 20px auto;
-		z-index: 5;
-		background: transparent
-	}
-	body main .book .extras .radio input:checked ~.check {
-		background: #409cd1
-	}
-	body main .book .extras .radio label {
-		padding: 100px 20px 20px;
-		margin: -100px -20px -20px;
-		z-index: 4
-	}
-	body main .book .extras .radio .descr {
-		width: 100%;
-		margin-top: 10px
-	}
-	body main .book .extras .radio .descr .in-image {
-		display: block;
-		position: absolute;
-		top: 20px;
-		left: 50%;
-		margin-left: -40px
-	}
-	body main .book .extras .radio .descr b {
-		display: block;
-		text-align: center
-	}
-	body main .book .extras .radio .descr .text {
-		display: block
-	}
-	body main .book .extras .radio .descr .text>b {
-		padding-bottom: 5px
-	}
-	body main .book .extras .radio .pr {
-		position: relative;
-		right: auto;
-		top: auto;
-		margin: 20px auto 0;
-		float: none;
-		text-align: center
-	}
-	body main #seats .seats strong span {
-		display: none
-	}
-	body main .calendar .dates table td .price {
-		left: 0;
-		width: 100%;
-		font-size: 10px
-	}
-	body main .calendar .dates table td .price.px7mob {
-		font-size: 7px
-	}
-	body main .calendar .dates table td .price.px8mob {
-		font-size: 8px
-	}
-	body main .calendar .dates table td .seats {
-		display: none
-	}
-	body main .calendar .dates table td .pcs {
-		border-width: 0 25px 25px 0
-	}
-	body main .calendar .dates table td .pcs span {
-		top: 0;
-		left: 2px;
-		-ms-transform: rotate(0);
-		-webkit-transform: rotate(0);
-		-moz-transform: rotate(0);
-		-o-transform: rotate(0);
-		transform: rotate(0)
-	}
-	body main .calendar .months ul li, body main .calendar .months ul li.border,
-		body main .calendar .months ul li.selected {
-		border: none
-	}
-	body main .calendar .months ul li.border div, body main .calendar .months ul li.selected div,
-		body main .calendar .months ul li div {
-		background: none;
-		color: #333;
-		font-weight: 700
-	}
-	body main .calendar .months ul li.with-date span {
-		display: none
-	}
-	body .popup.help .right .support {
-		padding: 0
-	}
-	body .popup.help .content .close {
-		position: fixed
-	}
-	body .popup.trans .c {
-		min-width: 320px
-	}
-	body .popup.trans .title {
-		font-size: 18px;
-		line-height: 24px;
-		margin-bottom: 30px
-	}
-	body .popup.trans ul.hl {
-		column-count: 1;
-		-moz-column-count: 1;
-		-webkit-column-count: 1
-	}
-	body .popup.trans .blocks li, body .popup.trans .blocks li.active {
-		background: #fff;
-		color: #333;
-		border: none !important;
-		font-weight: 700;
-		font-size: 14px;
-		line-height: 20px;
-		width: 100%
-	}
-	body .popup.terms .content {
-		min-width: 300px
-	}
-}
-
-@media ( max-width :767px) and (max-width:500px) {
-	main .book .block.type .buy .radio label {
-		height: 135px
-	}
-	main .book .block.type .buy .radio label:after {
-		bottom: auto;
-		top: 67px;
-		line-height: 18px
-	}
-	main .book .block.type .buy .radio label .text.show-mob {
-		display: block
-	}
-	main .book .block.type .buy .radio label .text.hide-mob {
-		display: none
-	}
-}
-
-@media ( max-width :767px) and (max-width:375px) {
-	main .s-dates .departure .day {
-		font-size: 18px;
-		line-height: 23px
-	}
-}
-</
-style
->
