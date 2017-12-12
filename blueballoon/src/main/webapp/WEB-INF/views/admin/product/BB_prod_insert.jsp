@@ -111,7 +111,7 @@
 				</tr>
          <tr>
             <th>상세 주소</th>
-            <td><input type="text" name="prod_address2" ></td>
+            <td><input type="text" name="prod_detail_address" ></td>
          </tr>
          <tr>
             <th>상품 정보</th>
