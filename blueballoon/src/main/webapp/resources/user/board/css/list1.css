@@ -147,7 +147,9 @@ p {
 	text-align: center;
 	padding: 7px 0;
 	clear: both;
-	color: #333
+	color: #333;
+	display: inline-block;
+	width: 40px;
 }
 
 .but.turq {
@@ -1538,7 +1540,7 @@ main .faq ul {
 
 main .faq ul li {
 	border-top: 1px solid #ccc;
-	padding: 30px 0;
+	padding: 10px 0;
 	position: relative;
 	line-height: 23px
 }

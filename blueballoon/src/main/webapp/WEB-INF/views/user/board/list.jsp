@@ -37,7 +37,7 @@
 		<div class="im"
 			style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
 		<div class="in">
-			<h1>River Cruises</h1>
+			<h1>여기는 뭐 넣어야 할 지 생각 중</h1>
 			River cruising allows travellers the opportunity to intimately
 			experience new and familiar destinations with luxury and class. If
 			you’re looking for that up-close and personal experience without
@@ -54,7 +54,6 @@
 					lines. Once you board, you keep your wallet in your pocket!</li>
 			</ul>
 		</div>
-		<div class="nxt"></div>
 	</div>
 	<div class="c">
 		<div class="list">
@@ -86,13 +85,26 @@
 			<p>Here we have collected and answered the most frequently asked
 				questions.</p>
 			<ul>
-				<c:forEach var="a" begin="1" end="10" step="1">
-					<li data-id="5036"><h3 class="qst">글번호. <a href="board_content?board_num=">제목(댓글수)</a></h3></li>
+				<c:forEach var="a" begin="1" end="20" step="1">
+					<li data-id="5036"><table class="qst" width="100%">
+							<tr>
+								<td width="10%">글 번호</td>
+								<td><a href="board_content?board_num=">글제목</a>(댓글수)</td>
+							</tr>
+						</table></li>
 				</c:forEach>
 			</ul>
-			<div class="more">
+			<div class="more" align="center">
 				<c:forEach var="a" begin="1" end="10" step="1">
-					<a class="but"><span>${a }</span></a>
+					<c:choose>
+						<c:when test="${a%10 eq 0}">
+							<a class="but"><span>></span></a>
+						</c:when>
+						<c:otherwise>
+						<!-- page 버튼인데 아직 기능 안줌 -->
+							<a class="but"><span>${a }</span></a>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 			</div>
 		</div>
@@ -101,33 +113,11 @@
 	<footer>
 		<div class="c">
 			<div class="cop">
-				Copyright © TourRadar. All rights reserved. <a href="/legalnotice">Legal
+				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
 					notice</a>
 			</div>
 		</div>
 	</footer>
-	<script>
-		(function(event, event2) {
-			function cb(e) {
-				this.removeEventListener(event, cb);
-				this.removeEventListener(event2, cb);
-				(new Image(1, 1)).src = "//bat.bing.com/action/0?ti=5089755&Ver=2";
-
-				!function(b, e, v, t, s) {
-					t = b.createElement(e);
-					t.async = !0;
-					t.src = v;
-					s = b.getElementsByTagName(e)[0];
-					s.parentNode.insertBefore(t, s)
-				}(document, 'script',
-						'https://connect.facebook.net/en_US/fbevents.js');
-			}
-			window.addEventListener(event, cb);
-			window.addEventListener(event2, cb);
-		})("mousemove", "touchmove");
-	</script>
-	<script async=""
-		src="//cdn.tourradar.com/include/js/ttip/ttip.v1-1-2.min.js?v=1512994931"></script>
 	<div class="tooltip hid"></div>
 </body>
 <link type="text/css" rel="stylesheet"
