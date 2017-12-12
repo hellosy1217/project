@@ -73,7 +73,7 @@
                   	<option>등록된 카테고리가 없습니다.</option>
                   </c:if>
                   <c:forEach var="dto" items="${cateList}">
-                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
+                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state}-${dto.cate_city}</option>
                   </c:forEach>
                </select>
             </td>
@@ -88,7 +88,7 @@
          </tr>
          <tr>
             <th>판매자 전화번호</th>
-            <td><input type="text" name="prod_hp"
+            <td><input type="text" name="prod_phone"
             placeholder="예) 010-1111-2222"> " - " 포함 전체 자리를 입력해주세요.</td>
          </tr>
          <tr>
@@ -97,15 +97,15 @@
          </tr>
          <tr>
             <th>이미지</th>
-            <td><input type="file" name="prod_img"></td>
+            <td><input type="file" name="prod_org_img"></td>
          </tr> 
          <tr>
 					<th>우편번호</th>
 					<td>
-					   <input type="text" name="prod_post_num" id="sample4_postcode" placeholder="우편번호">
+					   <input type="text" name="prod_post_code" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" name="prod_address1" id="sample4_roadAddress" placeholder="도로명주소">
-						<input type="text" name="prod_address1" id="sample4_jibunAddress" placeholder="지번주소">
+						<input type="text" name="prod_road_address" id="sample4_roadAddress" placeholder="도로명주소">
+						<input type="text" name="prod_old_address" id="sample4_jibunAddress" placeholder="지번주소">
 						<span id="guide" style="color:#999"></span>
 					</td>
 				</tr>
@@ -115,7 +115,7 @@
          </tr>
          <tr>
             <th>상품 정보</th>
-            <td><textarea name="prod_content" rows="4" cols="60"></textarea></td>
+            <td><textarea name="prod_content" rows="10" cols="100"></textarea></td>
          </tr>
          <tr>
             <th>상품 분류</th>
