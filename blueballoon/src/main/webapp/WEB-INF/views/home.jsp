@@ -588,6 +588,5 @@
 			window.addEventListener(event2, cb);
 		})("mousemove", "touchmove");
 	</script>
-	<script src="1.js" async=""></script>
 </body>
 </html>
