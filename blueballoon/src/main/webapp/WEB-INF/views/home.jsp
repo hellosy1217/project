@@ -9,16 +9,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=1"
 	rel="stylesheet" type="text/css"/>
-
-<link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512456645.css"
-	rel="stylesheet" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
 	rel="stylesheet" />
-<script
-	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/1.js"
-	async=""></script>
 </head>
 <body class="tb" data-b-sale="">
 	<%@include file="header1.jsp"%>
