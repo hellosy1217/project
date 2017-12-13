@@ -2,20 +2,10 @@
 	pageEncoding="UTF-8"%>
 <html class=" logged">
 <head>
-<title>Secure booking - Spanish Experience Summer - TourRadar</title>
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="description"
-	content="TourRadar offers travelers the opportunity to read reviews and book tours from hundreds of tour companies, offering thousands of different tours.">
-<meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#409cd1">
+<title>booking - 상품/패키지 명 - BlueBalloon</title>
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css"
 	rel="stylesheet" />
-<script
-	src="https://connect.facebook.net/signals/config/806188949420761?v=2.8.1"
-	async=""></script>
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
 	src="//cdn.tourradar.com/include/bower/braintree-web-3/client.v1513001935.js"
@@ -23,91 +13,6 @@
 <script
 	src="//cdn.tourradar.com/include/bower/braintree-web-3/hosted-fields.v1513001935.js"
 	async=""></script>
-<meta property="og:image"
-	content="//cdn.tourradar.com/s3/tour/original/82985_c24e64.jpg">
-<meta property="og:title"
-	content="Spanish Experience Summer on TourRadar">
-<meta property="og:description"
-	content="Spanish Experience Summer, a 9 day  tour through Spain. No Booking Fees - Best Price Guarantee - 24/7 Customer Support &amp; Unbiased Advice!">
-<meta property="og:url"
-	content="https://www.tourradar.com/book-now/82985">
-<link rel="preconnect" href="//cdn.tourradar.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://omnimove.tourradar.com">
-<link rel="preconnect" href="https://www.facebook.com">
-<meta name="google" content="notranslate">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="//cdn.tourradar.com/images/fav/apple-touch-icon.png">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-194x194.png"
-	sizes="194x194">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/android-chrome-192x192.png"
-	sizes="192x192">
-<link rel="icon" type="image/png"
-	href="//cdn.tourradar.com/images/fav/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/svg+xml"
-	href="//cdn.tourradar.com/images/fav/favicon.svg" sizes="any">
-<link rel="mask-icon"
-	href="//cdn.tourradar.com/images/fav/safari-pinned-tab.svg"
-	color="#409cd1">
-<link rel="manifest" href="/manifest.json">
-<link rel="shortcut icon" href="/favicon.ico">
-<meta name="apple-mobile-web-app-title" content="TourRadar">
-<meta name="application-name" content="TourRadar">
-<meta name="msapplication-config" content="/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
-<script>
-	window.trVersion = "1513081343";
-	window.trConfig = {
-		"cdn" : "\/\/cdn.tourradar.com\/",
-		"version" : 1513081343,
-		"versionCode" : "2017-12-11.02",
-		"env" : "prod"
-	};
-</script>
-<script type="text/javascript">
-	window.onerror = function(msg, url, lineNo, columnNo, error) {
-		var errorMessage = '';
-		if (typeof error != 'undefined') {
-			errorMessage = error;
-
-			if (typeof error == 'object' && error && 'stack' in error
-					&& error.stack && error.stack != null
-					&& error.stack != 'null') {
-				errorMessage += error.stack;
-			}
-		}
-
-		var column = 0;
-		if (typeof columnNo != 'undefined') {
-			column = columnNo;
-		}
-
-		var data = {
-			'msg' : msg,
-			'url' : window.location.href + ' -> ' + url,
-			'lineNo' : lineNo,
-			'columnNo' : column,
-			'error' : errorMessage
-		};
-
-		var query = [];
-		for ( var key in data) {
-			query.push(encodeURIComponent(key) + '='
-					+ encodeURIComponent(data[key]));
-		}
-		var request = new XMLHttpRequest();
-		request.open('POST', '/welcome/save_error', true);
-		request.setRequestHeader('Content-Type',
-				'application/x-www-form-urlencoded; charset=UTF-8');
-		request.send(query.join('&'));
-
-		return;
-	};
-</script>
 <script>
 	(function() {
 		(function(i, s, o, g, r) {
@@ -418,7 +323,7 @@
 	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
-	<!--  헤더 부분인데 깨져서 일단 안넣음 -->
+	<%@include file="../../header1.jsp" %>
 	<main
 		data-parameters="{&quot;version&quot;:1513001935,&quot;objectId&quot;:&quot;82985&quot;,&quot;tourId&quot;:&quot;82985&quot;,&quot;isEnquiry&quot;:false,&quot;currency&quot;:&quot;usd&quot;,&quot;currencyRate&quot;:0.85,&quot;symbol&quot;:&quot;$&quot;,&quot;showMonths&quot;:6,&quot;currentDate&quot;:&quot;1524261600&quot;,&quot;tourLength&quot;:&quot;9&quot;,&quot;partner&quot;:null,&quot;paymentMethods&quot;:{&quot;details&quot;:{&quot;paymentImages&quot;:{&quot;Visa&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/Visa.png&quot;,&quot;MasterCard&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/MasterCard.png&quot;,&quot;Maestro&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/Maestro.png&quot;,&quot;American-Express&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/American-Express.png&quot;,&quot;PayPal&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/PayPal.png&quot;},&quot;paymentDetails&quot;:{&quot;amount&quot;:1,&quot;countryCode&quot;:&quot;AT&quot;,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;paymentMethods&quot;:{&quot;Braintree&quot;:{&quot;paymentAccess&quot;:{&quot;token&quot;:&quot;eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI5MzBlZjZlNTdmMDgwMDQ1NTI3YzdjZTZlZGI1OTg0OTBjYzIzYmIzMTIzZjAzNmY3ODI5YzNhNjY3ZDMwY2UzfGNyZWF0ZWRfYXQ9MjAxNy0xMi0xMVQyMzozMDoxMi45ODc4OTYzNDUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPW16M3Q3YzZtYzM2ZDN2NHlcdTAwMjZwdWJsaWNfa2V5PTM1cjZkajZ4ZGZjeHQ3eDUiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL216M3Q3YzZtYzM2ZDN2NHkvY2xpZW50X2FwaS92MS9jb25maWd1cmF0aW9uIiwiY2hhbGxlbmdlcyI6WyJjdnYiXSwiZW52aXJvbm1lbnQiOiJwcm9kdWN0aW9uIiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy9tejN0N2M2bWMzNmQzdjR5L2NsaWVudF9hcGkiLCJhc3NldHNVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImF1dGhVcmwiOiJodHRwczovL2F1dGgudmVubW8uY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5icmFpbnRyZWVnYXRld2F5LmNvbS9tejN0N2M2bWMzNmQzdjR5In0sInRocmVlRFNlY3VyZUVuYWJsZWQiOmZhbHNlLCJwYXlwYWxFbmFibGVkIjp0cnVlLCJwYXlwYWwiOnsiZGlzcGxheU5hbWUiOiJUb3VyUmFkYXIiLCJjbGllbnRJZCI6IkFac1NJaERwczkxUlZQX2lucXZXRGMzZFJpVl8zcHNaQTFPWVQxS0p4eDRzQzJHMGR5aC1XR0ZzM2NvZSIsInByaXZhY3lVcmwiOiJodHRwOi8vd3d3LnRvdXJyYWRhci5jb20vcHJpdmFjeSIsInVzZXJBZ3JlZW1lbnRVcmwiOiJodHRwOi8vd3d3LnRvdXJyYWRhci5jb20vdGVybXMtY29uZGl0aW9ucy8iLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOmZhbHNlLCJlbnZpcm9ubWVudE5vTmV0d29yayI6ZmFsc2UsImVudmlyb25tZW50IjoibGl2ZSIsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJicmFpbnRyZWVDbGllbnRJZCI6IkFSS3JZUkRoM0FHWER6VzdzT18zYlNrcS1VMUM3SEdfdVdOQy16NTdMallTRE5VT1NhT3RJYTlxNlZwVyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJ0b3VycmFkYXIyRVVSIiwiY3VycmVuY3lJc29Db2RlIjoiRVVSIn0sIm1lcmNoYW50SWQiOiJtejN0N2M2bWMzNmQzdjR5IiwidmVubW8iOiJvZmYifQ==&quot;,&quot;customer&quot;:null},&quot;paymentMethods&quot;:[{&quot;id&quot;:1,&quot;label&quot;:&quot;Visa&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:1,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:2,&quot;label&quot;:&quot;MasterCard&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:2,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:5,&quot;label&quot;:&quot;Maestro&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:5,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:3,&quot;label&quot;:&quot;American Express&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:3,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{999999}} {{99999}} {{99999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;1234&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:4,&quot;label&quot;:&quot;PayPal&quot;,&quot;group&quot;:null,&quot;order&quot;:4,&quot;fields&quot;:null}]}}},&quot;html&quot;:&quot;<form class=\&quot;fields \&quot;>
 	<input type=\&quot;hidden\&quot; name=\&quot;paymentProvider\&quot;>
@@ -690,9 +595,10 @@
 															<div class="title-route">영수증</div>
 															<ul class="route exp">
 																<li>상품/패키지명 <span>ㅇdays</span></li>
-																<li>패키지일 경우 시작 위치<span
-																	class="date-start">패키지 시작 일</span></li>
-																<li>패키지일 경우 끝 위치<span class="date-end">패키지 끝나는 날</span></li>
+																<li>패키지일 경우 시작 위치<span class="date-start">패키지
+																		시작 일</span></li>
+																<li>패키지일 경우 끝 위치<span class="date-end">패키지
+																		끝나는 날</span></li>
 																<li class="wc">패키지일 경우 포함된 상품들 <span>
 																		ㅇㅇㅇ,ㅇㅇㅇㅇ,ㅇㅇ,ㅇㅇ </span></li>
 															</ul>
@@ -727,37 +633,29 @@
 															</div>
 															<div class="block">
 																<ul class="prices final">
-																	<li><div class="stext">TO BE PAID NOW</div>
-																		예약금
+																	<li><div class="stext">TO BE PAID NOW</div> 예약금
 																		<div class="pr">
-																			<b>$200.00</b>
+																			<b>얼마</b>
 																		</div></li>
-																	<li><div class="stext">ON 2nd Mar 2018</div>
+																	<li><div class="stext">ON 2nd Mar 2018</div>예약금
+																		제외한 금액인데 명칭 뭐라고 해야
 																		<div class="pr">
-																			<b>$1,043.13</b>
+																			<b>얼마</b>
 																		</div></li>
 																</ul>
 															</div>
 														</div>
 														<div class="block terms">
-															<h4>Terms &amp; Conditions</h4>
+															<h4>이용 약관</h4>
 															<div class="text">
-																TourRadar is an authorised Agent of CostSaver. Please
-																familiarise yourself with the CostSaver <a
-																	href="https://costsaver.trafalgar.com/can/terms-and-conditions/website-terms-of-use"
-																	target="_blank">payment, cancellation and refund
-																	policies</a> and TourRadar's <a href="#"
-																	class="termsCoPopup" data-id="terms_agent">Terms
-																	&amp; Conditions</a>. TourRadar is an Austrian Company and
-																will charge you in the stated currency and we do not
-																charge any booking fees.
+																이용 약관 내용 들어갈 곳 <a href="" target="_blank">???</a> ㅇㅇㅇㅇㅇㅇ
+																<a href="#" class="termsCoPopup" data-id="terms_agent">???</a>.
+																ㅇㅇㅇㅇㅇ
 															</div>
-															<div class="text">Operated by CostSaver</div>
-															<div class="text grey">33 Kern Road; Toronto,
-																Ontario; M3B 1S9</div>
-															<div class="text">Agent: TourRadar</div>
-															<div class="text grey">Siebenbrunnengasse 17/4,
-																Vienna 1050, Austria</div>
+															<div class="text">한국소비자원</div>
+															<div class="text grey">주소</div>
+															<div class="text">BlueBalloon</div>
+															<div class="text grey">주소</div>
 														</div>
 													</div>
 												</div>
@@ -791,8 +689,6 @@
 			window.addEventListener(event2, cb);
 		})("mousemove", "touchmove");
 	</script>
-	<noscript>&lt;img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=806188949420761&amp;ev=PageView&amp;noscript=1"&gt;</noscript>
 	<script>
 		!function() {
 			var e = window._fbq || (window._fbq = []);
@@ -811,13 +707,5 @@
 			"currency" : "USD"
 		} ]);
 	</script>
-	<a class="olark olark-tr-placeholder"> <svg x="0px" y="0px"
-			viewBox="0 0 27 21.9">
-					<path fill="#ffffff"
-				d="M23.2,0L2.6,1.7C1,1.9,0,3.2,0,4.9v8c0,1.6,0.8,3,2.4,3.1l5.3,0.5c0,0,1,1.6,0.3,3.2C7.2,21.3,6,21.9,6,21.9 c4.2,0,6.6-3.1,7.8-4.9l9.4,0.7c1.8,0.2,3.8-1.3,3.8-3.1V3.1C27,1.3,25-0.1,23.2,0z M6.4,10.1c-0.9,0-1.7-0.7-1.7-1.7 c0-0.9,0.7-1.7,1.7-1.7C7.3,6.8,8,7.5,8,8.5C8,9.4,7.3,10.1,6.4,10.1z M13.2,10.1c-0.9,0-1.7-0.7-1.7-1.7c0-0.9,0.7-1.7,1.7-1.7 c0.9,0,1.7,0.7,1.7,1.7C14.8,9.4,14.1,10.1,13.2,10.1z M19.9,10.1c-0.9,0-1.7-0.7-1.7-1.7c0-0.9,0.7-1.7,1.7-1.7 c0.9,0,1.7,0.7,1.7,1.7C21.6,9.4,20.9,10.1,19.9,10.1z"></path>
-				</svg>
-
-		<p class="olark-button-text">Need help?</p>
-	</a>
 </body>
 </html>
