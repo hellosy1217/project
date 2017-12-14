@@ -679,6 +679,7 @@ transform
 </style>
 </head>
 <body class="tb" data-b-sale="">
+<%@include file="../../header1.jsp" %>
 	<main data-id="88570" data-code="AA-AIA" data-op="1853" data-curr="USD"
 		data-sym="$" data-price="1789" data-value="$54" "="" itemscope=""
 		itemtype="http://schema.org/Product">
@@ -883,17 +884,6 @@ transform
 						<dd>Reykjavik</dd>
 					</dl>
 				</div>
-			</div>
-			<div class="b menu">
-				<ul class="fixed" style="width: 896px;">
-					<li data-anchor="hgl" data-hash="highlights" class="active">Highlights</li>
-					<li data-anchor="rev" data-hash="reviews" class="">Reviews</li>
-					<li data-anchor="itn" data-hash="details" class="">Itinerary</li>
-					<li data-anchor="inc" data-hash="included" class="">What's
-						included</li>
-					<li data-anchor="faq" data-hash="faq" class="">Q&amp;A's</li>
-					<li data-anchor="avl" data-hash="check" class="">Availability</li>
-				</ul>
 			</div>
 			<div class="b pad hgl">
 				<div class="im">

@@ -1,274 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html class=" logged">
 <head>
 <title>booking - 상품/패키지 명 - BlueBalloon</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css"
-	rel="stylesheet" />
+	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css?ver=1"
+	rel="stylesheet" type="text/css" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<!-- 
 <script
 	src="//cdn.tourradar.com/include/bower/braintree-web-3/client.v1513001935.js"
 	async=""></script>
 <script
 	src="//cdn.tourradar.com/include/bower/braintree-web-3/hosted-fields.v1513001935.js"
 	async=""></script>
-<script>
-	(function() {
-		(function(i, s, o, g, r) {
-			i['CRMTracker'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-		})(window, 0, 0, 0, 'tracker');
-		tracker(
-				"setConfig",
-				{
-					"endpoint" : "https:\/\/omnimove.tourradar.com\/api\/t122995033\/v111184500",
-					"compression" : false,
-					"localId" : "5a2fc9ff482a9",
-					"keys" : {
-						"cookieId" : "tracking__session_id"
-					}
-				});
-		tracker("setParameters", [ {
-			"param" : "duration",
-			"value" : "9",
-			"points" : 300
-		}, {
-			"param" : "duration",
-			"value" : "8",
-			"points" : 180
-		}, {
-			"param" : "duration",
-			"value" : "10",
-			"points" : 180
-		}, {
-			"param" : "duration",
-			"value" : "7",
-			"points" : 90
-		}, {
-			"param" : "duration",
-			"value" : "11",
-			"points" : 90
-		}, {
-			"param" : "type",
-			"value" : "country",
-			"points" : 300
-		}, {
-			"param" : "city",
-			"value" : "6779. Toledo, Spain",
-			"points" : 45
-		}, {
-			"param" : "city",
-			"value" : "6789. Seville, Spain",
-			"points" : 45
-		}, {
-			"param" : "city",
-			"value" : "6793. Granada, Spain",
-			"points" : 45
-		}, {
-			"param" : "city",
-			"value" : "16036. Guadix, Spain",
-			"points" : 45
-		}, {
-			"param" : "city",
-			"value" : "6785. Valencia, Spain",
-			"points" : 45
-		}, {
-			"param" : "city",
-			"value" : "24912. Peniscola, Spain",
-			"points" : 45
-		}, {
-			"param" : "country",
-			"value" : "162. Spain",
-			"points" : 300
-		}, {
-			"param" : "continent",
-			"value" : "201. Europe",
-			"points" : 300
-		}, {
-			"param" : "start_city",
-			"value" : "6770. Madrid, Spain",
-			"points" : 600
-		}, {
-			"param" : "end_city",
-			"value" : "6775. Barcelona, Spain",
-			"points" : 300
-		}, {
-			"param" : "location_count",
-			"value" : "6-10",
-			"points" : 300
-		}, {
-			"param" : "country_count",
-			"value" : "1",
-			"points" : 300
-		}, {
-			"param" : "price",
-			"value" : "900-1000",
-			"points" : 300
-		}, {
-			"param" : "price",
-			"value" : "800-900",
-			"points" : 180
-		}, {
-			"param" : "price",
-			"value" : "1000-1100",
-			"points" : 180
-		}, {
-			"param" : "price",
-			"value" : "700-800",
-			"points" : 120
-		}, {
-			"param" : "price",
-			"value" : "1100-1200",
-			"points" : 120
-		}, {
-			"param" : "price",
-			"value" : "950-1000",
-			"points" : 450
-		}, {
-			"param" : "price_per_day",
-			"value" : "105-110",
-			"points" : 300
-		}, {
-			"param" : "price_per_day",
-			"value" : "100-105",
-			"points" : 180
-		}, {
-			"param" : "price_per_day",
-			"value" : "110-115",
-			"points" : 180
-		}, {
-			"param" : "price_per_day",
-			"value" : "95-100",
-			"points" : 120
-		}, {
-			"param" : "price_per_day",
-			"value" : "115-120",
-			"points" : 120
-		}, {
-			"param" : "theme",
-			"value" : "In-depth Cultural",
-			"points" : 390
-		}, {
-			"param" : "theme",
-			"value" : "Cultural",
-			"points" : 120
-		}, {
-			"param" : "region",
-			"value" : "WR16. Western Europe",
-			"points" : 135
-		}, {
-			"param" : "region",
-			"value" : "WR8. Mediterranean",
-			"points" : 135
-		}, {
-			"param" : "operator",
-			"value" : "CostSaver",
-			"points" : 300
-		}, {
-			"param" : "age",
-			"value" : "< 18",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "age",
-			"value" : "18-39",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "age",
-			"value" : "40-49",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "age",
-			"value" : "50-59",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "age",
-			"value" : "60+",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "age",
-			"value" : "10-60",
-			"points" : 61.199999999999996
-		}, {
-			"param" : "tour",
-			"value" : "82985. Spanish Experience Summer",
-			"points" : 300
-		}, {
-			"param" : "departure",
-			"value" : "04\/2018",
-			"points" : 1000
-		} ]);
-		tracker("setPageValue", null);
-		tracker("track");
-	})();
-</script>
-<script>
-	window.addEventListener
-			&& addEventListener(
-					"error",
-					function(e) {
-						window
-								.setTimeout(
-										function() {
-											if (document.documentElement.className
-													.match(/translated/)) {
-												return;
-											}
-
-											e
-													&& window.tracker
-													&& tracker(
-															'addEvent',
-															'JSError',
-															(e.filename || 'code'),
-															(e.message || 'No message'),
-															{
-																filename : e.filename,
-																lineno : e.lineno,
-																colono : e.colono,
-																error : e.error
-															});
-
-											var info = {
-												"url" : document.location.href,
-												"languge" : navigator.language,
-												"useragent" : navigator.userAgent,
-												"platform" : navigator.platform,
-												"oscpu" : navigator.oscpu,
-												"referrer" : document.referrer,
-												"error[message]" : e.message,
-												"error[colno]" : e.colno,
-												"error[lineno]" : e.lineno,
-												"error[filename]" : e.filename,
-												"error[stack]" : e.error ? e.error.stack
-														: null
-											};
-
-											var encodedInfo = [];
-											for ( var key in info) {
-												var value = info[key];
-												value = ((typeof value === 'undefined') || value === null) ? ''
-														: encodeURIComponent(value);
-												encodedInfo
-														.push(encodeURIComponent(key)
-																+ '=' + value);
-											}
-											var postParams = encodedInfo
-													.join('&');
-
-											var request = new XMLHttpRequest();
-											request.open('POST',
-													'/utils/jserror', true);
-											request
-													.setRequestHeader(
-															'Content-Type',
-															'application/x-www-form-urlencoded; charset=UTF-8');
-											request.send(postParams);
-										}, 1);
-					});
-</script>
 <script>
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
@@ -321,9 +67,29 @@
 	src="//cdn.tourradar.com/include/js/jquery.unveil.v1513001935.js"></script>
 <script async=""
 	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
+ -->
 </head>
 <body class="tb" data-r="1" data-b-sale="">
-	<%@include file="../../header1.jsp" %>
+	<header>
+		<div class="c">
+			<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+				height="30" width="174" version="1.1" y="0" x="0"
+				enable-background="new 0 0 203 35" viewBox="0 0 203 35">
+				<path
+					d="m82.95 13.67v-6.65h-1.37c-3.78 0-6.31 2.34-7.68 3.81v-3.39h-6.77v26.17h6.89v-16.82c1.16-1.05 3.73-2.83 7.56-3.09 0.94-0.05 1.37-0.03 1.37-0.03zm3.17-2.97v6.09c1.16-1.05 3.73-2.83 7.56-3.09 0.95-0.05 1.37-0.03 1.37-0.03v-6.65h-1.37c-3.67 0-6.16 2.21-7.56 3.68zm-1.37 6.11c-2.31 0.16-4.16 0.87-5.52 1.64v15.17h6.9v-16.83h-0.97c-0.13 0-0.26 0.01-0.41 0.02zm-57.46-9.79c-7.72 0-11.35 3.05-11.35 7.72v11.5c0 4.72 3.63 7.77 11.35 7.77s11.35-3.05 11.35-7.77v-11.5c0-4.67-3.63-7.72-11.35-7.72zm4.46 18.64c0 2-1.52 2.89-4.46 2.89s-4.46-0.89-4.46-2.89v-10.34c0-1.94 1.52-2.83 4.47-2.83 2.94 0 4.46 0.89 4.46 2.84v10.33zm-24.09-25.03h-6.96v25.12c0 5.17 2.37 7.81 10.13 7.81h2.82v-5.7h-1.76c-2.96 0-4.22-0.9-4.22-2.85l-0.01-11.19h6.22v-6.56h-6.22v-6.63zm129.5 9.28c-1.52-1.16-4.15-2.83-8.2-2.83-5.2 0-7.62 2.99-7.62 7.67v11.66c0 4.68 2.42 7.67 7.62 7.67 4.2 0 6.88-1.78 8.35-2.94v2.52h6.74v-32.88h-6.89v9.13zm0 15.75c-1.1 0.84-3.47 2.41-6.04 2.41-2.47 0-2.89-1.36-2.89-2.78v-9.5c0-1.36 0.42-2.73 2.89-2.73 2.58 0 4.94 1.58 6.04 2.42v10.18zm-29.47-18.64c-7.51 0-10.61 2.89-10.61 7.56v1.5h6.41v-1.27c0.03-1.83 1.09-2.65 4.04-2.65 3.05 0 3.94 1.05 3.94 2.94v3.36h-7.25c-5.2 0-7.88 3.1-7.88 6.62v2.36c0 3.47 2.42 6.56 7.56 6.56 3.68 0 6.25-1.63 7.78-2.89l0.01 0.01v2.46h6.56v-19.01c0-4.66-2.89-7.55-10.56-7.55zm3.79 19.27c-1.21 0.89-3.36 2.26-5.78 2.26-1.58 0-2.63-0.47-2.63-2.05v-0.84c0-1.36 0.48-2.36 2.52-2.36h5.89v2.99zm46.84-19.21c-7.51 0-10.6 2.89-10.6 7.56v1.51h6.41v-1.27c0.03-1.83 1.09-2.65 4.04-2.65 3.05 0 3.94 1.05 3.94 2.94v3.36h-7.25c-5.2 0-7.88 3.1-7.88 6.62v2.36c0 3.46 2.42 6.56 7.57 6.56 3.68 0 6.25-1.63 7.77-2.89l0.01 0.02v2.46h6.56l0.01-0.04v-18.98c-0.02-4.68-2.91-7.56-10.58-7.56zm3.78 19.27c-1.21 0.9-3.36 2.26-5.78 2.26-1.57 0-2.63-0.47-2.63-2.05v-0.84c0-1.37 0.47-2.36 2.52-2.36h5.89v2.99zm16.61-15.52v-3.39h-6.77v26.17h6.9v-16.82c1.16-1.05 3.73-2.83 7.56-3.09 0.95-0.05 1.37-0.03 1.37-0.03v-6.65h-1.37c-3.79 0-6.32 2.34-7.69 3.81zm-121.53-3.39v18.28c-1.05 0.84-3.2 2.31-5.78 2.31-2.21 0-2.84-0.9-2.84-2.78l0.01-17.81h-6.88v19.54c0 4.1 2.78 7.04 7.56 7.04 4.21 0 6.73-1.68 8.09-2.89v2.47h6.73l-0.01-26.16h-6.88z"></path>
+				<polygon
+					points="200.6 7.44 199.31 11.04 198.02 7.44 196.58 7.44 196.58 12.47 197.5 12.47 197.5 8.41 198.91 12.47 199.72 12.47 201.11 8.41 201.11 12.47 202.03 12.47 202.03 7.44"></polygon>
+				<polygon
+					points="191.43 8.28 193.08 8.28 193.08 12.47 194.08 12.47 194.08 8.28 195.73 8.28 195.73 7.44 191.43 7.44"></polygon></svg>
+			<div class="tag">
+				booking tours made <b>easy</b>
+			</div>
+			<div class="right">
+				<a href="#" onclick="return false" class="tel">+82 전화번호</a><a
+					href="#" onclick="return false" class="help">고객센터</a>
+			</div>
+		</div>
+	</header>
 	<main
 		data-parameters="{&quot;version&quot;:1513001935,&quot;objectId&quot;:&quot;82985&quot;,&quot;tourId&quot;:&quot;82985&quot;,&quot;isEnquiry&quot;:false,&quot;currency&quot;:&quot;usd&quot;,&quot;currencyRate&quot;:0.85,&quot;symbol&quot;:&quot;$&quot;,&quot;showMonths&quot;:6,&quot;currentDate&quot;:&quot;1524261600&quot;,&quot;tourLength&quot;:&quot;9&quot;,&quot;partner&quot;:null,&quot;paymentMethods&quot;:{&quot;details&quot;:{&quot;paymentImages&quot;:{&quot;Visa&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/Visa.png&quot;,&quot;MasterCard&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/MasterCard.png&quot;,&quot;Maestro&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/Maestro.png&quot;,&quot;American-Express&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/American-Express.png&quot;,&quot;PayPal&quot;:&quot;\/images\/responsive\/payment_providers\/card_logos\/PayPal.png&quot;},&quot;paymentDetails&quot;:{&quot;amount&quot;:1,&quot;countryCode&quot;:&quot;AT&quot;,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;paymentMethods&quot;:{&quot;Braintree&quot;:{&quot;paymentAccess&quot;:{&quot;token&quot;:&quot;eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI5MzBlZjZlNTdmMDgwMDQ1NTI3YzdjZTZlZGI1OTg0OTBjYzIzYmIzMTIzZjAzNmY3ODI5YzNhNjY3ZDMwY2UzfGNyZWF0ZWRfYXQ9MjAxNy0xMi0xMVQyMzozMDoxMi45ODc4OTYzNDUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPW16M3Q3YzZtYzM2ZDN2NHlcdTAwMjZwdWJsaWNfa2V5PTM1cjZkajZ4ZGZjeHQ3eDUiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL216M3Q3YzZtYzM2ZDN2NHkvY2xpZW50X2FwaS92MS9jb25maWd1cmF0aW9uIiwiY2hhbGxlbmdlcyI6WyJjdnYiXSwiZW52aXJvbm1lbnQiOiJwcm9kdWN0aW9uIiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy9tejN0N2M2bWMzNmQzdjR5L2NsaWVudF9hcGkiLCJhc3NldHNVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImF1dGhVcmwiOiJodHRwczovL2F1dGgudmVubW8uY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5icmFpbnRyZWVnYXRld2F5LmNvbS9tejN0N2M2bWMzNmQzdjR5In0sInRocmVlRFNlY3VyZUVuYWJsZWQiOmZhbHNlLCJwYXlwYWxFbmFibGVkIjp0cnVlLCJwYXlwYWwiOnsiZGlzcGxheU5hbWUiOiJUb3VyUmFkYXIiLCJjbGllbnRJZCI6IkFac1NJaERwczkxUlZQX2lucXZXRGMzZFJpVl8zcHNaQTFPWVQxS0p4eDRzQzJHMGR5aC1XR0ZzM2NvZSIsInByaXZhY3lVcmwiOiJodHRwOi8vd3d3LnRvdXJyYWRhci5jb20vcHJpdmFjeSIsInVzZXJBZ3JlZW1lbnRVcmwiOiJodHRwOi8vd3d3LnRvdXJyYWRhci5jb20vdGVybXMtY29uZGl0aW9ucy8iLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOmZhbHNlLCJlbnZpcm9ubWVudE5vTmV0d29yayI6ZmFsc2UsImVudmlyb25tZW50IjoibGl2ZSIsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJicmFpbnRyZWVDbGllbnRJZCI6IkFSS3JZUkRoM0FHWER6VzdzT18zYlNrcS1VMUM3SEdfdVdOQy16NTdMallTRE5VT1NhT3RJYTlxNlZwVyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJ0b3VycmFkYXIyRVVSIiwiY3VycmVuY3lJc29Db2RlIjoiRVVSIn0sIm1lcmNoYW50SWQiOiJtejN0N2M2bWMzNmQzdjR5IiwidmVubW8iOiJvZmYifQ==&quot;,&quot;customer&quot;:null},&quot;paymentMethods&quot;:[{&quot;id&quot;:1,&quot;label&quot;:&quot;Visa&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:1,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:2,&quot;label&quot;:&quot;MasterCard&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:2,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:5,&quot;label&quot;:&quot;Maestro&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:5,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{9999}} {{9999}} {{9999}} {{999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;123&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:3,&quot;label&quot;:&quot;American Express&quot;,&quot;group&quot;:&quot;cards&quot;,&quot;order&quot;:3,&quot;fields&quot;:[{&quot;id&quot;:&quot;cardHolder&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;label&quot;:&quot;Cardholder Name&quot;,&quot;order&quot;:1,&quot;placeholder&quot;:&quot;i.e. John Smith&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:1000,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;cardNumber&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;Card Number&quot;,&quot;order&quot;:2,&quot;mask&quot;:&quot;{{9999}} {{999999}} {{99999}} {{99999}}&quot;,&quot;placeholder&quot;:&quot;**** **** **** ****&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:12,&quot;maxLength&quot;:19,&quot;regexp&quot;:null}},{&quot;id&quot;:&quot;expiryDate&quot;,&quot;type&quot;:&quot;expirydate&quot;,&quot;label&quot;:&quot;Expiry Date&quot;,&quot;order&quot;:3,&quot;mask&quot;:&quot;{{99}}\/{{99}}&quot;,&quot;placeholder&quot;:&quot;MM \/ YYYY&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:4,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^(?:0[1-9]|1[0-2])[0-9]{2}$&quot;}},{&quot;id&quot;:&quot;cvv&quot;,&quot;type&quot;:&quot;numericstring&quot;,&quot;label&quot;:&quot;CVV&quot;,&quot;order&quot;:4,&quot;mask&quot;:&quot;{{9999}}&quot;,&quot;placeholder&quot;:&quot;1234&quot;,&quot;required&quot;:true,&quot;validation&quot;:{&quot;minLength&quot;:3,&quot;maxLength&quot;:4,&quot;regexp&quot;:&quot;^[0-9]{3}[0-9]?$&quot;}}]},{&quot;id&quot;:4,&quot;label&quot;:&quot;PayPal&quot;,&quot;group&quot;:null,&quot;order&quot;:4,&quot;fields&quot;:null}]}}},&quot;html&quot;:&quot;<form class=\&quot;fields \&quot;>
 	<input type=\&quot;hidden\&quot; name=\&quot;paymentProvider\&quot;>
@@ -346,8 +112,6 @@
 											<div class="c">
 												<div class="fline">
 													<h1>상품/패키지 이름</h1>
-													<a href="#" class="but mail" onclick="return false">Email
-														this tour</a>
 												</div>
 												<div class="book">
 													<div class="left">
@@ -543,51 +307,20 @@
 														</div>
 														<div class="block agents">
 															<div class="head">
-																<h3>Need any help?</h3>
+																<h3>도움이 필요하세요?</h3>
 															</div>
 															<div class="title tit">24/7 Customer Support</div>
-															<div class="text">We are the online tour
-																specialists with plenty of tour and travel experience.
-																Our Customer Support Team have travelled collectively to
-																hundreds of countries. They have extensive background
-																information on tour operators and can help you with all
-																of your questions.</div>
+															<div class="text">고객상담에 대한 설명 들어갈 곳, 아래는 이미지 들어갈 부분</div>
 															<div class="t">
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/56_WuDKKWiZ.jpg"
-																		alt="Carla"><span>Carla</span>
-																</div>
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/29_r2HPbRjc.jpg"
-																		alt="Melissa"><span>Melissa</span>
-																</div>
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/60_ZRwxcmfT.jpg"
-																		alt="Jonathan"><span>Jonathan</span>
-																</div>
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/47_K7bg36vA.jpg"
-																		alt="Sebastian"><span>Sebastian</span>
-																</div>
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/22_qyfcaezY.jpg"
-																		alt="Natalia"><span>Natalia</span>
-																</div>
-																<div class="wp">
-																	<img
-																		src="//cdn.tourradar.com/s3/team/original/26_UTZtK9MY.jpg"
-																		alt="Carly"><span>Carly</span>
-																</div>
+																<c:forEach var="a" begin="1" end="5" step="1">
+																	<div class="wp">
+																		<img
+																			src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
+																			alt="Carla"><span>이름</span>
+																	</div>
+																</c:forEach>
 															</div>
-															<div class="title">
-																Call us +1 844 311 3006
-																<div class="free">TOLL FREE</div>
-															</div>
+															<div class="title">Call us +82 전화번호</div>
 														</div>
 													</div>
 													<div class="right">
@@ -661,7 +394,7 @@
 												</div>
 											</div>
 	</main>
-	<script
+	<!-- <script
 		src="//cdn.tourradar.com/include/pw/book_now/script.v1513001935.min.js"
 		async=""></script>
 	<script src="//www.googleadservices.com/pagead/conversion_async.js"
@@ -669,26 +402,6 @@
 	<script src="//www.google-analytics.com/cx/api.js" async=""></script>
 	<script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
 		async=""></script>
-	<script>
-		(function(event, event2) {
-			function cb(e) {
-				this.removeEventListener(event, cb);
-				this.removeEventListener(event2, cb);
-				(new Image(1, 1)).src = "//bat.bing.com/action/0?ti=5089755&Ver=2";
-
-				!function(b, e, v, t, s) {
-					t = b.createElement(e);
-					t.async = !0;
-					t.src = v;
-					s = b.getElementsByTagName(e)[0];
-					s.parentNode.insertBefore(t, s)
-				}(document, 'script',
-						'https://connect.facebook.net/en_US/fbevents.js');
-			}
-			window.addEventListener(event, cb);
-			window.addEventListener(event2, cb);
-		})("mousemove", "touchmove");
-	</script>
 	<script>
 		!function() {
 			var e = window._fbq || (window._fbq = []);
@@ -706,6 +419,6 @@
 			"value" : "1275.00",
 			"currency" : "USD"
 		} ]);
-	</script>
+	</script> -->
 </body>
 </html>
