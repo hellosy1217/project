@@ -294,7 +294,7 @@
 				<div class="price-resume">
 					<div class="block blue">
 						<div class="text">
-							<b>총액</b>
+							<b>총액   </b>
 						</div>
 						<div class="pr px20">
 							KRW<b>￦얼마</b>
