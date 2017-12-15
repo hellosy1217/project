@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Booking Tours Made Easy - BlueBalloon: Search, Compare &
-	Book Tours Online</title>
+<title>메인</title>
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=1"
 	rel="stylesheet" type="text/css" />
