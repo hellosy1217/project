@@ -15,6 +15,14 @@
 	rel="stylesheet" />
 <link rel="preconnect"
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
+<script type="text/javascript">
+	function changeMonth(month) {
+		document.f.month.value=month+"월"
+	}
+	function search(){
+		alert("검색 기능 아직 안넣음")
+	}
+</script>
 </head>
 <body class="tb" data-b-sale="">
 	<%@include file="header1.jsp"%>
@@ -23,9 +31,9 @@
 
 		<h1
 			alt="Booking Tours Made Easy - TourRadar - Search, Compare &amp; Book Group Tours Online">
-			<div class="im">
+			<div class="im" style="background-color: white;">
 				<video id="video" preload="auto" autoplay="true" loop="loop"
-					muted="muted" volume="0" style="width: 100%; height: 640;">
+					muted="muted" volume="0" style="width: 100%; height: 100%; margin-top: 30px;">
 					<source
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
 				</video>
@@ -41,38 +49,37 @@
 			<div class="tag">
 				go<span><b class="is-f">touring</b><b>trekking</b><b>tasting</b><b>sailing</b><b>feeling</b></span>
 			</div>
-			<h2>Best prices on 1 million departures worldwide.</h2>
-			<div class="autocomplete">
-				<input class="a autocomplete-field" type="text"
-					placeholder="Where do you want to go?" autocomplete="off"
-					data-url="">
-				<ul class="autocomplete-list pre" style="display: none;">
-					<li class="autocomplete-item" data-url="d/europe"
-						data-type="CONTINENT">Europe<span>CONTINENT</span></li>
-					<li class="autocomplete-item" data-url="d/india"
-						data-type="COUNTRY">India<span>COUNTRY</span></li>
-					<li class="autocomplete-item" data-url="d/iceland"
-						data-type="COUNTRY">Iceland<span>COUNTRY</span></li>
-					<li class="autocomplete-item" data-url="d/asia"
-						data-type="CONTINENT">Asia<span>CONTINENT</span></li>
-					<li class="autocomplete-item" data-url="d/japan"
-						data-type="COUNTRY">Japan<span>COUNTRY</span></li>
-					<li class="autocomplete-item" data-url="d/new-zealand"
-						data-type="COUNTRY">New Zealand<span>COUNTRY</span></li>
-					<li class="autocomplete-item" data-url="d/morocco"
-						data-type="COUNTRY">Morocco<span>COUNTRY</span></li>
-				</ul>
-			</div>
-			<div class="b">
-				<input class="b" type="text" placeholder="When">
-				<div class="months hid">
-					<c:forEach var="month" begin="1" end="12" step="1">
-						<div>${month}월</div>
-					</c:forEach>
+			<h2>Best prices on 1 million departures in Korea.</h2>
+			<form name="f" action="search">
+				<div class="autocomplete"><input class="a autocomplete-field" type="text"
+						placeholder="어디로 가고싶으세요?" autocomplete="off" data-url="">
+					<ul class="autocomplete-list pre" style="display: none;">
+						<li class="autocomplete-item" data-url="d/europe"
+							data-type="CONTINENT">Europe<span>CONTINENT</span></li>
+						<li class="autocomplete-item" data-url="d/india"
+							data-type="COUNTRY">India<span>COUNTRY</span></li>
+						<li class="autocomplete-item" data-url="d/iceland"
+							data-type="COUNTRY">Iceland<span>COUNTRY</span></li>
+						<li class="autocomplete-item" data-url="d/asia"
+							data-type="CONTINENT">Asia<span>CONTINENT</span></li>
+						<li class="autocomplete-item" data-url="d/japan"
+							data-type="COUNTRY">Japan<span>COUNTRY</span></li>
+						<li class="autocomplete-item" data-url="d/new-zealand"
+							data-type="COUNTRY">New Zealand<span>COUNTRY</span></li>
+						<li class="autocomplete-item" data-url="d/morocco"
+							data-type="COUNTRY">Morocco<span>COUNTRY</span></li>
+					</ul>
 				</div>
-			</div>
-			<a href="index.html#" class="but blue" onclick="return false"
-				tabindex="-1">Search</a>
+				<div class="b">
+					<input class="b" name="month" type="text" placeholder="2018년" readonly>
+					<div class="months hid">
+						<c:forEach var="month" begin="1" end="12" step="1">
+							<div onclick="changeMonth(${month})">${month}월</div>
+						</c:forEach>
+					</div>
+				</div>
+				<span class="but blue" onclick="search()">Search</span>
+			</form>
 		</div>
 		<div class="nxt"></div>
 	</div>
@@ -129,7 +136,7 @@
 						<div class="name">전라도</div></li></a>
 				<a href="wishlists/786447.html"><li data-wishlist="786447"><img
 						class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.png" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/kyungsang/kyungsang2.png" />
 						<div class="name">경상도</div></li></a>
 				<a href="wishlists/welcome-aboard.html"><li data-wishlist="2"><img
 						class="lazy"
@@ -221,28 +228,28 @@
 			<div class="t">
 				<div class="wp">
 					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/1.png" />
-					<span>주소연</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/2.png" />
-					<span>지수정</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/3.png" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/k.png" />
 					<span>김수민</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/4.png" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/g.png" />
+					<span>김유정</span>
+				</div>
+				<div class="wp">
+					<img class="lazy"
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/c.png" />
 					<span>성지연</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/5.png" />
-					<span>김유정</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/d.png" />
+					<span>지수정</span>
+				</div>
+				<div class="wp">
+					<img class="lazy"
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/j.png" />
+					<span>주소연</span>
 				</div>
 			</div>
 			<div class="t">
