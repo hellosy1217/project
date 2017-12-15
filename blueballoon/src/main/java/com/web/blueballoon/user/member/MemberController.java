@@ -2,7 +2,6 @@ package com.web.blueballoon.user.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.model.MemberDBBean;
 
@@ -68,7 +66,7 @@ public class MemberController {
 		int res = memberMapper.joinMember(dto);
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
-			mav.setViewName("user/member/login");
+			mav.setViewName("user/member/login_us");
 		} else {
 			mav.addObject("msg", "회원가입 실패!!");
 			mav.addObject("url", "member_list");
