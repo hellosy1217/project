@@ -2195,9 +2195,8 @@ main .book .block.details .traveller.additional {
 }
 
 main .book .block .info .col {
-	width: 33%;
+	width: 190px;
 	display: inline-block;
-	margin-right: .5%;
 	vertical-align: top;
 	line-height: 23px
 }

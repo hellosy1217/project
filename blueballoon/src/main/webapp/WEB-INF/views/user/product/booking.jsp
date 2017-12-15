@@ -104,22 +104,13 @@
 						</div>
 						<div class="info">
 							<div class="col">
-								<div class="best-price text">
-									최고의 가격
-									<div class="stext">여긴 뭐 넣지</div>
-								</div>
+								<div class="best-price text">최고의 가격</div>
 							</div>
 							<div class="col">
-								<div class="earn text">
-									뭐 넣을 지 생각 중
-									<div class="stext">뭐 넣을 지 생각 중</div>
-								</div>
+								<div class="earn text">뭐 넣을 지 생각 중</div>
 							</div>
 							<div class="col">
-								<div class="no-fees text">
-									뭐 넣을 지 생각 중
-									<div class="stext">뭐 넣을 지 생각 중</div>
-								</div>
+								<div class="no-fees text">뭐 넣을 지 생각 중</div>
 							</div>
 						</div>
 					</div>
@@ -195,22 +186,13 @@
 					</div>
 					<div class="info">
 						<div class="col">
-							<div class="best-price text">
-								You've got the best price
-								<div class="stext">Best Price Guarantee</div>
-							</div>
+							<div class="best-price text">뭐 넣을 지 생각 중</div>
 						</div>
 						<div class="col">
-							<div class="earn text">
-								Earn $<span class="travel-credits">38</span> travel credits
-								<div class="stext">How it works</div>
-							</div>
+							<div class="earn text">뭐 넣을 지 생각 중</div>
 						</div>
 						<div class="col">
-							<div class="no-fees text">
-								No booking or credit card fees
-								<div class="stext">Pay what you see</div>
-							</div>
+							<div class="no-fees text">뭐 넣을 지 생각 중</div>
 						</div>
 					</div>
 					<div class="payment-fields">
@@ -220,7 +202,7 @@
 								<div class="cell title">Payment Method</div>
 								<div class="cell">
 									<div class="add">
-										<select id="payment_method" name="payment_method" disabled=""><option
+										<select id="payment_method" name="payment_method"><option
 												value="Visa">Visa</option>
 											<option value="MasterCard">MasterCard</option>
 											<option value="Maestro">Maestro</option>
@@ -254,7 +236,7 @@
 						<c:forEach var="a" begin="1" end="5" step="1">
 							<div class="wp">
 								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
+									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${a}.png"
 									alt="Carla"><span>이름</span>
 							</div>
 						</c:forEach>
@@ -294,7 +276,7 @@
 				<div class="price-resume">
 					<div class="block blue">
 						<div class="text">
-							<b>총액   </b>
+							<b>총액 </b>
 						</div>
 						<div class="pr px20">
 							KRW<b>￦얼마</b>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,28 +9,15 @@
 	Book Tours Online</title>
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=1"
-	rel="stylesheet" type="text/css"/>
+	rel="stylesheet" type="text/css" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
 	rel="stylesheet" />
+<link rel="preconnect"
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
 </head>
 <body class="tb" data-b-sale="">
 	<%@include file="header1.jsp"%>
-	<!--
-   <div itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TourRadar">
-      <meta itemprop="logo"
-         content="https://www.tourradar.com/images/responsive/logo_small.png" />
-      <meta itemprop="url" content="https://www.tourradar.com/">
-      <meta itemprop="sameAs" content="https://www.facebook.com/TourRadar">
-      <meta itemprop="sameAs" content="https://twitter.com/tourradar">
-      <meta itemprop="sameAs" content="https://plus.google.com/+Tourradar">
-      <meta itemprop="sameAs" content="https://instagram.com/tourradar">
-      <meta itemprop="sameAs"
-         content="https://en.wikipedia.org/wiki/TourRadar">
-   </div>
-    -->
-
 	<main data-page="home">
 	<div class="top">
 
@@ -38,7 +26,8 @@
 			<div class="im">
 				<video id="video" preload="auto" autoplay="true" loop="loop"
 					muted="muted" volume="0" style="width: 100%; height: 640;">
-					<source src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.mp4">
+					<source
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
 				</video>
 			</div>
 		</h1>
@@ -53,9 +42,34 @@
 				go<span><b class="is-f">touring</b><b>trekking</b><b>tasting</b><b>sailing</b><b>feeling</b></span>
 			</div>
 			<h2>Best prices on 1 million departures worldwide.</h2>
-			<input class="a" type="text" placeholder="Where do you want to go?">
+			<div class="autocomplete">
+				<input class="a autocomplete-field" type="text"
+					placeholder="Where do you want to go?" autocomplete="off"
+					data-url="">
+				<ul class="autocomplete-list pre" style="display: none;">
+					<li class="autocomplete-item" data-url="d/europe"
+						data-type="CONTINENT">Europe<span>CONTINENT</span></li>
+					<li class="autocomplete-item" data-url="d/india"
+						data-type="COUNTRY">India<span>COUNTRY</span></li>
+					<li class="autocomplete-item" data-url="d/iceland"
+						data-type="COUNTRY">Iceland<span>COUNTRY</span></li>
+					<li class="autocomplete-item" data-url="d/asia"
+						data-type="CONTINENT">Asia<span>CONTINENT</span></li>
+					<li class="autocomplete-item" data-url="d/japan"
+						data-type="COUNTRY">Japan<span>COUNTRY</span></li>
+					<li class="autocomplete-item" data-url="d/new-zealand"
+						data-type="COUNTRY">New Zealand<span>COUNTRY</span></li>
+					<li class="autocomplete-item" data-url="d/morocco"
+						data-type="COUNTRY">Morocco<span>COUNTRY</span></li>
+				</ul>
+			</div>
 			<div class="b">
-				<input class="b" type="text" placeholder="When" disabled="disabled">
+				<input class="b" type="text" placeholder="When">
+				<div class="months hid">
+					<c:forEach var="month" begin="1" end="12" step="1">
+						<div>${month}월</div>
+					</c:forEach>
+				</div>
 			</div>
 			<a href="index.html#" class="but blue" onclick="return false"
 				tabindex="-1">Search</a>
@@ -98,40 +112,28 @@
 			<ul class="cf">
 				<a href="wishlists/top-europe-winter-tours.html">
 					<li data-wishlist="816784"><img class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/23231_b71995.jpg"
-						alt="Top Europe Winter Tours" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/seoul/seoul1.png" />
 						<div class="name">서울/경기</div></li>
 				</a>
 				<a href="wishlists/europe-dreaming.html"><li data-wishlist="6"><img
 						class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/4542_4c9497ee.jpg"
-						alt="Dreaming of Europe" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/gangwon/gangwon1.png" />
 						<div class="name">강원도</div></li></a>
 				<a href="wishlists/787113.html"><li data-wishlist="787113"><img
 						class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/86268_326313f4.jpg"
-						alt="Different Hues of Crystal Blues" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/chungcheong/chungcheong1.jpg" />
 						<div class="name">충청도</div></li></a>
 				<a href="wishlists/trending-destinations.html"><li
 					data-wishlist="1"><img class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/72365_3132d3.jpg"
-						alt="Trending Destinations 2016" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeolla/jeolla1.png" />
 						<div class="name">전라도</div></li></a>
 				<a href="wishlists/786447.html"><li data-wishlist="786447"><img
 						class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/81461_303d4e.jpg"
-						alt="Single Track Mind - Dirty MTB Tours" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.png" />
 						<div class="name">경상도</div></li></a>
 				<a href="wishlists/welcome-aboard.html"><li data-wishlist="2"><img
 						class="lazy"
-						src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs="
-						data-src="//cdn.tourradar.com/s3/tour/360x210/79180_ba6067.jpg"
-						alt="Welcome Aboard" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeju/jeju1.png" />
 						<div class="name">제주도</div></li></a>
 			</ul>
 		</div>
@@ -144,11 +146,11 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/europe_v2.jpg"
 				alt="Europe">
 			<div class="clin">
-				<a href="/d/italy">Italy</a><a href="/d/france">France</a><a
-					href="/d/iceland">Iceland</a><a href="/d/greece">Greece</a><a
-					href="/d/croatia">Croatia</a><a href="/d/spain">Spain</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
-			<a href="/d/europe" class="dlin"><h4>Europe</h4></a>
+			<a href="/d/europe" class="dlin"><h4>서울/경기</h4></a>
 		</div>
 		<div class="bl">
 			<img class="lazy"
@@ -160,7 +162,7 @@
 					href="/d/china">China</a><a href="/d/india">India</a><a
 					href="/d/nepal">Nepal</a><a href="/d/indonesia">Indonesia</a>
 			</div>
-			<a href="/d/asia" class="dlin"><h4>Asia</h4></a>
+			<a href="/d/asia" class="dlin"><h4>강원도</h4></a>
 		</div>
 		<div class="bl">
 			<img class="lazy"
@@ -173,7 +175,7 @@
 					Coast USA</a><a href="/v/region-usa-west-coast">West Coast USA</a><a
 					href="/v/state-hawaii">Hawaii</a>
 			</div>
-			<a href="/d/north-america" class="dlin"><h4>North America</h4></a>
+			<a href="/d/north-america" class="dlin"><h4>경상도</h4></a>
 		</div>
 		<div class="bl">
 			<img class="lazy"
@@ -185,7 +187,7 @@
 					href="/d/argentina">Argentina</a><a href="/d/brazil">Brazil</a><a
 					href="/d/ecuador">Ecuador</a><a href="/d/chile">Chile</a>
 			</div>
-			<a href="/d/latin-america" class="dlin"><h4>Latin America</h4></a>
+			<a href="/d/latin-america" class="dlin"><h4>전라도</h4></a>
 		</div>
 		<div class="bl">
 			<img class="lazy"
@@ -198,8 +200,7 @@
 					New Guinea</a><a href="/v/region-east-coast">Aus. East Coast</a><a
 					href="/v/region-south-island">NZ South Island</a>
 			</div>
-			<a href="/d/australia-oceania" class="dlin"><h4>Australia
-					&amp; NZ</h4></a>
+			<a href="/d/australia-oceania" class="dlin"><h4>충청도</h4></a>
 		</div>
 		<div class="bl">
 			<img class="lazy"
@@ -211,7 +212,7 @@
 					href="/d/morocco">Morocco</a><a href="/d/zimbabwe">Zimbabwe</a><a
 					href="/d/kenya">Kenya</a><a href="/d/tanzania">Tanzania</a>
 			</div>
-			<a href="/d/africa" class="dlin"><h4>Africa</h4></a>
+			<a href="/d/africa" class="dlin"><h4>제주도</h4></a>
 		</div>
 	</div>
 	<div class="cs">
@@ -220,63 +221,28 @@
 			<div class="t">
 				<div class="wp">
 					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/71_nvT8vFjV.jpg"
-						alt="Robin" /><span>Robin</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/1.png" />
+					<span>주소연</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/26_UTZtK9MY.jpg"
-						alt="Carly" /><span>Carly</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/2.png" />
+					<span>지수정</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/29_r2HPbRjc.jpg"
-						alt="Melissa" /><span>Melissa</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/3.png" />
+					<span>김수민</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/56_WuDKKWiZ.jpg"
-						alt="Carla" /><span>Carla</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/4.png" />
+					<span>성지연</span>
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/22_qyfcaezY.jpg"
-						alt="Natalia" /><span>Natalia</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/77_gPBPr44R.jpg"
-						alt="Jillian" /><span>Jillian</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/59_MGrdWrHU.jpg"
-						alt="Brendan" /><span>Brendan</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/47_K7bg36vA.jpg"
-						alt="Sebastian" /><span>Sebastian</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/15_nTH9Q237.jpg"
-						alt="Jesús" /><span>Jesús</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-						data-src="//cdn.tourradar.com/s3/team/original/60_ZRwxcmfT.jpg"
-						alt="Jonathan" /><span>Jonathan</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/5.png" />
+					<span>김유정</span>
 				</div>
 			</div>
 			<div class="t">
@@ -324,7 +290,7 @@
 					<div class="ls">
 						Rio Carnival<span>7 tours</span>
 					</div></a><a href="/e/festival-events" class="e4"><div class="w189 h284">
-						Festivals<span>302 tours</span>
+						축제<span>축제 관련 상품 수</span>
 					</div></a>
 			</div>
 			<div class="l">
@@ -403,7 +369,7 @@
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/family.jpg"
 					alt="Family" width="189" height="284">
 					<div class="ls">
-						Family<span>161 tours</span>
+						가족 여행<span>수</span>
 					</div></a><a href="/f/train-rail"><img class=""
 					src="//cdn.tourradar.com/im/r/pw/home/grid/train-rail.jpg"
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/train-rail.jpg"
@@ -420,7 +386,7 @@
 			</div>
 			<div class="l">
 				<a href="/e/cultural" class="e1"><div class="w189 h189">
-						Cultural<span>6770 tours</span>
+						문화<span>문화 관련 상품 수</span>
 					</div></a><a href="/f/local-living"><img class=""
 					src="//cdn.tourradar.com/im/r/pw/home/grid/local-living.jpg"
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/local-living.jpg"
@@ -443,11 +409,10 @@
 					<div class="ls">
 						Coach/Bus<span>660 tours</span>
 					</div></a><a href="/f/food-culinary"><img class=""
-					src="//cdn.tourradar.com/im/r/pw/home/grid/food-culinary.jpg"
-					data-src="//cdn.tourradar.com/im/r/pw/home/grid/food-culinary.jpg"
-					alt="Food &amp; Culinary" width="284" height="189">
+					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/koreanbbq1.jpg"
+					width="284" height="189">
 					<div class="ls">
-						Food &amp; Culinary<span>76 tours</span>
+						음식<span>음식 관련 상품 수</span>
 					</div></a>
 			</div>
 			<div class="l">
@@ -473,13 +438,13 @@
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/hiking-trekking.jpg"
 					alt="Hiking &amp; Trekking" width="284" height="284">
 					<div class="ls">
-						Hiking &amp; Trekking<span>983 tours</span>
+						등산<span>수</span>
 					</div></a><a href="/f/bicycle"><img class=""
 					src="//cdn.tourradar.com/im/r/pw/home/grid/bycicle.jpg"
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/bycicle.jpg"
 					alt="Bicycle" width="284" height="189">
 					<div class="ls">
-						Bicycle<span>541 tours</span>
+						자전거 여행<span>수</span>
 					</div></a><a href="/f/overland-truck"><img class=""
 					src="//cdn.tourradar.com/im/r/pw/home/grid/overland.jpg"
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/overland.jpg"
@@ -490,7 +455,7 @@
 			</div>
 			<div class="l">
 				<a href="/e/marine" class="e3"><div class="w284 h189">
-						Marine<span>1460 tours</span>
+						바다<span>수</span>
 					</div></a><a href="/f/kayak-canoe"><img class=""
 					src="//cdn.tourradar.com/im/r/pw/home/grid/kayak.jpg"
 					data-src="//cdn.tourradar.com/im/r/pw/home/grid/kayak.jpg"
@@ -510,40 +475,28 @@
 
 	<div class="dl">
 		<div class="c">
-			<h2>The Best Deals Worldwide</h2>
-			<a href="/deals/europe" class="con" data-p="56"><img class="lazy"
+			<h2>이름 뭐로 할 지 모르겠음 (특가)</h2>
+			<a href="product_content" class="con" data-p="56"><img
+				class="lazy"
 				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				alt="Europe">
-				<div class="text">Europe deals</div></a><a href="/deals/africa"
-				class="con" data-p="50"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/africa_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/africa_dark.png"
-				alt="Africa">
-				<div class="text">Africa deals</div></a><a href="/deals/asia"
-				class="con" data-p="53"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/asia_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/asia_dark.png"
-				alt="Asia">
-				<div class="text">Asia deals</div></a><a href="/deals/latin-america"
-				class="con" data-p="40"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/latam_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/latam_dark.png"
-				alt="Latin America">
-				<div class="text">Latin America deals</div></a><a
-				href="/deals/north-america" class="con" data-p="47"><img
-				class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/northam_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/northam_dark.png"
-				alt="North America">
-				<div class="text">North America deals</div></a><a
-				href="/deals/australia-oceania" class="con" data-p="38"><img
-				class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/oceania_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/oceania_dark.png"
-				alt="Australia">
-				<div class="text">Australia &amp; NZ deals</div></a><a href="/deals"
-				class="but blue">See all deals</a>
+				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
+				data-p="50"><img class="lazy"
+				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
+				data-p="33"><img class="lazy"
+				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
+				data-p="56"><img class="lazy"
+				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
+				data-p="25"><img class="lazy"
+				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+				<div class="text">서울/경기</div></a>
 		</div>
 		<div class="pc">
 			<div class="p">
