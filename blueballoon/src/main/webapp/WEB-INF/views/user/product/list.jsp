@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html class="resp">
 <head>
-<title>상품 리스트</title>
+<title>여행상품 리스트</title>
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=12"
 	rel="stylesheet" type="text/css" />
