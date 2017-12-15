@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProductController {
 	
+	@RequestMapping(value = "main", method = RequestMethod.GET)
+	public String main() {
+		return "home";
+	}
+	
 	@RequestMapping(value = "product_list", method = RequestMethod.GET)
 	public String list() {
 		return "user/product/list";
