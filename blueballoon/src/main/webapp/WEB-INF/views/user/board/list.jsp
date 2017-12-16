@@ -13,6 +13,10 @@
 	async=""></script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script>
+	//**원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
+	function list(page){
+    	location.href="board_list?curPage="+page;
+	}
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
@@ -95,17 +99,39 @@
 				</c:forEach>
 			</ul>
 			<div class="more" align="center">
-				<c:forEach var="a" begin="1" end="10" step="1">
-					<c:choose>
-						<c:when test="${a%10 eq 0}">
-							<a class="but"><span>></span></a>
-						</c:when>
-						<c:otherwise>
-						<!-- page 버튼인데 아직 기능 안줌 -->
-							<a class="but"><span>${a }</span></a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
+				<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  ◀◀하이퍼링크를 화면에 출력-->
+                <c:if test="${Listmap.boardPager.curBlock > 1}">
+                    <a href="javascript:list('1')" class="but"><span>◀◀</span></a>
+                </c:if>
+                
+                <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 ◀하이퍼링크를 화면에 출력 -->
+                <c:if test="${Listmap.boardPager.curBlock > 1}">
+                    <a href="javascript:list('${Listmap.boardPager.prevPage}')" class="but"><span>◀</span></a>
+                </c:if>
+                
+                <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+                <c:forEach var="num" begin="${Listmap.boardPager.blockBegin}" end="${Listmap.boardPager.blockEnd}">
+                    <!-- **현재페이지이면 하이퍼링크 제거 -->
+                    <c:choose>
+                    <c:when test="${num == Listmap.boardPager.curPage}">
+                    		<!-- 현재 보여지고 있는 페이지는 글자색이 파랑색으로 표시 -->
+                            <a class="but"><span style="color: blue">${num}</span></a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="javascript:list('${num}')" class="but"><span>${num}</span></a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                
+                <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 ▶하이퍼링크를 화면에 출력 -->
+                <c:if test="${Listmap.boardPager.curBlock <= Listmap.boardPager.totalBlock}">
+                    <a href="javascript:list('${Listmap.boardPager.nextPage}')" class="but"><span>▶</span></a>
+                </c:if>
+                
+                <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 ▶▶하이퍼링크를 화면에 출력 -->
+                <c:if test="${Listmap.boardPager.curPage <= Listmap.boardPager.totalPage}">
+                    <a href="javascript:list('${Listmap.boardPager.totalPage}')" class="but"><span>▶▶</span></a>
+                </c:if>
 			</div>
 		</div>
 	</div>
