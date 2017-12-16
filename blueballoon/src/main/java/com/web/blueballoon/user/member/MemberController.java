@@ -90,9 +90,9 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "member_test", method = RequestMethod.GET)
+	@RequestMapping(value = "member_edit", method = RequestMethod.GET)
 	public String test() {
-		return "user/member/test";
+		return "user/member/edit";
 	}
 
 }

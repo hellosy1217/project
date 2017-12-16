@@ -2,15 +2,15 @@
 	pageEncoding="UTF-8"%>
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512456645.css?ver=1"
-	rel="stylesheet" type="text/css"/>
+	rel="stylesheet" type="text/css" />
 <script
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/1.js"
 	async=""></script>
 <div class="ups">
 	<div class="c">
 		<span class="hide-sm pull-left"><a href="product_booking">일단은
-				booking</a></span><span class="hide-sm"><a href="product_content">일단은
-				content</a></span><span class="pull-right"><a href="admin_index">일단은
+				booking</a></span><span class="hide-sm"><a href="member_edit">일단은
+				회원정보수정</a></span><span class="pull-right"><a href="admin_index">일단은
 				admin</a></span>
 	</div>
 </div>

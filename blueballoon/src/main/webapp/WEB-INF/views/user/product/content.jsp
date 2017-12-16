@@ -445,7 +445,7 @@
 				</div>
 				<h2>리뷰</h2>
 				
-				<a class="but r write" href="/review/arctic-adventures?tour=88570"
+				<a class="but r write" href="board_write"
 					target="_blank" rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
@@ -482,7 +482,7 @@
 						</div></li>
 				</ul>
 				<div class="more">
-					<a class="but">리뷰 더보기</a>
+					<a class="board_list?prod_num=">리뷰 더보기</a>
 				</div>
 			</div>
 

@@ -14,6 +14,7 @@ public class MemberMapper {
 	public int joinMember(MemberDBBean dto) {
 		return sqlSession.insert("joinMember", dto);
 	}
+
 	public int checkEmail(MemberDBBean dto) {
 		// TODO Auto-generated method stub
 		int isEmailExist = sqlSession.selectOne("checkEmail", dto);
@@ -25,9 +26,10 @@ public class MemberMapper {
 		java.util.Map<String, String> map = new java.util.HashMap<String, String>();
 		map.put("member_email", check.getMember_email());
 		map.put("member_password", check.getMember_passwd());
-		MemberDBBean dto =  sqlSession.selectOne("checkUser", map);
-	/*	if(dto==null) return true;
-		return false;*/
+		MemberDBBean dto = sqlSession.selectOne("checkUser", map);
+		/*
+		 * if(dto==null) return true; return false;
+		 */
 		return dto;
 	}
 }
