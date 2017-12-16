@@ -40,7 +40,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<br> <a href="admin_index">회원관리페이지로 이동</a>
 	</div>
 <%@ include file="../bottom.jsp"%> 
 
