@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
-<head>
-<title>회원수정</title>
+	
+<%@ include file="../top.jsp"%> 
 <script type="text/javascript">
 		function check(){
 			if (f.member_passwd.value==""){
@@ -79,5 +78,4 @@
 			</tr>
 		</table>
 	</form>
-</body>
-</html>
+<%@ include file="../bottom.jsp"%> 

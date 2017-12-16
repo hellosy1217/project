@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- memberAll.jsp -->
+<%@ include file="../top.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-<title>BLUEBALLOON</title>
-</head>
-<body>
 	<div align="center">
 		<hr color="green" width="300">
 		<h2>회 원 목 록 보 기</h2>
@@ -46,7 +42,5 @@
 		</table>
 		<br> <a href="admin_index">회원관리페이지로 이동</a>
 	</div>
-</body>
-</html>
-
+<%@ include file="../bottom.jsp"%> 
 
