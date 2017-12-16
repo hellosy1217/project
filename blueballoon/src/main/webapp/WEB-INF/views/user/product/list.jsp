@@ -32,77 +32,48 @@
 
 	//메뉴 클릭시
 	$(document).ready(function() {
+		$(".span").click(function() {
+			$(".sub").slideUp("slow");
+		})
 		$("#flip1").click(function() {
 			$("#panel1").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon1").click(function() {
 			$("#panel1").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip2").click(function() {
 			$("#panel2").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon2").click(function() {
 			$("#panel2").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip3").click(function() {
 			$("#panel3").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon3").click(function() {
 			$("#panel3").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip4").click(function() {
 			$("#panel4").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon4").click(function() {
 			$("#panel4").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip5").click(function() {
 			$("#panel5").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon5").click(function() {
 			$("#panel5").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip6").click(function() {
 			$("#panel6").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon6").click(function() {
 			$("#panel6").slideToggle("slow");
 		});
-	});
-
-	$(document).ready(function() {
 		$("#flip7").click(function() {
 			$("#panel7").slideToggle("slow");
 		});
-	});
-	$(document).ready(function() {
 		$("#icon7").click(function() {
 			$("#panel7").slideToggle("slow");
 		});
@@ -138,12 +109,12 @@
 							<meta itemprop="name" content="TourRadar">
 					</a></li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">&nbsp;&nbsp;〉&nbsp; <a
-						href="/d/europe" itemprop="item"><span itemprop="name">서울특별시</span></a>
+						itemtype="http://schema.org/ListItem">〉 <a href="/d/europe"
+						itemprop="item"><span itemprop="name">서울특별시</span></a>
 					</li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">&nbsp;&nbsp;〉&nbsp; <span
-						itemprop="item"><span itemprop="name">마포구</span></span>
+						itemtype="http://schema.org/ListItem">〉 <span itemprop="item"><span
+							itemprop="name">마포구</span></span>
 					</li>
 				</ul>
 			</nav>
@@ -242,86 +213,23 @@
 				</div>
 				<div class="b op b_thm">
 					<h5>지역</h5>
-					<div class="c">
+					<div class="c" id="cate_list">
 						<ul>
-							<li data-pid="2"><div class="th" style="background: #f39a2d"></div>
-								<a href="/h/italy-cultural" id="flip1" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon1"></div>
-								<ul class="sub" id="panel1" style="margin-top: 15px;">
-
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="1"><div class="th" style="background: #96bc34"></div>
-								<a href="/h/italy-cultural" id="flip2" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon2"></div>
-								<ul class="sub" id="panel2" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="5"><div class="th" style="background: #e74c3c"></div>
-								<a href="/h/italy-cultural" id="flip3" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon3"></div>
-								<ul class="sub" id="panel3" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="4"><div class="th" style="background: #c681bc"></div>
-								<a href="/h/italy-cultural" id="flip4" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon4"></div>
-								<ul class="sub" id="panel4" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="7"><div class="th" style="background: #cccccc"></div>
-								<a href="/h/italy-cultural" id="flip5" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon5"></div>
-								<ul class="sub" id="panel5" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="3"><div class="th" style="background: #2c3e50"></div>
-								<a href="/h/italy-cultural" id="flip6" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon6"></div>
-								<ul class="sub" id="panel6" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
-							<li data-pid="6"><div class="th" style="background: #ffc101"></div>
-								<a href="/h/italy-cultural" id="flip7" class="span"
-								onclick="return false">서울 특별시</a>
-								<div class="tr" id="icon7"></div>
-								<ul class="sub" id="panel7" style="margin-top: 15px;">
-									<li data-pid="7"><span>강남구</span></li>
-									<li data-pid="77"><span>종로구</span></li>
-									<li data-pid="178"><span>마포구</span></li>
-									<li data-pid="6"><span>중구</span></li>
-									<li data-pid="38"><span>용산구</span></li>
-								</ul></li>
+							<c:set var="color"
+								value="#f39a2d;#96bc34;#e74c3c;#c681bc;#cccccc;#2c3e50;#ffc101" />
+							<c:forEach var="n" begin="1" end="7" step="1">
+								<li data-pid="2"><div class="th"
+										style="background: #e74c3c"></div> <a href="/h/italy-cultural"
+									id="flip${n}" class="span" onclick="return false">서울 특별시</a>
+									<div class="tr" id="icon${n}"></div>
+									<ul class="sub" id="panel${n}" style="margin-top: 15px;">
+										<li data-pid="7"><span>강남구</span></li>
+										<li data-pid="77"><span>종로구</span></li>
+										<li data-pid="178"><span>마포구</span></li>
+										<li data-pid="6"><span>중구</span></li>
+										<li data-pid="38"><span>용산구</span></li>
+									</ul></li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
