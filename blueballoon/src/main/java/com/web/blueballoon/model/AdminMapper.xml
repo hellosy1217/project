@@ -3,48 +3,79 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.blueballoon.model">
-<!-- 지역 카테고리 -->
+	<!-- 지역 카테고리 -->
 	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
-		select * from bb_category 
+		select * from
+		bb_category
 	</select>
 	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
-		insert into bb_category values(bb_cate_seq.nextval, #{cate_state}, #{cate_city})
+		insert into
+		bb_category values(bb_cate_seq.nextval, #{cate_state}, #{cate_city})
 	</insert>
 	<delete id="deleteBBCategoryDTO" parameterType="int">
-		delete from bb_category where cate_num = #{cate_num}
+		delete from
+		bb_category where cate_num = #{cate_num}
 	</delete>
 	<select id="getBBCategoryDTO" parameterType="int" resultType="BBCategoryDTO">
 		select * from bb_category where cate_num = #{cate_num}
 	</select>
 	<update id="editBBCategoryDTO" parameterType="BBCategoryDTO">
-		update bb_category set cate_state = #{cate_state} , cate_city =
-		#{cate_city} where cate_num = #{cate_num}
+		update bb_category
+		set cate_state = #{cate_state} , cate_city =
+		#{cate_city} where
+		cate_num = #{cate_num}
 	</update>
 	<!-- 여행 상품 -->
 	<insert id="insertBBProduct" parameterType="BBProductDTO">
 		insert into
 		bb_product values(bb_prod_seq.nextval, #{prod_num},
-		#{prod_name}, #{prod_email}, #{prod_hp} , #{prod_person},
-		#{prod_price}, #{book_date}, #{prod_img},
+		#{prod_name},
+		#{prod_email}, #{prod_hp} , #{prod_person},
+		#{prod_price},
+		#{book_date}, #{prod_img},
 		#{prod_address1},
-		#{prod_address2}, #{prod_content}, #{prod_pick})
+		#{prod_address2},
+		#{prod_content}, #{prod_pick})
 	</insert>
 	<delete id="deleteBBProduct" parameterType="int">
-		delete * from bb_product where prod_num = #{prod_num}
+		delete * from
+		bb_product where prod_num = #{prod_num}
 	</delete>
 	<select id="listBBProduct" resultType="BBProductDTO">
 		select * from
-		bb_product order by prod_num desc
+		bb_product
+		order by prod_num desc
 	</select>
 	<select id="getBBProduct" parameterType="int" resultType="BBProductDTO">
-		select * from bb_product where prod_num = #{prod_num}
+		select
+		* from bb_product where prod_num = #{prod_num}
 	</select>
 	<update id="editBBProduct" parameterType="BBProductDTO">
-		update from bb_product set prod_name = #{prod_name}, prod_email =
-		#{prod_email} , prod_hp = #{prod_hp}, prod_person = #{prod_person} ,
-		prod_price = #{prod_price}, prod_img = #{prod_img}, prod_address1 =
-		#{prod_address1} , prod_address2 = #{prod_address2},
-		prod_content = #{prod_content}, prod_pick = #{prod_pick}
+		update from bb_product
+		set prod_name = #{prod_name}, prod_email =
+		#{prod_email} , prod_hp =
+		#{prod_hp}, prod_person = #{prod_person} ,
+		prod_price = #{prod_price},
+		prod_img = #{prod_img}, prod_address1 =
+		#{prod_address1} ,
+		prod_address2 = #{prod_address2},
+		prod_content = #{prod_content},
+		prod_pick = #{prod_pick}
 	</update>
-	
+	<!-- 멤버 -->
+	<select resultType="MemberDBBean" id="listMember"> select * from bb_member
+		order by member_num desc </select>
+
+	<select resultType="MemberDBBean" id="getMember" parameterType="int">
+		select * from bb_member where member_num = #{member_num} </select>
+
+	<update id="editMember" parameterType="MemberDBBean"> update bb_member set
+		member_name=#{member_name}, member_org_img=#{member_org_img},
+		member_str_img=#{member_str_img}, member_email=#{member_email},
+		member_passwd=#{member_passwd}, member_phone=#{member_phone},
+		member_birth=#{member_birth}, member_gender=#{member_gender} where
+		member_num=#{member_num} </update>
+
+	<delete id="deleteMember" parameterType="int"> delete from bb_member
+		where member_num = #{member_num} </delete>
 </mapper>

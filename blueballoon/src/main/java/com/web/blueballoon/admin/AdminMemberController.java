@@ -1,7 +1,6 @@
 package com.web.blueballoon.admin;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.model.FileNameDTO;
+import com.web.blueballoon.util.FileUtils;
 import com.web.blueballoon.model.MemberDBBean;
 import com.web.blueballoon.util.ControllerMessage;
-import com.web.blueballoon.util.FileUtils;
 
 @Controller
 public class AdminMemberController {
@@ -30,22 +29,22 @@ public class AdminMemberController {
 	private ControllerMessage cm;
 
 	// ==============멤버 리스트 관련========================
-	@RequestMapping(value = "travel_member_list")
+	@RequestMapping(value = "BB_member_list")
 	public ModelAndView list_Member() {
 		List<MemberDBBean> list = adminMapper.listMember();
 		mav.addObject("listMember", list);
-		mav.setViewName("admin/travel_member_list");
+		mav.setViewName("admin/member/BB_member_list");
 		return mav;
 	}
 
 	// 멤버 삭제 (일정 시간이 지나야만 삭제 될 수 있도록 구현하기...)
 
-	@RequestMapping(value = "/travel_member_delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/BB_member_delete", method = RequestMethod.GET)
 	public String deleteFormMember() {
-		return "admin/travel_member_deleteForm";
+		return "admin/member/BB_member_deleteForm";
 	}
 
-	@RequestMapping(value = "/travel_member_delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/BB_member_delete", method = RequestMethod.POST)
 	public ModelAndView memberDelete(HttpServletRequest arg0, @ModelAttribute MemberDBBean dto,
 			BindingResult result)  throws Exception {
 		HttpSession session = arg0.getSession();
@@ -60,7 +59,7 @@ public class AdminMemberController {
 		} else {
 			mav.addObject("msg", "삭제실패!!");
 		}
-		mav.addObject("url", "travel_member_list");
+		mav.addObject("url", "BB_member_list");
 		mav.setViewName("admin/message");
 		return mav;
 	}
@@ -69,7 +68,7 @@ public class AdminMemberController {
 	public ModelAndView updateFormMember(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		int member_num = ServletRequestUtils.getIntParameter(arg0, "member_num");
 		MemberDBBean dto = adminMapper.getMember(member_num);
-		return new ModelAndView("admin/travel_member_editForm", "getMember", dto);
+		return new ModelAndView("admin/member/BB_member_editForm", "getMember", dto);
 	}
 
 	@RequestMapping(value = "/member_passwd", method = RequestMethod.POST)
@@ -79,7 +78,7 @@ public class AdminMemberController {
 		String realPasswd = adminMapper.getMember(member_num).getMember_passwd();
 		if (member_passwd.equals(realPasswd)) {
 			MemberDBBean dto = adminMapper.getMember(member_num);
-			return new ModelAndView("admin/travel_member_edit", "getMember", dto);
+			return new ModelAndView("admin/member/BB_member_edit", "getMember", dto);
 		} else {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("msg", "비밀번호가 틀렸습니다!");
@@ -90,7 +89,7 @@ public class AdminMemberController {
 	}
 
 	// 멤버 정보 수정(고객 요청시에만)
-	@RequestMapping(value = "/travel_member_edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/BB_member_edit", method = RequestMethod.POST)
 	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute MemberDBBean dto,
 			BindingResult result) throws Exception {
 
@@ -118,7 +117,7 @@ public class AdminMemberController {
 		} else {
 			mav.addObject("msg", "수정실패");
 		}
-		mav.addObject("url", "travel_member_list");
+		mav.addObject("url", "BB_member_list");
 		mav.setViewName("admin/message");
 		return mav;
 	}
