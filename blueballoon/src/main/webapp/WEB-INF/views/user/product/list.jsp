@@ -13,8 +13,6 @@
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="//cdn.tourradar.com/include/pw/serp/async.v1512451938.css">
-<link rel="shortcut icon" href="//cdn.tourradar.com/favicon.ico">
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -23,7 +21,6 @@
 			$("#panel").slideToggle(0);
 		});
 	});
-
 	$(document).ready(function() {
 		$("#flipp").click(function() {
 			$("#panell").slideToggle(0);
@@ -80,8 +77,8 @@
 	});
 </script>
 <script type="text/javascript">
-	function changePage() {
-		alert("페이지 변경 함수부분 입니다")
+	function changePage(currentPage) {
+		location.href="product_list?currentPage="+currentPage
 	}
 </script>
 </head>
@@ -171,17 +168,25 @@
 					</div>
 				</c:forEach>
 			</div>
-
 			<div class="pag">
-				<a href="javascript:void(0)" onclick="changePage()" class="active">1</a><a
-					href="changePage()">2</a><a href="javascript:void(0)"
-					onclick="changePage()">3</a><a href="javascript:void(0)"
-					onclick="changePage()">4</a><a href="changePage()">5</a><a
-					href="javascript:void(0)" onclick="changePage()">6</a><a
-					href="changePage()">7</a><a href="javascript:void(0)"
-					onclick="changePage()">8</a><a href="changePage()">9</a><a
-					href="javascript:void(0)" onclick="changePage()"><span>Next
-				</span>»</a>
+				<c:if test="${currentPage > 9}">
+					<a href="javascript:void(0)" onclick="changePage(${currentPage-1})">«<span>Previous</span></a>
+				</c:if>
+				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
+					<c:choose>
+						<c:when test="${currentPage eq page}">
+							<a href="javascript:void(0)" onclick="changePage(${page})"
+								class="active">${page}</a>
+						</c:when>
+						<c:otherwise>
+							<a href="javascript:void(0)" onclick="changePage(${page})">${page}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${endPage ne pageNum}">
+					<a href="javascript:void(0)" onclick="changePage(${currentPage+1})"><span>Next
+					</span>»</a>
+				</c:if>
 			</div>
 			<a class="but blue p hid">Load more</a>
 		</div>
