@@ -7,24 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBProductDTO;
-import com.web.blueballoon.model.MemberDBBean;
+import com.web.blueballoon.model.BBMemberDTO;
 
 @Service
 public class AdminMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	//멤버리스트
-		public List<MemberDBBean> listMember(){
+		public List<BBMemberDTO> listMember(){
 			return sqlSession.selectList("listMember");
 		}
 		//getMember
-		public MemberDBBean getMember(int member_num) {
+		public BBMemberDTO getMember(int member_num) {
 			return sqlSession.selectOne("getMember",member_num);
 		}
 		//멤버 정보 수정
-		public void editMember(MemberDBBean dto) {
+		public void editMember(BBMemberDTO dto) {
 
-			MemberDBBean dto2 = sqlSession.selectOne("getMember", dto.getMember_num());
+			BBMemberDTO dto2 = sqlSession.selectOne("getMember", dto.getMember_num());
 			if (dto2.getMember_passwd().equals(dto.getMember_passwd())) {
 				sqlSession.update("editMember", dto);
 			}

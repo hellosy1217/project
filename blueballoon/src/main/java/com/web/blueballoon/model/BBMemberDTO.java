@@ -1,6 +1,6 @@
 package com.web.blueballoon.model;
 
-public class MemberDBBean {
+public class BBMemberDTO {
 	private int member_num;
 	private String member_name;
 	private String member_email;

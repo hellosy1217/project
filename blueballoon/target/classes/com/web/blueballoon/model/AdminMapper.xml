@@ -63,13 +63,13 @@
 		prod_pick = #{prod_pick}
 	</update>
 	<!-- 멤버 -->
-	<select resultType="MemberDBBean" id="listMember"> select * from bb_member
+	<select resultType="BBMemberDTO" id="listMember"> select * from bb_member
 		order by member_num desc </select>
 
-	<select resultType="MemberDBBean" id="getMember" parameterType="int">
+	<select resultType="BBMemberDTO" id="getMember" parameterType="int">
 		select * from bb_member where member_num = #{member_num} </select>
 
-	<update id="editMember" parameterType="MemberDBBean"> update bb_member set
+	<update id="editMember" parameterType="BBMemberDTO"> update bb_member set
 		member_name=#{member_name}, member_org_img=#{member_org_img},
 		member_str_img=#{member_str_img}, member_email=#{member_email},
 		member_passwd=#{member_passwd}, member_phone=#{member_phone},

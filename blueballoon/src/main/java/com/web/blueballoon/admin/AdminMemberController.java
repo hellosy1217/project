@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.model.FileNameDTO;
 import com.web.blueballoon.util.FileUtils;
-import com.web.blueballoon.model.MemberDBBean;
+import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.util.ControllerMessage;
 
 @Controller
@@ -31,7 +31,7 @@ public class AdminMemberController {
 	// ==============멤버 리스트 관련========================
 	@RequestMapping(value = "BB_member_list")
 	public ModelAndView list_Member() {
-		List<MemberDBBean> list = adminMapper.listMember();
+		List<BBMemberDTO> list = adminMapper.listMember();
 		mav.addObject("listMember", list);
 		mav.setViewName("admin/member/BB_member_list");
 		return mav;
@@ -45,7 +45,7 @@ public class AdminMemberController {
 	}
 
 	@RequestMapping(value = "/BB_member_delete", method = RequestMethod.POST)
-	public ModelAndView memberDelete(HttpServletRequest arg0, @ModelAttribute MemberDBBean dto,
+	public ModelAndView memberDelete(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto,
 			BindingResult result)  throws Exception {
 		HttpSession session = arg0.getSession();
 		String realPasswd = adminMapper.getMember(dto.getMember_num()).getMember_passwd();
@@ -67,7 +67,7 @@ public class AdminMemberController {
 	@RequestMapping(value = "/member_passwd", method = RequestMethod.GET)
 	public ModelAndView updateFormMember(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		int member_num = ServletRequestUtils.getIntParameter(arg0, "member_num");
-		MemberDBBean dto = adminMapper.getMember(member_num);
+		BBMemberDTO dto = adminMapper.getMember(member_num);
 		return new ModelAndView("admin/member/BB_member_editForm", "getMember", dto);
 	}
 
@@ -77,7 +77,7 @@ public class AdminMemberController {
 		String member_passwd = arg0.getParameter("member_passwd");
 		String realPasswd = adminMapper.getMember(member_num).getMember_passwd();
 		if (member_passwd.equals(realPasswd)) {
-			MemberDBBean dto = adminMapper.getMember(member_num);
+			BBMemberDTO dto = adminMapper.getMember(member_num);
 			return new ModelAndView("admin/member/BB_member_edit", "getMember", dto);
 		} else {
 			ModelAndView mav = new ModelAndView();
@@ -90,7 +90,7 @@ public class AdminMemberController {
 
 	// 멤버 정보 수정(고객 요청시에만)
 	@RequestMapping(value = "/BB_member_edit", method = RequestMethod.POST)
-	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute MemberDBBean dto,
+	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto,
 			BindingResult result) throws Exception {
 
 		HttpSession session = arg0.getSession();

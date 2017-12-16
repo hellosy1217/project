@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.user.service.MemberMapper;
-import com.web.blueballoon.model.MemberDBBean;
+import com.web.blueballoon.model.BBMemberDTO;
 
 @Controller
 public class MemberController {
@@ -29,7 +29,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_login", method = RequestMethod.POST)
-	public ModelAndView checkUser(MemberDBBean dto, HttpSession session, HttpServletRequest req) {
+	public ModelAndView checkUser(BBMemberDTO dto, HttpSession session, HttpServletRequest req) {
 		dto = memberMapper.checkUser(dto);
 		boolean isLogin = false;
 		if (dto == null)
@@ -62,7 +62,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_join", method = RequestMethod.POST)
-	public ModelAndView joinPro(HttpServletRequest arg0, @ModelAttribute MemberDBBean dto, BindingResult result) {
+	public ModelAndView joinPro(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto, BindingResult result) {
 
 		int res = memberMapper.joinMember(dto);
 		ModelAndView mav = new ModelAndView();
