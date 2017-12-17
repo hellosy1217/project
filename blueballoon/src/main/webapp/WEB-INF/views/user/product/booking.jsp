@@ -36,24 +36,6 @@
 
 	ga('send', 'pageview');
 </script>
-<script>
-	!function(f, v, n) {
-		if (f.fbq)
-			return;
-		n = f.fbq = function() {
-			n.callMethod ? n.callMethod.apply(n, arguments) : n.queue
-					.push(arguments)
-		};
-		if (!f._fbq)
-			f._fbq = n;
-		n.push = n;
-		n.loaded = !0;
-		n.version = '2.0';
-		n.queue = [];
-	}(window);
-	fbq('init', '806188949420761');
-	fbq('track', "PageView");
-</script>
 <script async=""
 	src="//cdn.tourradar.com/include/js/zepto.v1513001935.min.js"></script>
 <script async=""
@@ -66,12 +48,33 @@
 	src="//cdn.tourradar.com/include/js/jquery.unveil.v1513001935.js"></script>
 <script async=""
 	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
-
+<script type="text/javascript">
+function selectBookDate(){
+	alert("날짜 선택 함수")
+}
+function changeBookDate(book_date){
+	alert("날짜 변경 함수")
+}
+function addBookPerson(){
+	if(f.book_person.value>=30){
+		alert("인원을 최대로 선택하셨습니다!")
+	}else{
+	f.book_person.value++;
+	}
+}
+function removeBookPerson(){
+	if(f.book_person.value<=1){
+		alert("인원을 최소로 선택하셨습니다!")
+	}else{
+	f.book_person.value--;
+	}
+}
+</script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
 		<div class="c">
-			<a href="goOut()"><img
+			<a href="/blueballoon"><img
 				src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
 				width="170" height="35"></a>
 			<div class="tag">
@@ -94,9 +97,17 @@
 				<div class="block departure">
 					<div class="head">
 						<div class="point">1</div>
-						<h3>날짜를 확인해주세요.</h3>
-						<b class="date date-start">ㅇ년 ㅇ월 ㅇ일 ㅇ요일 </b><a href="#"
-							onclick="return false" class="change">날짜 변경</a>
+						<h3>날짜를 선택해주세요.</h3>
+						<c:choose>
+							<c:when test="${book_date ne null}">
+								<b class="date date-start">ㅇㅇㅇㅇ년 ㅇㅇ월 ㅇㅇ일</b>
+								<a href="#" onclick="changeBookDate(${book_date})"
+									class="change"> 날짜 변경</a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" onclick="selectBookDate()" class="change"> 날짜 선택</a>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div id="seats">
 						<div class="content">
@@ -123,9 +134,25 @@
 					<div class="info unselectable " unselectable="on">
 						<b class="in">인원</b>
 						<div class="in quantity">
-							<span class="number minus  grey "></span><input type="number"
-								value="1" min="1" max="30" inputmode="numeric" pattern="[0-9]*"><span
-								class="number plus "></span>
+							<form name="f">
+								<c:choose>
+									<c:when test="document.f.book_person.value==1">
+										<span class="number minus grey "></span>
+									</c:when>
+									<c:otherwise>
+										<span class="number minus"></span>
+									</c:otherwise>
+								</c:choose> <input type="number" name="book_person" value="1" min="1"
+									max="30" inputmode="numeric" pattern="[0-9]*" readonly>
+									<c:choose>
+									<c:when test="document.f.book_person.value==30">
+										<span class="number plus grey" onclick="addBookPerson()"></span>
+									</c:when>
+									<c:otherwise>
+										<span class="number plus" onclick="addBookPerson()"></span>
+									</c:otherwise>
+								</c:choose>
+							</form>
 						</div>
 						<div class="in solo"></div>
 					</div>
@@ -161,13 +188,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="block extras  hid ">
-					<div class="head">
-						<div class="point"></div>
-						<h3>Optional Extras</h3>
-					</div>
-					<div class="content"></div>
-				</div>
 				<div class="block price-main ">
 					<div class="head">
 						<h3>이 부분은 비회원일 때만 보여줄 예정</h3>
@@ -178,53 +198,6 @@
 						</li>
 						<li class="link"><a href="member_join">가입하기</a></li>
 					</ul>
-				</div>
-				<div class="block payment ">
-					<div class="head">
-						<div class="point">4</div>
-						<h3>Payment Details</h3>
-					</div>
-					<div class="info">
-						<div class="col">
-							<div class="best-price text">뭐 넣을 지 생각 중</div>
-						</div>
-						<div class="col">
-							<div class="earn text">뭐 넣을 지 생각 중</div>
-						</div>
-						<div class="col">
-							<div class="no-fees text">뭐 넣을 지 생각 중</div>
-						</div>
-					</div>
-					<div class="payment-fields">
-						<form class="fields ">
-							<input type="hidden" name="paymentProvider" value="Braintree">
-							<div class="row" data-field="paymentMethod">
-								<div class="cell title">Payment Method</div>
-								<div class="cell">
-									<div class="add">
-										<select id="payment_method" name="payment_method"><option
-												value="Visa">Visa</option>
-											<option value="MasterCard">MasterCard</option>
-											<option value="Maestro">Maestro</option>
-											<option value="American Express">American Express</option>
-											<option value="PayPal">PayPal</option></select>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="end">
-						<div class="checkbox">
-							<input type="checkbox" id="terms-agree" value="1"><label
-								for="terms-agree" class="terms-agree"> <a href="#"
-								class="termsCoPopup" data-id="terms_agent">이용약관</a> 동의여부
-							</label><span></span>
-						</div>
-						<div class="book-button">
-							<a href="" class="but blue" data-type="Book">결제하기</a>
-							<div class="notice">지금 얼마 계산하고 며칠 뒤에 얼마 계산 하는지 뜰 부분</div>
-						</div>
-					</div>
 				</div>
 				<div class="block agents">
 					<div class="head">
@@ -261,7 +234,7 @@
 									<div class="pr">얼마</div>
 								</li>
 								<li>인원
-									<div class="pr">몇명</div>
+									<div class="pr">${book_person}</div>
 								</li>
 								<li class="pt"><b><div class="pr">얼마</div></b></li>
 							</ul>
@@ -321,23 +294,5 @@
 	<script src="//www.google-analytics.com/cx/api.js" async=""></script>
 	<script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
 		async=""></script>
-	<script>
-		!function() {
-			var e = window._fbq || (window._fbq = []);
-			if (!e.loaded) {
-				var n = document.createElement("script");
-				n.async = !0, n.src = "//connect.facebook.net/en_US/fbds.js";
-				var t = document.getElementsByTagName("script")[0];
-				t.parentNode.insertBefore(n, t), e.loaded = !0
-			}
-		}();
-		window._fbq = window._fbq || [];
-		window._fbq.push([ 'track', 'AddToCart', {
-			"content_type" : "product",
-			"content_ids" : [ "82985" ],
-			"value" : "1275.00",
-			"currency" : "USD"
-		} ]);
-	</script>
 </body>
 </html>

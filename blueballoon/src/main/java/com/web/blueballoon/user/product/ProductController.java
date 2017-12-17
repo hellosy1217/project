@@ -83,7 +83,9 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
-	public String booking() {
-		return "user/product/booking";
+	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	
+		mav.setViewName("user/product/booking");
+		return mav;
 	}
 }
