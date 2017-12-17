@@ -89,7 +89,7 @@
 			<p>Here we have collected and answered the most frequently asked
 				questions.</p>
 			<ul>
-				<c:forEach var="a" begin="1" end="20" step="1">
+				<c:forEach var="a" items="${Listmap.boardList}">
 					<li data-id="5036"><table class="qst" width="100%">
 							<tr>
 								<td width="10%">글 번호</td>
