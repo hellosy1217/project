@@ -42,9 +42,7 @@
 		bb_product where prod_num = #{prod_num}
 	</delete>
 	<select id="listBBProduct" resultType="BBProductDTO">
-		select * from
-		bb_product
-		order by prod_num desc
+		select * from bb_product order by prod_num desc
 	</select>
 	<select id="getBBProduct" parameterType="int" resultType="BBProductDTO">
 		select
