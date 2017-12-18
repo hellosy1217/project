@@ -55,18 +55,25 @@ function selectBookDate(){
 function changeBookDate(book_date){
 	alert("날짜 변경 함수")
 }
-function addBookPerson(){
-	if(f.book_person.value>=30){
-		alert("인원을 최대로 선택하셨습니다!")
-	}else{
-	f.book_person.value++;
-	}
-}
-function removeBookPerson(){
-	if(f.book_person.value<=1){
-		alert("인원을 최소로 선택하셨습니다!")
-	}else{
-	f.book_person.value--;
+function changeBookPerson(mode,min_date,max_date){
+	if(f.book_person.value>=min_date&&f.book_person.value<=max_date){
+		if(mode=='add'){
+			if(f.book_person.value!=max_date)
+				f.book_person.value++;
+		}else{
+			if(f.book_person.value!=min_date)
+				f.book_person.value--;
+		}
+		if(f.book_person.value==max_date){
+			document.getElementById("plus").className = "number plus grey";
+		}else{
+			document.getElementById("plus").className = "number plus";
+		}
+		if(f.book_person.value==min_date){
+			document.getElementById("minus").className = "number minus grey";
+		}else{
+			document.getElementById("minus").className = "number minus";
+		}
 	}
 }
 </script>
@@ -135,23 +142,11 @@ function removeBookPerson(){
 						<b class="in">인원</b>
 						<div class="in quantity">
 							<form name="f">
-								<c:choose>
-									<c:when test="document.f.book_person.value==1">
-										<span class="number minus grey "></span>
-									</c:when>
-									<c:otherwise>
-										<span class="number minus"></span>
-									</c:otherwise>
-								</c:choose> <input type="number" name="book_person" value="1" min="1"
-									max="30" inputmode="numeric" pattern="[0-9]*" readonly>
-									<c:choose>
-									<c:when test="document.f.book_person.value==30">
-										<span class="number plus grey" onclick="addBookPerson()"></span>
-									</c:when>
-									<c:otherwise>
-										<span class="number plus" onclick="addBookPerson()"></span>
-									</c:otherwise>
-								</c:choose>
+								<span class="number minus grey" id="minus"
+									onclick="changeBookPerson('remove',1,10)"></span><input type="number"
+									name="book_person" value="1" min="1" max="10"
+									inputmode="numeric" pattern="[0-9]*" readonly> <span
+									class="number plus" id="plus" onclick="changeBookPerson('add',1,10)"></span>
 							</form>
 						</div>
 						<div class="in solo"></div>
