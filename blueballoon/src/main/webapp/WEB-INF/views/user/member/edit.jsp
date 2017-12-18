@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,29 +35,35 @@
 		}
 	}, 10);
 </script>
+<script type="text/javascript">
+	function changeEmail() {
+		alert("이메일 변경 부분입니다")
+	}
+	function changePasswd() {
+		alert("비밀번호 변경 부분입니다")
+	}
+</script>
 </head>
 <body class=" ">
 	<%@include file="../../header2.jsp"%>
 	<div id="fb-root"></div>
-	<!-- 이 부분인데 모르겠어요 -->
 	<div id="content" class="clearfix profile" style="padding-top: 20px;">
 		<div id="content_details"
 			class="clearfix profile profile-settings container-fluid">
 			<div class="row-fluid">
 				<div class="span8 settings-left">
 					<div class="profile-left span12" id="block-edit">
-						<h2>Edit My Profile</h2>
+						<h2>내 정보 수정</h2>
 						<form method="post" enctype="multipart/form-data">
 							<div class="form">
 								<div class="row">
-									<div class="title">Profile picture</div>
+									<div class="title">프로필 사진</div>
 									<div class="value">
-										<input type="file" name="userpic" /><br /> <span class="tip">Upload
-											a personal photo or if you are a company your business logo.</span>
+										<input type="file" name="userpic" /><br />
 									</div>
 								</div>
 								<div class="row">
-									<div class="title">Full name</div>
+									<div class="title">이름</div>
 									<div class="value">
 										<input type="text" name="name" placeholder="Full name"
 											value="name" />
@@ -65,52 +73,52 @@
 									<div class="title">Email</div>
 									<div class="value">
 										<input type="text" disabled /><a href="#email_popup"
-											id="email_link">Change email</a>
+											id="email_link">변경</a>
 									</div>
 								</div>
 								<div class="row">
-									<div class="title">Password</div>
+									<div class="title">비밀번호</div>
 									<div class="value">
 										<input type="text" disabled /><a href="#password_popup"
-											id="password_link">Change password</a>
+											id="password_link">변경</a>
 									</div>
 								</div>
 								<div class="row">
-									<div class="title">Phone number</div>
+									<div class="title">휴대전화</div>
 									<div class="value">
 										<input type="text" name="phone" placeholder="Phone number" />
 									</div>
 								</div>
 								<div class="row">
-									<div class="title">Date of birth</div>
+									<div class="title">생년월일</div>
 									<div class="value">
-										<input type="text" name="birthdate" placeholder="DD/MM/YYYY"
+										<input type="text" name="birthdate" placeholder="YYYY/MM/DD"
 											value="" id="date" />
 									</div>
 								</div>
 								<div class="row">
-									<div class="title">Gender</div>
+									<div class="title">성별</div>
 									<div class="value">
-										<select name="gender"><option value="">--
-												Gender --</option>
-											<option value="male">Male</option>
-											<option value="female">Female</option></select>
+										<select name="gender"><option value="">-- 선택
+												--</option>
+											<option value="male">남성</option>
+											<option value="female">여성</option></select>
 									</div>
 								</div>
 							</div>
 							<div class="footer">
 								<input type="hidden" name="action" value="save_info" /><input
-									type="submit" class="button button-blue" value="Save changes" />
+									type="submit" class="button button-blue" value="저장하기" />
 							</div>
 						</form>
 					</div>
-					<div class="profile-left span12" id="block-logout" style="margin-bottom: 50px">
-						<h2>Log out</h2>
-						<p>By logging out of TourRadar I will no longer be able to use
-							all of TourRadar's features.</p>
+					<div class="profile-left span12" id="block-logout"
+						style="margin-bottom: 50px">
+						<h2>로그아웃</h2>
+						<p>BlueBalloon에서 로그아웃하시면 더 이상 BlueBalloon의 모든 기능을 사용할 수 없습니다.</p>
 						<div class="footer">
 							<a href="/travellers/logout?type=web"><input type="submit"
-								class="button button-grey" value="Log out" /></a>
+								class="button button-grey" value="로그아웃" /></a>
 						</div>
 					</div>
 				</div>
@@ -119,12 +127,12 @@
 		<div class="hidden">
 			<div id="email_popup" class="clearfix popup">
 				<div>
-					<strong>1.</strong> Enter new email address:
+					<strong>1.</strong> 새로운 이메일을 입력해주세요:
 				</div>
 				<div>
 					<form id="change_email" onsubmit="return false">
-						<input type="text" placeholder="Email" /><input type="submit"
-							class="multi-line-button flat blue" value="Submit" />
+						<input type="text" placeholder="Email" /><input type="button"
+							class="multi-line-button flat blue" value="changeEmail()" />
 					</form>
 				</div>
 			</div>
@@ -133,17 +141,17 @@
 			<div id="password_popup" class="clearfix popup">
 				<form id="change_password" onsubmit="return false">
 					<div>
-						<strong>1.</strong> Enter new password:
+						<strong>1.</strong> 새로운 비밀번호를 입력해주세요:
 					</div>
 					<div>
 						<input type="text" />
 					</div>
 					<div>
-						<strong>2.</strong> Confirm new password:
+						<strong>2.</strong> 새로운 비밀번호를 다시 입력해주세요:
 					</div>
 					<div>
-						<input type="text" /><input type="submit"
-							class="multi-line-button flat blue" value="Submit" />
+						<input type="text" /><input type="button"
+							class="multi-line-button flat blue" value="확인" onclick="changePasswd()"/>
 					</div>
 				</form>
 			</div>

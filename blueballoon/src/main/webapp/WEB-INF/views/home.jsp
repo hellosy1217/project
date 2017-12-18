@@ -411,7 +411,6 @@
 	<div class="dl">
 		<div class="c">
 			<h2>특가</h2>
-
 			<c:forEach begin="1" end="5">
 				<a href="product_content" class="con" data-p="56"><img
 					class="lazy"
