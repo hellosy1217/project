@@ -108,28 +108,28 @@
 			<h2>인기여행지</h2>
 			<!-- 인기여행지(지역) 6개 정도  -->
 			<ul class="cf">
-				<a href="wishlists/top-europe-winter-tours.html">
+				<a href="product_list">
 					<li data-wishlist="816784"><img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/seoul/seoul1.png" />
 						<div class="name">서울/경기</div></li>
 				</a>
-				<a href="wishlists/europe-dreaming.html"><li data-wishlist="6"><img
+				<a href="product_list"><li data-wishlist="6"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/gangwon/gangwon1.png" />
 						<div class="name">강원도</div></li></a>
-				<a href="wishlists/787113.html"><li data-wishlist="787113"><img
+				<a href="product_list"><li data-wishlist="787113"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/chungcheong/chungcheong1.jpg" />
 						<div class="name">충청도</div></li></a>
-				<a href="wishlists/trending-destinations.html"><li
+				<a href="product_list"><li
 					data-wishlist="1"><img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeolla/jeolla1.png" />
 						<div class="name">전라도</div></li></a>
-				<a href="wishlists/786447.html"><li data-wishlist="786447"><img
+				<a href="product_list"><li data-wishlist="786447"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/kyungsang/kyungsang2.png" />
 						<div class="name">경상도</div></li></a>
-				<a href="wishlists/welcome-aboard.html"><li data-wishlist="2"><img
+				<a href="product_list"><li data-wishlist="2"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeju/jeju1.png" />
 						<div class="name">제주도</div></li></a>
@@ -138,6 +138,7 @@
 	</div>
 
 	<div class="lin cen">
+	<c:forEach begin="1" end="6" step="1">
 		<div class="bl">
 			<img class="lazy"
 				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -150,66 +151,7 @@
 			</div>
 			<a href="/d/europe" class="dlin"><h4>서울/경기</h4></a>
 		</div>
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/asia_v2.jpg"
-				alt="Asia">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
-			</div>
-			<a href="/d/asia" class="dlin"><h4>강원도</h4></a>
-		</div>
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/north-america_v2.jpg"
-				alt="North America">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
-			</div>
-			<a href="/d/north-america" class="dlin"><h4>경상도</h4></a>
-		</div>
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/latin-america_v2.jpg"
-				alt="Latin America">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
-			</div>
-			<a href="/d/latin-america" class="dlin"><h4>전라도</h4></a>
-		</div>
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/australia_v2.jpg"
-				alt="Australia">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
-			</div>
-			<a href="/d/australia-oceania" class="dlin"><h4>충청도</h4></a>
-		</div>
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/africa_v2.jpg"
-				alt="Africa">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
-			</div>
-			<a href="/d/africa" class="dlin"><h4>제주도</h4></a>
-		</div>
+		</c:forEach>
 	</div>
 	<div class="cs">
 		<div class="c">
