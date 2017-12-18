@@ -404,7 +404,7 @@
 			<div class="b pad hgl">
 				
 				<h2 class="sm">여행 꿀팁</h2>
-				<a class="but r write" href="/review/arctic-adventures?tour=88570" target="_blank" rel="nofollow" 
+				<a class="but r write" href="product_booking" target="_blank" rel="nofollow" 
 				style="width: 143px; border-color: red;">바로 예약하기</a>
 				<ul>
 					<li>꿀팁 1</li>
