@@ -14,8 +14,8 @@
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script>
 	//**원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
-	function list(page){
-    	location.href="board_list?curPage="+page;
+	function list(page) {
+		location.href = "board_list?curPage=" + page;
 	}
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
@@ -41,21 +41,10 @@
 		<div class="im"
 			style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
 		<div class="in">
-			<h1>여기는 뭐 넣어야 할 지 생각 중</h1>
-			River cruising allows travellers the opportunity to intimately
-			experience new and familiar destinations with luxury and class. If
-			you’re looking for that up-close and personal experience without
-			sacrificing any of the usual comforts, river cruising is the perfect
-			option for you. Travellers can expect to enjoy:
+			<h1>여기는 뭐 넣을 지 생각 중</h1>
+			게시판 관ㄹㄴ 글
 			<ul>
-				<li>Luxury ships that hold a modest average of 150 passengers
-					to allow for more personalized and exceptional service</li>
-				<li>Ships that arrive in less crowded ports which are more
-					accessible to city centres than larger cruiseliners</li>
-				<li>Accommodations that exude luxury and comfort, with
-					panoramic views right outside your window</li>
-				<li>An all-inclusive experience is offered on most cruise
-					lines. Once you board, you keep your wallet in your pocket!</li>
+				<li>뭐 넣을 지 생각 중</li>
 			</ul>
 		</div>
 	</div>
@@ -86,8 +75,7 @@
 		</div>
 		<div class="content faq" data-total="16" data-onpage="10">
 			<h3>일단 게시판 부분</h3>
-			<p>Here we have collected and answered the most frequently asked
-				questions.</p>
+			<!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
 			<ul>
 				<c:forEach var="a" items="${Listmap.boardList}">
 					<li data-id="5036"><table class="qst" width="100%">
@@ -100,38 +88,44 @@
 			</ul>
 			<div class="more" align="center">
 				<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  ◀◀하이퍼링크를 화면에 출력-->
-                <c:if test="${Listmap.boardPager.curBlock > 1}">
-                    <a href="javascript:list('1')" class="but"><span>◀◀</span></a>
-                </c:if>
-                
-                <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 ◀하이퍼링크를 화면에 출력 -->
-                <c:if test="${Listmap.boardPager.curBlock > 1}">
-                    <a href="javascript:list('${Listmap.boardPager.prevPage}')" class="but"><span>◀</span></a>
-                </c:if>
-                
-                <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
-                <c:forEach var="num" begin="${Listmap.boardPager.blockBegin}" end="${Listmap.boardPager.blockEnd}">
-                    <!-- **현재페이지이면 하이퍼링크 제거 -->
-                    <c:choose>
-                    <c:when test="${num == Listmap.boardPager.curPage}">
-                    		<!-- 현재 보여지고 있는 페이지는 글자색이 파랑색으로 표시 -->
-                            <a class="but"><span style="color: blue">${num}</span></a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="javascript:list('${num}')" class="but"><span>${num}</span></a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-                
-                <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 ▶하이퍼링크를 화면에 출력 -->
-                <c:if test="${Listmap.boardPager.curBlock <= Listmap.boardPager.totalBlock}">
-                    <a href="javascript:list('${Listmap.boardPager.nextPage}')" class="but"><span>▶</span></a>
-                </c:if>
-                
-                <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 ▶▶하이퍼링크를 화면에 출력 -->
-                <c:if test="${Listmap.boardPager.curPage <= Listmap.boardPager.totalPage}">
-                    <a href="javascript:list('${Listmap.boardPager.totalPage}')" class="but"><span>▶▶</span></a>
-                </c:if>
+				<c:if test="${Listmap.boardPager.curBlock > 1}">
+					<a href="javascript:list('1')" class="but"><span>◀◀</span></a>
+				</c:if>
+
+				<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 ◀하이퍼링크를 화면에 출력 -->
+				<c:if test="${Listmap.boardPager.curBlock > 1}">
+					<a href="javascript:list('${Listmap.boardPager.prevPage}')"
+						class="but"><span>◀</span></a>
+				</c:if>
+
+				<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+				<c:forEach var="num" begin="${Listmap.boardPager.blockBegin}"
+					end="${Listmap.boardPager.blockEnd}">
+					<!-- **현재페이지이면 하이퍼링크 제거 -->
+					<c:choose>
+						<c:when test="${num == Listmap.boardPager.curPage}">
+							<!-- 현재 보여지고 있는 페이지는 글자색이 파랑색으로 표시 -->
+							<a class="but"><span style="color: blue">${num}</span></a>
+						</c:when>
+						<c:otherwise>
+							<a href="javascript:list('${num}')" class="but"><span>${num}</span></a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 ▶하이퍼링크를 화면에 출력 -->
+				<c:if
+					test="${Listmap.boardPager.curBlock <= Listmap.boardPager.totalBlock}">
+					<a href="javascript:list('${Listmap.boardPager.nextPage}')"
+						class="but"><span>▶</span></a>
+				</c:if>
+
+				<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 ▶▶하이퍼링크를 화면에 출력 -->
+				<c:if
+					test="${Listmap.boardPager.curPage <= Listmap.boardPager.totalPage}">
+					<a href="javascript:list('${Listmap.boardPager.totalPage}')"
+						class="but"><span>▶▶</span></a>
+				</c:if>
 			</div>
 		</div>
 	</div>
