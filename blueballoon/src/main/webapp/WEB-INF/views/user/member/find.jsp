@@ -4,6 +4,12 @@
 <head>
 <title>Reset Password - BlueBalloon</title>
 <link
+	href="${pageContext.request.contextPath}/resources/member/css/find1.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/member/css/find2.css"
+	rel="stylesheet" />	
+<link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
 	rel="stylesheet" />
 <script type="text/javascript" async=""
@@ -11,24 +17,14 @@
 <script
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.YPQ_WKADknI.O/m=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCOyJfzZfZg9XZhhXI_pFLygxv9tKw/cb=gapi.loaded_0"
 	async=""></script>
-<script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-NSMPC"></script>
-<link
-	href="${pageContext.request.contextPath}/resources/member/css/find1.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/resources/member/css/find2.css"
-	rel="stylesheet" />
+<script type="text/javascript">
+	function findPasswd() {
+		//이메일 형식 유효성 검사
+		alert("비밀번호 찾기 함수")
+	}
+</script>
 </head>
 <body class="reg-page-bg ">
-	<script>
-		dataLayer = [];
-		dataLayer.push({
-			'Cr-SiteType' : 'd'
-		});
-	</script>
-	<div id="fb-root" class=" fb_reset">
-		<script async="" src="https://connect.facebook.net/en_US/all.js"></script>xw
-	</div>
 	<div id="content" class="clearfix wrapc ">
 		<div class="reg-page reset-password clearfix">
 			<%@include file="../../header2.jsp"%>
@@ -37,85 +33,47 @@
 				<div class="inside-w">
 					<div class="form-title">비밀번호를 잊으셨나요?</div>
 					<form class="clearfix" onsubmit="return false">
-						<div class="b-lnk forgot">No problem. We're here to help.</div>
-						<div class="b-lnk">Enter your email and we'll send you an
-							email to create a new password.</div>
+						<div class="b-lnk forgot">걱정하지 마세요. 저희가 도와드릴게요.</div>
+						<div class="b-lnk">
+							이메일을 입력하시면 새로운 비밀번호를<br />작성하기 위한 이메일이 발송됩니다.
+						</div>
 						<div class="input-c">
 							<input class="text" type="text" value="" id="g_email"
 								placeholder="Enter your email">
 						</div>
 						<div class="input-c clearfix">
-							<a class="reg-page-button" href="#" onclick="return false"
-								id="g_send"><span class="title">Submit</span></a>
+							<a class="reg-page-button" href="#" onclick="findPasswd()"
+								id="g_send"><span class="title">확인</span></a>
 						</div>
-						<input class="hidden" type="submit">
 					</form>
-					<div id="message-sign-in"></div>
+					<!-- 버튼 누르면 나와야 하는 창 -->
+					<!-- <form class="clearfix" onsubmit="return false">
+						<h2>비밀번호 재설정 이메일을 보냈습니다.</h2>
+						<p>
+							이메일을 확인하고 링크를 클릭하여<br />비밀번호를 재설정하십시오.
+						</p>
+						<p>
+							이메일이 도착하지 않는다면<br />스팸 메일함을 확인해주세요
+						</p>
+					</form> -->
+					<!-- 이메일에 도착한 링크 눌렀을 때 -->
+					<!-- <form class="clearfix" onsubmit="return false">
+						<div class="input-c ref-t">
+							이 계정의 새로운 비밀번호를 입력해주세요:<br />이메일
+						</div>
+						<div class="input-c">
+							<input class="text" id="g_password" type="password"
+								placeholder="Enter password">
+						</div>
+						<div class="input-c">
+							<a class="reg-page-button" href="#" onclick="return false"
+								id="g_send"><span class="title">확인</span></a>
+						</div>
+					</form>
+					 --><div id="message-sign-in"></div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="traveller_login">
-		<div id="login-top">
-			<div>
-				Members pay <span></span>
-			</div>
-			<div>when booking this departure</div>
-		</div>
-		<div id="login-hidden" class="hidden">$59</div>
-		<div class="close">X</div>
-		<div class="title">Sign up</div>
-		<div class="buttons">
-			<div class="facebook-up"></div>
-			<div class="google-up" id="signin_google">
-				<div class="invisible"></div>
-			</div>
-		</div>
-		<div id="or">
-			<div>Or</div>
-		</div>
-		<div id="form_login" style="display: none;">
-			<form class="clearfix" onsubmit="return false">
-				<input type="email" id="email" placeholder="Email" def="1"
-					deftext="Email"><input id="password_vis" value="Password"><input
-					id="password_hid" value="" type="password"><input
-					class="button button-green" id="submit" type="submit"
-					value="Log In">
-			</form>
-			<div class="link">
-				<div>
-					<a href="#" onclick="return false">Forgot password?</a>
-				</div>
-				<div>
-					Don't have an account yet? <a href="#" onclick="return false">Sign
-						up here</a>
-				</div>
-			</div>
-		</div>
-		<div id="form_signup" class="" style="display: block;">
-			<form class="clearfix" onsubmit="return false">
-				<input id="name" value="Name" def="1" deftext="Name" maxlength="100"><input
-					type="email" id="email" placeholder="Email" def="1" deftext="Email"
-					maxlength="100"><input id="password_vis" value="Password"><input
-					id="password_hid" value="" type="password"><input
-					id="password_repeat_vis" value="Repeat password"><input
-					id="password_repeat_hid" value="" type="password">
-				<div id="grey">
-					By creating an account, you're agreeing with our <a
-						href="/terms-conditions" target="_blank">Terms and Conditions</a>
-				</div>
-				<input class="button button-green" id="submit" type="submit"
-					value="Sign Up">
-			</form>
-			<div class="link">
-				<div>&nbsp;</div>
-				<div>
-					Already have an account? <a href="#" onclick="return false">Log
-						in</a>
-				</div>
-			</div>
-		</div>
-		<div class="hidden" id="traveller_success_id"></div>
 	</div>
 	<div id="svg_content_load" style="display: none"></div>
 	<script type="text/javascript" src="https://apis.google.com/js/plus.js"
