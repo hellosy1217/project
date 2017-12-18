@@ -11,11 +11,14 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.model.FileNameDTO;
 import com.web.blueballoon.util.FileUtils;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.ControllerMessage;
 
 @Controller
@@ -27,7 +30,9 @@ public class AdminMemberController {
 	private AdminMapper adminMapper;
 	@Autowired
 	private ControllerMessage cm;
-
+	@Autowired
+	private AmazonFileUtils amazonUtil;
+	
 	// ==============멤버 리스트 관련========================
 	@RequestMapping(value = "BB_member_list")
 	public ModelAndView list_Member() {
@@ -90,7 +95,7 @@ public class AdminMemberController {
 
 	// 멤버 정보 수정(고객 요청시에만)
 	@RequestMapping(value = "/BB_member_edit", method = RequestMethod.POST)
-	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto,
+	protected ModelAndView updateProBoard(HttpServletRequest arg0, @RequestParam("member_org_img") MultipartFile multipartFiles,@ModelAttribute BBMemberDTO dto,
 			BindingResult result) throws Exception {
 
 		HttpSession session = arg0.getSession();
@@ -99,14 +104,15 @@ public class AdminMemberController {
 		ModelAndView mav = new ModelAndView();
 		if (dto.getMember_passwd().equals(realPasswd)) {
 			String member_str_img = adminMapper.getMember(dto.getMember_num()).getMember_str_img();
-			String upPath = session.getServletContext().getRealPath("/resources/files");
-			boolean isDelete = FileUtils.fileDelete(upPath, member_str_img);
-
-			FileNameDTO filedto = FileUtils.fileUpload(arg0);
+			boolean isDelete = amazonUtil.deleteFile("bb_member", member_str_img);
+			String key = null;
+			if(!isDelete) {
+				amazonUtil.one_FileUpload("bb_member", multipartFiles);
+			}
 
 			try {
-				dto.setMember_org_img(filedto.getMember_org_img());
-				dto.setMember_str_img(filedto.getMember_str_img());
+				dto.setMember_org_img(multipartFiles.getOriginalFilename());
+				dto.setMember_str_img(key);
 			} catch (NullPointerException e) {
 				dto.setMember_org_img(null);
 				dto.setMember_str_img(null);
