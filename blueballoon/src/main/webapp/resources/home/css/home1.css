@@ -849,7 +849,8 @@ body.resp footer .cop {
 .usps-section .usp-el {
 	display: inline-block;
 	padding: 20px 50px 40px;
-	vertical-align: top
+	vertical-align: top;
+	width: 30%;
 }
 
 .usps-section .usp-el .payments, .usps-section .usp-el .prices,
@@ -878,7 +879,7 @@ body.resp footer .cop {
 
 @media ( max-width :1440px) {
 	.usps-section .usp-el {
-		padding: 20px 30px 40px
+		padding: 20px 30px 0;
 	}
 }
 
@@ -1005,7 +1006,7 @@ main .top {
 	height: 100vh;
 	background: #333;
 	margin-top: -128px;
-	min-height: 640px
+	min-height: 711px;
 }
 
 main .top .im {
@@ -1271,7 +1272,7 @@ main .fv .grid .l .e6 {
 
 main .wl {
 	background: #fff;
-	padding: 50px 0 80px
+	padding-bottom: 80px;
 }
 
 main .wl h2 {
@@ -1565,8 +1566,8 @@ main .why .t .btm h3 {
 }
 
 main .cs {
-	padding: 50px 0 80px;
-	background: #fff
+	padding: 100px 0 60px;
+	background: #fff;
 }
 
 main .cs h2 {

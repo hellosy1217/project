@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <link
-	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=1"
+	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=12"
 	rel="stylesheet" type="text/css" />
 <link
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/tiny-autocomplete.v1-0-3.min.css"
@@ -85,29 +85,21 @@
 
 	<section class="usps-section">
 		<ul class="usp-list">
-			<li class="usp-el"><a href="why-top=best-selection.html"
-				class="selection"><h3 class="title">Best 여행지</h3>
-					<ul class="reason-list">
-						<li class="reason">Compare 500+ carefully screened operators</li>
-						<li class="reason">Read 60,000+ genuine traveller reviews</li>
-						<li class="reason">Choose between 20,000+ tours</li>
-					</ul></a></li>
-			<li class="usp-el"><a href="why-top=best-prices.html"
-				class="prices"><h3 class="title">Best 후기</h3>
-					<ul class="reason-list">
-						<li class="reason">Always pay the best and lowest price</li>
-						<li class="reason">Earn unlimited travel credits with every
-							booking</li>
-						<li class="reason">Never pay credit card or booking fees</li>
-					</ul></a></li>
-			<li class="usp-el"><a href="why-top=trusted-payments.html"
-				class="payments"><h3 class="title">미정</h3>
-					<ul class="reason-list">
-						<li class="reason">Book via our secure payment platform</li>
-						<li class="reason">Enjoy flexible payment options</li>
-						<li class="reason">Trusted by thousands of satisfied
-							travellers</li>
-					</ul></a></li>
+			<li class="usp-el">
+				<a href="#" class="selection">
+					<h3 class="title">Best 여행지</h3>
+				</a>
+			</li>
+			<li class="usp-el">
+				<a href="#" class="prices">
+					<h3 class="title">Best 후기</h3>
+				</a>
+			</li>
+			<li class="usp-el">
+				<a href="#" class="payments">
+					<h3 class="title">미정</h3>
+				</a>
+			</li>
 		</ul>
 	</section>
 
@@ -164,9 +156,9 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/asia_v2.jpg"
 				alt="Asia">
 			<div class="clin">
-				<a href="/d/japan">Japan</a><a href="/d/thailand">Thailand</a><a
-					href="/d/china">China</a><a href="/d/india">India</a><a
-					href="/d/nepal">Nepal</a><a href="/d/indonesia">Indonesia</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
 			<a href="/d/asia" class="dlin"><h4>강원도</h4></a>
 		</div>
@@ -176,10 +168,9 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/north-america_v2.jpg"
 				alt="North America">
 			<div class="clin">
-				<a href="/d/usa">USA</a><a href="/d/canada">Canada</a><a
-					href="/d/mexico">Mexico</a><a href="/v/region-usa-east-coast">East
-					Coast USA</a><a href="/v/region-usa-west-coast">West Coast USA</a><a
-					href="/v/state-hawaii">Hawaii</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
 			<a href="/d/north-america" class="dlin"><h4>경상도</h4></a>
 		</div>
@@ -189,9 +180,9 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/latin-america_v2.jpg"
 				alt="Latin America">
 			<div class="clin">
-				<a href="/d/cuba">Cuba</a><a href="/d/peru">Peru</a><a
-					href="/d/argentina">Argentina</a><a href="/d/brazil">Brazil</a><a
-					href="/d/ecuador">Ecuador</a><a href="/d/chile">Chile</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
 			<a href="/d/latin-america" class="dlin"><h4>전라도</h4></a>
 		</div>
@@ -201,10 +192,9 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/australia_v2.jpg"
 				alt="Australia">
 			<div class="clin">
-				<a href="/d/australia">Australia</a><a href="/d/new-zealand">New
-					Zealand</a><a href="/d/fiji">Fiji</a><a href="/d/papua-new-guinea">Papua
-					New Guinea</a><a href="/v/region-east-coast">Aus. East Coast</a><a
-					href="/v/region-south-island">NZ South Island</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
 			<a href="/d/australia-oceania" class="dlin"><h4>충청도</h4></a>
 		</div>
@@ -214,9 +204,9 @@
 				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/africa_v2.jpg"
 				alt="Africa">
 			<div class="clin">
-				<a href="/d/south-africa">South Africa</a><a href="/d/egypt">Egypt</a><a
-					href="/d/morocco">Morocco</a><a href="/d/zimbabwe">Zimbabwe</a><a
-					href="/d/kenya">Kenya</a><a href="/d/tanzania">Tanzania</a>
+				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+					href="/d/croatia">용산구</a>
 			</div>
 			<a href="/d/africa" class="dlin"><h4>제주도</h4></a>
 		</div>
@@ -258,7 +248,7 @@
 		</div>
 	</div>
 
-	<div class="fv">
+<!--<div class="fv">
 		<h2>Everything You Want &amp; More</h2>
 		<div class="grid" style="margin-left: -1434px;">
 			<div class="l">
@@ -478,6 +468,7 @@
 			</div>
 		</div>
 	</div>
+ -->
 
 	<div class="dl">
 		<div class="c">
