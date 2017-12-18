@@ -77,12 +77,16 @@ public class AmazonFileUtils {
 			}
 			);
 	}*/
+	public boolean existFile(String directory, MultipartFile file) {
+		boolean res = amazon.doesObjectExist(bucketName+directory, file.getOriginalFilename());
+		return res;
+	}
 	
 	public boolean deleteFile(String directory, String filename) {
 		boolean res = false;
 		try {
 			//파일이 있는지 확인. 있으면 true;
-			res = amazon.doesObjectExist(bucketName+directory,filename);
+			res = amazon.doesObjectExist(bucketName, filename);
 			if(res) {//파일이 있으면 지우기 
 				amazon.deleteObject(bucketName+directory,filename);
 				//파일을 다시 확인해서 결과값 넘겨놓기. 예상 결과는 false
