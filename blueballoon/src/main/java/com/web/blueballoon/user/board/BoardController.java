@@ -16,37 +16,45 @@ import com.web.blueballoon.user.service.BoardPager;
 
 @Controller
 public class BoardController {
-	
+
 	@Autowired
 	private BoardMapper boardMapper;
-	
+
+	ModelAndView mav = new ModelAndView();
+
 	@RequestMapping(value = "board_list", method = RequestMethod.GET)
-	//@RequestParam(defaultValue="") ==> 기본값 할당 : 현재페이지를 1로 초기화
-	public ModelAndView boardlist(@RequestParam(defaultValue="1") int curPage) {
-		//게시글 갯수 계산
+	// @RequestParam(defaultValue="") ==> 기본값 할당 : 현재페이지를 1로 초기화
+	public ModelAndView boardlist(@RequestParam(defaultValue = "1") int curPage) {
+		// 게시글 갯수 계산
 		int count = boardMapper.countBoard();
-		
-		//페이지 나누기 관련 처리
-				BoardPager boardPager = new BoardPager(count, curPage);
-				int start = boardPager.getPageBegin();
-				int end = boardPager.getPageEnd();
-				
-				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("start", start);
-				map.put("end", end);
-				List<BBBoardDTO> boardList = boardMapper.boardList(map);
 
-				//데이터를 맵에 저장
-				HashMap<String, Object> Listmap = new HashMap<String, Object>();
-				Listmap.put("boardList", boardList);
-				Listmap.put("count", count);
-				Listmap.put("boardPager", boardPager);
+		// 페이지 나누기 관련 처리
+		BoardPager boardPager = new BoardPager(count, curPage);
+		int start = boardPager.getPageBegin();
+		int end = boardPager.getPageEnd();
 
-				ModelAndView mav = new ModelAndView();
-				mav.addObject("Listmap", Listmap);
-				mav.setViewName("user/board/list");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		List<BBBoardDTO> boardList = boardMapper.boardList(map);
 
-				return mav;
+		// 데이터를 맵에 저장
+		HashMap<String, Object> Listmap = new HashMap<String, Object>();
+		Listmap.put("boardList", boardList);
+		Listmap.put("count", count);
+		Listmap.put("boardPager", boardPager);
+
+		mav.addObject("Listmap", Listmap);
+		mav.setViewName("user/board/list");
+
+		return mav;
 	}
-	
+
+	@RequestMapping(value = "board_write", method = RequestMethod.GET)
+	public ModelAndView boardWrite() {
+		
+		mav.setViewName("user/board/write");
+		return mav;
+	}
+
 }
