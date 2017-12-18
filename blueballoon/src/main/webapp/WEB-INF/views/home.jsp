@@ -43,14 +43,15 @@
 				width="56" height="62" viewBox="0 0 56 62"
 				enable-background="new 0 0 56 62" xml:space="preserve">
             <g transform="translate(0, -3)">
-            <path fill="#FFF"     
+            <path fill="#FFF"
 					d="M21.6 31.9c-0.3 1.7-0.6 3.5-0.9 5.2-0.3 1.3-0.3 3.4-0.9 4.5 1.7-0.1 8 1 8.4-0.9 0.6-2.9 1.2-5.9 1.6-8.8C27.1 31.9 24.3 31.5 21.6 31.9M35.3 27.4c4.8 0.4 9.6 0.5 14.4 1.1 2.4 0.3 4.3 0.2 5.8 2.2 1.2 1.6-0.9 1.5-2.1 1.4-4.5-0.1-9-0.1-13.5-0.2-1.4 0-2.8-0.1-4.2-0.1-1.8-0.1-1.4 1.5-1.6 3.1-0.3 2.3-0.7 4.5-1.4 6.8 4.5 0 9 0.1 13.4 0.8 2.1 0.3 3.1 0.4 3.4 2.6-1.4 1.6-4.5 1.3-6.4 1.3-2.5 0-5-0.2-7.5-0.2-1.4 0-2.8 0-4.1 0.2-0.2 1.2-0.4 2.3-0.6 3.5-0.7 4.9-1.4 9.7-2.5 14.6-3.5-1.3-3-4.9-2.7-8.1 0.3-3.3 0.8-6.8 1.6-10.1-1.8 0-3.6-0.1-5.4-0.1-1 0-1.9-0.1-2.9-0.1-0.2 0.8-0.4 1.5-0.5 2.3-0.6 3.3-0.6 6.9-1.5 10.1-0.3 1.7-0.6 2.6-2.5 2.1-2.1-0.6-1.7-2.1-1.4-3.8 0.6-3.6 1.6-7.1 2.1-10.7-3.5-0.3-7.1-0.2-10.6-0.2-2.1-0.2-2.7-0.7-2.4-2.9 0.2-1.7 2.2-1.6 3.5-1.6 1.5 0 3.1 0.1 4.6 0.2 0.8 0 1.7 0.1 2.5 0.1 1.3 0 2.8 0.7 3-0.8 0.4-3.2 0.9-6.4 1.3-9.5C13.7 31.2 10.3 31 7 30.6c-0.9-0.1-8.3-0.9-6.6-3 1.6-1.9 6.3-1.5 8.6-1.5 1.8 0 3.6 0 5.4 0.2 0.8 0.1 1.6 0.2 2.4 0.2 1.3 0.1 0.9-1 1-2 0.5-3.4 1-6.8 1.4-10.2 0.2-1.8 0.5-3.5 0.7-5.3 0.1-1.3-0.4-2 1.2-1.9 0.5 0 1.1-0.1 1.6 0.1 2.7 1.2 1.3 6.2 1 8.5-0.4 3.9-0.7 7.7-1.1 11.6 2.7-0.3 5.5-0.4 8.2-0.1 0.3-2.2 0.7-4.3 1-6.5 0.5-3 0.9-6 1.3-9 0.2-1.7 1-5 0-6.6 1.1-0.8 3.5-2.7 4.5-0.7 1 2.1 0.7 4.7 0.5 6.9C37.4 16.7 36.1 22 35.3 27.4" /></g></svg>
 			<div class="tag">
 				go<span><b class="is-f">touring</b><b>trekking</b><b>tasting</b><b>sailing</b><b>feeling</b></span>
 			</div>
 			<h2>Best prices on 1 million departures in Korea.</h2>
 			<form name="f" action="search">
-				<div class="autocomplete"><input class="a autocomplete-field" type="text"
+				<div class="autocomplete">
+					<input class="a autocomplete-field" type="text"
 						placeholder="어디로 가고싶으세요?" autocomplete="off" data-url="">
 					<ul class="autocomplete-list pre" style="display: none;">
 						<li class="autocomplete-item" data-url="d/europe"
@@ -70,7 +71,8 @@
 					</ul>
 				</div>
 				<div class="b">
-					<input class="b" name="month" type="text" placeholder="2018년" readonly>
+					<input class="b" name="month" type="text" placeholder="2018년"
+						readonly>
 					<div class="months hid">
 						<c:forEach var="month" begin="1" end="12" step="1">
 							<div onclick="changeMonth(${month})">${month}월</div>
@@ -85,21 +87,15 @@
 
 	<section class="usps-section">
 		<ul class="usp-list">
-			<li class="usp-el">
-				<a href="#" class="selection">
+			<li class="usp-el"><a href="#" class="selection">
 					<h3 class="title">Best 여행지</h3>
-				</a>
-			</li>
-			<li class="usp-el">
-				<a href="#" class="prices">
+			</a></li>
+			<li class="usp-el"><a href="#" class="prices">
 					<h3 class="title">Best 후기</h3>
-				</a>
-			</li>
-			<li class="usp-el">
-				<a href="#" class="payments">
+			</a></li>
+			<li class="usp-el"><a href="#" class="payments">
 					<h3 class="title">미정</h3>
-				</a>
-			</li>
+			</a></li>
 		</ul>
 	</section>
 
@@ -121,8 +117,8 @@
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/chungcheong/chungcheong1.jpg" />
 						<div class="name">충청도</div></li></a>
-				<a href="product_list"><li
-					data-wishlist="1"><img class="lazy"
+				<a href="product_list"><li data-wishlist="1"><img
+						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeolla/jeolla1.png" />
 						<div class="name">전라도</div></li></a>
 				<a href="product_list"><li data-wishlist="786447"><img
@@ -138,19 +134,19 @@
 	</div>
 
 	<div class="lin cen">
-	<c:forEach begin="1" end="6" step="1">
-		<div class="bl">
-			<img class="lazy"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				data-src="//cdn.tourradar.com/im/r/pw/home/link/c/europe_v2.jpg"
-				alt="Europe">
-			<div class="clin">
-				<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-					href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-					href="/d/croatia">용산구</a>
+		<c:forEach begin="1" end="6" step="1">
+			<div class="bl">
+				<img class="lazy"
+					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+					data-src="//cdn.tourradar.com/im/r/pw/home/link/c/europe_v2.jpg"
+					alt="Europe">
+				<div class="clin">
+					<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
+						href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
+						href="/d/croatia">용산구</a>
+				</div>
+				<a href="/d/europe" class="dlin"><h4>서울/경기</h4></a>
 			</div>
-			<a href="/d/europe" class="dlin"><h4>서울/경기</h4></a>
-		</div>
 		</c:forEach>
 	</div>
 	<div class="cs">
@@ -190,7 +186,7 @@
 		</div>
 	</div>
 
-<!--<div class="fv">
+	<!--<div class="fv">
 		<h2>Everything You Want &amp; More</h2>
 		<div class="grid" style="margin-left: -1434px;">
 			<div class="l">
@@ -414,28 +410,15 @@
 
 	<div class="dl">
 		<div class="c">
-			<h2>이름 뭐로 할 지 모르겠음 (특가)</h2>
-			<a href="product_content" class="con" data-p="56"><img
-				class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
-				data-p="50"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
-				data-p="33"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
-				data-p="56"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-				<div class="text">서울/경기</div></a> <a href="product_content" class="con"
-				data-p="25"><img class="lazy"
-				src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-				data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-				<div class="text">서울/경기</div></a>
+			<h2>특가</h2>
+
+			<c:forEach begin="1" end="5">
+				<a href="product_content" class="con" data-p="56"><img
+					class="lazy"
+					src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+					data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+					<div class="text">서울/경기</div></a>
+			</c:forEach>
 		</div>
 		<div class="pc">
 			<div class="p">
