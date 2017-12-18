@@ -408,7 +408,7 @@
 	</div>
  -->
 
-	<div class="dl">
+	<%-- <div class="dl">
 		<div class="c">
 			<h2>특가</h2>
 			<c:forEach begin="1" end="5">
@@ -424,7 +424,7 @@
 				Up to <span><span>56</span>% OFF</span>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 
 	</main>
 	<footer>
