@@ -48,34 +48,36 @@
 	src="//cdn.tourradar.com/include/js/jquery.unveil.v1513001935.js"></script>
 <script async=""
 	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
 <script type="text/javascript">
-function selectBookDate(){
-	alert("날짜 선택 함수")
-}
-function changeBookDate(book_date){
-	alert("날짜 변경 함수")
-}
-function changeBookPerson(mode,min_date,max_date){
-	if(f.book_person.value>=min_date&&f.book_person.value<=max_date){
-		if(mode=='add'){
-			if(f.book_person.value!=max_date)
-				f.book_person.value++;
-		}else{
-			if(f.book_person.value!=min_date)
-				f.book_person.value--;
+	function changeMonth(month,begin,end) {
+		for(var i=begin;i<=end;i++){
+			document.getElementById("bookMonth" + i).className = "";
 		}
-		if(f.book_person.value==max_date){
-			document.getElementById("plus").className = "number plus grey";
-		}else{
-			document.getElementById("plus").className = "number plus";
-		}
-		if(f.book_person.value==min_date){
-			document.getElementById("minus").className = "number minus grey";
-		}else{
-			document.getElementById("minus").className = "number minus";
+		document.getElementById("bookMonth" + month).className = "selected ";
+	}
+	function changeBookPerson(mode, min_date, max_date) {
+		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
+			if (mode == 'add') {
+				if (f.book_person.value != max_date)
+					f.book_person.value++;
+			} else {
+				if (f.book_person.value != min_date)
+					f.book_person.value--;
+			}
+			if (f.book_person.value == max_date) {
+				document.getElementById("plus").className = "number plus grey";
+			} else {
+				document.getElementById("plus").className = "number plus";
+			}
+			if (f.book_person.value == min_date) {
+				document.getElementById("minus").className = "number minus grey";
+			} else {
+				document.getElementById("minus").className = "number minus";
+			}
 		}
 	}
-}
 </script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
@@ -105,16 +107,29 @@ function changeBookPerson(mode,min_date,max_date){
 					<div class="head">
 						<div class="point">1</div>
 						<h3>날짜를 선택해주세요.</h3>
-						<c:choose>
-							<c:when test="${book_date ne null}">
-								<b class="date date-start">ㅇㅇㅇㅇ년 ㅇㅇ월 ㅇㅇ일</b>
-								<a href="#" onclick="changeBookDate(${book_date})"
-									class="change"> 날짜 변경</a>
-							</c:when>
-							<c:otherwise>
-								<a href="#" onclick="selectBookDate()" class="change"> 날짜 선택</a>
-							</c:otherwise>
-						</c:choose>
+						<b class="date date-start">선택된 날짜</b> <br /> <br />
+						<div class="calendar">
+							<div class="months">
+								<div class="right-arrow"></div>
+								<div class="left-arrow inactive"></div>
+								<div class="content">
+									<ul style="width: 711.6666666666667px; margin-left: 0px;">
+										<c:forEach var="month" begin="1" end="6" step="1">
+											<li id="bookMonth${month}" class=""
+												style="width: 101.66666666666667px;"
+												onclick="changeMonth(${month},1,6)"><div>
+													<span></span> 2018년 ${month}월
+												</div></li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+							<div class="dates">
+								<script type="text/javascript">
+								calendar();
+								</script>
+							</div>
+						</div>
 					</div>
 					<div id="seats">
 						<div class="content">
@@ -143,10 +158,11 @@ function changeBookPerson(mode,min_date,max_date){
 						<div class="in quantity">
 							<form name="f">
 								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',1,10)"></span><input type="number"
-									name="book_person" value="1" min="1" max="10"
+									onclick="changeBookPerson('remove',1,10)"></span><input
+									type="number" name="book_person" value="1" min="1" max="10"
 									inputmode="numeric" pattern="[0-9]*" readonly> <span
-									class="number plus" id="plus" onclick="changeBookPerson('add',1,10)"></span>
+									class="number plus" id="plus"
+									onclick="changeBookPerson('add',1,10)"></span>
 							</form>
 						</div>
 						<div class="in solo"></div>

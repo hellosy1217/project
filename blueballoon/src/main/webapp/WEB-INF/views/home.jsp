@@ -160,7 +160,7 @@
 				</div>
 				<div class="wp">
 					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/g.png" />
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/m.png" />
 					<span>김유정</span>
 				</div>
 				<div class="wp">
