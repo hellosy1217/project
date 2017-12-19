@@ -444,7 +444,9 @@
 					<div id="like">
 						<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
 					</div>
-					좋아요 <span id="numberUpDown">1</span>
+					<div class="sub_text">
+						좋아요 <span id="numberUpDown">1</span>
+					</div>
 				</div>
 				
 				<ul class="tip">

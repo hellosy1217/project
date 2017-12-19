@@ -3982,6 +3982,14 @@ main nav ul a {
 .hgl .likeC {
 	float: right;
 }
+.hgl .likeC .sub_text {
+	text-align: center;
+	padding-top: 5px;
+}
+.hgl .likeC .sub_text span {
+	font-weight: 600;
+}
+
 div#like {
 	width: 70px; 
 	height: 70px; 
