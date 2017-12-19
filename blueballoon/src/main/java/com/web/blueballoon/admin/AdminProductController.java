@@ -33,11 +33,11 @@ public class AdminProductController {
 	public String indexAdmin() {
 		return "admin/admin_index";
 	}
-	
 	@RequestMapping(value="home")
 	public String Home() {
 		return "home";
 	}
+	
 	//==============<<<<여행 상품  관련>>>======================== 
 	@RequestMapping(value="BB_prod_insert", method=RequestMethod.GET)
 	public ModelAndView viewBBProduct() {
@@ -65,15 +65,31 @@ public class AdminProductController {
 				dto.setProd_org_img(multipartFiles.getOriginalFilename());
 			}
 			//그런 이후에 DB에 정보값 보내주기.
-			int res = adminMapper.insertBBProduct(dto);
+			int res = 0;
+			try {
+				res = adminMapper.insertBBProduct(dto);
+			}catch(NullPointerException ne) { //not null 아닌 애들 값 안넣었을 때 에러처리
+				dto.setProd_detail_address(null);
+				dto.setProd_old_address(null);
+				dto.setProd_email(null);
+				dto.setProd_str_img(null);
+			}
 			
 			String [] msg = {"여행상품 등록 완료! 여행상품 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
 			String [] url = {"BB_prod_list","BB_prod_insert"};
 			return cm.resMassege(res, msg, url);
 		}
+		
 	//여행 상품 삭제
 	@RequestMapping(value="BB_prod_delete")
 	public ModelAndView deleteBBProduct(@RequestParam int prod_num) {
+		BBProductDTO dto = adminMapper.getBBProduct(prod_num);
+		
+		boolean existFile = amazon.existFile("bb_product"+dto.getProd_pick(), dto.getProd_str_img());
+		if(existFile) {
+			amazon.deleteFile("bb_product"+dto.getProd_pick(), dto.getProd_str_img());
+		}
+		
 		int res = adminMapper.deleteBBProduct(prod_num);
 		String [] msg = {"여행상품 삭제 완료! 여행상품 목록 페이지로 이동합니다.","여행상품 삭제 실패! 여행상품 목록 페이지로 이동합니다."};
 		String [] url = {"BB_prod_list","BB_prod_list"};
