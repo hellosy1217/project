@@ -138,6 +138,41 @@
 	href="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/core/tooltip.css"
 	rel="stylesheet" type="text/css">
 
+<!-- 좋아요 버튼 아이콘  -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+	//좋아요 클릭시 색변경하기
+	$(document).ready(function() {
+		chang();
+	})
+
+	function chang() {
+		$('#like').click(function() {
+			//$(this).toggleClass('likeI');
+			$(this).children().toggleClass('likeI');
+		});
+	}
+	
+	//좋아요 카운트
+	$(function() {
+		$('#increaseQuantity').click(function(e) {
+			e.preventDefault();
+			var stat = $('#numberUpDown').text();
+			var num = parseInt(stat, 10);
+			num++;
+
+			if (num > 2) {
+				alert('이미 좋아요를 눌렀습니다.');
+				num = 2;
+			}
+			$('#numberUpDown').text(num);
+
+		});
+	});
+</script>
+
 </head>
 <body class="tb" data-b-sale="">
 	<%@include file="../../header1.jsp"%>
@@ -402,15 +437,21 @@
 			</div>
 
 			<div class="b pad hgl">
-				
+
 				<h2 class="sm">여행 꿀팁</h2>
-				<a class="but r write" href="product_booking" target="_blank" rel="nofollow" 
-				style="width: 143px; border-color: red;">바로 예약하기</a>
-				<ul>
+				
+				<div class="likeC">
+					<div id="like">
+						<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
+					</div>
+					좋아요 <span id="numberUpDown">1</span>
+				</div>
+				
+				<ul class="tip">
 					<li>꿀팁 1</li>
 					<li>꿀팁 2</li>
 					<li>꿀팁 3</li>
-					
+
 				</ul>
 				<dl class="properties">
 					<dt class="label">상품 이름</dt>
@@ -430,24 +471,11 @@
 					<dt class="label">상세 정보</dt>
 					<dd class="value transport">ㅇㅇㅇ</dd>
 				</dl>
-				<div class="intro" itemprop="description">
-					<div class="likeArea big" data-contentid="1000056557101">
-							<ul>
-								<li class="awesome ">
-									<button type="button" title="좋아요" data-grade="1" data-type="MARK"> 
-									</button>
-									<span>완전 좋아요 <i class="count">3</i></span>
-								</li>
-								<li class="good ">
-									<button type="button" title="좋아요" data-grade="2" data-type="MARK"></button>
-									<span>좋아요 <i class="count">5</i></span>
-								</li>
-								<li class="aweful ">
-									<button type="button" title="좋아요" data-grade="3" data-type="MARK"></button>
-									<span>별로에요 <i class="count">0</i></span>
-								</li>
-							</ul>
-						</div>
+				<div style="padding-top: 5px;">
+					<a class="but r write" href="product_booking" target="_blank"
+						rel="nofollow"
+						style="width:140px; position: unset; float: right;">바로
+						예약하기</a>
 				</div>
 			</div>
 
@@ -460,9 +488,9 @@
 					<div class="star half"></div>
 				</div>
 				<h2>리뷰</h2>
-				
-				<a class="but r write" href="board_write"
-					target="_blank" rel="nofollow">리뷰 작성하기</a>
+
+				<a class="but r write" href="board_write" target="_blank"
+					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
 						itemtype="http://schema.org/Review"><meta
@@ -490,7 +518,7 @@
 							</div>
 							<p></p>
 							<div itemprop="reviewBody">왈랄라랄ㄹ라</div>
-							
+
 							<div class="use cf">
 								<a class="but" data-vote="yes" data-curr="0">좋아요<span></span></a><a
 									class="but" data-vote="no" data-curr="0"><span></span></a>

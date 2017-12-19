@@ -4138,7 +4138,7 @@ aside .b .sl {
 .likeArea.simple li:first-child{margin:0;}
 .likeArea.simple li i{padding:0;}
 .likeArea.simple li p,
-.likeArea.simple li button{width:auto;height:12px;padding-left:18px;background:url('/resources/image/spr_ico_like_simple.png') 0 0 no-repeat;}
+.likeArea.simple li button{width:auto;height:12px;padding-left:18px;background:url('https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/like3.png') 0 0 no-repeat;}
 .likeArea.simple .awesome p,
 .likeArea.simple .awesome button{padding-left:21px;background-position:0 0;}
 .likeArea.simple .awesome.cur p,
