@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
-import com.web.blueballoon.model.FileNameDTO;
 import com.web.blueballoon.util.FileUtils;
 import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.util.AmazonFileUtils;
@@ -32,7 +31,7 @@ public class AdminMemberController {
 	private ControllerMessage cm;
 	@Autowired
 	private AmazonFileUtils amazonUtil;
-	
+
 	// ==============멤버 리스트 관련========================
 	@RequestMapping(value = "BB_member_list")
 	public ModelAndView list_Member() {
@@ -50,8 +49,8 @@ public class AdminMemberController {
 	}
 
 	@RequestMapping(value = "/BB_member_delete", method = RequestMethod.POST)
-	public ModelAndView memberDelete(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto,
-			BindingResult result)  throws Exception {
+	public ModelAndView memberDelete(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto, BindingResult result)
+			throws Exception {
 		HttpSession session = arg0.getSession();
 		String realPasswd = adminMapper.getMember(dto.getMember_num()).getMember_passwd();
 		ModelAndView mav = new ModelAndView();
@@ -95,34 +94,37 @@ public class AdminMemberController {
 
 	// 멤버 정보 수정(고객 요청시에만)
 	@RequestMapping(value = "/BB_member_edit", method = RequestMethod.POST)
-	protected ModelAndView updateProBoard(HttpServletRequest arg0, @RequestParam("member_org_img") MultipartFile multipartFiles,@ModelAttribute BBMemberDTO dto,
+	public ModelAndView updateProBoard(HttpServletRequest arg0,
+			@RequestParam("member_org_img") MultipartFile multipartFiles, @ModelAttribute BBMemberDTO dto,
 			BindingResult result) throws Exception {
-
-		HttpSession session = arg0.getSession();
 		String realPasswd = adminMapper.getMember(dto.getMember_num()).getMember_passwd();
-
-		ModelAndView mav = new ModelAndView();
 		if (dto.getMember_passwd().equals(realPasswd)) {
-			
-			String member_str_img = adminMapper.getMember(dto.getMember_num()).getMember_str_img();
-			boolean isDelete = amazonUtil.existFile("bb_member", member_str_img);
 			String key = null;
-			if(!isDelete) {
-				amazonUtil.one_FileUpload("bb_member", multipartFiles);
-			}
 
-			try {
+			String member_str_img = adminMapper.getMember(dto.getMember_num()).getMember_str_img();
+			// 파일이 있을 때
+			if (member_str_img != null) {
+				// 아마존에 올라간 파일을 지우고
+				boolean isDelete = amazonUtil.existFile("bb_member", member_str_img);
+				// 지워지면
+				if (!isDelete) { // 파일을 새로 넣는다
+					key = amazonUtil.one_FileUpload("bb_member", multipartFiles);
+				}
+				// 등록된 파일은 없지만, 새로 프로필사진을 넣고 싶을 때
+			} else if (member_str_img == null && multipartFiles.getOriginalFilename() != null) {
+				key = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 				dto.setMember_org_img(multipartFiles.getOriginalFilename());
 				dto.setMember_str_img(key);
-			} catch (NullPointerException e) {
-				dto.setMember_org_img(null);
-				dto.setMember_str_img(null);
+			} else {// 기존 파일도 없고, 새로운 파일도 없을 때
+				dto.setMember_org_img("not_exist");
+				dto.setMember_str_img("not_exist");
 			}
-
-			adminMapper.editMember(dto);
-			mav.addObject("msg", "수정성공");
+			int res = adminMapper.editMember(dto);
+			if (res > 0) {
+				mav.addObject("msg", "수정성공");
+			}
 		} else {
-			mav.addObject("msg", "수정실패");
+			mav.addObject("msg", "비밀번호 오류 , 수정실패");
 		}
 		mav.addObject("url", "BB_member_list");
 		mav.setViewName("admin/message");

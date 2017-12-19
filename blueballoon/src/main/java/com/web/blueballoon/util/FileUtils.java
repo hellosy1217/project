@@ -28,9 +28,9 @@ public class FileUtils {
 			if (member_org_img == null || member_org_img.equals("")) {
 				return null;
 			}
-
+			CommonUtils util = new CommonUtils();
 			String originalFileExtension = member_org_img.substring(member_org_img.lastIndexOf("."));							
-			String member_str_img = CommonUtils.getRandomString() + originalFileExtension;
+			String member_str_img = util.getRandomString() + originalFileExtension;
 			// 서버에 파일 쓰기
 			File file = new File(upPath, member_str_img);
 			mf.transferTo(file);

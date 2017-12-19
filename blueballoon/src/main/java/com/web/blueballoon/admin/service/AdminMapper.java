@@ -22,13 +22,13 @@ public class AdminMapper {
 			return sqlSession.selectOne("getMember",member_num);
 		}
 		//멤버 정보 수정
-		public void editMember(BBMemberDTO dto) {
-
+		public int editMember(BBMemberDTO dto) {
+			int res = 0;
 			BBMemberDTO dto2 = sqlSession.selectOne("getMember", dto.getMember_num());
 			if (dto2.getMember_passwd().equals(dto.getMember_passwd())) {
-				sqlSession.update("editMember", dto);
+				res = sqlSession.update("editMember", dto);
 			}
-			return;
+			return res;
 
 		}
 		//멤버 삭제!(이메일 인증과 시간 통과 후에만)
