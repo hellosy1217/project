@@ -431,7 +431,22 @@
 					<dd class="value transport">ㅇㅇㅇ</dd>
 				</dl>
 				<div class="intro" itemprop="description">
-					좋아요 버튼 기능 넣을 예정
+					<div class="likeArea big" data-contentid="1000056557101">
+							<ul>
+								<li class="awesome ">
+									<button type="button" title="좋아요" data-grade="1" data-type="MARK"></button>
+									<span>완전 좋아요 <i class="count">3</i></span>
+								</li>
+								<li class="good ">
+									<button type="button" title="좋아요" data-grade="2" data-type="MARK"></button>
+									<span>좋아요 <i class="count">5</i></span>
+								</li>
+								<li class="aweful ">
+									<button type="button" title="좋아요" data-grade="3" data-type="MARK"></button>
+									<span>별로에요 <i class="count">0</i></span>
+								</li>
+							</ul>
+						</div>
 				</div>
 			</div>
 
