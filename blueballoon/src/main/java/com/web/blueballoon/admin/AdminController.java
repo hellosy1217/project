@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBProductDTO;
+import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.CategoryInput;
 import com.web.blueballoon.util.ControllerMessage;
 
@@ -24,10 +26,11 @@ public class AdminController {
 	private AdminMapper adminMapper;
 	@Autowired
 	private CategoryInput cateInput; //재 수정할 예정.
-	
 	private ModelAndView mav = new ModelAndView();
 	@Autowired
 	private ControllerMessage cm;
+	@Autowired
+	private AmazonFileUtils amazon;
 	
 	@RequestMapping(value="admin_index")
 	public String indexAdmin() {
@@ -110,20 +113,31 @@ public class AdminController {
 		mav.setViewName("admin/product/BB_prod_insert"); return mav;
 	}
 	//여행 상품 등록 
-	@RequestMapping(value="BB_prod_insert", method=RequestMethod.POST)
-	public ModelAndView insertBBProduct(BBProductDTO dto) {
-		if(dto.getProd_name()==null || dto.getProd_name().trim().equals("")) {
-			mav.addObject("msg","잘못된 접근입니다. 여행상품 등록으로 이동합니다.");
-			mav.addObject("url","BB_prod_insert");
-			mav.setViewName("admin/message"); return mav;
+		@RequestMapping(value="BB_prod_insert", method=RequestMethod.POST)
+		public ModelAndView insertBBProduct(HttpServletRequest req,@RequestParam("prod_org_img") MultipartFile multipartFiles, @ModelAttribute BBProductDTO dto, BindingResult result) {
+			if(dto.getProd_name()==null || dto.getProd_name().trim().equals("")) {
+				mav.addObject("msg","잘못된 접근입니다. 여행상품 등록으로 이동합니다.");
+				mav.addObject("url","BB_prod_insert");
+				mav.setViewName("admin/message"); return mav;
+			}
+			//여행 상품 등록 파일 naming = bb_product+(prod_pick)
+			String filename = multipartFiles.getOriginalFilename();
+			if(filename == null || filename.trim().equals("")) {
+				//사진을 올리지 않을 경우 거의 존재 하지 않음.
+				dto.setProd_org_img("0");
+			}else {
+				//아마존 업로드 이후 저장한 파일 이름 return 받아 저장해주기(str_file_name) 
+				String upload = amazon.one_FileUpload("bb_product"+dto.getProd_pick(), multipartFiles);
+				dto.setProd_str_img(upload);
+				dto.setProd_org_img(multipartFiles.getOriginalFilename());
+			}
+			//그런 이후에 DB에 정보값 보내주기.
+			int res = adminMapper.insertBBProduct(dto);
+			
+			String [] msg = {"여행상품 등록 완료! 여행상품 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
+			String [] url = {"BB_prod_list","BB_prod_insert"};
+			return cm.resMassege(res, msg, url);
 		}
-		
-		int res = adminMapper.insertBBProduct(dto);
-		
-		String [] msg = {"여행상품 등록 완료! 여행상품 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
-		String [] url = {"BB_prod_list","BB_prod_insert"};
-		return cm.resMassege(res, msg, url);
-	}
 	//여행 상품 삭제
 	@RequestMapping(value="BB_prod_delete")
 	public ModelAndView deleteBBProduct(@RequestParam int prod_num) {

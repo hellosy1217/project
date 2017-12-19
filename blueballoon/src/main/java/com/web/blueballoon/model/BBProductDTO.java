@@ -9,8 +9,8 @@ public class BBProductDTO {
 	private String prod_org_img;
 	private String prod_str_img;
 	private String prod_cate;
-	private String prod_post_code;
-	private String pord_road_address;
+	private String prod_post_number;
+	private String prod_road_address;
 	private String prod_old_address;
 	private String prod_detail_address;
 	private String prod_content;
@@ -64,17 +64,17 @@ public class BBProductDTO {
 	public void setProd_cate(String prod_cate) {
 		this.prod_cate = prod_cate;
 	}
-	public String getProd_post_code() {
-		return prod_post_code;
+	public String getProd_post_number() {
+		return prod_post_number;
 	}
-	public void setProd_post_code(String prod_post_code) {
-		this.prod_post_code = prod_post_code;
+	public void setProd_post_number(String prod_post_number) {
+		this.prod_post_number = prod_post_number;
 	}
-	public String getPord_road_address() {
-		return pord_road_address;
+	public String getProd_road_address() {
+		return prod_road_address;
 	}
-	public void setPord_road_address(String pord_road_address) {
-		this.pord_road_address = pord_road_address;
+	public void setProd_road_address(String prod_road_address) {
+		this.prod_road_address = prod_road_address;
 	}
 	public String getProd_old_address() {
 		return prod_old_address;
