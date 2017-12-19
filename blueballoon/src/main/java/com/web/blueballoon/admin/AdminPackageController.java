@@ -9,7 +9,7 @@ import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.util.ControllerMessage;
 
 @Controller
-public class PackageController {
+public class AdminPackageController {
 	
 	private ModelAndView mav = new ModelAndView();
 	@Autowired
