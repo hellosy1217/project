@@ -434,7 +434,8 @@
 					<div class="likeArea big" data-contentid="1000056557101">
 							<ul>
 								<li class="awesome ">
-									<button type="button" title="좋아요" data-grade="1" data-type="MARK"></button>
+									<button type="button" title="좋아요" data-grade="1" data-type="MARK"> 
+									</button>
 									<span>완전 좋아요 <i class="count">3</i></span>
 								</li>
 								<li class="good ">
