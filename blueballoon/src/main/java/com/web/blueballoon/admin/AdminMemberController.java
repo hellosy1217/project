@@ -103,8 +103,9 @@ public class AdminMemberController {
 
 		ModelAndView mav = new ModelAndView();
 		if (dto.getMember_passwd().equals(realPasswd)) {
+			
 			String member_str_img = adminMapper.getMember(dto.getMember_num()).getMember_str_img();
-			boolean isDelete = amazonUtil.deleteFile("bb_member", member_str_img);
+			boolean isDelete = amazonUtil.existFile("bb_member", member_str_img);
 			String key = null;
 			if(!isDelete) {
 				amazonUtil.one_FileUpload("bb_member", multipartFiles);

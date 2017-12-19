@@ -12,6 +12,14 @@
 		</tr>
 	</table>
 </div>
+<script type="text/javascript">
+	function checkDel(prod_num){
+		var isDel = confirm("정말로 삭제하시겠습니까?")
+		if (isDel){
+			location.href="BB_prod_delete?prod_num="+prod_num;
+		}
+	}
+</script>
 <div align="center">
 	<table border="1" width="700">
 		<tr>
@@ -45,7 +53,7 @@
 				<td align="center">숙소</td>
 			</c:if>
 			<td><a href="BB_prod_edit?prod_num=${dto.prod_num}">수정</a> | 
-			<a href="BB_prod_delete?prod_num=${dto.prod_num}">삭제</a></td>
+			<a href="javascript:checkDel('${dto.prod_num}')">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>

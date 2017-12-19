@@ -27,15 +27,10 @@
 	</update>
 	<!-- 여행 상품 -->
 	<insert id="insertBBProduct" parameterType="BBProductDTO">
-		insert into
-		bb_product values(bb_prod_seq.nextval, #{prod_num},
-		#{prod_name},
-		#{prod_email}, #{prod_hp} , #{prod_person},
-		#{prod_price},
-		#{book_date}, #{prod_img},
-		#{prod_address1},
-		#{prod_address2},
-		#{prod_content}, #{prod_pick})
+		insert into bb_product values(bb_prod_seq.nextval, #{prod_name},
+		#{prod_email}, #{prod_phone} , #{prod_price},
+		#{prod_org_img}, #{prod_str_img}, #{prod_cate},  #{prod_post_number}, #{prod_road_address}, #{prod_old_address},
+		#{prod_detail_address}, #{prod_content}, #{prod_pick})
 	</insert>
 	<delete id="deleteBBProduct" parameterType="int">
 		delete * from
