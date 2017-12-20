@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Review your Busabout Tour - TourRadar</title>
+<title>후기 작성 -BlueBalloon</title>
 <meta http-equiv='content-type' content='text/html; charset=utf-8'>
 <meta http-equiv='MSThemeCompatible' content='Yes'>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -314,29 +314,24 @@
 				</div>
 			</div>
 			<div class="txt">
-				<h2>Your opinion matters</h2>
+				<h2>상품이름이나 패키지 이름이 나올 예정</h2>
 				<p>
-					Leave a short review of your Busabout tour, and help others find
-					the right tour for them.<br /> We only feature reviews from
-					trusted sources.
+					뭘 적을지 미정/ 아마 상품 설명같을거....<br>
+					아니면 당신의 후기를 적어줘!같은거
 				</p>
-				<a class="but" href="#" onclick="return false" data-name="Busabout">Start
-					your review</a>
+				<a class="but" href="#" onclick="return false" data-name="Busabout">후기 적기</a>
 			</div>
 		</div>
 		<div class="verify-email hidden">
 			<div class="popup">
 				<span class="close">✕</span>
-				<h2>Confirm your email address</h2>
+				<h2>finish버튼 누르면 나오는창</h2>
 				<img src="/images/responsive/review/verify_email.png"
 					alt="Confirm your email address">
 				<p>
-					Almost finished! We've sent you an email to <span></span>, please
-					check your inbox and confirm your email address in order to publish
-					your review.
-				</p>
-				<p>
-					Didn't receive the email? <a href="#">Resend</a>
+					여기서는 리뷰를 쓰면 비회원인경우 이메일을 보내서<span></span>, 
+					이메일에서 확인을 누르면 리뷰가 등록되면서 자동 가입됨...
+					저는 그냥 저장되고 이메일같은거 안보냈으면 좋겠는데 말이져
 				</p>
 			</div>
 		</div>
@@ -348,24 +343,22 @@
 					</div>
 				</div>
 				<div class="txt">
-					<h1 class="orig">Help your fellow travellers by sharing your
-						experience with Busabout</h1>
-					<h1 class="repl hidden">Rate your experience with Busabout</h1>
+					<h1 class="orig">후기를 작성해서 많은 사람과 추억을 공유하세요</h1>
+					<h1 class="repl hidden">이 여행에 대한 별점을 작성해주세요</h1>
 					<ul class="subtitle clearfix">
-						<li class="com">Busabout<span></span></li>
-						<li class="act">Review your tour<span></span></li>
-						<li>Rate your tour and guide<span></span></li>
-						<li>Finish</li>
+						<li class="com">당신의 여행<span></span></li>
+						<li class="act">여행에 대한 후기<span></span></li>
+						<li>여행에 대한 별점과 사진<span></span></li>
+						<li>끝</li>
 					</ul>
 				</div>
 			</div>
-			<p class="note back-to-review form2 hidden">&laquo; Back to
-				review</p>
+			<p class="note back-to-review form2 hidden">&laquo; 뒤로 가기</p>
 			<div class="form1">
 				<section class="wrapper">
 					<article class="arrow1 last">
 						<div class="header-cnt">
-							<h2>Your review</h2>
+							<h2>후기 작성</h2>
 							<span class="pic1 middle left15"><svg class="svg-arrow"
 									viewBox="0 0 32 32">
 									<g>
@@ -381,17 +374,17 @@
 										<g>
 										<path
 											d="M10,0.666666667 C4.84555556,0.666666667 0.666666667,4.84555556 0.666666667,10 C0.666666667,15.1544444 4.84555556,19.3333333 10,19.3333333 C15.1544444,19.3333333 19.3333333,15.1544444 19.3333333,10 C19.3333333,4.84555556 15.1544444,0.666666667 10,0.666666667 L10,0.666666667 Z M15.3211111,13.4011111 L13.4,15.3222222 L10,11.9211111 L6.59888889,15.3211111 L4.67777778,13.4 L8.08,10 L4.67888889,6.59888889 L6.6,4.67888889 L10,8.07888889 L13.4011111,4.67777778 L15.3222222,6.59888889 L11.92,10 L15.3211111,13.4011111 L15.3211111,13.4011111 Z"></path></g></svg></span><span
-									class="pic3 err hidden"> Please write your review here
-									(15 character minimum) </span>
+									class="pic3 err hidden"> 후기를 작성해주세요
+									(15자 이상 적어주세요) </span>
 							</div>
 						</div>
 						<textarea
-							placeholder="Share your experience! Was the trip what you expected? Describe your guide, the transportation, the accommodation, etc..."
-							class="review_text"></textarea>
+							placeholder="이 여행에 대한 당신의 경험이나 느낀점을 적어주세요"
+							name="board_content" class="review_text"></textarea>
 					</article>
 					<article class="error-plc-hld center"></article>
 					<article class="center button-opt-arrow">
-						<button class="maincta">Continue</button>
+						<button class="maincta">다음></button>
 						<div class="opt hidden">
 							<span class="pic1"><svg class="svg-arrow"
 									viewBox="0 0 32 32">
@@ -404,7 +397,7 @@
 			<div class="form2 hidden">
 				<section class="wrapper">
 					<article class="arrow1">
-						<h2>Which tour did you go on?</h2>
+						<h2>필요없음</h2>
 						<span class="pic1 middle left15"><svg class="svg-arrow"
 								viewBox="0 0 32 32">
 								<g>
@@ -420,7 +413,7 @@
 									<g>
 									<path
 										d="M10,0.666666667 C4.84555556,0.666666667 0.666666667,4.84555556 0.666666667,10 C0.666666667,15.1544444 4.84555556,19.3333333 10,19.3333333 C15.1544444,19.3333333 19.3333333,15.1544444 19.3333333,10 C19.3333333,4.84555556 15.1544444,0.666666667 10,0.666666667 L10,0.666666667 Z M15.3211111,13.4011111 L13.4,15.3222222 L10,11.9211111 L6.59888889,15.3211111 L4.67777778,13.4 L8.08,10 L4.67888889,6.59888889 L6.6,4.67888889 L10,8.07888889 L13.4011111,4.67777778 L15.3222222,6.59888889 L11.92,10 L15.3211111,13.4011111 L15.3211111,13.4011111 Z"></path></g></svg></span><span
-								class="pic3 err hidden"> Please choose your tour </span>
+								class="pic3 err hidden">당신의 여행을 선택해</span>
 						</div>
 						<select id="tours" class="f-height"><option value="">Select
 								the tour</option>
@@ -575,7 +568,7 @@
 					</article>
 					<article class="arrow2">
 						<div class="header-cnt sc-mark1">
-							<h2>When did you travel?</h2>
+							<h2>필요없는데</h2>
 							<span class="pic1 middle left15 hidden"><svg
 									class="svg-arrow" viewBox="0 0 32 32">
 									<g>
@@ -591,8 +584,7 @@
 										<g>
 										<path
 											d="M10,0.666666667 C4.84555556,0.666666667 0.666666667,4.84555556 0.666666667,10 C0.666666667,15.1544444 4.84555556,19.3333333 10,19.3333333 C15.1544444,19.3333333 19.3333333,15.1544444 19.3333333,10 C19.3333333,4.84555556 15.1544444,0.666666667 10,0.666666667 L10,0.666666667 Z M15.3211111,13.4011111 L13.4,15.3222222 L10,11.9211111 L6.59888889,15.3211111 L4.67777778,13.4 L8.08,10 L4.67888889,6.59888889 L6.6,4.67888889 L10,8.07888889 L13.4011111,4.67777778 L15.3222222,6.59888889 L11.92,10 L15.3211111,13.4011111 L15.3211111,13.4011111 Z"></path></g></svg></span><span
-									class="pic3 err hidden"> Please choose correct month and
-									year </span>
+									class="pic3 err hidden"> 뭐라도 지우면 유효성이 안되요ㅠㅠ </span>
 							</div>
 						</div>
 						<select class="select year"><option value="">Year</option>
@@ -617,7 +609,7 @@
 					</article>
 					<article class="arrow3">
 						<div class="header-cnt">
-							<h2>How would you rate?</h2>
+							<h2>여행에 대한 별점을 주세요</h2>
 							<span class="pic1 middle left15 hidden"><svg
 									class="svg-arrow" viewBox="0 0 32 32">
 									<g>
@@ -633,31 +625,31 @@
 										<g>
 										<path
 											d="M10,0.666666667 C4.84555556,0.666666667 0.666666667,4.84555556 0.666666667,10 C0.666666667,15.1544444 4.84555556,19.3333333 10,19.3333333 C15.1544444,19.3333333 19.3333333,15.1544444 19.3333333,10 C19.3333333,4.84555556 15.1544444,0.666666667 10,0.666666667 L10,0.666666667 Z M15.3211111,13.4011111 L13.4,15.3222222 L10,11.9211111 L6.59888889,15.3211111 L4.67777778,13.4 L8.08,10 L4.67888889,6.59888889 L6.6,4.67888889 L10,8.07888889 L13.4011111,4.67777778 L15.3222222,6.59888889 L11.92,10 L15.3211111,13.4011111 L15.3211111,13.4011111 Z"></path></g></svg></span><span
-									class="pic3 err hidden"> Please rate the following </span>
+									class="pic3 err hidden"> 별점을 선택하세요 </span>
 							</div>
 						</div>
 						<div class="rate">
 							<div class="rating-title">
-								Value for money<br />
+								이 여행에 대한 만족도<br />
 							</div>
 							<span class="stars v starhover" num=""><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span><span
-								class="rating-hint"></span>
+								 class="rating-hint"></span>
 						</div>
 						<div class="rate">
 							<div class="rating-title">
-								Transportation<br />
+								당신에게 알맞은 추천이였나요?<br />
 							</div>
 							<span class="stars t starhover" num=""><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span><span
 								class="rating-hint"></span>
 						</div>
 						<div class="rate">
 							<div class="rating-title">
-								Guide<br />
+								남에게 추천하고싶나요?<br />
 							</div>
 							<span class="stars g starhover" num=""><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span><span
 								class="rating-hint"></span>
 							<div class="guide-name-cnt">
-								<span class="txt">Guide's name <span class="grey">OPTIONAL</span></span><select
+								<span class="txt">하지 않을 기능 <span class="grey">OPTIONAL</span></span><select
 									class="select guide" name="guides[]"><option value="">--
 										Select your guide --</option>
 									<option value="12">Adam Bazeley</option>
@@ -771,14 +763,14 @@
 						</div>
 						<div class="rate">
 							<div class="rating-title">
-								Accommodation <span class="grey">OPTIONAL</span>
+								어떤 별점1 <span class="grey">OPTIONAL</span>
 							</div>
 							<span class="stars a starhover" num=""><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span><span
 								class="rating-hint"></span>
 						</div>
 						<div class="rate">
 							<div class="rating-title">
-								Meals <span class="grey">OPTIONAL</span>
+								어떤 별점2 <span class="grey">OPTIONAL</span>
 							</div>
 							<span class="stars m starhover" num=""><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span><span
 								class="rating-hint"></span>
@@ -786,8 +778,7 @@
 					</article>
 					<article class="arrow4">
 						<div class="header-cnt">
-							<h2>How likely is it you would recommend Busabout to a
-								friend?</h2>
+							<h2>뺄 기능</h2>
 							<span class="pic1 middle left15 hidden"><svg
 									class="svg-arrow" viewBox="0 0 32 32">
 									<g>
@@ -829,10 +820,10 @@
 					</article>
 					<article>
 						<h2 class="nofloat">
-							Share your stellar trip photos! <span class="grey">OPTIONAL</span>
+							사진을 올려 자랑해보세요 <span class="grey">OPTIONAL</span>
 						</h2>
 						<div class="cont">
-							<button class="secondary switch-upload-on">Upload photos</button>
+							<button class="secondary switch-upload-on">사진 올리기</button>
 							<div class="photo_upload hidden">
 								<div class="hidden">
 									<figure id="sample" class="user-image">
@@ -860,25 +851,24 @@
 										class="preloader hidden" />
 								</div>
 								<div class="more-photos-cnt">
-									<button class="secondary switch-upload-area hidden">Add
-										more photos</button>
+									<button class="secondary switch-upload-area hidden">사진 추가하기</button>
 								</div>
 							</div>
 							<div class="area-d hidden">
 								<div class="container-custom-file-button">
-									<p class="grey">Drop your files here</p>
+									<p class="grey">사진을 여기에 올려주세요</p>
 									<input type="button"
 										class="multi-line-button grey file secondary"
-										value="Select files" /><input type="file"
+										value="사진 선택" /><input type="file"
 										class="custombutton" name="pics[]" multiple /><span
-										class="tip">JPEG and PNG less than 5Mb.</span>
+										class="tip">5Mb미만의 JPEG나 PNG만 가능합니다.</span>
 								</div>
 							</div>
 						</div>
 					</article>
 					<article class="arrow5">
 						<div class="header-cnt">
-							<h2>Verify your review</h2>
+							<h2>이게 별점 위에 있음 좋겠는데</h2>
 							<span class="pic1 middle left15 hidden"><svg
 									class="svg-arrow" viewBox="0 0 32 32">
 									<g>
@@ -894,25 +884,24 @@
 										<g>
 										<path
 											d="M10,0.666666667 C4.84555556,0.666666667 0.666666667,4.84555556 0.666666667,10 C0.666666667,15.1544444 4.84555556,19.3333333 10,19.3333333 C15.1544444,19.3333333 19.3333333,15.1544444 19.3333333,10 C19.3333333,4.84555556 15.1544444,0.666666667 10,0.666666667 L10,0.666666667 Z M15.3211111,13.4011111 L13.4,15.3222222 L10,11.9211111 L6.59888889,15.3211111 L4.67777778,13.4 L8.08,10 L4.67888889,6.59888889 L6.6,4.67888889 L10,8.07888889 L13.4011111,4.67777778 L15.3222222,6.59888889 L11.92,10 L15.3211111,13.4011111 L15.3211111,13.4011111 Z"></path></g></svg></span><span
-									class="pic3 err hidden"> "Name" and "Email" fields are
-									required </span>
+									class="pic3 err hidden"> 제목을 적어주세요 </span>
 							</div>
 						</div>
 						<div class="verify clearfix">
 							<div>
-								<div class="title">Name</div>
-								<input id="verify-name" placeholder="Enter your name" />
+								<div class="title">제목</div>
+								<input id="verify-name" placeholder="제목을 적어주세요" />
 							</div>
 							<div>
-								<div class="title">Email</div>
-								<input id="verify-email" placeholder="Enter email address"
+								<div class="title">없음</div>
+								<input id="verify-email" placeholder="지워도 되요"
 									type="email" />
 							</div>
 						</div>
 					</article>
 					<article class="error-plc-hld center"></article>
 					<article class="center">
-						<button class="maincta">Finish</button>
+						<button class="maincta">끝</button>
 					</article>
 				</section>
 			</div>
@@ -921,7 +910,7 @@
 					<svg class="svg-icon-checkmark" viewBox="0 0 32 25">
 						<g>
 						<path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path></g></svg>
-					<h3>Thanks for your review!</h3>
+					<h3>이메일에서 확인받으면 보이는 창</h3>
 				</div>
 				<section id="social">
 					<article>
@@ -930,13 +919,10 @@
 								style="background-image: url(https://www.tourradar.com/images/new_layout/Reviews_avatar_guide_p_100x100.png)"></div>
 						</div>
 						<h2 class="center">
-							<span class="first-guide">Enjoyed your tour? You can help
-								<span>Busabout</span> win a TourRadar award by asking your
-								fellow travellers to leave a review!
+							<span class="first-guide">필요없음
 							</span>
 						</h2>
-						<p class="text center">Share this link with your friends from
-							the tour so they can leave a review too.</p>
+						<p class="text center">form3 hidden이라는 클래스가 전부 리뷰 작성후 나오는 창같다</p>
 						<div class="center">
 							<div id="sharelnk">https://www.tourradar.com/review/busabout</div>
 						</div>
