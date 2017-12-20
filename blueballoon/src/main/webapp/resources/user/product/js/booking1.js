@@ -1,9 +1,6 @@
 function calendar(date) {
-	if (date == null) {
-		date = new Date();
-	} else {
-		date = new Date(date);
-	}
+	date = new Date(date);
+	
 	var day = date.getDate();
 	var month = date.getMonth();
 	var year = date.getYear();

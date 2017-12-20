@@ -118,15 +118,16 @@
 											<li id="bookMonth${month}" class=""
 												style="width: 101.66666666666667px;"
 												onclick="changeMonth(${month},1,6)"><div>
-													<span></span> 2018년 ${month}월
+													<span></span> 2017년 ${month}월
 												</div></li>
 										</c:forEach>
+										<c:forTokens items="" delims="" ></c:forTokens>
 									</ul>
 								</div>
 							</div>
 							<div class="dates">
 								<script type="text/javascript">
-								calendar();
+								calendar(2018-01-25);
 								</script>
 							</div>
 						</div>

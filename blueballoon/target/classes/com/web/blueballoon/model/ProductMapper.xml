@@ -15,7 +15,7 @@
 		select * from
 		bb_room where prod_num=#{prod_num}
 	</select>
-	<select id="listBookingRoom" parameterType="int" resultType="BBBookingRoomDTO">
+	<select id="listBookingRoom" parameterType="int" resultType="BBBookRoomDTO">
 		select * from
 		bb_booking_room where prod_num=#{prod_num}
 	</select>

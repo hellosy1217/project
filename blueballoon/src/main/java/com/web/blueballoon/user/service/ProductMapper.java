@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.web.blueballoon.model.BBBookingRoomDTO;
+import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 
@@ -28,7 +28,7 @@ public class ProductMapper {
 		return sqlSession.selectList("listRoom", prod_num);
 	}
 
-	public List<BBBookingRoomDTO> listBookingRoom(int prod_num) {
+	public List<BBBookRoomDTO> listBookingRoom(int prod_num) {
 		return sqlSession.selectList("listBookingRoom", prod_num);
 	}
 }

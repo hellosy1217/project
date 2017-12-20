@@ -1,6 +1,6 @@
 package com.web.blueballoon.model;
 
-public class BBBookingRoomDTO {
+public class BBBookRoomDTO {
 	private int prod_num;
 	private int room_num;
 	private String room_date;
