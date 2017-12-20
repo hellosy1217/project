@@ -474,7 +474,7 @@
 					<dd class="value transport">ㅇㅇㅇ</dd>
 				</dl>
 				<div style="padding-top: 5px;">
-					<a class="but r write" href="product_booking" target="_blank"
+					<a class="but r write" href="product_booking?prod_num=61" target="_blank"
 						rel="nofollow"
 						style="width:140px; position: unset; float: right;">바로
 						예약하기</a>

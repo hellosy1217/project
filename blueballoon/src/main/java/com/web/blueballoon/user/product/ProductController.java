@@ -1,6 +1,9 @@
 package com.web.blueballoon.user.product;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.blueballoon.model.BBBookingRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
@@ -84,8 +89,34 @@ public class ProductController {
 
 	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
 	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-	
-		mav.setViewName("user/product/booking");
+		try {
+			int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+
+			// 숙소 내 모든 방 목록
+			List<BBRoomDTO> listRoom = ProductMapper.listRoom(prod_num);
+			mav.addObject("listRoom", listRoom);
+
+			// 숙소 내 예약된 방 목록
+			List<BBBookingRoomDTO> listBookingRoom = ProductMapper.listBookingRoom(prod_num);
+			mav.addObject("listBookingRoom", listBookingRoom);
+
+			// 최소 인원, 최대 인원
+			List<Integer> min_people = new ArrayList<Integer>();
+			List<Integer> max_people = new ArrayList<Integer>();
+
+			for (int i = 0; i < listRoom.size(); i++) {
+				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_person(), "-");
+				min_people.add(Integer.parseInt(str.nextToken()));
+				max_people.add(Integer.parseInt(str.nextToken()));
+			}
+			mav.addObject("min_person", Collections.min(min_people));
+			mav.addObject("max_person", Collections.max(max_people));
+
+			mav.setViewName("user/product/booking");
+		} catch (NullPointerException e) {
+			// 나중에 오류 메세지로 처리
+
+		}
 		return mav;
 	}
 }

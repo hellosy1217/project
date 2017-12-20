@@ -151,18 +151,19 @@
 				<div class="block details">
 					<div class="head">
 						<div class="point">2</div>
-						<h3>?를 입력해주세요.</h3>
+						<h3>예약 정보를 입력해주세요.</h3>
 					</div>
 					<div class="info unselectable " unselectable="on">
 						<b class="in">인원</b>
 						<div class="in quantity">
 							<form name="f">
 								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',1,10)"></span><input
-									type="number" name="book_person" value="1" min="1" max="10"
-									inputmode="numeric" pattern="[0-9]*" readonly> <span
-									class="number plus" id="plus"
-									onclick="changeBookPerson('add',1,10)"></span>
+									onclick="changeBookPerson('remove',${min_person},${max_person})"></span><input
+									type="number" name="book_person" value="${min_person}"
+									min="${min_person}" max="${max_person}" inputmode="numeric"
+									pattern="[0-9]*" readonly> <span class="number plus"
+									id="plus"
+									onclick="changeBookPerson('add',${min_person},${max_person})"></span>
 							</form>
 						</div>
 						<div class="in solo"></div>
