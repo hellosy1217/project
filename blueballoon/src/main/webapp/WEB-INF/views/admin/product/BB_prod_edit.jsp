@@ -59,16 +59,15 @@
         }).open();
     }
 </script>
-<script src="main/webapp/WEB-INF/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-	var myString = ${getProduct.prod_address1};
-    var myArray = myString.split(',');
-    
-    // display the result in myDiv
-        $('#sample4_roadAddress').append.val(myArray[0]);
-        $('#sample4_jibunAddress').append.val(myArray[1]);
-});
+	function setSelected(){
+		var prod_pick = ${getProduct.prod_pick};
+		for (i = 0; i < document.getElementById("pick").options.length; i++) {
+		    if (document.getElementById("pick").options[i].value == prod_pick) {
+		        document.getElementById("pick").options[i].selected = "selected";
+		    }
+	}
+}
 </script>
 <div align="center">
    <form name="f" action="BB_prod_edit" method="post" enctype="multipart/form-data">
@@ -98,31 +97,30 @@ $(document).ready(function() {
          </tr>
          <tr>
             <th>판매자 전화번호</th>
-            <td><input type="text" name="prod_hp"
-            placeholder="예) 010-1111-2222"value="${getProduct.prod_hp}"> " - " 포함 전체 자리를 입력해주세요.</td>
+            <td><input type="text" name="prod_phone"
+            placeholder="예) 010-1111-2222" value="${getProduct.prod_phone}"> " - " 포함 전체 자리를 입력해주세요.</td>
          </tr>
          <tr>
             <th>상품 가격</th>
-            <td><input type="text" name="prod_price"value="${getProduct.prod_price}"></td>
+            <td><input type="text" name="prod_price" value="${getProduct.prod_price}"></td>
          </tr>
          <tr>
             <th>이미지</th>
-            <td><input type="file" name="prod_img"></td>
+            <td><input type="file" name="prod_org_img" value="${getProduct.prod_org_img}">${getProduct.prod_org_img} 옆에 링크로 사진 보여주기.</td>
          </tr> 
          <tr>
 					<th>우편번호</th>
 					<td>
-					   <input type="text" id="sample4_postcode" placeholder="우편번호">
+					   <input type="text" name="prod_post_number" id="sample4_postcode" placeholder="우편번호" value="${getProduct.prod_post_number}">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" name="prod_address1" id="sample4_roadAddress" placeholder="도로명주소" >
-						<input type="text" name="prod_address1" id="sample4_jibunAddress" placeholder="지번주소">
-						
+						<input type="text" name="prod_road_address" id="sample4_roadAddress" placeholder="도로명주소" value="${getProduct.prod_road_address}">
+						<input type="text" name="prod_old_address" id="sample4_jibunAddress" placeholder="지번주소" value="${getProduct.prod_old_address}">
 						<span id="guide" style="color:#999"></span>
 					</td>
 				</tr>
          <tr>
             <th>상세 주소</th>
-            <td><input type="text" name="prod_address2" value="${getProduct.prod_address2}"></td>
+            <td><input type="text" name="prod_detail_address" value="${getProduct.prod_detail_address}"></td>
          </tr>
          <tr>
             <th>상품 정보</th>
@@ -131,15 +129,16 @@ $(document).ready(function() {
          <tr>
             <th>상품 분류</th>
             <td>
-               <select name="prod_pick" title="상품을 분류해주세요.">
-                  <option value="1">지역</option>
-                  <option value="2" >맛집</option>
-                  <option value="3" >숙소</option>
+               <select name="prod_pick" id="pick">
+                   	<option>상품을 분류해주세요.</option>
+                 	<option value="1" >지역</option>
+                  	<option value="2" >맛집</option>
+                  	<option value="3" >숙소</option>
                </select>
             </td>
          </tr>
          <tr>
-            <td colspan="2"><input type="submit" value="상품 등록">
+            <td colspan="2"><input type="submit" value="상품 수정">
                <input type="reset" value="취 소"></td>
          </tr>
       </table>
