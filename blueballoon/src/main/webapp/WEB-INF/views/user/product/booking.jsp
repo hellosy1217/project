@@ -50,12 +50,16 @@
 	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/user/product/js/booking2.js?ver=1"></script>
 <script type="text/javascript">
 	function changeMonth(month,begin,end) {
 		for(var i=begin;i<=end;i++){
 			document.getElementById("bookMonth" + i).className = "";
 		}
 		document.getElementById("bookMonth" + month).className = "selected ";
+		$(".dates").empty();
+		$(".dates").append("<script type=&quot;text/javascript&quot;>calendar2('2018-08-25');<\/script>").css();
 	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
@@ -78,6 +82,10 @@
 			}
 		}
 	}
+</script>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+
 </script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
@@ -121,13 +129,12 @@
 													<span></span> 2017년 ${month}월
 												</div></li>
 										</c:forEach>
-										<c:forTokens items="" delims="" ></c:forTokens>
 									</ul>
 								</div>
 							</div>
 							<div class="dates">
 								<script type="text/javascript">
-								calendar(2018-01-25);
+								calendar('2018-08-25');
 								</script>
 							</div>
 						</div>
