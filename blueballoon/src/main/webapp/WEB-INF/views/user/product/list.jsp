@@ -135,15 +135,16 @@
 		</div>
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" begin="1" end="9" step="1">
+				<c:forEach var="prod" begin="1" end="9" step="1" items="${ProductList}">
 
 					<div class="spotListIn">
-						<a href="product_content?prod_num=" class="spotIn focusedLink">
+						<a href="product_content?prod_num=${prod.prod_num}" class="spotIn focusedLink">
 							<div class="thumb">
 								<img
 									src="http://ttcfd.hanatour.com/@cms_300/2015090782/gjeyls/홍대_쇼핑거리_TTB (3).JPG"
 									alt="" width="245" style="margin-top: 0px;">
-							</div> <span class="spot">합정/홍대</span> <strong class="title">홍대</strong>
+							</div> <span class="spot">${prod.prod_cate}</span>
+							<strong class="title">${prod.prod_name}</strong>
 							<span class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
