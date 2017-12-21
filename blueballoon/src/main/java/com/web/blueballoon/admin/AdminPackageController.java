@@ -26,7 +26,7 @@ public class AdminPackageController {
 	
 	@RequestMapping(value="BB_pack_insert",  method=RequestMethod.GET)
 	public ModelAndView viewPackageInsert() {
-		//table에서 불러와야함.
+		//table에서 넣을 product리스트를 가지고 와야함. 
 		mav.addObject("productList");
 		mav.setViewName("admin/package/BB_pack_insert"); return mav;
 	}
