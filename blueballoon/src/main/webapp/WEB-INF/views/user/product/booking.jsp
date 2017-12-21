@@ -59,7 +59,7 @@
 		}
 		document.getElementById("bookMonth" + month).className = "selected ";
 		$(".dates").empty();
-		$(".dates").append("<script type=&quot;text/javascript&quot;>calendar2('2018-08-25');<\/script>").css();
+		$(".dates").append("<script type=&quot;text/javascript&quot;>calendar2('2018-08-25');<\/script>").trigger("create");
 	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
