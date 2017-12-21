@@ -3,21 +3,16 @@
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.web.blueballoon.model">
 
 	<insert id="joinMember" parameterType="BBMemberDTO">
-		insert into
-		bb_member(member_num, member_name, member_email,
+		insert into bb_member(member_num, member_name, member_email,
 		member_passwd, member_org_img, member_str_img, member_phone,
 		member_birth, member_gender, member_reg_date)
-
-		values(bb_member_seq.nextval,
-		#{member_name},#{member_email},
+		values(bb_member_seq.nextval,#{member_name},#{member_email},
 		#{member_passwd},#{member_org_img,
 		jdbcType=VARCHAR},#{member_str_img, jdbcType=VARCHAR},
-		#{member_phone,
-		jdbcType=VARCHAR},#{member_birth, jdbcType=VARCHAR},#{member_gender,
+		#{member_phone, jdbcType=VARCHAR},#{member_birth, jdbcType=VARCHAR},#{member_gender,
 		jdbcType=VARCHAR},sysdate)
 	</insert>
 
@@ -26,4 +21,24 @@
 
 	<select parameterType="java.util.Map" id="checkUser" resultType="BBMemberDTO">
 		select * from bb_member where member_email=#{member_email} </select>
+	
+	<select id="getLoginedMember" parameterType="String" resultType="BBMemberDTO">
+		select * from bb_member where member_email = #{member_email}
+	</select>
+	<select resultType="BBMemberDTO" id="listMember"> select * from bb_member
+		order by member_num desc </select>
+
+	<select resultType="BBMemberDTO" id="getMember" parameterType="int">
+		select * from bb_member where member_num = #{member_num} </select>
+
+	<update id="editMember" parameterType="BBMemberDTO"> 
+		update bb_member set member_name=#{member_name}, member_org_img=#{member_org_img, jdbcType=VARCHAR},
+		member_str_img=#{member_str_img, jdbcType=VARCHAR}, member_email=#{member_email},
+		member_passwd=#{member_passwd}, member_phone=#{member_phone},
+		member_birth=#{member_birth}, member_gender=#{member_gender} where
+		member_num=#{member_num} </update>
+
+	<delete id="deleteMember" parameterType="int"> 
+	delete from bb_member where member_num = #{member_num} 
+	</delete>
 </mapper>

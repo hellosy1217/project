@@ -16,6 +16,5 @@ public class CommonUtils {
     	System.out.println(str_img);
     	return str_img;
     }
-    
 }
 

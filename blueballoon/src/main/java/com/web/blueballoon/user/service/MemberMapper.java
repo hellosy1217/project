@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.web.blueballoon.model.BBMemberDTO;
 
+
 @Service
 public class MemberMapper {
 
@@ -16,9 +17,7 @@ public class MemberMapper {
 	}
 
 	public int checkEmail(BBMemberDTO dto) {
-		// TODO Auto-generated method stub
 		int isEmailExist = sqlSession.selectOne("checkEmail", dto);
-
 		return isEmailExist;
 	}
 
@@ -31,5 +30,18 @@ public class MemberMapper {
 		 * if(dto==null) return true; return false;
 		 */
 		return dto;
+	}
+	public  int editMember(BBMemberDTO dto) {
+		int res = 0;
+		BBMemberDTO dto2 =  sqlSession.selectOne("getLoginedMember", dto.getMember_email());
+			if (dto2.getMember_passwd().equals(dto.getMember_passwd())) {
+				res = sqlSession.update("editMember", dto);
+			}
+			return res;
+	}
+
+	
+	public BBMemberDTO getMember(String member_email) {		
+		return sqlSession.selectOne("getLoginedMember", member_email);
 	}
 }

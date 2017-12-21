@@ -18,6 +18,7 @@ import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.util.FileUtils;
 import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.util.AmazonFileUtils;
+import com.web.blueballoon.util.ControllerMessage;
 
 @Controller
 public class AdminMemberController {
@@ -26,6 +27,8 @@ public class AdminMemberController {
 
 	@Autowired
 	private AdminMapper adminMapper;
+	@Autowired
+	private ControllerMessage cm;
 	@Autowired
 	private AmazonFileUtils amazonUtil;
 

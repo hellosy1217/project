@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 public class AmazonFileUtils {
 
 	private AmazonS3 amazon;
+	@Autowired
+	private CommonUtils util;
 
 	private final String bucketName = "bbproject2017";
 	private final String access_key = "AKIAIF3TOYXCDKHDAFZA";
@@ -46,7 +49,7 @@ public class AmazonFileUtils {
 		}
 		InputStream input = null;
 		try {
-			String key = f.getOriginalFilename() + UUID.randomUUID();
+			String key = util.setStoredFilename(f.getOriginalFilename());
 			input = f.getInputStream();
 			ObjectMetadata metadata = new ObjectMetadata();
 			PutObjectRequest put = new PutObjectRequest(bucketName + "/" + directory, key, input, metadata);
@@ -81,6 +84,7 @@ public class AmazonFileUtils {
 	public boolean existFile(String directory, String filename) 
 			throws AmazonClientException, AmazonServiceException {
 		boolean isValidFile = true;
+		System.out.println(filename);
 		try {
 			ObjectMetadata objectMetadata = amazon.getObjectMetadata(bucketName+"/"+directory, filename);
 		} catch (AmazonS3Exception s3e) {

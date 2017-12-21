@@ -5,8 +5,7 @@
 <mapper namespace="com.web.blueballoon.model">
 	<!-- 지역 카테고리 -->
 	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
-		select * from
-		bb_category
+		select * from bb_category
 	</select>
 	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
 		insert into
@@ -19,17 +18,14 @@
 		select * from bb_category where cate_num = #{cate_num}
 	</select>
 	<update id="editBBCategoryDTO" parameterType="BBCategoryDTO">
-		update bb_category
-		set cate_state = #{cate_state} , cate_city =
-		#{cate_city} where
-		cate_num = #{cate_num}
+		update bb_category set cate_state = #{cate_state, jdbcType=VARCHAR} , cate_city = #{cate_city, jdbcType=VARCHAR} where cate_num = #{cate_num, jdbcType=NUMERIC}
 	</update>
 	<!-- 여행 상품 -->
 	<insert id="insertBBProduct" parameterType="BBProductDTO">
-		insert into bb_product values(bb_prod_seq.nextval, #{prod_name},
-		#{prod_email}, #{prod_phone} , #{prod_price},
-		#{prod_org_img}, #{prod_str_img}, #{prod_cate},  #{prod_post_number}, #{prod_road_address}, #{prod_old_address},
-		#{prod_detail_address}, #{prod_content}, #{prod_pick})
+		insert into bb_product values(bb_prod_seq.nextval, #{prod_name , jdbcType=VARCHAR},
+		#{prod_email , jdbcType=VARCHAR}, #{prod_phone , jdbcType=VARCHAR} , #{prod_price , jdbcType=NUMERIC},
+		#{prod_org_img, jdbcType=VARCHAR}, #{prod_str_img, jdbcType=VARCHAR}, #{prod_cate},  #{prod_post_number, jdbcType=VARCHAR}, #{prod_road_address, jdbcType=VARCHAR}, #{prod_old_address, jdbcType=VARCHAR},
+		#{prod_detail_address, jdbcType=VARCHAR}, #{prod_content, jdbcType=VARCHAR}, #{prod_pick, jdbcType=NUMERIC})
 	</insert>
 	<delete id="deleteBBProduct" parameterType="int">
 		delete from bb_product where prod_num = #{prod_num}
@@ -38,35 +34,13 @@
 		select * from bb_product order by prod_num desc
 	</select>
 	<select id="getBBProduct" parameterType="int" resultType="BBProductDTO">
-		select
-		* from bb_product where prod_num = #{prod_num}
+		select * from bb_product where prod_num = #{prod_num}
 	</select>
 	<update id="editBBProduct" parameterType="BBProductDTO">
-		update from bb_product
-		set prod_name = #{prod_name}, prod_email =
-		#{prod_email} , prod_hp =
-		#{prod_hp}, prod_person = #{prod_person} ,
-		prod_price = #{prod_price},
-		prod_img = #{prod_img}, prod_address1 =
-		#{prod_address1} ,
-		prod_address2 = #{prod_address2},
-		prod_content = #{prod_content},
-		prod_pick = #{prod_pick}
+		update bb_product set prod_name = #{prod_name, jdbcType=VARCHAR}, prod_email = #{prod_email, jdbcType=VARCHAR} , prod_phone =
+		#{prod_phone, jdbcType=VARCHAR}, prod_price = #{prod_price, jdbcType=NUMERIC} , prod_org_img = #{prod_org_img, jdbcType=VARCHAR}, prod_str_img = #{prod_str_img, jdbcType=VARCHAR}, prod_post_number = #{prod_post_number, jdbcType=VARCHAR},
+		 prod_road_address = #{prod_road_address, jdbcType=VARCHAR} ,prod_old_address = #{prod_old_address, jdbcType=VARCHAR},
+		 prod_content = #{prod_content, jdbcType=VARCHAR }, prod_pick = #{prod_pick, jdbcType=NUMERIC} where prod_num = #{prod_num, jdbcType=NUMERIC}
 	</update>
-	<!-- 멤버 -->
-	<select resultType="BBMemberDTO" id="listMember"> select * from bb_member
-		order by member_num desc </select>
-
-	<select resultType="BBMemberDTO" id="getMember" parameterType="int">
-		select * from bb_member where member_num = #{member_num} </select>
-
-	<update id="editMember" parameterType="BBMemberDTO"> update bb_member set
-		member_name=#{member_name}, member_org_img=#{member_org_img},
-		member_str_img=#{member_str_img}, member_email=#{member_email},
-		member_passwd=#{member_passwd}, member_phone=#{member_phone},
-		member_birth=#{member_birth}, member_gender=#{member_gender} where
-		member_num=#{member_num} </update>
-
-	<delete id="deleteMember" parameterType="int"> delete from bb_member
-		where member_num = #{member_num} </delete>
+	
 </mapper>
