@@ -13,8 +13,7 @@
 		bb_category values(bb_cate_seq.nextval, #{cate_state}, #{cate_city})
 	</insert>
 	<delete id="deleteBBCategoryDTO" parameterType="int">
-		delete from
-		bb_category where cate_num = #{cate_num}
+		delete from bb_category where cate_num = #{cate_num}
 	</delete>
 	<select id="getBBCategoryDTO" parameterType="int" resultType="BBCategoryDTO">
 		select * from bb_category where cate_num = #{cate_num}
@@ -33,8 +32,7 @@
 		#{prod_detail_address}, #{prod_content}, #{prod_pick})
 	</insert>
 	<delete id="deleteBBProduct" parameterType="int">
-		delete * from
-		bb_product where prod_num = #{prod_num}
+		delete from bb_product where prod_num = #{prod_num}
 	</delete>
 	<select id="listBBProduct" resultType="BBProductDTO">
 		select * from bb_product order by prod_num desc
