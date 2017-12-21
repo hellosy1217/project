@@ -135,8 +135,8 @@ public class AdminProductController {
 			if(existFile && prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
 				amazon.deleteFile("bb_product"+editDTO.getProd_pick(), editDTO.getProd_str_img());
 				file = amazon.one_FileUpload("bb_product"+dto.getProd_pick(), mf);
-				dto.setProd_org_img("prod_edit_img");
-				dto.setProd_str_img(prod_edit_img);
+				dto.setProd_org_img(prod_edit_img);
+				dto.setProd_str_img(file);
 			}else if(existFile && prod_edit_img == null) {//-2. 새로운 파일 없을 때.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
