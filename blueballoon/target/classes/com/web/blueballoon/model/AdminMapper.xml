@@ -42,5 +42,8 @@
 		 prod_road_address = #{prod_road_address, jdbcType=VARCHAR} ,prod_old_address = #{prod_old_address, jdbcType=VARCHAR},
 		 prod_content = #{prod_content, jdbcType=VARCHAR }, prod_pick = #{prod_pick, jdbcType=NUMERIC} where prod_num = #{prod_num, jdbcType=NUMERIC}
 	</update>
-	
+	<!-- 숙소를 위한 상품(숙소:3번)-->
+	<select id="listBBProductForRoom" resultType="BBProductDTO">
+		select * from bb_product where prod_pick = 3
+	</select>
 </mapper>
