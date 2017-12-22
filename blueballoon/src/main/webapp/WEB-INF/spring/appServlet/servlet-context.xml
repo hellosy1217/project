@@ -34,16 +34,16 @@
 	</beans:bean>
 	<context:component-scan base-package="com.web.blueballoon" />
 	
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
-		<!-- 인터셉터가 적용될 url -->
-		<!-- Booking / Board / My page etc... -->
+		인터셉터가 적용될 url
+		Booking / Board / My page etc...
 			<mapping path="board_wirte" />
-		<!-- 인터셉터 제외될 url 있으면 넣고 아니면...흠 -->
-		<!-- 우선 에러나서 주석처리<exclude-mapping path=""/> -->
-		<!-- 적용될 인터셉터 지정 -->	
+		인터셉터 제외될 url 있으면 넣고 아니면...흠
+		우선 에러나서 주석처리<exclude-mapping path=""/>
+		적용될 인터셉터 지정	
 		<beans:bean id="loginInterceptor" class="com.web.blueballoon.interceptor.LoginInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 	
 </beans:beans>
