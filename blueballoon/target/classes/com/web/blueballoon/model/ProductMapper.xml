@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.blueballoon.model">
+	<select id="countList" resultType="java.lang.Integer">
+		select count(*) from
+		bb_product
+	</select>
+	<select id="listCate" resultType="BBCategoryDTO">
+		select * from
+		bb_category
+	</select>
+	<select id="listProd" resultType="BBProductDTO">
+		select * from bb_product order by prod_num desc
+	</select>
+	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
+		select * from
+		bb_room where prod_num=#{prod_num}
+	</select>
+	<select id="listBookingRoom" parameterType="int" resultType="BBBookRoomDTO">
+		select * from
+		bb_booking_room where prod_num=#{prod_num}
+	</select>
+</mapper>
