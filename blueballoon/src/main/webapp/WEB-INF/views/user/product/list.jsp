@@ -135,7 +135,7 @@
 		</div>
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" begin="1" end="9" step="1" items="${ProductList}">
+				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
 
 					<div class="spotListIn">
 						<a href="product_content?prod_num=${prod.prod_num}" class="spotIn focusedLink">

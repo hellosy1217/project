@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BookDateDTO;
 import com.web.blueballoon.user.service.ProductMapper;
@@ -74,9 +75,13 @@ public class ProductController {
 		mav.addObject("endPage", endPage);
 
 		// 카테고리 목록
-		List<BBCategoryDTO> list = ProductMapper.listCate();
-		mav.addObject("listCate", list);
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
 
+		// 카테고리 목록
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		mav.addObject("listProd", listProd);
+		
 		mav.setViewName("user/product/list");
 
 		return mav;

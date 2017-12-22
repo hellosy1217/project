@@ -11,6 +11,10 @@
 		select * from
 		bb_category
 	</select>
+	<select id="listProd" resultType="BBProductDTO">
+		select * from
+		bb_product
+	</select>
 	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
 		select * from
 		bb_room where prod_num=#{prod_num}

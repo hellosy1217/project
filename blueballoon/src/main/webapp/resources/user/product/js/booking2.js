@@ -26,7 +26,7 @@ function calendar2(date) {
 
 	week = 0;
 	for (i = 1; i <= beg_j; i++) {
-		$(".dates").append('<td class=""></td>')
+		$(".dates").append('<td class=""></td>').trigger("create");
 		week++;
 	}
 	for (i = 1; i <= total; i++) {
@@ -35,7 +35,7 @@ function calendar2(date) {
 		}
 		$(".dates").append(
 				'<td class="all  empty"><div class="container"><div class="day">'
-						+ i + '</div><div class="next"></div></div></td>')
+						+ i + '</div><div class="next"></div></div></td>');
 
 		week++;
 		if (week == 7) {

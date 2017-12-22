@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 
 @Service
@@ -22,6 +23,10 @@ public class ProductMapper {
 
 	public List<BBCategoryDTO> listCate() {
 		return sqlSession.selectList("listCate");
+	}
+
+	public List<BBProductDTO> listProd() {
+		return sqlSession.selectList("listProd");
 	}
 
 	public List<BBRoomDTO> listRoom(int prod_num) {
