@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
 <title>여행상품 상세페이지</title>
@@ -210,234 +212,34 @@
 
 		<div class="bl">
 			<div class="b img">
-				<div class="th"></div>
+				
 				<div class="pic has-thumbnails" style="height: 400px;">
-					<figure>
-						<a href="//cdn.tourradar.com/s3/tour/original/92506_5de80f45.jpg"
-							class="or"><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_5de80f45.jpg"
-							data-owner="" itemprop="image"
-							alt="Nakasendo Self-guided Walking 5 Days (from Kyoto to Tokyo) - Oku Japan"
-							class="h"><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_61364599.jpg"
-							class="trav wide" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_623387a3.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_c6943165.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_626cf1ab.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_d2f58255.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_e02e717d.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_1dc4466a.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_d01a1c83.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_7a676153.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_57f6613a.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_f1d75fc9.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_fad410b4.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_07f629c8.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_9f36bfff.jpg"
-							data-src="" class="trav h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_54e97b15.jpg"
-							data-src="" class="trav tall wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_54dd1583.jpg"
-							data-src="" class="trav tall wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_b43d48b6.jpg"
-							data-src="" class="trav tall wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_95a8fd85.jpg"
-							data-src="" class="trav tall wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_3f478975.jpg"
-							data-src="" class="trav tall wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_60697353.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_dcd576ae.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_10a6bb21.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_eaafc348.jpg"
-							data-src="" class="trav wide h" data-owner=""><img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-							data-src="//cdn.tourradar.com/s3/tour/750x400/92506_67539e5b.jpg"
-							class="trav h" data-owner=""><img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-							data-src="//cdn.tourradar.com/s3/tour/750x400/92506_e01e649d.jpg"
-							class="trav h" data-owner=""><img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-							data-src="//cdn.tourradar.com/s3/tour/750x400/92506_ff26a2a2.jpg"
-							class="trav h" data-owner=""><img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-							data-src="//cdn.tourradar.com/s3/tour/750x400/92506_a296ddb3.jpg"
-							class="trav h" data-owner=""><img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-							data-src="//cdn.tourradar.com/s3/tour/750x400/92506_10d4194b.jpg"
-							class="trav h" data-owner=""><img
-							src="//cdn.tourradar.com/s3/tour/750x400/92506_d459c38b.jpg"
-							data-src="" class="trav h" data-owner=""></a>
-						<figcaption>Nakasendo Self-guided Walking 5 Days
-							(from Kyoto to Tokyo) - Oku Japan</figcaption>
-					</figure>
-					<meta name="twitter:card" content="summary_large_image">
-					<meta name="twitter:site" content="@tourradar">
-					<meta name="twitter:image"
-						content="//cdn.tourradar.com/s3/tour/750x400/92506_5de80f45.jpg">
-					<meta name="twitter:title"
-						content="Nakasendo Self-guided Walking 5 Days (from Kyoto to Tokyo)">
-					<meta name="twitter:description"
-						content=" Start in Kyoto and end in Tokyo!
- 
- With the self-guided tour Nakasendo Self-guided Walking 5 Days (from Kyoto to Tokyo), you have a 5 day tour package taking you through
- 
- Kyoto, Japan and 11 other 
- destinations in Japan.
- 
- ">
-
-
-					<div class="thumbnails">
-						<div
-							class="thumbnails__arrow thumbnails__arrow--left js-thumbnails-left invis"
-							data-shift="-1"></div>
-						<ul class="thumbnails__list">
-							<li class="thumbnails__thumbnail unselectable"
-								style="margin-left: 0px;"><img width="45" height="45"
-								class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_5de80f45.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_5de80f45.jpg"></li>
-							<li
-								class="thumbnails__thumbnail unselectable thumbnails__thumbnail--active"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_61364599.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_61364599.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_623387a3.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_623387a3.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_c6943165.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_c6943165.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_626cf1ab.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_626cf1ab.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_d2f58255.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_d2f58255.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_e02e717d.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_e02e717d.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_1dc4466a.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_1dc4466a.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_d01a1c83.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_d01a1c83.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_7a676153.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_7a676153.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_57f6613a.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_57f6613a.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_f1d75fc9.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_f1d75fc9.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_fad410b4.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_fad410b4.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_07f629c8.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_07f629c8.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_9f36bfff.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_9f36bfff.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_54e97b15.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_54e97b15.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_54dd1583.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_54dd1583.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_b43d48b6.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_b43d48b6.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_95a8fd85.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_95a8fd85.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_3f478975.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_3f478975.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_60697353.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_60697353.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_dcd576ae.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_dcd576ae.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_10a6bb21.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_10a6bb21.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45" class="thumbnails__image js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_eaafc348.jpg"
-								src="//cdn.tourradar.com/s3/tour/45x45/92506_eaafc348.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_67539e5b.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_e01e649d.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_ff26a2a2.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_a296ddb3.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_10d4194b.jpg"></li>
-							<li class="thumbnails__thumbnail unselectable"><img
-								width="45" height="45"
-								class="thumbnails__image thumbnails__thumbnail--hidden js-thumbnail"
-								data-src="//cdn.tourradar.com/s3/tour/45x45/92506_d459c38b.jpg"></li>
-						</ul>
-						<div class="thumbnails__arrow js-thumbnails-right" data-shift="1"></div>
-					</div>
+					
 				</div>
 
 			</div>
 
 			<div class="b pad hgl">
-
+				
+				<dl class="properties">
+					<dt class="label">상품 이름</dt>
+					<dd class="value age">${getProd.prod_name}</dd>
+					<dt class="label">지역</dt>
+					<dd class="value accommodation">${getProd.prod_cate}</dd>
+					<dt class="label">주소</dt>
+					<dd class="value">${getProd.prod_detail_address}</dd>
+					<dt class="label">이메일</dt>
+					<dd class="value transport">${getProd.prod_email}</dd>
+					<dt class="label">전화번호</dt>
+					<dd class="value transport">${getProd.prod_phone}</dd>
+					<dt class="label">가격</dt>
+					<dd class="value transport">${getProd.prod_price}</dd>
+					<dt class="label">상품 분류</dt>
+					<dd class="value transport">${getProd.prod_pick}</dd>
+					<dt class="label">상세 정보</dt>
+					<dd class="value transport">${getProd.prod_content}</dd>
+				</dl>
+				
 				<h2 class="sm">여행 꿀팁</h2>
 				
 				<div class="likeC">
@@ -449,30 +251,7 @@
 					</div>
 				</div>
 				
-				<ul class="tip">
-					<li>꿀팁 1</li>
-					<li>꿀팁 2</li>
-					<li>꿀팁 3</li>
-
-				</ul>
-				<dl class="properties">
-					<dt class="label">상품 이름</dt>
-					<dd class="value age">홍대 맛집</dd>
-					<dt class="label">지역</dt>
-					<dd class="value accommodation">서울특별시 마포구</dd>
-					<dt class="label">주소</dt>
-					<dd class="value">서울특별시 마포구 서교동</dd>
-					<dt class="label">이메일</dt>
-					<dd class="value transport">ㅇㅇㅇ</dd>
-					<dt class="label">전화번호</dt>
-					<dd class="value transport">ㅇㅇㅇ</dd>
-					<dt class="label">가격</dt>
-					<dd class="value transport">ㅇㅇㅇ</dd>
-					<dt class="label">상품 분류</dt>
-					<dd class="value transport">맛집</dd>
-					<dt class="label">상세 정보</dt>
-					<dd class="value transport">ㅇㅇㅇ</dd>
-				</dl>
+				
 				<div style="padding-top: 5px;">
 					<a class="but r write" href="product_booking?prod_num=61" target="_blank"
 						rel="nofollow"

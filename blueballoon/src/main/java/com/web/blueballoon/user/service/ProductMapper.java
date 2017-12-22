@@ -36,4 +36,9 @@ public class ProductMapper {
 	public List<BBBookRoomDTO> listBookingRoom(int prod_num) {
 		return sqlSession.selectList("listBookingRoom", prod_num);
 	}
+
+	public BBProductDTO getProd(int num) {
+		return sqlSession.selectOne("getProd", num);
+	}
+	
 }

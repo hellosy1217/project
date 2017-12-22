@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBBookRoomDTO;
@@ -88,8 +89,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "product_content", method = RequestMethod.GET)
-	public String content() {
-		return "user/product/content";
+	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception{
+		int num=ServletRequestUtils.getIntParameter(arg0,"prod_num");
+		BBProductDTO dto = ProductMapper.getProd(num);
+		mav.addObject("getProd", dto);
+		mav.setViewName("user/product/content");
+		return mav;
 	}
 
 	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
