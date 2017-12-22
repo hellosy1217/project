@@ -5,7 +5,7 @@
 <mapper namespace="com.web.blueballoon.model">
 	<!-- 지역 카테고리 -->
 	<select id="listBBCategoryDTO" resultType="BBCategoryDTO">
-		select * from bb_category
+		select * from bb_category order by desc
 	</select>
 	<insert id="insertBBCategoryDTO" parameterType="BBCategoryDTO">
 		insert into
@@ -46,4 +46,5 @@
 	<select id="listBBProductForRoom" resultType="BBProductDTO">
 		select * from bb_product where prod_pick = 3
 	</select>
+	
 </mapper>
