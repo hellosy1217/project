@@ -6,7 +6,7 @@
 <div align ="right">
 <table border="0">
 		<tr>
-			<th align="right"><a href="BB_room_insert">숙소추가</a></th>
+			<th align="right"><a href="BB_pack_insert">숙소추가</a></th>
 		</tr>
 	</table>
 </div>
