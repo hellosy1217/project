@@ -22,5 +22,30 @@
 
 <select id="countBoard" resultType="int">
   		SELECT count(*) FROM bb_board
-  </select>
+</select>
+
+<insert id="insertBoard" parameterType="BBBoardDTO">
+	INSERT INTO bb_board (board_num,member_email,board_title,board_content,board_img,board_reg_date, 
+	board_readcount,board_likecount,prod_pick,prod_num,pack_num,prod_score,pack_score) 
+	values(bb_board_seq.nextval,#{member_email},#{board_title},#{board_content},#{board_img},SYSDATE,0,0,
+	#{prod_pick},#{prod_num},#{pack_num},#{prod_score},#{pack_score})
+</insert>
+
+<select id="getBoardNum" parameterType="BBBoardDTO" resultType="int">
+	SELECT board_num FROM bb_board WHERE 
+	(member_email = #{member_email} AND board_title = #{board_title})
+	AND (prod_num = #{prod_num} AND pack_num =#{pack_num})
+</select> 
+
+<select id="countFile" parameterType="int" resultType="int">
+	SELECT COUNT(DECODE(selected_num,#{bnum},'1')) from image
+</select>
+
+<update id="boardImgUpdate" parameterType="HashMap">
+	UPDATE bb_board SET board_img = #{bdtoimg} WHERE board_num = #{bnum}
+</update>
+
+<insert id="insertFile" parameterType="HashMap">
+	INSERT INTO image values(#{part}, #{selected_num}, #{org_img}, #{str_img})
+</insert>
 </mapper>

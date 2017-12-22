@@ -2,28 +2,30 @@ package com.web.blueballoon.model;
 
 public class BBBoardDTO {
 	private int board_num;
-	private int member_num;
+	private String member_email;
 	private String board_title;
 	private String board_content;
 	private int board_img;
 	private String board_reg_date;
 	private int board_readcount;
 	private int board_likecount;
+	private int prod_pick;
 	private int prod_num;
 	private int pack_num;
 	private int prod_score;
 	private int pack_score;
+	
 	public int getBoard_num() {
 		return board_num;
 	}
 	public void setBoard_num(int board_num) {
 		this.board_num = board_num;
 	}
-	public int getMember_num() {
-		return member_num;
+	public String getMember_email() {
+		return member_email;
 	}
-	public void setMember_num(int member_num) {
-		this.member_num = member_num;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
 	public String getBoard_title() {
 		return board_title;
@@ -61,6 +63,12 @@ public class BBBoardDTO {
 	public void setBoard_likecount(int board_likecount) {
 		this.board_likecount = board_likecount;
 	}
+	public int getProd_pick() {
+		return prod_pick;
+	}
+	public void setProd_pick(int prod_pick) {
+		this.prod_pick = prod_pick;
+	}
 	public int getProd_num() {
 		return prod_num;
 	}
@@ -85,5 +93,4 @@ public class BBBoardDTO {
 	public void setPack_score(int pack_score) {
 		this.pack_score = pack_score;
 	}
-
 }
