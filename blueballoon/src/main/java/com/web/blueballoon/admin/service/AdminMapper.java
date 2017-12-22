@@ -80,5 +80,7 @@ public class AdminMapper {
 	public int editBBProduct(BBProductDTO dto) {
 		return sqlSession.update("editBBProduct",dto);
 	}
-	
+	public List<BBProductDTO>listBBProductForRoom(){
+		return sqlSession.selectList("listBBProductForRoom");
+	}
 }
