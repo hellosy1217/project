@@ -81,7 +81,7 @@ public class ProductController {
 		// 카테고리 목록
 		List<BBProductDTO> listProd = ProductMapper.listProd();
 		mav.addObject("listProd", listProd);
-		
+
 		mav.setViewName("user/product/list");
 
 		return mav;
@@ -157,8 +157,14 @@ public class ProductController {
 					}
 				}
 			}
-
 			mav.addObject("book_date", book_date);
+
+			try {
+				int selectedMonth = ServletRequestUtils.getIntParameter(arg0, "selectedMonth");
+				mav.addObject("selectedMonth", selectedMonth);
+			} catch (NullPointerException e) {
+				mav.addObject("selectedMonth", 0);
+			}
 
 			mav.setViewName("user/product/booking");
 		} catch (NullPointerException e) {

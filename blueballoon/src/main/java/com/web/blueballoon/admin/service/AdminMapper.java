@@ -5,11 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.web.blueballoon.model.BBCategoryDTO;
-import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.model.BBProductDTO;
-
+import com.web.blueballoon.model.BBMemberDTO;
 
 @Service
 public class AdminMapper {
@@ -82,7 +80,5 @@ public class AdminMapper {
 	public int editBBProduct(BBProductDTO dto) {
 		return sqlSession.update("editBBProduct",dto);
 	}
-	public List<BBProductDTO>listBBProductForRoom(){
-		return sqlSession.selectList("listBBProductForRoom");
-	}
+	
 }

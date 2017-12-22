@@ -24,11 +24,11 @@
 			<th width="20%">수정 | 삭제 </th>
 		</tr>
 		<tr>
-		<c:if test="${empty productList}">
+		<c:if test="${empty RoomList}">
 			<td colspan="7">등록된 카테고리목록이 없습니다.</td>
 		</c:if>
 		</tr>	
-		<c:forEach var="dto" items="${productList}">
+		<c:forEach var="dto" items="${RoomList}">
 		<tr>
 			<td align="right">${dto.prod_num}</td>
 			<td align="center">${dto.prod_cate}</td>
@@ -44,6 +44,8 @@
 			<c:if test="${dto.prod_pick == 3}">
 				<td align="center">숙소</td>
 			</c:if>
+			<td><a href="BB_room_edit?prod_num=${dto.prod_num}">수정</a> | 
+			<a href="BB_room_delete?prod_num=${dto.prod_num}">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>

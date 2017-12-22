@@ -3,7 +3,7 @@
 </td>
 			</tr>
 			<tr height="10%">
-				<td colspan="7" align="center">
+				<td colspan="6" align="center">
 					BlueBalloon
 				</td>
 			</tr>

@@ -14,54 +14,13 @@
 <script
 	src="//cdn.tourradar.com/include/bower/braintree-web-3/hosted-fields.v1513001935.js"
 	async=""></script>
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script',
-			'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-334117-5', 'auto');
-
-	ga('set', 'dimension10', '82985');
-	ga('set', 'dimension11', 'Europe');
-	ga('set', 'dimension18', 'conversionintent');
-	ga('set', 'dimension19', '1275');
-
-	ga('send', 'pageview');
-</script>
 <script async=""
-	src="//cdn.tourradar.com/include/js/zepto.v1513001935.min.js"></script>
+	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/zepto.v1513930789.min.js"></script>
 <script async=""
-	src="//cdn.tourradar.com/include/js/zepto-fx.v1513001935.min.js"></script>
-<script async=""
-	src="//cdn.tourradar.com/include/js/zepto-anim.v1513001935.min.js"></script>
-<link type="text/css" rel="stylesheet"
-	href="//cdn.tourradar.com/include/pw/book_now/async.v1513001935.css">
-<script async=""
-	src="//cdn.tourradar.com/include/js/jquery.unveil.v1513001935.js"></script>
-<script async=""
-	src="//cdn.tourradar.com/include/bower/moment/min/moment.v1513001935.min.js"></script>
+	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/fbevents.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/user/product/js/booking2.js?ver=1"></script>
 <script type="text/javascript">
-	function changeMonth(month,begin,end) {
-		for(var i=begin;i<=end;i++){
-			document.getElementById("bookMonth" + i).className = "";
-		}
-		document.getElementById("bookMonth" + month).className = "selected ";
-		$(".dates").empty();
-		$(".dates").append("<script type=&quot;text/javascript&quot;>calendar2('2018-08-25');<\/script>");
-		$(".dates").attr("href", "${pageContext.request.contextPath}/resources/user/product/css/booking1.css");
-	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
 			if (mode == 'add') {
@@ -83,10 +42,6 @@
 			}
 		}
 	}
-</script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-
 </script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
@@ -118,21 +73,7 @@
 						<h3>날짜를 선택해주세요.</h3>
 						<b class="date date-start">선택된 날짜</b> <br /> <br />
 						<div class="calendar">
-							<div class="months">
-								<div class="right-arrow"></div>
-								<div class="left-arrow inactive"></div>
-								<div class="content">
-									<ul style="width: 711.6666666666667px; margin-left: 0px;">
-										<c:forEach var="month" begin="1" end="6" step="1">
-											<li id="bookMonth${month}" class=""
-												style="width: 101.66666666666667px;"
-												onclick="changeMonth(${month},1,6)"><div>
-													<span></span> 2017년 ${month}월
-												</div></li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
+							<div class="months"></div>
 							<div class="dates">
 								<script type="text/javascript">
 								calendar('2018-08-25');

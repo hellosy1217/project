@@ -6,47 +6,13 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
-<script type="text/javascript">
-	$(function() {
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
-
-		//시작일
-		$('#fromDate').datepicker(
-				{
-					dateFormat : "yy-MM-dd",
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-							"7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-					buttonText : "날짜선택",
-					dateFormat : "yy-MM-dd", // 날짜의 형식
-					changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-					minDate : 0,
-					maxDate : 180, // 0 : 오늘 이후 날짜 선택 불가 : 최대 선택 가능한 날짜.
-					onClose : function(selectedDate) {
-						// 시작일(fromDate) datepicker가 닫힐때
-						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#toDate").datepicker("option", "minDate",
-								selectedDate);
-					}
-				});
-
-		//종료일
-		$('#toDate').datepicker(
-				{
-					dateFormat : "yy-MM-dd",
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-							"7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-					dateFormat : "yy-MM-dd",
-					changeMonth : true,
-					maxDate : 180, // 오늘 이후 날짜 선택 불가
-					onClose : function(selectedDate) {
-						// 종료일(toDate) datepicker가 닫힐때
-						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-						$("#fromDate").datepicker("option", "maxDate",
-								selectedDate);
-					}
-				});
+<script>
+$(function() {
+	  $( "#testDatepicker" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "button.png", 
+	        buttonImageOnly: true 
+	  });
 	});
 </script>
 <div align="center">

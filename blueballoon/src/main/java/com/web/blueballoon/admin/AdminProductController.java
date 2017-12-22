@@ -127,12 +127,8 @@ public class AdminProductController {
 	public ModelAndView BBProductEdit(@RequestParam("prod_org_img") MultipartFile mf, @ModelAttribute BBProductDTO dto,
 			BindingResult result) {
 		//비교를 위한 dto 값 불러오기.
-		System.out.println(dto.getProd_org_img());
-		System.out.println(dto.getProd_str_img());
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
 		String prod_edit_img = mf.getOriginalFilename();
-		System.out.println("prod_edit_img : "+prod_edit_img);
-		
 		String file = null;
 		if(editDTO.getProd_str_img() != null) {//1. 기존 이지가 있을때 (검색 O)
 			boolean existFile = amazon.existFile("bb_product"+editDTO.getProd_pick(),editDTO.getProd_str_img());
@@ -141,11 +137,9 @@ public class AdminProductController {
 				file = amazon.one_FileUpload("bb_product"+dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
-				System.out.println("1-1 org / str : "+dto.getProd_org_img()+" / "+dto.getProd_str_img());
 			}else if(existFile && prod_edit_img == null) {//-2. 새로운 파일 없을 때.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
-				System.out.println("1-2 org / str : "+dto.getProd_org_img()+" / "+dto.getProd_str_img());
 			}
 		}else if(editDTO.getProd_str_img() == null) {//2. 기존 이미지 없을 때 (검색 X) 그럴일 거의 없지만. 혹시라도.
 			if(prod_edit_img != null) { // -1. 새로운 파일 있을 때.
@@ -156,10 +150,9 @@ public class AdminProductController {
 			}else if(prod_edit_img == null) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
 				dto.setProd_org_img(null);
 				dto.setProd_str_img(null);
-				System.out.println("2-2 org / str : "+dto.getProd_org_img()+" / "+dto.getProd_str_img());
 			}
 		}
-		System.out.println("dto set property compeleted!!");
+		
 		System.out.println("prod_num : "+dto.getProd_num());
 		System.out.println("prod_name : "+dto.getProd_name());
 		System.out.println("prod_phone : "+dto.getProd_phone());
