@@ -29,9 +29,6 @@
 
 	//메뉴 클릭시
 	$(document).ready(function() {
-		$(".span").click(function() {
-			$(".sub").slideUp("slow");
-		})
 		$("#flip1").click(function() {
 			$("#panel1").slideToggle("slow");
 		});
@@ -125,9 +122,10 @@
 			<h2>서울의 인기 관광지</h2>
 			<div class="sort">
 				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
+					<option value="lendesc">최신순</option>
 					<option value="popularity">인기순</option>
 					<option value="rec">리뷰순</option>
-					<option value="lendesc">최신순</option>
+					
 				</select>
 
 			</div>
@@ -140,29 +138,22 @@
 					<div class="spotListIn">
 						<a href="product_content?prod_num=${prod.prod_num}" class="spotIn focusedLink">
 							<div class="thumb">
-								<img
-									src="http://ttcfd.hanatour.com/@cms_300/2015090782/gjeyls/홍대_쇼핑거리_TTB (3).JPG"
+								<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
 									alt="" width="245" style="margin-top: 0px;">
-							</div> <span class="spot">${prod.prod_cate}</span>
+							</div>
+							<span class="spot">${prod.prod_cate}</span>
 							<strong class="title">${prod.prod_name}</strong>
+							
 							<span class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
-									<li class="awesome">
-										<p>
-											<span>완전 좋아요</span> <i>128</i>
-										</p>
-									</li>
+									
 									<li class="good">
 										<p>
 											<span>좋아요</span> <i>24</i>
 										</p>
 									</li>
-									<li class="aweful cur">
-										<p>
-											<span>별로예요</span> <i>1</i>
-										</p>
-									</li>
+									
 								</ul>
 							</div>
 						</a>

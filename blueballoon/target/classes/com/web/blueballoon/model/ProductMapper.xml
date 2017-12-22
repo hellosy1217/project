@@ -12,8 +12,7 @@
 		bb_category
 	</select>
 	<select id="listProd" resultType="BBProductDTO">
-		select * from
-		bb_product
+		select * from bb_product order by prod_num desc
 	</select>
 	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
 		select * from
