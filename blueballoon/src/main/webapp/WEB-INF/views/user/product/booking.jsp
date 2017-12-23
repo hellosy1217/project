@@ -21,6 +21,9 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
 <script type="text/javascript">
+	function changeMonth(year, month){
+		location.href="product_booking?prod_num="+${prod_num}+"&selectedYear="+year+"&selectedMonth="+month;
+	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
 			if (mode == 'add') {
@@ -73,12 +76,60 @@
 						<h3>날짜를 선택해주세요.</h3>
 						<b class="date date-start">선택된 날짜</b> <br /> <br />
 						<div class="calendar">
-							<div class="months"></div>
-							<div class="dates">
-								<script type="text/javascript">
-								calendar('2018-08-25');
-								</script>
+							<div class="months">
+								<div class="right-arrow"></div>
+								<div class="left-arrow inactive"></div>
+								<div class="content">
+									<ul style="width: 700px; margin-left: 0px;">
+										<c:forEach var="date" items="${book_date}" varStatus="status">
+											<c:if
+												test="${status.count eq 1||(preMonth ne date.month&&preMonth ne null)}">
+												<c:choose>
+													<c:when
+														test="${selectedYear eq date.year && selectedMonth eq date.month }">
+														<li id="${date.year}-${date.month}"
+															class="selected border" style="width: 100px;">
+													</c:when>
+													<c:otherwise>
+														<li id="${date.year}-${date.month}" class="border"
+															style="width: 100px;"
+															onclick="changeMonth(${date.year},${date.month})">
+													</c:otherwise>
+												</c:choose>
+												<div>
+													<span></span> ${date.year}년 ${date.month}월
+												</div>
+												</li>
+												<c:set var="preMonth" value="${date.month}"></c:set>
+											</c:if>
+										</c:forEach>
+									</ul>
+								</div>
 							</div>
+							<c:remove var="dateOk"></c:remove>
+							<c:forEach var="date" items="${book_date}" varStatus="status">
+								<c:if
+									test="${selectedYear eq date.year && selectedMonth eq date.month && dateOk ne 'Ok'}">
+									<div class="dates">
+										<table class="cal_calendar">
+											<tbody id="cal_body">
+												<script type="text/javascript">
+												if(${date.month<10}&&${date.day<10}){
+													calendar(${date.year}+'-0'+${date.month}+'-0'+${date.day});
+												}else if(${date.month<10}){
+													calendar(${date.year}+'-0'+${date.month}+'-'+${date.day});
+												}else if(${date.day<10}){
+													calendar(${date.year}+'-'+${date.month}+'-0'+${date.day});
+												}else{
+												calendar(${date.year}+'-'+${date.month}+'-'+${date.day});
+												}
+												</script>
+											</tbody>
+										</table>
+									</div>
+									<c:set var="dateOk" value="Ok"></c:set>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 					<div id="seats">

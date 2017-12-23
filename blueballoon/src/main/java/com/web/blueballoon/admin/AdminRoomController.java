@@ -31,6 +31,7 @@ public class AdminRoomController {
 		mav.setViewName("admin/room/BB_lodging_list");
 		return mav;
 	}
+	
 	@RequestMapping(value="BB_lodging_content")
 	public ModelAndView contentLodging(@RequestParam String prod_num) {
 		if(prod_num == null || prod_num.trim().equals("")) {

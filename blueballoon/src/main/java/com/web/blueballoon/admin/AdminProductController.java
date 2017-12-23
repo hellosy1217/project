@@ -61,8 +61,8 @@ public class AdminProductController {
 		}
 		// 여행 상품 등록 파일 naming = bb_product+(prod_pick)
 		String filename = multipartFiles.getOriginalFilename();
-		System.out.println("filename : "+ filename);
-		
+		System.out.println("filename : " + filename);
+
 		if (filename == null || filename.trim().equals("")) {
 			// 사진을 올리지 않을 경우 거의 존재 하지 않음.
 			dto.setProd_org_img("0");
@@ -122,50 +122,54 @@ public class AdminProductController {
 		mav.setViewName("admin/product/BB_prod_edit");
 		return mav;
 	}
-	//여행 상품 수정 
+
+	// 여행 상품 수정
 	@RequestMapping(value = "BB_prod_edit", method = RequestMethod.POST)
 	public ModelAndView BBProductEdit(@RequestParam("prod_org_img") MultipartFile mf, @ModelAttribute BBProductDTO dto,
 			BindingResult result) {
-		//비교를 위한 dto 값 불러오기.
+		// 비교를 위한 dto 값 불러오기.
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
 		String prod_edit_img = mf.getOriginalFilename();
 		String file = null;
-		if(editDTO.getProd_str_img() != null) {//1. 기존 이지가 있을때 (검색 O)
-			boolean existFile = amazon.existFile("bb_product"+editDTO.getProd_pick(),editDTO.getProd_str_img());
-			if(existFile && prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
-				amazon.deleteFile("bb_product"+editDTO.getProd_pick(), editDTO.getProd_str_img());
-				file = amazon.one_FileUpload("bb_product"+dto.getProd_pick(), mf);
+		if (editDTO.getProd_str_img() != null) {// 1. 기존 이지가 있을때 (검색 O)
+			if (prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
+				boolean existFile = amazon.existFile("bb_product" + editDTO.getProd_pick(), editDTO.getProd_str_img());
+				if(existFile) {
+					amazon.deleteFile("bb_product" + editDTO.getProd_pick(), editDTO.getProd_str_img());
+				}else {
+					System.out.println("기존 파일 존재하지 않음. DB확인 요망");
+				}
+				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
-			}else if(existFile && prod_edit_img == null) {//-2. 새로운 파일 없을 때.
+			} else if (prod_edit_img == null) {// -2. 새로운 파일 없을 때.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
 			}
-		}else if(editDTO.getProd_str_img() == null) {//2. 기존 이미지 없을 때 (검색 X) 그럴일 거의 없지만. 혹시라도.
-			if(prod_edit_img != null) { // -1. 새로운 파일 있을 때.
-				file = amazon.one_FileUpload("bb_product"+dto.getProd_pick(), mf);
+		} else if (editDTO.getProd_str_img() == null) {// 2. 기존 이미지 없을 때 (검색 X) 그럴일 거의 없지만. 혹시라도.
+			if (prod_edit_img != null) { // -1. 새로운 파일 있을 때.
+				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
-				System.out.println("2-1 org / str : "+dto.getProd_org_img()+" / "+dto.getProd_str_img());
-			}else if(prod_edit_img == null) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
+			} else if (prod_edit_img == null) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
 				dto.setProd_org_img(null);
 				dto.setProd_str_img(null);
 			}
 		}
-		
-		System.out.println("prod_num : "+dto.getProd_num());
-		System.out.println("prod_name : "+dto.getProd_name());
-		System.out.println("prod_phone : "+dto.getProd_phone());
-		System.out.println("prod_price : "+dto.getProd_price());
-		System.out.println("prod_org_img :"+dto.getProd_org_img());
-		System.out.println("prod_str_img : "+dto.getProd_str_img());
-		System.out.println("prod_post_number : "+dto.getProd_post_number());
-		System.out.println("prod_road_address : "+dto.getProd_road_address());
-		System.out.println("prod_old_address : "+dto.getProd_old_address());
-		System.out.println("prod_detail_address : "+dto.getProd_detail_address());
-		System.out.println("prod_content : "+dto.getProd_content());
-		System.out.println("prod_pick : "+dto.getProd_pick());
-		
+
+		System.out.println("prod_num : " + dto.getProd_num());
+		System.out.println("prod_name : " + dto.getProd_name());
+		System.out.println("prod_phone : " + dto.getProd_phone());
+		System.out.println("prod_price : " + dto.getProd_price());
+		System.out.println("prod_org_img :" + dto.getProd_org_img());
+		System.out.println("prod_str_img : " + dto.getProd_str_img());
+		System.out.println("prod_post_number : " + dto.getProd_post_number());
+		System.out.println("prod_road_address : " + dto.getProd_road_address());
+		System.out.println("prod_old_address : " + dto.getProd_old_address());
+		System.out.println("prod_detail_address : " + dto.getProd_detail_address());
+		System.out.println("prod_content : " + dto.getProd_content());
+		System.out.println("prod_pick : " + dto.getProd_pick());
+
 		int res = 0;
 		try {
 			res = adminMapper.editBBProduct(dto);
