@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBBookRoomDTO;
@@ -89,8 +89,8 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "product_content", method = RequestMethod.GET)
-	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception{
-		int num=ServletRequestUtils.getIntParameter(arg0,"prod_num");
+	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		int num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 		BBProductDTO dto = ProductMapper.getProd(num);
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
@@ -101,7 +101,8 @@ public class ProductController {
 	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		try {
 			int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
-
+			mav.addObject("prod_num", prod_num);
+			
 			// 숙소 내 모든 방 목록
 			List<BBRoomDTO> listRoom = ProductMapper.listRoom(prod_num);
 			mav.addObject("listRoom", listRoom);
@@ -162,15 +163,31 @@ public class ProductController {
 					}
 				}
 			}
+			Collections.sort(book_date, new Comparator<BookDateDTO>() {
+				@Override
+				public int compare(BookDateDTO o1, BookDateDTO o2) {
+					return o1.getMonth() < o2.getMonth() ? -1 : o1.getMonth() > o2.getMonth() ? 1 : 0;
+				}
+			});
+
+			Collections.sort(book_date, new Comparator<BookDateDTO>() {
+				@Override
+				public int compare(BookDateDTO o1, BookDateDTO o2) {
+					return o1.getYear() < o2.getYear() ? -1 : o1.getYear() > o2.getYear() ? 1 : 0;
+				}
+			});
+
 			mav.addObject("book_date", book_date);
 
 			try {
+				int selectedYear = ServletRequestUtils.getIntParameter(arg0, "selectedYear");
 				int selectedMonth = ServletRequestUtils.getIntParameter(arg0, "selectedMonth");
+				mav.addObject("selectedYear", selectedYear);
 				mav.addObject("selectedMonth", selectedMonth);
 			} catch (NullPointerException e) {
-				mav.addObject("selectedMonth", 0);
+				mav.addObject("selectedYear", book_date.get(0).getYear());
+				mav.addObject("selectedMonth", book_date.get(0).getMonth());
 			}
-
 			mav.setViewName("user/product/booking");
 		} catch (NullPointerException e) {
 			// 나중에 오류 메세지로 처리

@@ -22,7 +22,7 @@ function calendar(date) {
 	beg_j = beg_j.getDay();
 
 	document
-			.write('<table class="cal_calendar"><tbody id="cal_body"><tr><th>월요일</th><th>화요일</th><th>수요일</th><th>목요일</th><th>금요일</th><th>토요일</th><th>일요일</th></tr>');
+			.write('<tr><th>월요일</th><th>화요일</th><th>수요일</th><th>목요일</th><th>금요일</th><th>토요일</th><th>일요일</th></tr>');
 	week = 0;
 	for (i = 1; i <= beg_j; i++) {
 		document.write('<td class=""></td>');
@@ -49,7 +49,6 @@ function calendar(date) {
 			week = 0;
 		}
 	}
-	document.write('</tbody></table>');
 	opacity(document.getElementById('cal_body'), 70);
 	return true;
 }
