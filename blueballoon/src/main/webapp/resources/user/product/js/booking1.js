@@ -1,6 +1,6 @@
 function calendar(date) {
 	date = new Date(date);
-	
+
 	var day = date.getDate();
 	var month = date.getMonth();
 	var year = date.getYear();
@@ -32,9 +32,17 @@ function calendar(date) {
 		if (week == 0) {
 			document.write('<tr>');
 		}
-		document
-				.write('<td class="all  empty"><div class="container"><div class="day">'
-						+ i + '</div><div class="next"></div></div></td>');
+		if (day == i) {
+			document.write('<td class="all  possible selected" id="day' + i
+					+ '" onclick="changeDay(' + i + ',' + total
+					+ ')"><div class="container"><div class="day">' + i
+					+ '</div><div class="next"></div></div></td>');
+		} else {
+			document.write('<td class="all possible" id="day' + i
+					+ '"onclick="changeDay(' + i + ',' + total
+					+ ')"><div class="container"><div class="day">' + i
+					+ '</div><div class="next"></div></div></td>');
+		}
 		week++;
 		if (week == 7) {
 			document.write('</tr>');
@@ -49,6 +57,19 @@ function calendar(date) {
 			week = 0;
 		}
 	}
-	opacity(document.getElementById('cal_body'), 70);
-	return true;
+}
+
+function changeDay(day, total) {
+	for (var i = 1; i <= total; i++) {
+		document.getElementById("day" + i).className = "all possible";
+		if (i == day) {
+			document.getElementById("day" + i).className = "all possible selected";
+		}
+	}
+}
+
+window.onload = function() {
+	document.getElementByClassName('container').onclick=function(){
+		alert("all empty");
+	}
 }

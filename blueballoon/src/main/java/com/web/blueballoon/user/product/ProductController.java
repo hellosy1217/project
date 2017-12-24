@@ -102,7 +102,7 @@ public class ProductController {
 		try {
 			int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 			mav.addObject("prod_num", prod_num);
-			
+
 			// 숙소 내 모든 방 목록
 			List<BBRoomDTO> listRoom = ProductMapper.listRoom(prod_num);
 			mav.addObject("listRoom", listRoom);
@@ -112,7 +112,7 @@ public class ProductController {
 			List<Integer> max_people = new ArrayList<Integer>();
 
 			for (int i = 0; i < listRoom.size(); i++) {
-				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_person(), "-");
+				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_person(), ",");
 				min_people.add(Integer.parseInt(str.nextToken()));
 				max_people.add(Integer.parseInt(str.nextToken()));
 			}
@@ -125,7 +125,7 @@ public class ProductController {
 			// 모든 날짜
 			for (int i = 0; i < listRoom.size(); i++) {
 				listRoom.get(i).getRoom_period();
-				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_period(), ";");
+				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_period(), ",");
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date begin_date = formatter.parse(str.nextToken());
 				Date end_date = formatter.parse(str.nextToken());
@@ -182,11 +182,14 @@ public class ProductController {
 			try {
 				int selectedYear = ServletRequestUtils.getIntParameter(arg0, "selectedYear");
 				int selectedMonth = ServletRequestUtils.getIntParameter(arg0, "selectedMonth");
+				int selectedDay = ServletRequestUtils.getIntParameter(arg0, "selectedDay");
 				mav.addObject("selectedYear", selectedYear);
 				mav.addObject("selectedMonth", selectedMonth);
+				mav.addObject("selectedDay", selectedDay);
 			} catch (NullPointerException e) {
 				mav.addObject("selectedYear", book_date.get(0).getYear());
 				mav.addObject("selectedMonth", book_date.get(0).getMonth());
+				mav.addObject("selectedDay", book_date.get(0).getDay());
 			}
 			mav.setViewName("user/product/booking");
 		} catch (NullPointerException e) {

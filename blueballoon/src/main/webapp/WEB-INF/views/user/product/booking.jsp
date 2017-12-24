@@ -16,13 +16,19 @@
 	async=""></script>
 <script async=""
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/zepto.v1513930789.min.js"></script>
-<script async=""
-	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/fbevents.js"></script>
+<script
+	src="//cdn.tourradar.com/include/pw/book_now/script.v1513001935.min.js"
+	async=""></script>
+<script src="//www.googleadservices.com/pagead/conversion_async.js"
+	async=""></script>
+<script src="//www.google-analytics.com/cx/api.js" async=""></script>
+<script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
+	async=""></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
 <script type="text/javascript">
-	function changeMonth(year, month){
-		location.href="product_booking?prod_num="+${prod_num}+"&selectedYear="+year+"&selectedMonth="+month;
+	function changeMonth(year, month,day){
+		location.href="product_booking?prod_num="+${prod_num}+"&selectedYear="+year+"&selectedMonth="+month+"&selectedDay="+day;
 	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
@@ -46,6 +52,7 @@
 		}
 	}
 </script>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
@@ -74,7 +81,8 @@
 					<div class="head">
 						<div class="point">1</div>
 						<h3>날짜를 선택해주세요.</h3>
-						<b class="date date-start">선택된 날짜</b> <br /> <br />
+						<b class="date date-start">${selectedYear}년 ${selectedMonth}월
+							${selectedDay}일</b> <br /> <br />
 						<div class="calendar">
 							<div class="months">
 								<div class="right-arrow"></div>
@@ -93,7 +101,7 @@
 													<c:otherwise>
 														<li id="${date.year}-${date.month}" class="border"
 															style="width: 100px;"
-															onclick="changeMonth(${date.year},${date.month})">
+															onclick="changeMonth(${date.year},${date.month},${date.day})">
 													</c:otherwise>
 												</c:choose>
 												<div>
@@ -113,17 +121,28 @@
 									<div class="dates">
 										<table class="cal_calendar">
 											<tbody id="cal_body">
-												<script type="text/javascript">
-												if(${date.month<10}&&${date.day<10}){
-													calendar(${date.year}+'-0'+${date.month}+'-0'+${date.day});
-												}else if(${date.month<10}){
-													calendar(${date.year}+'-0'+${date.month}+'-'+${date.day});
-												}else if(${date.day<10}){
-													calendar(${date.year}+'-'+${date.month}+'-0'+${date.day});
-												}else{
-												calendar(${date.year}+'-'+${date.month}+'-'+${date.day});
-												}
-												</script>
+												<c:choose>
+													<c:when test="${date.month<10&&date.day<10}">
+														<script type="text/javascript">
+															calendar('${date.year}-0${date.month}-0${date.day}');
+														</script>
+													</c:when>
+													<c:when test="${date.month<10}">
+														<script type="text/javascript">
+															calendar('${date.year}-0${date.month}-${date.day}');
+														</script>
+													</c:when>
+													<c:when test="${date.day<10}">
+														<script type="text/javascript">
+															calendar('${date.year}-${date.month}-0${date.day}');
+														</script>
+													</c:when>
+													<c:otherwise>
+														<script type="text/javascript">
+															calendar('${date.year}-${date.month}-${date.day}');
+														</script>
+													</c:otherwise>
+												</c:choose>
 											</tbody>
 										</table>
 									</div>
@@ -297,15 +316,6 @@
 			</div>
 		</div>
 	</div>
-
 	</main>
-	<script
-		src="//cdn.tourradar.com/include/pw/book_now/script.v1513001935.min.js"
-		async=""></script>
-	<script src="//www.googleadservices.com/pagead/conversion_async.js"
-		async=""></script>
-	<script src="//www.google-analytics.com/cx/api.js" async=""></script>
-	<script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
-		async=""></script>
 </body>
 </html>
