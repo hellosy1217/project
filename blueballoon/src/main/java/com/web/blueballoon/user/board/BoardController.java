@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBBoardDTO;
+import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.ImageDTO;
 import com.web.blueballoon.user.service.BoardMapper;
 import com.web.blueballoon.user.service.BoardPager;
 
@@ -162,5 +166,104 @@ public class BoardController {
 			}
 		}
 	}
+	
+	@RequestMapping(value="board_content")
+	public ModelAndView contentBoard(HttpServletRequest req, HttpServletResponse resp, 
+			@RequestParam String board_num) {
+		int boardNum = Integer.parseInt(board_num);
+		//세션에 있는 이메일값 가져오기(글쓴이만 글수정과 삭제를 볼수 있게 해주기 위해)
+		HttpSession session = req.getSession();
+		String memberEmail = (String) session.getAttribute("member_email");
+		//글번호에 맞춰 글내용 가져오기
+		BBBoardDTO boarddto = boardMapper.getBoard(boardNum);
+		//조회수
+		System.out.println("session에서 넘어온 값 = " + memberEmail);
+		System.out.println("원래 저장된 값 = " + boarddto.getMember_email());
+		//cookie변수를 만들어서 값을 저장, 값이 있으면 조회수 증가 안됨
+		int countCheck = 0;
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for(int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals(board_num)){
+					//board_num쿠키가 있는 경우
+					countCheck = 0;
+					break;
+				}else {
+					Cookie c = new Cookie(board_num, board_num);
+					c.setMaxAge(24*60*60);//하루 저장
+					resp.addCookie(c);
 
+					countCheck += 1;
+				}
+			}
+		}
+		//카운트 증가
+		if(countCheck > 0) {
+			int res = boardMapper.readcount(boardNum);
+		}
+		//회원 이름 가져오기
+		BBMemberDTO memberdto = boardMapper.getMemberName(boarddto.getMember_email());
+		String memberName = memberdto.getMember_name();
+		int selected_num = boardNum;
+		//저장된 사진 가져오기
+		List<ImageDTO> imgList = boardMapper.getImage(selected_num);
+		System.out.println("prod_score = "+ boarddto.getProd_score());
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("getBoard", boarddto);
+		map.put("memberName", memberName);
+		map.put("getImage", imgList);
+		map.put("memberEmail", memberEmail);
+
+		mav.addObject("map", map);
+		mav.setViewName("user/board/content");
+		return mav;
+	}
+
+	@RequestMapping(value="board_likecount")
+	public ModelAndView likeCount(@RequestParam String board_num) throws Exception{
+		int res = boardMapper.likecount(Integer.parseInt(board_num));
+		return new ModelAndView("redirect:board_list");
+	}
+
+	@RequestMapping(value="board_delete")
+	public ModelAndView deleteBoard(@RequestParam int board_num) {
+		int res = boardMapper.deleteBoard(board_num);
+		return new ModelAndView("redirect:board_list");
+	}
+	
+	@RequestMapping(value="board_update", method=RequestMethod.GET)
+	public String boardUpdateForm(HttpServletRequest req, @RequestParam String board_num) {
+		BBBoardDTO dto = boardMapper.getBoard(Integer.parseInt(board_num));
+		req.setAttribute("getBoard", dto);
+		return "user/board/updateForm";
+	}
+	
+	@RequestMapping(value="board_update",method = RequestMethod.POST)
+	public ModelAndView boardUpdatePro(HttpServletRequest req, @ModelAttribute BBBoardDTO dto, BindingResult result) {
+		String star = req.getParameter("star");
+		if(star == null || star.trim().equals("")) {
+		}else {
+			//별점을 새로 받음
+			if(dto.getProd_pick() == 1 || dto.getProd_pick() == 2 || dto.getProd_pick() == 3) {
+				//상품인 경우
+				dto.setProd_score(Integer.parseInt(star));
+			}else {
+				//패키지인 경우
+				dto.setPack_score(Integer.parseInt(star));
+			}
+		}
+		//사진을 받았다면 지우고 새로운 사진을 저장
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+		MultipartFile mf = mr.getFile("org_img");
+		if(mf.getSize() != 0) {
+			//이미지가 있다면 이미지 처리
+			int res = boardMapper.deleteImage(dto.getBoard_num());
+			fileUpload(req, dto.getBoard_num());
+
+			int imgCount = boardMapper.countFile(dto.getBoard_num());
+			dto.setBoard_img(imgCount);
+		}
+		int res = boardMapper.updateBoard(dto);
+		return new ModelAndView("redirect:board_list");
+	}
 }

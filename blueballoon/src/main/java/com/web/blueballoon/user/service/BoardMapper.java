@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.web.blueballoon.model.BBBoardDTO;
+import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.ImageDTO;
 
 @Service
 public class BoardMapper {
@@ -46,5 +48,39 @@ public class BoardMapper {
 		hm.put("org_img", org_img);
 		hm.put("str_img", str_img);
 		return sqlSession.insert("insertFile",hm);
+	}
+	public int readcount(int board_num) {
+		return sqlSession.update("readcount", board_num);
+	}
+	
+	public BBBoardDTO getBoard(int board_num) {
+		return sqlSession.selectOne("getBoard", board_num);
+	}
+	
+	public List<ImageDTO> getImage(int selected_num){
+		return sqlSession.selectList("getImage", selected_num);
+	}
+	
+	public BBMemberDTO getMemberName(String memberEmail) {
+		return sqlSession.selectOne("getMemberName", memberEmail);
+	}
+	
+	//likecount
+	public int likecount(int board_num) {
+		return sqlSession.update("likecount", board_num);
+	}
+	
+	//delete
+	public int deleteBoard(int board_num) {
+		return sqlSession.delete("deleteBoard", board_num);
+	}
+	
+	//update
+	public int updateBoard(BBBoardDTO dto) {
+		return sqlSession.update("updateBoard", dto);
+	}
+	
+	public int deleteImage(int board_num) {
+		return sqlSession.delete("deleteImage", board_num);
 	}
 }
