@@ -47,7 +47,7 @@
 		select * from bb_product where prod_pick = 3
 	</select>
 	<insert id="insertBBRoom" parameterType="BBRoomDTO">
-		insert into bb_room values (bb_room_seq.nextval, #{prod_num, jdbcType=NUMERIC}, #{room_name, jdbcType=VARCHAR} , 
+		insert into bb_room values (bb_room_seq.nextval, #{prod_num, jdbcType=NUMERIC}, #{room_name, jdbcType=VARCHAR}, #{room_code, jdbcType=VARCHAR},#{room_content, jdbcType=VARCHAR},
 		#{room_person , jdbcType=VARCHAR}, #{room_peak_price, jdbcType=NUMERIC}, #{room_non_peak_price, jdbcType=NUMERIC}, 
 		#{room_week_premium, jdbcType=NUMERIC}, #{room_period, jdbcType=VARCHAR}, #{room_offer, jdbcType=NUMERIC})
 	</insert>
