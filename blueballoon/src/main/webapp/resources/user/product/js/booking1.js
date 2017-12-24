@@ -39,7 +39,7 @@ function calendar(date) {
 					+ '</div><div class="next"></div></div></td>');
 		} else {
 			document.write('<td class="all possible" id="day' + i
-					+ '"onclick="changeDay(' + i + ',' + total
+					+ 'ss"onclick="changeDay(' + i + ',' + total
 					+ ')"><div class="container"><div class="day">' + i
 					+ '</div><div class="next"></div></div></td>');
 		}
@@ -58,18 +58,18 @@ function calendar(date) {
 		}
 	}
 }
-
-function changeDay(day, total) {
-	for (var i = 1; i <= total; i++) {
-		document.getElementById("day" + i).className = "all possible";
-		if (i == day) {
-			document.getElementById("day" + i).className = "all possible selected";
-		}
-	}
-}
-
-window.onload = function() {
-	document.getElementByClassName('container').onclick=function(){
-		alert("all empty");
-	}
-}
+//
+//function changeDay(day, total) {
+//	for (var i = 1; i <= total; i++) {
+//		document.getElementById("day" + i).className = "all possible";
+//		if (i == day) {
+//			document.getElementById("day" + i).className = "all possible selected";
+//		}
+//	}
+//}
+//
+//window.onload = function() {
+//	document.getElementByClassName('container').onclick=function(){
+//		alert("all empty");
+//	}
+//}

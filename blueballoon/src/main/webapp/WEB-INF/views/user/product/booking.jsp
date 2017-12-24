@@ -196,28 +196,30 @@
 					</div>
 					<div class="room-content"></div>
 					<div class="content" data-friends="1">
-						<div class="types">
-							<div>
-								<div class="error main hid">Please select an accommodation
-									to continue with the booking process</div>
-							</div>
-							<div class="radio" data-lack="1">
-								<input type="radio" name="accommodation" value="Twin"
-									id="accommodation-0">
-								<div class="check"></div>
-								<div class="label" for="accommodation-0">
-									<div class="descr">
-										<b><div class="beds ">
-												<span>✕</span>최대인원
-											</div>
-											<div>ㅇㅇ룸</div></b> 방 설명
-									</div>
-									<div class="pr">
-										<b>+추가금액</b>
+						<c:forEach items="${listRoom}" var="room">
+							<div class="types">
+								<div class="radio" data-lack="1">
+									<input type="radio" name="accommodation" value="Twin"
+										id="accommodation-0">
+									<div class="check"></div>
+									<div class="label" for="accommodation-0">
+										<div class="descr">
+											<b><div class="beds ">
+													<c:forTokens var="person" varStatus="pstatus" items="${room.room_person}" delims=",">
+													<c:if test="${pstatus.count==2}">
+													<span>✕</span>${person}
+													</c:if>
+													</c:forTokens>
+												</div>
+												<div>${room.room_name}</div></b> 방 설명
+										</div>
+										<div class="pr">
+											<b>+추가금액</b>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="block price-main ">
@@ -241,7 +243,7 @@
 						<c:forEach var="a" begin="1" end="5" step="1">
 							<div class="wp">
 								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${a}.png"
+									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/e.png"
 									alt="Carla"><span>이름</span>
 							</div>
 						</c:forEach>
