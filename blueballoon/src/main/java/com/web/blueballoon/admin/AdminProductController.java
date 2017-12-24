@@ -130,6 +130,7 @@ public class AdminProductController {
 		// 비교를 위한 dto 값 불러오기.
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
 		String prod_edit_img = mf.getOriginalFilename();
+		System.out.println("새로운 파일 : " +prod_edit_img);
 		String file = null;
 		if (editDTO.getProd_str_img() != null) {// 1. 기존 이지가 있을때 (검색 O)
 			if (prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
@@ -142,7 +143,7 @@ public class AdminProductController {
 				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
-			} else if (prod_edit_img == null) {// -2. 새로운 파일 없을 때.
+			} else if (prod_edit_img == null || prod_edit_img.trim().equals("")) {// -2. 새로운 파일 없을 때.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
 			}
@@ -151,7 +152,7 @@ public class AdminProductController {
 				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
-			} else if (prod_edit_img == null) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
+			} else if (prod_edit_img == null || prod_edit_img.trim().equals("")) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
 				dto.setProd_org_img(null);
 				dto.setProd_str_img(null);
 			}

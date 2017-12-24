@@ -106,7 +106,7 @@
          </tr>
          <tr>
             <th>이미지</th>
-            <td><input type="file" name="prod_org_img" value="${getProduct.prod_org_img}">${getProduct.prod_org_img} 옆에 링크로 사진 보여주기.</td>
+            <td><input type="file" name="prod_org_img" value="${getProduct.prod_org_img}">${getProduct.prod_org_img}<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProduct.prod_pick}/${getProduct.prod_str_img}"></td>
          </tr> 
          <tr>
 					<th>우편번호</th>

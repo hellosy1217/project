@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBProductDTO;
+import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BBMemberDTO;
 
 @Service
@@ -82,5 +83,8 @@ public class AdminMapper {
 	}
 	public List<BBProductDTO>listBBProductForRoom(){
 		return sqlSession.selectList("listBBProductForRoom");
+	}
+	public int insertBBRoom(BBRoomDTO dto) {
+		return sqlSession.insert("insertBBRoom",dto);
 	}
 }

@@ -25,8 +25,8 @@
 		<tr>
 			<td align="right">${dto.prod_num}</td>
 			<td align="center">${dto.prod_cate}</td>
-			<td align="center">${dto.prod_name}</td>
-			<td align="center">${dto.prod_hp}</td>
+			<td align="center"><a href = "BB_lodging_content?prod_num=${dto.prod_num}">${dto.prod_name}</a></td>
+			<td align="center">${dto.prod_phone}</td>
 			<td align="center">${dto.prod_price}</td>
 			<c:if test="${dto.prod_pick == 1}">
 				<td align="center">지역</td>
