@@ -133,5 +133,6 @@ public class AdminRoomController {
 		mav.setViewName("admin/room/BB_room_content");
 		return mav;
 	}
+	
 }
 

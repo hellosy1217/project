@@ -57,4 +57,15 @@
 	<delete id="deleteBBRoom" parameterType="int">
 		delete from bb_room where room_num = #{room_num, jdbcType=NUMERIC}
 	</delete>
+	<select id="getBBRoom" parameterType="int" resultType="BBRoomDTO">
+		select * from bb_room where room_num = #{room_num}
+	</select>
+	<update id="editBBRoom" parameterType="BBRoomDTO">
+		update bb_room set room_name = #{room_name, jdbcType=VARCHAR}, room_code = #{room_code, jdbcType=VARCHAR},
+		room_content = #{room_content, jdbcType=VARCHAR}, room_person = #{room_person, jdbcType=VARCHAR},
+		room_peak_price = #{room_peak_price, jdbcType=NUMERIC}, room_non_peak_price = #{room_non_peak_price, jdbcType=NUMERIC},
+		room_week_premium = #{room_week_premium, jdbcType=NUMERIC}, room_period = #{room_period, jdbcType=VARCHAR},
+		room_offer = #{room_offer, jdbcType=NUMERIC} where room_num = #{room_num, jdbcType=NUMERIC}
+		
+	</update>
 </mapper>

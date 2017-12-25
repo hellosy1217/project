@@ -76,7 +76,7 @@
 		</tr>	
 		<c:forEach var="dto" items="${roomList}">
 		<tr>
-			<td align="right"><a href="BB_room_content?room_num="${dto.room_num}>${dto.room_name}</a></td>
+			<td align="right"><a href="BB_room_content?room_num=${dto.room_num}">${dto.room_name}</a></td>
 			<td align="center">${dto.room_person}</td>
 			<td align="center">${dto.room_peak_price}</td>
 			<td align="center">${dto.room_non_peak_price}</td>
