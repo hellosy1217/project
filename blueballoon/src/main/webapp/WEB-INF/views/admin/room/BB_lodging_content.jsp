@@ -47,19 +47,19 @@
 	<br>
 <div align="center">
 	<b>등록된 방 리스트</b>
-	<table border="1" width="700">
+	<table border="1" width="800">
 	<tr>
-			<th align="right" colspan="8"><a href="BB_room_insert">추가</a></th>
+			<th align="right" colspan="9"><a href="BB_room_insert?prod_num=${getProduct.prod_num}">추가</a></th>
 		</tr>
 		<tr>
-			<th width="10%">방 번호</th>
-			<th width="10%">방 이름</th>
+			<th width="7%">방 이름</th>
 			<th width="15%">기준 인원 - 최대 인원</th> 
 			<th width="15%">성수기 가격</th>
 			<th width="15%">비 성수기 가격</th>
-			<th width="15%">주말 가격 증가율</th>
+			<th width="10%">주말 가격 증가율</th>
 			<th width="10%">예약 가능기간</th>
-			<th width="20%">수정 | 삭제 </th>
+			<th width="10%">할인율</th>
+			<th width="25%">수정 | 삭제 </th>
 		</tr>
 		<tr>
 		<c:if test="${empty roomList}">
@@ -68,14 +68,14 @@
 		</tr>	
 		<c:forEach var="dto" items="${roomList}">
 		<tr>
-			<td align="right">${dto.room_num}</td>
 			<td align="right">${dto.room_name}</td>
 			<td align="center">${dto.room_person}</td>
 			<td align="center">${dto.room_peak_price}</td>
-			<td align="center">${dto.room_non_peak_price}</td>
-			<td align="center">${dto.room_week_preminum}</td>
+			<td align="center">${dto.room_non_peak_price}%</td>
+			<td align="center">${dto.room_week_premium}</td>
 			<td align="center">${dto.room_period}</td>
-			<td align="center">${dto.room_offer}</td>
+			<td align="center">${dto.room_offer}%</td>
+			<td align="center"><a href="BB_room_edit?room_num=${dto.room_num}&prod_num=${dto.prod_num}">수정</a>|<a href="BB_room_delete?=room_num=${dto.room_num}&prod_num=${dto.prod_num}">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>

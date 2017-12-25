@@ -52,12 +52,19 @@
 </script>
 <div align="center">
    <form name="f" action="BB_room_insert" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="prod_num" value="${parm.prod_num}">
       <table width="800">
          <caption>방 등록</caption>
          <tr>
             <th width="20%">숙소 명(번호)</th>
             <td>
-            <input type="text" name="room_name">
+            <input type="text" name="room_name" placeholder="ex. 스위트 룸(suite room)">
+            </td>
+         </tr>
+         <tr>
+            <th width="20%">방 코드</th>
+            <td>
+            <input type="text" name="room_code" placeholder="ex.101호">
             </td>
          </tr>
          <tr>
@@ -67,9 +74,9 @@
                   <option value="${per}">${per}명</option>
              </c:forEach>
             </select></td>
-            <td>최대인원 <select name="room_person">
+            <td>최대인원<select name="room_person">
             <c:forEach var="per" begin="2" end="15" step="1">
-                  <option value="-${per}">${per}명</option>
+                  <option value="${per}">${per}명</option>
              </c:forEach>
             </select> </td>
          </tr>
@@ -90,7 +97,7 @@
          </tr>
          <tr>
             <th>예약 가능한 기간</th>
-            <td><input type="text" name="room_period" id="fromDate">-</td>
+            <td><input type="text" name="room_period" id="fromDate"></td>
             <td><input type="text" name="room_period" id="toDate"></td>
          </tr>
          <tr>
@@ -101,6 +108,10 @@
              </c:forEach>
                </select>
             </td>
+         </tr>
+         <tr>
+            <th>방 상세 설명</th>
+            <td><textarea name="room_content" rows="10" cols="100"></textarea></td>
          </tr>
          <tr>
             <td colspan="2" align="center"><input type="submit" value="방 등록">

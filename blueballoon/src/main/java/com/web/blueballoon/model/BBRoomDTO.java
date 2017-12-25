@@ -14,17 +14,17 @@ public class BBRoomDTO {
 	private int room_offer;
 
 	/*
-	 * room_num : 방 번호 
-	 * prod_num : 숙소 번호 
-	 * room_name : 방 이름 (예: 스위트룸) 
-	 * room_code : 방 코드 (예: 101호)
-	 * room_content : 방 설명
-	 * room_person : 방 인원(min,max) 
-	 * room_peak_price : 성수기 가격 
-	 * room_non_peak_price : 비성수기 가격
-	 * room_week_premium : 주말 가격 증가율(0~100) 
-	 * room_period : 예약 할 수 있는 기간(yyyy-mm-dd,yyyy-mm-dd) 
-	 * room_offer : 할인율
+	 * room_num : 방 번호
+		prod_num : 숙소 번호
+		room_name : 방 이름 (ex.스위트룸)
+		room_code : 방 코드 (ex.101호)
+		room_content : 방 설명
+		room_person : 방 인원(min-max)
+		room_peak_price : 성수기 가격
+		room_non_peak_price : 비성수기 가격
+		room_week_premium : 주말 가격 증가율(0~100)
+		room_period : 예약 할 수 있는 기간 (yyyy-mm-dd;yyyy-mm-dd)
+		room_offer : 할인율
 	 */
 	public int getRoom_num() {
 		return room_num;

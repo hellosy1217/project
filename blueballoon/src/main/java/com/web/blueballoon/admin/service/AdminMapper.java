@@ -87,4 +87,11 @@ public class AdminMapper {
 	public int insertBBRoom(BBRoomDTO dto) {
 		return sqlSession.insert("insertBBRoom",dto);
 	}
+	public List<BBRoomDTO> listBBRoom(int prod_num) {
+		return sqlSession.selectList("listBBRoom",prod_num);
+	}
+	public int deleteBBRoom(int room_num) {
+		return sqlSession.delete("deleteBBRoom",room_num);
+	}
+	
 }

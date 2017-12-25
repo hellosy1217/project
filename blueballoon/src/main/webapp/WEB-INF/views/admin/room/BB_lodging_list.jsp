@@ -14,7 +14,6 @@
 			<th width="20%">연락처</th>
 			<th width="15%">가격</th>
 			<th width="10%">분류</th>
-			<th width="20%">수정 | 삭제 </th>
 		</tr>
 		<tr>
 		<c:if test="${empty productList}">
