@@ -22,8 +22,6 @@ public class AdminRoomController {
 	private AdminMapper adminMapper;
 	@Autowired
 	private ControllerMessage cm;
-	@Autowired
-	private AmazonFileUtils amazon;
 	
 	private ModelAndView mav = new ModelAndView();
 	

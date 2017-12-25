@@ -28,7 +28,7 @@
 				<tr align="center">
 					<td>${dto.member_num}</td>
 					<td>${dto.member_name}</td>
-					<td><img src="/blueballoon/resources/files/${dto.member_org_img}"
+					<td><img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/member/${dto.member_str_img}"
 						width="80" height="60" /></td>
 					<td>${dto.member_email}</td>
 					<td>${dto.member_phone}</td>
