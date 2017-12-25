@@ -52,7 +52,7 @@
 </script>
 <div align="center">
    <form name="f" action="BB_room_insert" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="prod_num" value="${parm.prod_num}">
+    <input type="hidden" name="prod_num" value="${param.prod_num}">
       <table width="800">
          <caption>방 등록</caption>
          <tr>

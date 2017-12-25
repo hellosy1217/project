@@ -74,6 +74,7 @@ public class AdminRoomController {
 		String [] url = {"BB_lodging_content?prod_num="+dto.getProd_num(),"BB_room_insert"};
 		return cm.resMassege(res, msg, url);
 	}
+	
 	@RequestMapping(value ="BB_room_delete")
 	public ModelAndView deleteBBRoom(@RequestParam int room_num, @RequestParam int prod_num) {
 		if(room_num == 0) {
