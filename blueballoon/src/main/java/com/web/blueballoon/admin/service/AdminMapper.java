@@ -93,5 +93,11 @@ public class AdminMapper {
 	public int deleteBBRoom(int room_num) {
 		return sqlSession.delete("deleteBBRoom",room_num);
 	}
+	public BBRoomDTO getBBRoom(int room_num) {
+		return sqlSession.selectOne("getBBRoom",room_num);
+	}
+	public int editBBRoom(BBRoomDTO dto) {
+		return sqlSession.update("editBBRoom",dto);
+	}
 	
 }

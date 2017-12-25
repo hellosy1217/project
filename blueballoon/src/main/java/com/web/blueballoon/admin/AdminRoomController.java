@@ -3,6 +3,7 @@ package com.web.blueballoon.admin;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,8 +70,7 @@ public class AdminRoomController {
 		}catch(NullPointerException ne) {
 			ne.printStackTrace();
 		}
-		System.out.println("prod_num : "+dto.getProd_num());
-		String [] msg = {"룸 등록 성공 완료! 목록 페이지로 이동합니다!", "룸 등록 성공 실패! 등록 페이지로 이동합니다."};
+		String [] msg = {"룸 등록 성공 ! 목록 페이지로 이동합니다!", "룸 등록 실패! 등록 페이지로 이동합니다."};
 		String [] url = {"BB_lodging_content?prod_num="+dto.getProd_num(),"BB_room_insert"};
 		return cm.resMassege(res, msg, url);
 	}
@@ -88,9 +88,50 @@ public class AdminRoomController {
 		}catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		String [] msg = {"룸 삭제 성공 완료! 목록 페이지로 이동합니다!", "룸 등록 성공 실패! 등록 페이지로 이동합니다."};
-		String [] url = {"BB_room_list?prod_num="+prod_num,"BB_room_list?prod_num="+prod_num};
+		String [] msg = {"룸 삭제 성공 완료! 목록 페이지로 이동합니다!", "룸 삭제 실패! 목록 페이지로 이동합니다."};
+		String [] url = {"BB_lodging_content?prod_num="+prod_num,"BB_lodging_content?prod_num="+prod_num};
 		return cm.resMassege(res, msg, url);
+	}
+	
+	@RequestMapping(value="BB_room_edit", method=RequestMethod.GET)
+	public ModelAndView viewEditRoom(@RequestParam int room_num, int prod_num) {
+		if(room_num == 0) {
+			mav.addObject("msg","잘못된 접근입니다. 목록페이지로 이동합니다.");
+			mav.addObject("url","admin/room/BB_lodging_content");
+			mav.setViewName("admin/message"); return mav;
+		}
+		BBRoomDTO dto	= adminMapper.getBBRoom(room_num);
+		mav.addObject("getRoom",dto);
+		mav.setViewName("admin/room/BB_room_edit");
+		return mav;
+	}
+	@RequestMapping(value="BB_room_edit", method=RequestMethod.POST)
+	public ModelAndView EditRoom(@ModelAttribute BBRoomDTO dto, BindingResult result) {
+		if(dto.getProd_num()== 0) {
+			//고민좀..
+		}
+		int res = 0;
+		try {
+			res = adminMapper.editBBRoom(dto);
+		}catch (NullPointerException ne) {
+			ne.printStackTrace();
+		}
+		String [] msg = {"방 수정 성공! 상세보기 페이지로 이동합니다. ", "방 수정 실패! 수정 페이지로 이동합니다."};
+		String [] url = {"admin/room/BB_room_content?room_num="+dto.getRoom_num(),"admin/room_BB_room_edit?room_num="+dto.getRoom_num()};
+		return cm.resMassege(res, msg, url);
+	}
+	
+	@RequestMapping(value="BB_room_content")	//상세 보기 페이지
+	public ModelAndView roomContent(@RequestParam int room_num) {
+		if(room_num == 0) {
+			mav.addObject("msg","잘못된 접근입니다. 숙소 예약 목록페이지로 이동합니다.");
+			mav.addObject("url","room_loding_list");
+			mav.setViewName("message"); return mav;
+		}
+		BBRoomDTO dto = adminMapper.getBBRoom(room_num);
+		mav.addObject("getRoom", dto);
+		mav.setViewName("admin/room/BB_room_content");
+		return mav;
 	}
 }
 

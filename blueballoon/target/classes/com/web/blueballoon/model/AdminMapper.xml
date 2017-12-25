@@ -51,4 +51,10 @@
 		#{room_person , jdbcType=VARCHAR}, #{room_peak_price, jdbcType=NUMERIC}, #{room_non_peak_price, jdbcType=NUMERIC}, 
 		#{room_week_premium, jdbcType=NUMERIC}, #{room_period, jdbcType=VARCHAR}, #{room_offer, jdbcType=NUMERIC})
 	</insert>
+	<select id="listBBRoom" parameterType="int" resultType="BBRoomDTO">
+		select * from bb_room where prod_num = #{prod_num}
+	</select>
+	<delete id="deleteBBRoom" parameterType="int">
+		delete from bb_room where room_num = #{room_num, jdbcType=NUMERIC}
+	</delete>
 </mapper>

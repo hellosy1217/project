@@ -52,19 +52,19 @@
 </script>
 <div align="center">
    <form name="f" action="BB_room_insert" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="prod_num" value="${param.prod_num}">
+    <input type="hidden" name="prod_num" value="${getRoom.prod_num}">
       <table width="800">
          <caption>방 등록</caption>
          <tr>
             <th width="20%">숙소 명</th>
             <td>
-            <input type="text" name="room_name" placeholder="ex. 스위트 룸(suite room)">
+            <input type="text" name="room_name"value="${getRoom.room_name}">
             </td>
          </tr>
          <tr>
             <th width="20%">방 코드</th>
             <td>
-            <input type="text" name="room_code" placeholder="ex.101호">
+            <input type="text" name="room_code" value="${getRoom.room_code}">
             </td>
          </tr>
          <tr>
@@ -82,9 +82,9 @@
          </tr>
          <tr>
             <th>성수기 가격</th>
-            <td><input type="text" name="room_peak_price"></td>
+            <td><input type="text" name="room_peak_price" value="${getRoom.room_peak_price}"></td>
             <th>비 성수기 가격</th>
-            <td><input type="text" name="room_non_peak_price"></td>
+            <td><input type="text" name="room_non_peak_price" value="${getRoom.room_non_peak_price}"></td>
          </tr>
          <tr>
             <th>주말 가격 증가율</th>
@@ -111,7 +111,7 @@
          </tr>
          <tr>
             <th>방 상세 설명</th>
-            <td><textarea name="room_content" rows="10" cols="100"></textarea></td>
+            <td><textarea name="room_content" rows="10" cols="100">${getRoom.room_content}</textarea></td>
          </tr>
          <tr>
             <td colspan="2" align="center"><input type="submit" value="방 등록">

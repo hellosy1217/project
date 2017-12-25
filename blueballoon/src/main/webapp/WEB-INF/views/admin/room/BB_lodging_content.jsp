@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+	function checkDel(room_num,prod_num){
+		var isDel = confirm("정말로 삭제하시겠습니까?")
+		if (isDel){
+			location.href="BB_room_delete?room_num="+room_num+"&prod_num="+prod_num;
+		}
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<div align="center">
 	<b>글내용 보기</b>
@@ -59,7 +67,7 @@
 			<th width="10%">주말 가격 증가율</th>
 			<th width="10%">예약 가능기간</th>
 			<th width="10%">할인율</th>
-			<th width="25%">수정 | 삭제 </th>
+			<th width="20%">수정 | 삭제 </th>
 		</tr>
 		<tr>
 		<c:if test="${empty roomList}">
@@ -68,14 +76,14 @@
 		</tr>	
 		<c:forEach var="dto" items="${roomList}">
 		<tr>
-			<td align="right">${dto.room_name}</td>
+			<td align="right"><a href="BB_room_content?room_num="${dto.room_num}>${dto.room_name}</a></td>
 			<td align="center">${dto.room_person}</td>
 			<td align="center">${dto.room_peak_price}</td>
-			<td align="center">${dto.room_non_peak_price}%</td>
-			<td align="center">${dto.room_week_premium}</td>
+			<td align="center">${dto.room_non_peak_price}</td>
+			<td align="center">${dto.room_week_premium}%</td>
 			<td align="center">${dto.room_period}</td>
 			<td align="center">${dto.room_offer}%</td>
-			<td align="center"><a href="BB_room_edit?room_num=${dto.room_num}&prod_num=${dto.prod_num}">수정</a>|<a href="BB_room_delete?=room_num=${dto.room_num}&prod_num=${dto.prod_num}">삭제</a></td>
+			<td align="center"><a href="BB_room_edit?room_num=${dto.room_num}&prod_num=${dto.prod_num}">수정</a>|<a href="javascript:checkDel('${dto.room_num},${dto.prod_num}')">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>
