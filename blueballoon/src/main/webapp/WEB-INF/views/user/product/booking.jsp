@@ -5,7 +5,7 @@
 <head>
 <title>booking - 상품/패키지 명 - BlueBalloon</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css?ver=1"
+	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css?ver=12"
 	rel="stylesheet" type="text/css" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -25,7 +25,7 @@
 <script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
 	async=""></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=1"></script>
+	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=12"></script>
 <script type="text/javascript">
 	function changeMonth(year, month,day){
 		location.href="product_booking?prod_num="+${prod_num}+"&selectedYear="+year+"&selectedMonth="+month+"&selectedDay="+day;

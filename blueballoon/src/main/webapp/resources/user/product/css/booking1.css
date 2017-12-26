@@ -2939,18 +2939,18 @@ main .route li:last-child {
 	margin-top: 5px
 }
 
-main .calendar {
+#bb_calendar  {
 	text-align: center;
 	position: relative
 }
 
-main .calendar .months {
+#bb_calendar .months {
 	width: 100%;
 	padding: 0 30px;
 	text-align: center
 }
 
-main .calendar .months .left-arrow, main .calendar .months .right-arrow
+#bb_calendar .months .left-arrow, #bb_calendar .months .right-arrow
 	{
 	top: -3px;
 	width: 40px;
@@ -2958,53 +2958,53 @@ main .calendar .months .left-arrow, main .calendar .months .right-arrow
 	background-position: 50%
 }
 
-main .calendar .months .left-arrow.inactive, main .calendar .months .right-arrow.inactive
+#bb_calendar .months .left-arrow.inactive, #bb_calendar .months .right-arrow.inactive
 	{
 	opacity: .25;
 	cursor: auto
 }
 
-main .calendar .months .left-arrow {
+#bb_calendar .months .left-arrow {
 	left: -9px
 }
 
-main .calendar .months .right-arrow {
+#bb_calendar .months .right-arrow {
 	right: -9px
 }
 
-main .calendar .months .content {
+#bb_calendar .months .content {
 	width: 100%;
 	overflow-x: hidden
 }
 
-main .calendar .months ul li {
+#bb_calendar .months ul li {
 	padding: 0;
 	margin: 0;
 	border: 1px solid #409cd1;
 	float: left
 }
 
-main .calendar .months ul li:not (:first-child ){
+#bb_calendar .months ul li:not (:first-child ){
 	border-left: none
 }
 
-main .calendar .months ul li.selected div {
+#bb_calendar .months ul li.selected div {
 	color: #fff;
 	background: #409cd1
 }
 
-main .calendar .months ul li.border {
+#bb_calendar .months ul li.border {
 	border-left: 1px solid #409cd1
 }
 
-main .calendar .months ul li div {
+#bb_calendar .months ul li div {
 	width: 100%;
 	color: #409cd1;
 	line-height: 32px;
 	cursor: pointer
 }
 
-main .calendar .months ul li div span {
+#bb_calendar .months ul li div span {
 	width: 10px;
 	height: 10px;
 	background: #409cd1;
@@ -3013,25 +3013,25 @@ main .calendar .months ul li div span {
 	display: none
 }
 
-main .calendar .months ul li.empty {
+#bb_calendar .months ul li.empty {
 	border-color: #ccc
 }
 
-main .calendar .months ul li.empty div {
+#bb_calendar .months ul li.empty div {
 	color: #ccc
 }
 
-main .calendar .months ul li.with-date span {
+#bb_calendar .months ul li.with-date span {
 	display: inline-block
 }
 
-main .calendar .dates table {
+#bb_calendar .dates table {
 	width: 100%;
 	border-collapse: collapse;
 	margin-top: 20px
 }
 
-main .calendar .dates table th {
+#bb_calendar .dates table th {
 	padding-bottom: 20px;
 	font-size: 10px;
 	color: #999;
@@ -3041,7 +3041,7 @@ main .calendar .dates table th {
 	width: 14.29%
 }
 
-main .calendar .dates table td {
+#bb_calendar .dates table td {
 	font-size: 10px;
 	color: #999;
 	margin: 0;
@@ -3049,7 +3049,7 @@ main .calendar .dates table td {
 	height: 55px
 }
 
-main .calendar .dates table td .container {
+#bb_calendar .dates table td .container {
 	padding: 5px;
 	margin: 0;
 	position: relative;
@@ -3059,27 +3059,27 @@ main .calendar .dates table td .container {
 	max-width: 100%
 }
 
-main .calendar .dates table td.possible {
+#bb_calendar .dates table td.possible {
 	border: 1px solid #ccc;
 	color: #999
 }
 
-main .calendar .dates table td.empty {
+#bb_calendar .dates table td.empty {
 	background: #f5f5f5;
 	border: 1px solid #ccc;
 	color: #ccc
 }
 
-main .calendar .dates table td.onway {
+#bb_calendar .dates table td.onway {
 	background: #66b0da;
 	color: #fff
 }
 
-main .calendar .dates table td.onway.next .seats {
+#bb_calendar .dates table td.onway.next .seats {
 	display: none
 }
 
-main .calendar .dates table td.onway.next .next {
+#bb_calendar .dates table td.onway.next .next {
 	position: absolute;
 	bottom: 8px;
 	right: 5px;
@@ -3096,41 +3096,41 @@ main .calendar .dates table td.onway.next .next {
 	transform: rotate(90deg)
 }
 
-main .calendar .dates table td.possible {
+#bb_calendar .dates table td.possible {
 	cursor: pointer
 }
 
-main .calendar .dates table td.possible .day, main .calendar .dates table td.possible .price
+#bb_calendar .dates table td.possible .day, #bb_calendar .dates table td.possible .price
 	{
 	color: #409cd1
 }
 
-main .calendar .dates table td.possible.onway .day, main .calendar .dates table td.possible.onway .price
+#bb_calendar .dates table td.possible.onway .day, #bb_calendar .dates table td.possible.onway .price
 	{
 	color: #fff
 }
 
-main .calendar .dates table td.possible.selected, main .calendar .dates table td.possible:hover
+#bb_calendar .dates table td.possible.selected, #bb_calendar .dates table td.possible:hover
 	{
 	background: #409cd1;
 	color: #fff
 }
 
-main .calendar .dates table td.possible.selected .day, main .calendar .dates table td.possible.selected .price,
-	main .calendar .dates table td.possible.selected .seats, main .calendar .dates table td.possible:hover .day,
-	main .calendar .dates table td.possible:hover .price, main .calendar .dates table td.possible:hover .seats
+#bb_calendar .dates table td.possible.selected .day, #bb_calendar .dates table td.possible.selected .price,
+	#bb_calendar .dates table td.possible.selected .seats, #bb_calendar .dates table td.possible:hover .day,
+	#bb_calendar .dates table td.possible:hover .price, #bb_calendar .dates table td.possible:hover .seats
 	{
 	color: #fff
 }
 
-main .calendar .dates table td.possible.selected .seats:after, main .calendar .dates table td.possible:hover .seats:after
+#bb_calendar .dates table td.possible.selected .seats:after, #bb_calendar .dates table td.possible:hover .seats:after
 	{
 	background-image:
 		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='10' cy='5' r='5'/%3E%3Ccircle cx='10' cy='21' r='10'/%3E%3C/g%3E%3C/svg%3E")
 }
 
-main .calendar .dates table td.possible.onway:after, main .calendar .dates table td.possible.selected:after,
-	main .calendar .dates table td.possible:hover:after {
+#bb_calendar .dates table td.possible.onway:after, #bb_calendar .dates table td.possible.selected:after,
+	#bb_calendar .dates table td.possible:hover:after {
 	display: none
 }
 
