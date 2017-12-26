@@ -179,6 +179,18 @@ public class ProductController {
 
 			mav.addObject("book_date", book_date);
 
+			String date = null;
+			date = book_date.get(0).getYear() + "-";
+			if (book_date.get(0).getMonth() < 10) {
+				date += "0";
+			}
+			date += book_date.get(0).getMonth() + "-";
+			if (book_date.get(0).getDay() < 10) {
+				date += "0";
+			}
+			date += book_date.get(0).getDay();
+			mav.addObject("selectedDate", date);
+
 			try {
 				int selectedYear = ServletRequestUtils.getIntParameter(arg0, "selectedYear");
 				int selectedMonth = ServletRequestUtils.getIntParameter(arg0, "selectedMonth");

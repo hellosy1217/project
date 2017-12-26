@@ -72,85 +72,17 @@
 	<main data-parameters="" data-phone="+1 844 311 3006 ">
 	<div class="c">
 		<div class="fline">
-			<h1>상품/패키지 이름</h1>
+			<h1>상품/패키지 이름 date = ${selectedDate}</h1>
 		</div>
 		<div class="book">
 			<div class="left">
 				<div class="saleLine"></div>
-				<div class="block departure">
-					<div class="head">
-						<div class="point">1</div>
-						<h3>날짜를 선택해주세요.</h3>
-						<b class="date date-start">${selectedYear}년 ${selectedMonth}월
-							${selectedDay}일</b> <br /> <br />
-						<div class="calendar">
-							<div class="months">
-								<div class="right-arrow"></div>
-								<div class="left-arrow inactive"></div>
-								<div class="content">
-									<ul style="width: 700px; margin-left: 0px;">
-										<c:forEach var="date" items="${book_date}" varStatus="status">
-											<c:if
-												test="${status.count eq 1||(preMonth ne date.month&&preMonth ne null)}">
-												<c:choose>
-													<c:when
-														test="${selectedYear eq date.year && selectedMonth eq date.month }">
-														<li id="${date.year}-${date.month}"
-															class="selected border" style="width: 100px;">
-													</c:when>
-													<c:otherwise>
-														<li id="${date.year}-${date.month}" class="border"
-															style="width: 100px;"
-															onclick="changeMonth(${date.year},${date.month},${date.day})">
-													</c:otherwise>
-												</c:choose>
-												<div>
-													<span></span> ${date.year}년 ${date.month}월
-												</div>
-												</li>
-												<c:set var="preMonth" value="${date.month}"></c:set>
-											</c:if>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
-							<c:remove var="dateOk"></c:remove>
-							<c:forEach var="date" items="${book_date}" varStatus="status">
-								<c:if
-									test="${selectedYear eq date.year && selectedMonth eq date.month && dateOk ne 'Ok'}">
-									<div class="dates">
-										<table class="cal_calendar">
-											<tbody id="cal_body">
-												<c:choose>
-													<c:when test="${date.month<10&&date.day<10}">
-														<script type="text/javascript">
-															calendar('${date.year}-0${date.month}-0${date.day}');
-														</script>
-													</c:when>
-													<c:when test="${date.month<10}">
-														<script type="text/javascript">
-															calendar('${date.year}-0${date.month}-${date.day}');
-														</script>
-													</c:when>
-													<c:when test="${date.day<10}">
-														<script type="text/javascript">
-															calendar('${date.year}-${date.month}-0${date.day}');
-														</script>
-													</c:when>
-													<c:otherwise>
-														<script type="text/javascript">
-															calendar('${date.year}-${date.month}-${date.day}');
-														</script>
-													</c:otherwise>
-												</c:choose>
-											</tbody>
-										</table>
-									</div>
-									<c:set var="dateOk" value="Ok"></c:set>
-								</c:if>
-							</c:forEach>
-						</div>
-					</div>
+				<div class="block departure" id="bb_calendar">
+			<h2>date</h2>
+					<script type="text/javascript">
+					window.onload = function () {
+						calendar('${selectedDate}');
+					};</script>
 					<div id="seats">
 						<div class="content">
 							<div class="i icon currency usd">예약 취소시 ~~~~ 청구됩니다.</div>
@@ -205,9 +137,10 @@
 									<div class="label" for="accommodation-0">
 										<div class="descr">
 											<b><div class="beds ">
-													<c:forTokens var="person" varStatus="pstatus" items="${room.room_person}" delims=",">
-													<c:if test="${pstatus.count==2}">
-													<span>✕</span>${person}
+													<c:forTokens var="person" varStatus="pstatus"
+														items="${room.room_person}" delims=",">
+														<c:if test="${pstatus.count==2}">
+															<span>✕</span>${person}
 													</c:if>
 													</c:forTokens>
 												</div>
