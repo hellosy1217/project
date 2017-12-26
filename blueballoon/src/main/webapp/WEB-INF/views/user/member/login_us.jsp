@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
-<title>Login to TourRadar</title>
+<title>Login to BlueBalloon</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link
 	href="${pageContext.request.contextPath}/resources/user/member/css/login1.css"

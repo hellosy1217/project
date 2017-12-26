@@ -38,6 +38,8 @@
 		<interceptor>
 		<!-- 인터셉터가 적용될 url -->
 		<!-- Booking / Board / My page etc... -->
+			<!-- <mapping path="admin_index"/> -->
+			<mapping path="member_edit"/>
 			<mapping path="board_wirte" />
 		<!-- 인터셉터 제외될 url 있으면 넣고 아니면...흠 -->
 		<!-- 우선 에러나서 주석처리<exclude-mapping path=""/> -->
