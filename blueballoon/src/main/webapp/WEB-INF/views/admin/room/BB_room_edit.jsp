@@ -111,7 +111,7 @@
          </tr>
          <tr>
             <th>방 상세 설명</th>
-            <td><textarea name="room_content" rows="10" cols="100">${getRoom.room_period}</textarea></td>
+            <td><textarea name="room_content" rows="10" cols="100">${getRoom.room_content}</textarea></td>
          </tr>
          <tr>
             <td colspan="2" align="center"><input type="submit" value="방 수정">
