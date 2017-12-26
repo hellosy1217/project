@@ -82,7 +82,7 @@
                   	<option>등록된 카테고리가 없습니다.</option>
                   </c:if>
                   <c:forEach var="dto" items="${cateList}">
-                     <option value="${dto.cate_state}-${dto.cate_city}"<c:if test="${${dto.cate_state}-${dto.cate_city} eq '${dto.cate_state}-${dto.cate_city}'}">selected </c:if>>${dto.cate_state},${dto.cate_city}</option>
+                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
                   </c:forEach>
                </select>
             </td>
