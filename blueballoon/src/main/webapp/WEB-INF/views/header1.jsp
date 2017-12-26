@@ -11,7 +11,7 @@
 		<span class="hide-sm pull-left"><a href="member_find">일단은
 				회원 찾기</a></span><span class="hide-sm"><a href="member_edit">일단은
 				회원정보수정</a></span><span class="pull-right"><a href="admin_index">일단은
-				admin</a></span>
+				ad min</a></span>
 	</div> 
 </div>
 <header>
