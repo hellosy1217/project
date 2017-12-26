@@ -78,10 +78,9 @@
 			<div class="left">
 				<div class="saleLine"></div>
 				<div class="block departure" id="bb_calendar">
-			<h2>date</h2>
 					<script type="text/javascript">
 					window.onload = function () {
-						calendar('${selectedDate}');
+						calendar('bb_calendar','${selectedDate}');
 					};</script>
 					<div id="seats">
 						<div class="content">
