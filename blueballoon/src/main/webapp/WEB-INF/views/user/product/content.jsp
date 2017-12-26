@@ -212,15 +212,13 @@
 
 		<div class="bl">
 			<div class="b img">
-				
-				<div class="pic has-thumbnails" style="height: 400px;">
-					
-				</div>
+
+				<div class="pic has-thumbnails" style="height: 400px;"></div>
 
 			</div>
 
 			<div class="b pad hgl">
-				
+
 				<dl class="properties">
 					<dt class="label">상품 이름</dt>
 					<dd class="value age">${getProd.prod_name}</dd>
@@ -235,14 +233,25 @@
 					<dt class="label">가격</dt>
 					<dd class="value transport">${getProd.prod_price}</dd>
 					<dt class="label">상품 분류</dt>
-					<dd class="value transport">${getProd.prod_pick}</dd>
-					
+					<!--<dd class="value transport">${getProd.prod_pick}</dd>-->
+
+					<c:if test="${getProd.prod_pick == 1}">
+						<dd class="value transport">지역</dd>
+					</c:if>
+					<c:if test="${getProd.prod_pick == 2}">
+						<dd class="value transport">맛집</dd>
+					</c:if>
+					<c:if test="${getProd.prod_pick == 3}">
+						<dd class="value transport">숙소</dd>
+					</c:if>
+
+
 				</dl>
-				
-				<h2 class="sm">상세 정보</h2>
-				<p>${getProd.prod_content}</p>
-				
-				
+
+				<h2 class="sm">상세 정보</h2> <br>
+				<p style="width:500px;display:inline-block;">${getProd.prod_content}</p>
+
+
 				<div class="likeC">
 					<div id="like">
 						<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
@@ -251,13 +260,12 @@
 						좋아요 <span id="numberUpDown">1</span>
 					</div>
 				</div>
-				
-				
-				<div style="padding-top: 5px;">
-					<a class="but r write" href="product_booking?prod_num=61" target="_blank"
-						rel="nofollow"
-						style="width:140px; position: unset; float: right;">바로
-						예약하기</a>
+
+
+				<div style="padding-top: 45px;">
+					<a class="but r write" href="product_booking?prod_num=61"
+						target="_blank" rel="nofollow"
+						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>
 			</div>
 
@@ -271,7 +279,7 @@
 				</div>
 				<h2>리뷰</h2>
 
-				<a class="but r write" href="board_write" target="_blank"
+				<a class="but r write" href="board_write?pnum=1&prod_pick=1" target="_blank"
 					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""

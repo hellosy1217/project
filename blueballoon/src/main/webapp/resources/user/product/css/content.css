@@ -2830,10 +2830,11 @@ h2 {
 }
 
 h2.sm {
-	font-size: 18px;
-	line-height: 23px;
-	margin-top: 0;
-	display: inline-block;
+	    font-size: 20px;
+    line-height: 21px;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
 }
 
 h2.sm.ft {
@@ -3980,7 +3981,8 @@ main nav ul a {
 }
 
 .hgl .likeC {
-	float: right;
+	margin-left: 82px;
+    display: inline-block;
 }
 .hgl .likeC .sub_text {
 	text-align: center;
@@ -4038,23 +4040,24 @@ div#like .likeI{color: #409cd1;}
 .hgl .properties .label, .hgl .properties .value {
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0 0 10px;
+	margin: 0 0 15px;
 	line-height: 17px
 }
 
 .hgl .properties .label {
-	width: 20%;
-	max-width: 20%;
+	width: 18%;
+    max-width: 19%;
 	font-size: 13px;
 	text-transform: uppercase;
 	color: #999
 }
 
 .hgl .properties .value {
-	width: 29%;
-	max-width: 30%;
-	font-size: 14px;
-	color: #333
+	width: 28%;
+    max-width: 30%;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #333;
 }
 
 .hgl .properties .value.accommodation, .hgl .properties .value.age .icon,
