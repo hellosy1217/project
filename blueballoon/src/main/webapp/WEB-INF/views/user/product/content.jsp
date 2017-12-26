@@ -281,7 +281,7 @@
 				</div>
 				<h2>리뷰</h2>
 
-				<a class="but r write" href="board_write?prod_num=1&prod_pick=1" target="_blank"
+				<a class="but r write" href="board_write?pnum=${getProd.prod_num}&prod_pick=${getProd.prod_pick}" target="_blank"
 					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
