@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	type="text/css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -51,74 +54,102 @@
 	});
 </script>
 <div align="center">
-   <form name="f" action="BB_room_edit" method="post">
-    <input type="hidden" name="prod_num" value="${getRoom.prod_num}">
-      <table width="800">
-         <caption>방 수정</caption>
-         <tr>
-            <th width="20%">숙소 명</th>
-            <td>
-            <input type="text" name="room_name"  value="${getRoom.room_name}">
-            </td>
-         </tr>
-         <tr>
-            <th width="20%">방 코드</th>
-            <td>
-            <input type="text" name="room_code"  value="${getRoom.room_code}">
-            </td>
-         </tr>
-         <tr>
-            <th>방 인원</th>
-            <td>기준인원<select name="room_person">
-            	<c:forEach var="per" begin="2" end="10" step="1">
-                  <option value="${per}">${per}명</option>
-             </c:forEach>
-            </select></td>
-            <td>최대인원<select name="room_person">
-            <c:forEach var="per" begin="2" end="15" step="1">
-                  <option value="${per}">${per}명</option>
-             </c:forEach>
-            </select> </td>
-         </tr>
-         <tr>
-            <th>성수기 가격</th>
-            <td><input type="text" name="room_peak_price" value="${getRoom.room_peak_price}"></td>
-            <th>비 성수기 가격</th>
-            <td><input type="text" name="room_non_peak_price" value="${getRoom.room_non_peak_price}"></td>
-         </tr>
-         <tr>
-            <th>주말 가격 증가율</th>
-            <td> <select name="room_week_premium">
-            <c:forEach var="per" begin="0" end="100" step="1">
-                  <option value="${per}">${per}%</option>
-             </c:forEach>
-               </select>
-            </td>
-         </tr>
-         <tr>
-            <th>예약 가능한 기간</th>
-            <td><input type="text" name="room_period" id="fromDate" value="${getRoom.room_period}"></td>
-            <td><input type="text" name="room_period" id="toDate" value="${getRoom.room_period}"></td>
-         </tr>
-         <tr>
-            <th> 할인률</th>
-            <td><select name="room_offer">
-            <c:forEach var="per" begin="0" end="70" step="1">
-                  <option value="${per}">${per}%</option>
-             </c:forEach>
-               </select>
-            </td>
-         </tr>
-         <tr>
-            <th>방 상세 설명</th>
-            <td><textarea name="room_content" rows="10" cols="100">${getRoom.room_content}</textarea></td>
-         </tr>
-         <tr>
-            <td colspan="2" align="center"><input type="submit" value="방 수정">
-               <input type="reset" value="취 소"></td>
-         </tr>
-      </table>
-   </form>
+	<form name="f" action="BB_room_edit" method="post">
+		<input type="hidden" name="prod_num" value="${getRoom.prod_num}">
+		<table width="800">
+			<caption>방 수정</caption>
+			<tr>
+				<th width="20%">숙소 명</th>
+				<td><input type="text" name="room_name"
+					value="${getRoom.room_name}"></td>
+			</tr>
+			<tr>
+				<th width="20%">방 코드</th>
+				<td><input type="text" name="room_code"
+					value="${getRoom.room_code}"></td>
+			</tr>
+			<tr>
+				<th>방 인원</th>
+				<c:forTokens var="person" items="${getRoom.room_person}" delims=","
+					varStatus="status">
+					<c:if test="${status.count eq 1}">
+					<td>기준인원<select name="room_person">
+							<c:forEach var="per" begin="2" end="10" step="1">
+								<c:choose>
+									<c:when test="${per eq person}">
+										<option value="${per}" selected="selected">${per}명</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${per}">${per}명</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+					</select></td>
+					</c:if>
+					<c:if test="${status.count eq 2}">
+					<td>최대인원<select name="room_person">
+							<c:forEach var="per" begin="2" end="15" step="1">
+								<c:choose>
+									<c:when test="${per eq person}">
+										<option value="${per}" selected="selected">${per}명</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${per}">${per}명</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+					</select>
+					</td></c:if>
+				</c:forTokens>
+			</tr>
+			<tr>
+				<th>성수기 가격</th>
+				<td><input type="text" name="room_peak_price"
+					value="${getRoom.room_peak_price}"></td>
+				<th>비 성수기 가격</th>
+				<td><input type="text" name="room_non_peak_price"
+					value="${getRoom.room_non_peak_price}"></td>
+			</tr>
+			<tr>
+				<th>주말 가격 증가율</th>
+				<td><select name="room_week_premium">
+						<c:forEach var="per" begin="0" end="100" step="1">
+							<option value="${per}">${per}%</option>
+						</c:forEach>
+				</select></td>
+			</tr>
+			<tr>
+				<th>예약 가능한 기간</th>
+				<td><input type="text" name="room_period" id="fromDate"
+					value="${getRoom.room_period}"></td>
+				<td><input type="text" name="room_period" id="toDate"
+					value="${getRoom.room_period}"></td>
+			</tr>
+			<tr>
+				<th>할인률</th>
+				<td><select name="room_offer">
+						<c:forEach var="per" begin="0" end="70" step="1">
+							<c:choose>
+								<c:when test="${per eq getRoom.room_offer}">
+									<option value="${per}" selected="selected">${per}%</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${per}">${per}%</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+				</select></td>
+			</tr>
+			<tr>
+				<th>방 상세 설명</th>
+				<td><textarea name="room_content" rows="10" cols="100">${getRoom.room_content}</textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="방 수정"> <input type="reset" value="취 소"></td>
+			</tr>
+		</table>
+	</form>
 </div>
 
 <%@ include file="../bottom.jsp"%>
