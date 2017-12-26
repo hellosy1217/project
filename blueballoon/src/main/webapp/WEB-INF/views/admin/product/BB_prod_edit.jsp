@@ -82,7 +82,7 @@
                   	<option>등록된 카테고리가 없습니다.</option>
                   </c:if>
                   <c:forEach var="dto" items="${cateList}">
-                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
+                     <option value="${dto.cate_state}-${dto.cate_city}"<c:if test="${${dto.cate_state}-${dto.cate_city} eq '${dto.cate_state}-${dto.cate_city}'}">selected </c:if>>${dto.cate_state},${dto.cate_city}</option>
                   </c:forEach>
                </select>
             </td>
@@ -131,9 +131,9 @@
             <td>
                <select name="prod_pick" id="pick">
                    	<option>상품을 분류해주세요.</option>
-                 	<option value="1" >지역</option>
-                  	<option value="2" >맛집</option>
-                  	<option value="3" >숙소</option>
+                 	<option value="1" <c:if test="${getProduct.prod_pick eq '1'}">selected </c:if>>지역</option>
+                  	<option value="2" <c:if test="${getProduct.prod_pick eq '2'}">selected </c:if>>맛집</option>
+                  	<option value="3" <c:if test="${getProduct.prod_pick eq '3'}">selected </c:if>>숙소</option>
                </select>
             </td>
          </tr>
