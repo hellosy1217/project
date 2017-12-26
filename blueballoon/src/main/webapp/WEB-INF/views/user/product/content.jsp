@@ -189,15 +189,13 @@
 						<meta itemprop="name" content="TourRadar">
 				</a></li>
 				<li>&nbsp;&nbsp;〉&nbsp; <a href="/d/europe" itemprop="item"><span
-						itemprop="name">서울특별시</span></a></li>
-				<li>&nbsp;&nbsp;〉&nbsp; <a href="/d/iceland" itemprop="item"><span
-						itemprop="name">마포구</span></a></li>
+						itemprop="name">${getProd.prod_cate}</span></a></li>
 				<li>&nbsp;&nbsp;〉&nbsp; <a href="/h/iceland-nature-adventure"
-					itemprop="item"><span itemprop="name">홍대</span></a></li>
+					itemprop="item"><span itemprop="name">${getProd.prod_name}</span></a></li>
 			</ul>
 		</nav>
 		<h1 itemprop="name" class="ttip" title="" data-action="click"
-			data-html="Tour code: AA-AIA">홍대</h1>
+			data-html="Tour code: AA-AIA">${getProd.prod_name}</h1>
 
 	</div>
 	<div class="c" style="height: 3500px;">
@@ -281,7 +279,7 @@
 				</div>
 				<h2>리뷰</h2>
 
-				<a class="but r write" href="board_write?pnum=${getProd.prod_num}&prod_pick=${getProd.prod_pick}" target="_blank"
+				<a class="but r write" href="board_write?prod_num=1&prod_pick=1" target="_blank"
 					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""

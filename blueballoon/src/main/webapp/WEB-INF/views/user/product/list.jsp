@@ -10,6 +10,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css?ver=1"
 	rel="stylesheet" type="text/css" />
+<!-- 좋아요 버튼 아이콘  -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -145,10 +148,12 @@
 							<span class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
-									
+									<li>
+										<i class="fa fa-thumbs-up" aria-hidden="true" style="font-size:16px;"></i>
+									</li>
 									<li class="good">
 										<p>
-											<span>좋아요</span> <i>24</i>
+											<i>24</i>
 										</p>
 									</li>
 									

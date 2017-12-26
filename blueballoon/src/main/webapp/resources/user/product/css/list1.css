@@ -4121,9 +4121,9 @@ aside .b .sl {
 .likeArea li{float:left;display:inline-block;width:83px;height:46px;padding:14px 0 0 0;border-left:1px solid #e5e5e5;margin:0;}
 .likeArea li:first-child{border:none;}
 .likeArea p,
-.likeArea button{display:block;width:100%;height:100%;text-align:center;font:normal 12px "Nanum Gothic";color:#898989;background:url('/img/common/spr_ico_like.png') center 0 no-repeat;outline:none;}
+.likeArea button{display:block;width:100%;height:100%;text-align:center;font:normal 12px "Nanum Gothic";color:#898989;outline:none;}
 .likeArea span{display:none;}
-.likeArea i{display:block;font-style:normal;font-family:Myriad, Tahoma, Helvetica;letter-spacing:0;padding-top:12px;}
+.likeArea i{display:block;font-style:normal;letter-spacing:0;padding-top:12px;}
 .likeArea .cur{color:#232323;}
 .likeArea .awesome button{background-position:center 0;}
 .likeArea .awesome.cur button{background-position:center -50px;}
@@ -4134,11 +4134,11 @@ aside .b .sl {
 
 .likeArea.simple{position:initial;position:inherit;height:auto;margin:6px 0 31px 26px;}
 .likeArea.simple ul{width:auto;}
-.likeArea.simple li{width:auto;height:auto;padding:0;margin-left:17px;border:none;overflow:inherit;}
+.likeArea.simple li{width:auto;height:auto;padding:0;border:none;overflow:inherit;}
 .likeArea.simple li:first-child{margin:0;}
 .likeArea.simple li i{padding:0;}
 .likeArea.simple li p,
-.likeArea.simple li button{width:auto;height:12px;padding-left:18px;background:url('https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/like3.png') 0 0 no-repeat;}
+.likeArea.simple li button{width:auto;height:12px;padding-left:5px;}
 .likeArea.simple .awesome p,
 .likeArea.simple .awesome button{padding-left:21px;background-position:0 0;}
 .likeArea.simple .awesome.cur p,
@@ -4151,5 +4151,3 @@ aside .b .sl {
 .likeArea.simple .aweful button{background-position:0 -139px;}
 .likeArea.simple .aweful.cur p,
 .likeArea.simple .aweful.cur button{background-position:0 -139px;}
-
-
