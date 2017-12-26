@@ -213,7 +213,9 @@
 		<div class="bl">
 			<div class="b img">
 
-				<div class="pic has-thumbnails" style="height: 400px;"></div>
+				<div class="pic has-thumbnails" style="height: 400px;">
+					<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProd.prod_pick}/${getProd.prod_str_img}">
+				</div>
 
 			</div>
 
@@ -279,7 +281,7 @@
 				</div>
 				<h2>리뷰</h2>
 
-				<a class="but r write" href="board_write?pnum=1&prod_pick=1" target="_blank"
+				<a class="but r write" href="board_write?prod_num=1&prod_pick=1" target="_blank"
 					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
