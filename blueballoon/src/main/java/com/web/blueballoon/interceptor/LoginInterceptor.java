@@ -19,14 +19,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		logger.info("client IP = "+request.getRemoteAddr());//user IP;
-		
-		session = request.getSession();
-		
-		if(session.getAttribute("member_email") != null) {
-			logger.info("clear login");
-			session.removeAttribute("member_email");
+		try {
+			//logininfo 세션 값이 null 일 때.
+			if(request.getSession().getAttribute("member_email")==null) {
+				response.sendRedirect("/member_login");
+				return false;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-		
+		//null 이 아니면 정상적으로 컨트롤러 호출 
 		return true;
 	}
 	@Override
