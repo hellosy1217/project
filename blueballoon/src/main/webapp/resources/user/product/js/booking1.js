@@ -1,6 +1,6 @@
 function calendar(date) {
 	
-	if( typeof( date ) !== 'undefined' ) {
+	if( typeof( date ) != 'undefined' ) {
 		date = date.split('-');
 		date[1] = date[1] - 1;
 		date = new Date(date[0], date[1], date[2]);
@@ -30,8 +30,7 @@ function calendar(date) {
 	beg_j = beg_j.getDay();
 
 	var calendar = '';
-	calendar +='<h2>'+bb_date+'</h2>';
-	calendar +='<h2>'+date+'</h2>';
+	calendar +='<h2> date : '+date+'</h2>';
 
 	calendar += '<div class="head"><div class="point">1</div><h3>날짜를 선택해주세요.</h3><b class="date date-start">'
 			+ year + '년 ' + month + '월 ' + day + '일</b></div>';
