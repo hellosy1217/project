@@ -51,7 +51,7 @@
 	});
 </script>
 <div align="center">
-   <form name="f" action="BB_room_insert" method="post">
+   <form name="f" action="BB_room_edit" method="post">
     <input type="hidden" name="prod_num" value="${getRoom.prod_num}">
       <table width="800">
          <caption>방 수정</caption>

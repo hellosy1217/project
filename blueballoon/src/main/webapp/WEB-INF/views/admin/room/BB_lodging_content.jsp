@@ -83,7 +83,7 @@
 			<td align="center">${dto.room_week_premium}%</td>
 			<td align="center">${dto.room_period}</td>
 			<td align="center">${dto.room_offer}%</td>
-			<td align="center"><a href="BB_room_edit?room_num=${dto.room_num}&prod_num=${dto.prod_num}">수정</a>|<a href="javascript:checkDel('${dto.room_num},${dto.prod_num}')">삭제</a></td>
+			<td align="center"><a href="BB_room_edit?room_num=${dto.room_num}&prod_num=${dto.prod_num}">수정</a>|<a href="javascript:checkDel('${dto.room_num}','${dto.prod_num}')">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>
