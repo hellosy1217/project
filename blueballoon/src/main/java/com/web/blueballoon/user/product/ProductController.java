@@ -12,6 +12,8 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBProductDTO;
@@ -28,6 +31,8 @@ import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
 public class ProductController {
+
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	private ProductMapper ProductMapper;
@@ -191,22 +196,9 @@ public class ProductController {
 			date += book_date.get(0).getDay();
 			mav.addObject("selectedDate", date);
 
-			try {
-				int selectedYear = ServletRequestUtils.getIntParameter(arg0, "selectedYear");
-				int selectedMonth = ServletRequestUtils.getIntParameter(arg0, "selectedMonth");
-				int selectedDay = ServletRequestUtils.getIntParameter(arg0, "selectedDay");
-				mav.addObject("selectedYear", selectedYear);
-				mav.addObject("selectedMonth", selectedMonth);
-				mav.addObject("selectedDay", selectedDay);
-			} catch (NullPointerException e) {
-				mav.addObject("selectedYear", book_date.get(0).getYear());
-				mav.addObject("selectedMonth", book_date.get(0).getMonth());
-				mav.addObject("selectedDay", book_date.get(0).getDay());
-			}
 			mav.setViewName("user/product/booking");
 		} catch (NullPointerException e) {
 			// 나중에 오류 메세지로 처리
-
 		}
 		return mav;
 	}

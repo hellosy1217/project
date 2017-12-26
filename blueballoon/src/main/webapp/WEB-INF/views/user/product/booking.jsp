@@ -80,7 +80,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						calendar('bb_calendar','${selectedDate}');
+						bbCalendar('bb_calendar','${selectedDate}',0);
 					};</script>
 					<div id="seats">
 						<div class="content">
