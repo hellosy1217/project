@@ -227,7 +227,7 @@
 					<dt class="label">지역</dt>
 					<dd class="value accommodation">${getProd.prod_cate}</dd>
 					<dt class="label">주소</dt>
-					<dd class="value">${getProd.prod_detail_address}</dd>
+					<dd class="value">${getProd.prod_old_address}</dd>
 					<dt class="label">이메일</dt>
 					<dd class="value transport">${getProd.prod_email}</dd>
 					<dt class="label">전화번호</dt>
@@ -236,11 +236,12 @@
 					<dd class="value transport">${getProd.prod_price}</dd>
 					<dt class="label">상품 분류</dt>
 					<dd class="value transport">${getProd.prod_pick}</dd>
-					<dt class="label">상세 정보</dt>
-					<dd class="value transport">${getProd.prod_content}</dd>
+					
 				</dl>
 				
-				<h2 class="sm">여행 꿀팁</h2>
+				<h2 class="sm">상세 정보</h2>
+				<p>${getProd.prod_content}</p>
+				
 				
 				<div class="likeC">
 					<div id="like">

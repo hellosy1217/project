@@ -11,8 +11,6 @@
 	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css?ver=1"
 	rel="stylesheet" type="text/css" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="//cdn.tourradar.com/include/pw/serp/async.v1512451938.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -301,8 +299,7 @@
 	<script async=""
 		src="//cdn.tourradar.com/include/js/nouislider/nouislider.v8-1-1.min.js?v=1512838537"></script>
 </body>
-<link type="text/css" rel="stylesheet"
-	href="//cdn.tourradar.com/include/pw/serp/async.v1512451938.css">
+
 <link type="text/css" rel="stylesheet"
 	href="//cdn.tourradar.com/include/js/ttip/ttip.v1-1-2.min.css?v=1512451938">
 <link type="text/css" rel="stylesheet"
