@@ -251,11 +251,13 @@
 				<h2 class="sm">상세 정보</h2> <br>
 				<p style="width:500px;display:inline-block;">${getProd.prod_content}</p>
 
-
+				
 				<div class="likeC">
-					<div id="like">
-						<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
-					</div>
+					<a href="product_like?prod_num=${getProd.prod_num}">
+						<div id="like">
+							<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
+						</div>
+					</a>
 					<div class="sub_text">
 						좋아요 <span id="numberUpDown">1</span>
 					</div>

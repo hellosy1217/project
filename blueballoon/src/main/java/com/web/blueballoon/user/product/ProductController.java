@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BookDateDTO;
@@ -99,6 +101,29 @@ public class ProductController {
 		BBProductDTO dto = ProductMapper.getProd(num);
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
+		return mav;
+	}
+	
+	//좋아요 기능
+	@RequestMapping(value = "product_like", method = RequestMethod.GET)
+	public ModelAndView like(HttpServletRequest arg0, HttpServletResponse arg1,
+			HttpSession session) throws Exception {
+		int num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+		session = arg0.getSession();
+		int mnum = (Integer)session.getAttribute("member_num");
+		BBLikeDTO dto = new BBLikeDTO();
+		dto.setMember_num(mnum);
+		dto.setProd_num(num);
+		int result = ProductMapper.like(dto);
+		
+		if(result>0) {
+			mav.addObject("prod_num",num);
+			mav.addObject("msg","이미 좋아요를 눌렀습니다.");
+		}else {
+			ProductMapper.insertLike(dto);
+		}
+
+		mav.setViewName("product_content");
 		return mav;
 	}
 

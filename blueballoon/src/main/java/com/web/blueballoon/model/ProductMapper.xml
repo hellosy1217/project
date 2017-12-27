@@ -17,6 +17,13 @@
 	<select id="getProd" resultType="BBProductDTO" parameterType="int">
   		select * from bb_product where prod_num = #{prod_num}
   	</select>
+  	<select id="like" resultType="int" parameterType="BBLikeDTO">
+  		select * from bb_product_like where prod_num = #{prod_num}, member_num = #{member_num}
+  	</select>
+  	<insert id="insertLike" parameterType="BBLikeDTO">
+  		insert into bb_product_like values (#{prod_num}, #{member_num})
+  	</insert>
+  	
 	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
 		select * from
 		bb_room where prod_num=#{prod_num}

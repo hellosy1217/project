@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 
@@ -27,6 +28,14 @@ public class ProductMapper {
 
 	public List<BBProductDTO> listProd() {
 		return sqlSession.selectList("listProd");
+	}
+	
+	public int like(BBLikeDTO dto) {
+		return sqlSession.selectOne("like", dto);
+	}
+	
+	public void insertLike(BBLikeDTO dto) {
+		sqlSession.insert("insertLike", dto);
 	}
 
 	public List<BBRoomDTO> listRoom(int prod_num) {
