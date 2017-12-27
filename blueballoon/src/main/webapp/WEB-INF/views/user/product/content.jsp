@@ -147,9 +147,9 @@
 <script>
 	//좋아요 클릭시 색변경하기
 	$(document).ready(function() {
-		$('#like').click(function() {
+		$('${like}').click(function() {
 			//$(this).toggleClass('likeI');
-			$(this).children().toggleClass('likeI');
+			$('${Y}').css('color','#409cd1');
 		});
 	})
 
@@ -169,6 +169,7 @@
 
 		});
 	}); */
+
 </script>
 
 </head>
@@ -253,11 +254,17 @@
 				<div class="likeC">
 					<a href="product_like?prod_num=${getProd.prod_num}">
 						<div id="like">
-							<i id="increaseQuantity" class="fa fa-thumbs-o-up like_icon"></i>
+							<c:if test="${like == 'Y'}">
+								<i class="fa fa-thumbs-o-up like_icon" style="color:#409cd1;"></i>
+							</c:if>
+							<c:if test="${like == 'N'}">
+								<i class="fa fa-thumbs-o-up like_icon" style="color:#ddd;"></i>
+							</c:if>
+							
 						</div>
 					</a>
 					<div class="sub_text">
-						좋아요 <span id="numberUpDown">1</span>
+						좋아요 <span>${likeCount}</span>
 					</div>
 				</div>
 

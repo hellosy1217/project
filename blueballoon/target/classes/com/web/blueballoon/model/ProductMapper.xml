@@ -23,6 +23,9 @@
   	<insert id="insertLike" parameterType="BBLikeDTO">
   		insert into bb_product_like values (#{prod_num}, #{member_num})
   	</insert>
+  	<select id="likeCount" resultType="int" parameterType="int">
+  		select count(*) from bb_product_like where prod_num=#{prod_num}
+  	</select>
   	
 	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
 		select * from

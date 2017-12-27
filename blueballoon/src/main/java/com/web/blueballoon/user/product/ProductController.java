@@ -99,6 +99,8 @@ public class ProductController {
 	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 		BBProductDTO dto = ProductMapper.getProd(prod_num);
+		int likeCount = ProductMapper.likeCount(prod_num);
+		mav.addObject("likeCount", likeCount);
 		try {
 			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 			BBLikeDTO likedto = new BBLikeDTO();
@@ -146,14 +148,10 @@ public class ProductController {
 		return mav;
 	}
 
-
 	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
 	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		try {
 			int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
-			BBProductDTO listProd = ProductMapper.getProd(prod_num);
-
-			mav.addObject("getProd", listProd);
 			mav.addObject("prod_num", prod_num);
 
 			// 숙소 내 모든 방 목록
