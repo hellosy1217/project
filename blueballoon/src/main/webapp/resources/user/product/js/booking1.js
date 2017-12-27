@@ -1,6 +1,7 @@
 function bbCalendar(id, date, begin) {
 	var bbCalendar = document.getElementById(id);
-
+	var current = date;
+	
 	if (typeof (date) !== 'undefined') {
 		date = date.split('-');
 		date[1] = date[1] - 1;
@@ -53,7 +54,7 @@ function bbCalendar(id, date, begin) {
 		beginDay += '0';
 	}
 	beginDay += (beginMonth + '-01');
-	
+
 	var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
 	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 	if ((currentYear % 4 === 0 && currentYear % 100 !== 0)
@@ -66,18 +67,27 @@ function bbCalendar(id, date, begin) {
 	var week = Math.ceil((currentDay + currentLastDate) / 7);
 	// 총 몇 주인지 구함.
 
-	if (currentMonth != 1)
-		var prevDate = currentYear + '-' + (currentMonth - 1) + '-'
-				+ currentDate;
-	else
-		var prevDate = (currentYear - 1) + '-' + 12 + '-' + currentDate;
+	if (beginMonth != 1) {
+		var prevDate = beginYear + '-';
+		if (beginMonth < 11) {
+			prevDate += '0';
+		}
+		prevDate += (beginMonth - 1);
+		prevDate += '-01';
+	} else
+		var prevDate = (beginYear - 1) + '-12-01';
 	// 만약 이번달이 1월이라면 1년 전 12월로 출력.
 
-	if (currentMonth != 12)
-		var nextDate = currentYear + '-' + (currentMonth + 1) + '-'
-				+ currentDate;
-	else
-		var nextDate = (currentYear + 1) + '-' + 1 + '-' + currentDate;
+	if (beginMonth != 12) {
+		var nextDate = beginYear + '-';
+		if (beginMonth < 9) {
+			nextDate += '0';
+		}
+		nextDate += (beginMonth + 1);
+		nextDate += '-01';
+	} else {
+		var nextDate = (beginYear + 1) + '-01-01';
+	}
 	// 만약 이번달이 12월이라면 1년 후 1월로 출력.
 
 	if (currentMonth < 10)
@@ -92,15 +102,15 @@ function bbCalendar(id, date, begin) {
 	calendar += '<div class="months"><div class="right-arrow" onclick="changeDate(\''
 			+ id
 			+ '\', \''
-			+ nextDate
+			+ current
 			+ '\', \''
-			+ begin
+			+ nextDate
 			+ '\')"></div><div class="left-arrow inactive" onclick="changeDate(\''
 			+ id
 			+ '\', \''
-			+ prevDate
+			+ current
 			+ '\', \''
-			+ begin
+			+ prevDate
 			+ '\')"></div><div class="content"><ul style="width: 1016.6666666666667px; margin-left: 0px;">';
 
 	for (var i = 0; i < 6; i++) {

@@ -110,7 +110,7 @@
 							<form name="f">
 								<span class="number minus grey" id="minus"
 									onclick="changeBookPerson('remove',${min_person},${max_person})"></span>
-									<input type="number" name="book_person" value="${min_person}"
+								<input type="number" name="book_person" value="${min_person}"
 									min="${min_person}" max="${max_person}" inputmode="numeric"
 									pattern="[0-9]*" readonly> <span class="number plus"
 									id="plus"
@@ -127,8 +127,8 @@
 					</div>
 					<div class="room-content"></div>
 					<div class="content" data-friends="1">
-						<c:forEach items="${listRoom}" var="room">
-							<div class="types">
+						<div class="types">
+							<c:forEach items="${listRoom}" var="room">
 								<div class="radio" data-lack="1">
 									<input type="radio" name="accommodation" value="Twin"
 										id="accommodation-0">
@@ -150,8 +150,8 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 				<div class="block price-main ">
