@@ -2940,19 +2940,18 @@ main .route li:last-child {
 }
 
 #bb_calendar  {
-	text-align: center;
-	position: relative
+	position: relative;
 }
 
 #bb_calendar .months {
 	width: 100%;
-	padding: 0 30px;
+	padding-left: 39px;
 	text-align: center
 }
 
 #bb_calendar .months .left-arrow, #bb_calendar .months .right-arrow
 	{
-	top: -3px;
+	top: 105px;
 	width: 40px;
 	height: 40px;
 	background-position: 50%
@@ -2964,13 +2963,6 @@ main .route li:last-child {
 	cursor: auto
 }
 
-#bb_calendar .months .left-arrow {
-	left: -9px
-}
-
-#bb_calendar .months .right-arrow {
-	right: -9px
-}
 
 #bb_calendar .months .content {
 	width: 100%;
