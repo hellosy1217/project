@@ -114,16 +114,29 @@
 				<th>주말 가격 증가율</th>
 				<td><select name="room_week_premium">
 						<c:forEach var="per" begin="0" end="100" step="1">
-							<option value="${per}">${per}%</option>
+						<c:choose>
+								<c:when test="${per eq getRoom.room_week_premium}">
+									<option value="${per}" selected="selected">${per}%</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${per}">${per}%</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 				</select></td>
 			</tr>
 			<tr>
 				<th>예약 가능한 기간</th>
+				<c:forTokens items="${getRoom.room_period}" delims="," var="period" varStatus="status">
+				<c:if test="${status.count eq 1}">
 				<td><input type="text" name="room_period" id="fromDate"
-					value="${getRoom.room_period}"></td>
+					value="${period}"></td>
+				</c:if>
+				<c:if test="${status.count eq 2}">
 				<td><input type="text" name="room_period" id="toDate"
-					value="${getRoom.room_period}"></td>
+					value="${period}"></td>
+				</c:if>
+				</c:forTokens>
 			</tr>
 			<tr>
 				<th>할인률</th>
