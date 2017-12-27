@@ -3,7 +3,6 @@
 <%@ include file="../top.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script type="text/javascript">
@@ -114,8 +113,14 @@
             <td><textarea name="room_content" rows="10" cols="100"></textarea></td>
          </tr>
          <tr>
-            <td colspan="2" align="center"><input type="submit" value="방 등록">
+            <td colspan="2" align="center">
+            	<input type="submit" value="방 등록">
                <input type="reset" value="취 소"></td>
+               </tr>
+         <tr>
+         <td>
+         		<a href="BB_lodging_content?prod_num=${param.prod_num}">목록으로</a>
+         </td>
          </tr>
       </table>
    </form>
