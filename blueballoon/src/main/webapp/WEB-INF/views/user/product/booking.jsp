@@ -72,7 +72,7 @@
 	<main data-parameters="" data-phone="+1 844 311 3006 ">
 	<div class="c">
 		<div class="fline">
-			<h1>상품/패키지 이름 date = ${selectedDate}</h1>
+			<h1>${getProd.prod_name}</h1>
 		</div>
 		<div class="book">
 			<div class="left">
