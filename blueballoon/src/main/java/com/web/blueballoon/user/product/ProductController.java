@@ -97,15 +97,22 @@ public class ProductController {
 
 	@RequestMapping(value = "product_content", method = RequestMethod.GET)
 	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		String msg;
-		int num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+		BBProductDTO dto = ProductMapper.getProd(prod_num);
 		try {
-			msg = ServletRequestUtils.getStringParameter(arg0, "msg");
-		} catch (NullPointerException e) {
-			msg = null;
+			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			BBLikeDTO likedto = new BBLikeDTO();
+			likedto.setProd_num(prod_num);
+			likedto.setMember_num(member_num);
+			try {
+				int result = ProductMapper.like(likedto);
+				mav.addObject("like", "Y");
+			} catch (NullPointerException e1) {
+				mav.addObject("like", "N");
+			}
+		} catch (NullPointerException e2) {
+			mav.addObject("like", "N");
 		}
-		BBProductDTO dto = ProductMapper.getProd(num);
-		mav.addObject("msg", msg);
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
 		return mav;
@@ -114,22 +121,28 @@ public class ProductController {
 	// 좋아요 기능
 	@RequestMapping(value = "product_like", method = RequestMethod.GET)
 	public ModelAndView like(HttpServletRequest arg0, HttpServletResponse arg1, HttpSession session) throws Exception {
-		int num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
-		session = arg0.getSession();
-		int mnum = (Integer) session.getAttribute("member_num");
-		BBLikeDTO dto = new BBLikeDTO();
-		dto.setMember_num(mnum);
-		dto.setProd_num(num);
-		int result = ProductMapper.like(dto);
-
-		if (result > 0) {
-			mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
-		} else {
-			ProductMapper.insertLike(dto);
+		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+		mav.addObject("prod_num", prod_num);
+		try {
+			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			System.out.println("member_num = " + member_num);
+			BBLikeDTO dto = new BBLikeDTO();
+			dto.setProd_num(prod_num);
+			dto.setMember_num(member_num);
+			try {
+				int result = ProductMapper.like(dto);
+				mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
+			} catch (NullPointerException e1) {
+				ProductMapper.insertLike(dto);
+				mav.setViewName("product_content");
+				return mav;
+			}
+			mav.addObject("url", "product_content");
+		} catch (NullPointerException e) {
+			mav.addObject("msg", "로그인을 해주세요.");
+			mav.addObject("url", "member_login");
 		}
-
-		mav.addObject("prod_num", num);
-		mav.setViewName("product_content");
+		mav.setViewName("/message");
 		return mav;
 	}
 

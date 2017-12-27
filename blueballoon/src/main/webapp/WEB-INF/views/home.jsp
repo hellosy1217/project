@@ -248,7 +248,7 @@
 					width="189" height="189">
 					<div class="ls">
 						치맥<span>대한민국 최고</span>
-					</div></a><a href="product_content?prod_num=84"><img class="lazy"
+					</div></a><a href="product_content?prod_num=121"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/24.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/24.jpg"
 					width="189" height="189">
@@ -257,7 +257,7 @@
 					</div></a>
 			</div>
 			<div class="l">
-				<a href="product_content?prod_num=85"><img class="lazy"
+				<a href="product_content?prod_num=122"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/25.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/25.jpg"
 					width="189" height="189">
@@ -278,7 +278,7 @@
 					</div></a>
 			</div>
 			<div class="l">
-				<a href="product_content?prod_num=86"><img class="lazy"
+				<a href="product_content?prod_num=104"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/26.png"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/26.png"
 					width="284" height="284">
@@ -286,7 +286,7 @@
 						흑돼지구이<span>제주도</span>
 					</div></a><a href="product_content" class="e6"><div class="w284 h189">
 						문화생활<span>수</span>
-					</div></a><a href="product_content?prod_num=88"><img class="lazy"
+					</div></a><a href="product_content?prod_num=141"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/19.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/19.jpg"
 					width="284" height="189">

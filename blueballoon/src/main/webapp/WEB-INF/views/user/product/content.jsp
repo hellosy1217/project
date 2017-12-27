@@ -147,17 +147,13 @@
 <script>
 	//좋아요 클릭시 색변경하기
 	$(document).ready(function() {
-		chang();
-	})
-
-	function chang() {
 		$('#like').click(function() {
 			//$(this).toggleClass('likeI');
 			$(this).children().toggleClass('likeI');
 		});
-	}
-	
-	//좋아요 카운트
+	})
+
+	/* //좋아요 카운트
 	$(function() {
 		$('#increaseQuantity').click(function(e) {
 			e.preventDefault();
@@ -172,12 +168,7 @@
 			$('#numberUpDown').text(num);
 
 		});
-	});
-	
-	$(function() {
-		
-	})
-	
+	}); */
 </script>
 
 </head>
@@ -217,7 +208,8 @@
 			<div class="b img">
 
 				<div class="pic has-thumbnails" style="height: 400px;">
-					<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProd.prod_pick}/${getProd.prod_str_img}">
+					<img
+						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProd.prod_pick}/${getProd.prod_str_img}">
 				</div>
 
 			</div>
@@ -253,10 +245,11 @@
 
 				</dl>
 
-				<h2 class="sm">상세 정보</h2> <br>
-				<p style="width:500px;display:inline-block;">${getProd.prod_content}</p>
+				<h2 class="sm">상세 정보</h2>
+				<br>
+				<p style="width: 500px; display: inline-block;">${getProd.prod_content}</p>
 
-				
+
 				<div class="likeC">
 					<a href="product_like?prod_num=${getProd.prod_num}">
 						<div id="like">
@@ -286,8 +279,8 @@
 				</div>
 				<h2>리뷰</h2>
 
-				<a class="but r write" href="board_write?prod_num=1&prod_pick=1" target="_blank"
-					rel="nofollow">리뷰 작성하기</a>
+				<a class="but r write" href="board_write?prod_num=1&prod_pick=1"
+					target="_blank" rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
 						itemtype="http://schema.org/Review"><meta
