@@ -263,7 +263,7 @@
 
 
 				<div style="padding-top: 45px;">
-					<a class="but r write" href="product_booking?prod_num=61"
+					<a class="but r write" href="product_booking?prod_num=141"
 						target="_blank" rel="nofollow"
 						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>

@@ -66,6 +66,20 @@ function bbCalendar(id, date, begin) {
 	var week = Math.ceil((currentDay + currentLastDate) / 7);
 	// 총 몇 주인지 구함.
 
+	if (currentMonth != 1)
+		var prevDate = currentYear + '-' + (currentMonth - 1) + '-'
+				+ currentDate;
+	else
+		var prevDate = (currentYear - 1) + '-' + 12 + '-' + currentDate;
+	// 만약 이번달이 1월이라면 1년 전 12월로 출력.
+
+	if (currentMonth != 12)
+		var nextDate = currentYear + '-' + (currentMonth + 1) + '-'
+				+ currentDate;
+	else
+		var nextDate = (currentYear + 1) + '-' + 1 + '-' + currentDate;
+	// 만약 이번달이 12월이라면 1년 후 1월로 출력.
+
 	if (currentMonth < 10)
 		var currentMonth = '0' + currentMonth;
 	// 10월 이하라면 앞에 0을 붙여준다.
@@ -101,6 +115,7 @@ function bbCalendar(id, date, begin) {
 			cal_date += '0';
 		}
 		cal_date += (cal_month + '-01');
+		alert("cal_date: " + cal_date + ", begin: " + beginDay);
 
 		if (('0' + cal_month) == currentMonth) {
 			calendar += '<li id="month'
@@ -147,7 +162,7 @@ function bbCalendar(id, date, begin) {
 
 				calendar += '<td id="day' + dateNum
 						+ '" class="all possible" onclick="changeDate(\'' + id
-						+ '\', \'' + clickDate + '\', \'' + beginDay
+						+ '\', \'' + clickDate + '\', \'' + begin
 						+ '\')"><div class="container"><div class="day">'
 						+ dateNum + '</div><div class="next"></div></div></td>';
 			}

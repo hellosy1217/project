@@ -109,8 +109,8 @@
 						<div class="in quantity">
 							<form name="f">
 								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',${min_person},${max_person})"></span><input
-									type="number" name="book_person" value="${min_person}"
+									onclick="changeBookPerson('remove',${min_person},${max_person})"></span>
+									<input type="number" name="book_person" value="${min_person}"
 									min="${min_person}" max="${max_person}" inputmode="numeric"
 									pattern="[0-9]*" readonly> <span class="number plus"
 									id="plus"
