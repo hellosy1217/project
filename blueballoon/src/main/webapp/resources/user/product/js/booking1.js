@@ -115,7 +115,6 @@ function bbCalendar(id, date, begin) {
 			cal_date += '0';
 		}
 		cal_date += (cal_month + '-01');
-		alert("cal_date: " + cal_date + ", begin: " + beginDay);
 
 		if (('0' + cal_month) == currentMonth) {
 			calendar += '<li id="month'
@@ -162,7 +161,7 @@ function bbCalendar(id, date, begin) {
 
 				calendar += '<td id="day' + dateNum
 						+ '" class="all possible" onclick="changeDate(\'' + id
-						+ '\', \'' + clickDate + '\', \'' + begin
+						+ '\', \'' + clickDate + '\', \'' + beginDay
 						+ '\')"><div class="container"><div class="day">'
 						+ dateNum + '</div><div class="next"></div></div></td>';
 			}
