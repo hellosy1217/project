@@ -139,7 +139,7 @@ public class ProductController {
 			}
 			mav.addObject("url", "product_content");
 		} catch (NullPointerException e) {
-			mav.addObject("msg", "로그인을 해주세요.");
+			mav.addObject("msg", "로그인을 해주세요..");
 			mav.addObject("url", "member_login");
 		}
 		mav.setViewName("/message");
