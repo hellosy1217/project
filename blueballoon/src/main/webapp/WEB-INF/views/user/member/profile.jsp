@@ -32,23 +32,23 @@
 						style="display: inline-block; margin: 1px 4px 0 0; border-radius: 50%; width: 16px; height: 16px; overflow: hidden; text-align: center;"><svg
 							xmlns="http://www.w3.org/2000/svg" height="512" width="512"
 							viewBox="0 0 512 512">
-							<g fill-rule="evenodd" transform="scale(3.9385)">
-							<g stroke-width="1pt">
-							<path
+       <g fill-rule="evenodd" transform="scale(3.9385)">
+       <g stroke-width="1pt">
+       <path
 								d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
 								fill="#bd3d44"></path>
-							<path
+       <path
 								d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
 								fill="#fff"></path></g>
-							<path fill="#192f5d" d="M0 0h98.8v70H0z"></path>
-							<g fill="#fff">
-							<path
+       <path fill="#192f5d" d="M0 0h98.8v70H0z"></path>
+       <g fill="#fff">
+       <path
 								d="M8.233 2.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766L24.7 8.53l-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766L74.1 8.53l-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM16.467 9.996l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM8.233 16.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM16.467 23.996l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM8.233 30.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM16.467 37.996l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path>
-							<g>
-							<path
+       <g>
+       <path
 								d="M8.233 44.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM16.467 51.996l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g>
-							<g>
-							<path
+       <g>
+       <path
 								d="M8.233 58.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g></g></g></svg></span><span
 						style="display: inline-block; float: right; font-size: 14px;">+1
 						844 311 3006 Toll free</span>
@@ -65,7 +65,7 @@
 				<div id="block-0">
 					<div class="indicator">!</div>
 					<svg class="svg-icon-menu" viewBox="0 0 32 32">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink"
+      <use xmlns:xlink="http://www.w3.org/1999/xlink"
 							xlink:href="/images/responsive/svg/sprites.svg?v=1#svg-icon-menu"></use></svg>
 				</div>
 				<a href="home"><div id="block-1">
@@ -91,7 +91,7 @@
 				<div id="block-8">
 					<a href="/help" class="ltext">고객센터</a><a href="/help"><svg
 							class="svg-icon-question" viewBox="0 0 26.037 25.994">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink"
+       <use xmlns:xlink="http://www.w3.org/1999/xlink"
 								xlink:href="/images/responsive/svg/sprites.svg?v=1#svg-icon-question"></use></svg></a>
 				</div>
 				<div id="block-9">
@@ -122,16 +122,12 @@
 							<h4>Korea, South</h4>
 							<div id="since">Member since December 02, 2017</div>
 							<ul id="stats">
-								<li>Reviews
+								<li>후기
 									<div>
 										<a href="#reviews" onclick="return false">0</a>
 									</div>
 								</li>
-								<li>Meets
-									<div>
-										<a href="#meets" onclick="return false">0</a>
-									</div>
-								</li>
+
 								<li>위시 리스트
 									<div>
 										<a href="member_wishlist">2</a>
@@ -140,43 +136,20 @@
 							</ul>
 						</div>
 					</div>
-
 					<a name="bookings"></a>
 					<div class="profile-left span12" id="block-bookings">
 						<h2>예약 관리</h2>
-
-						You don't have any bookings yet.
+						아직 예약을 안 하셨네요.
 						<div class="footer">
 							<a class="multi-line-button bigb" href="/deals"><span
-								class="title">See Latest Travel Deals »</span></a>
+								class="title">예약 목록 보기 »</span></a>
 						</div>
 					</div>
-					<a name="meets"></a>
-					<div class="profile-left span12" id="block-meets">
-						<h2>My meets</h2>
 
-						You don't have any meets yet. Download the <a href="">TourRadar
-							Meet App</a>, 72,049 travellers have already met before they
-						travelled and shared their travel photos!
-
-						<div class="footer">
-							<a
-								href="https://itunes.apple.com/at/app/tourradar-meet-other-travellers/id699723616?l=en&amp;mt=8"><svg
-									class="app-store-badge" viewBox="0 0 133.141 38.207">
-									<use xmlns:xlink="http://www.w3.org/1999/xlink"
-										xlink:href="/images/responsive/svg/sprites.svg?v=1#app-store-badge"></use></svg></a><a
-								href="https://play.google.com/store/apps/details?id=com.tourradar.meet"><svg
-									class="google-play-badge" viewBox="0 0 133.141 38.207">
-									<use xmlns:xlink="http://www.w3.org/1999/xlink"
-										xlink:href="/images/responsive/svg/sprites.svg?v=1#google-play-badge"></use></svg></a>
-						</div>
-					</div>
 					<a name="reviews"></a>
 					<div class="profile-left span12" id="block-reviews">
 						<h2>my reviews</h2>
-
 						등록한 후기가 없습니다!
-
 						<div class="footer">
 							<a class="multi-line-button bigb" href="/review"><span
 								class="title">후기 작성하기 »</span></a>
@@ -185,24 +158,19 @@
 				</div>
 				<div class="span4 profile-right profile-right-upgraded">
 					<div class="block span12">
+
 						<div>
-							<a href="https://www.tourradar.com/members/invite">Earn
-								Travel Credits</a>
+							<a href="#bookings">예약 관리</a>
+						</div>
+
+						<div>
+							<a href="#reviews">나의 후기 보기</a>
 						</div>
 						<div>
-							<a href="#bookings">Manage bookings</a>
+							<a href="/wishlists/traveller/439550">위시 리스트</a>
 						</div>
 						<div>
-							<a href="#meets">My meets</a>
-						</div>
-						<div>
-							<a href="#reviews">My reviews</a>
-						</div>
-						<div>
-							<a href="/wishlists/traveller/439550">My Wish Lists</a>
-						</div>
-						<div>
-							<a href="https://www.tourradar.com/members/settings">Settings</a>
+							<a href="https://www.tourradar.com/members/settings">나의 정보 수정</a>
 						</div>
 						<div>
 							<a href="/travellers/logout?type=web">Log out</a>
@@ -210,31 +178,25 @@
 					</div>
 					<div class="block span12">
 						<div class="why-box">
-							<h2>Why TourRadar</h2>
+							<h2>Why BlueBalloon</h2>
 							<ul class="points">
 								<li><div class="wcheckbox">✓</div>
 									<div class="content">
-										<a href="#why-box-popup1" onclick="return false" class="text">We’re
-											here for you 24/7</a>
+										<a href="" onclick="return false" class="text">고객센터 </a>
 									</div></li>
 								<li><div class="wcheckbox">✓</div>
 									<div class="content">
-										<a href="#why-box-popup2" onclick="return false" class="text">No
-											Booking Fees</a>
+										<a class="text">예약 수수료 없음 </a>
 									</div></li>
 								<li><div class="wcheckbox">✓</div>
 									<div class="content">
-										<a href="#why-box-popup3" onclick="return false" class="text">Best
-											Price Guarantee</a>
+										<a class="text">최저 가격 보증 </a>
 									</div></li>
 								<li><div class="wcheckbox">✓</div>
 									<div class="content">
-										<a href="#why-box-popup5" onclick="return false" class="text">Earn
-											Unlimited Travel Credits</a>
+										<a class="text">다양한 컨텐츠 </a>
 									</div></li>
 							</ul>
-							<a href="/why" class="button-link" target="_blank"><button
-									class="btn-atomic full-width">Learn more »</button></a>
 						</div>
 					</div>
 				</div>
@@ -249,7 +211,6 @@
 								href="/legalnotice">Legal notice</a>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -317,7 +278,6 @@
 			<div class="hidden" id="traveller_success_id"></div>
 		</div>
 		<div id="svg_content_load" style="display: none"></div>
-
 
 		<script type="text/javascript"
 			src="https://apis.google.com/js/plus.js" gapi_processed="true"></script>

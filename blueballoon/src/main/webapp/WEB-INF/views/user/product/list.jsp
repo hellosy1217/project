@@ -126,7 +126,7 @@
 					<option value="lendesc">최신순</option>
 					<option value="popularity">인기순</option>
 					<option value="rec">리뷰순</option>
-					
+
 				</select>
 
 			</div>
@@ -135,28 +135,25 @@
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
 				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
-
 					<div class="spotListIn">
-						<a href="product_content?prod_num=${prod.prod_num}" class="spotIn focusedLink">
+						<a href="product_content?prod_num=${prod.prod_num}"
+							class="spotIn focusedLink">
 							<div class="thumb">
-								<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
+								<img
+									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
 									alt="" width="245" style="margin-top: 0px;">
-							</div>
-							<span class="spot">${prod.prod_cate}</span>
-							<strong class="title">${prod.prod_name}</strong>
-							
-							<span class="cover"></span>
+							</div> <span class="spot">${prod.prod_cate}</span> <strong
+							class="title">${prod.prod_name}</strong> <span class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
-									<li>
-										<i class="fa fa-thumbs-up" aria-hidden="true" style="font-size:16px;"></i>
-									</li>
+									<li><i class="fa fa-thumbs-up" aria-hidden="true"
+										style="font-size: 16px;"></i></li>
 									<li class="good">
 										<p>
 											<i>${likeCount}</i>
 										</p>
 									</li>
-									
+
 								</ul>
 							</div>
 						</a>
@@ -189,9 +186,7 @@
 			<aside id="params">
 				<div class="b blue">
 					<h5>필터링 기준 :</h5>
-
 				</div>
-
 				<div class="b b_dep">
 					<h5 id="flip">추천 여행지</h5>
 					<div class="c" id="panel">
@@ -217,19 +212,22 @@
 						<ul>
 							<c:set var="color"
 								value="#f39a2d;#96bc34;#e74c3c;#c681bc;#cccccc;#2c3e50;#ffc101" />
-							<c:forEach var="n" begin="1" end="7" step="1" items="${listCate}">
-								<li data-pid="2"><div class="th"
-										style="background: #e74c3c"></div> <a href="/h/italy-cultural"
-									id="flip${n}" class="span" onclick="return false">${n.cate_state}</a>
-									<div class="tr" id="icon${n}"></div>
-									<ul class="sub" id="panel${n}" style="margin-top: 15px;">
-										<li data-pid="7"><span></span></li>
-										<li data-pid="77"><span>종로구</span></li>
-										<li data-pid="178"><span>마포구</span></li>
-										<li data-pid="6"><span>중구</span></li>
-										<li data-pid="38"><span>용산구</span></li>
+							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
+							<c:forTokens items="${city}" delims="," var="c"
+								varStatus="status">
+								<li><div class="th"
+										style="background: #e74c3c"></div> <a href="product_list?cate_city=${c}"
+									id="flip${status.count}" class="span" onclick="return false">${c}</a>
+									<div class="tr" id="icon${status.count}"></div>
+									<ul class="sub" id="panel${status.count}"
+										style="margin-top: 15px;">
+										<c:forEach items="${listCate}" var="list">
+											<c:if test="${list.cate_state == c}">
+												<li><span>${list.cate_city}</span></li>
+											</c:if>
+										</c:forEach>
 									</ul></li>
-							</c:forEach>
+							</c:forTokens>
 						</ul>
 					</div>
 				</div>
