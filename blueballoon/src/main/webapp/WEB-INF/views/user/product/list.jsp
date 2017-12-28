@@ -5,7 +5,7 @@
 <head>
 <title>여행상품 리스트</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=12"
+	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=123"
 	rel="stylesheet" type="text/css" />
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css?ver=1"
@@ -153,7 +153,7 @@
 									</li>
 									<li class="good">
 										<p>
-											<i>24</i>
+											<i>${likeCount}</i>
 										</p>
 									</li>
 									
@@ -217,13 +217,13 @@
 						<ul>
 							<c:set var="color"
 								value="#f39a2d;#96bc34;#e74c3c;#c681bc;#cccccc;#2c3e50;#ffc101" />
-							<c:forEach var="n" begin="1" end="7" step="1">
+							<c:forEach var="n" begin="1" end="7" step="1" items="${listCate}">
 								<li data-pid="2"><div class="th"
 										style="background: #e74c3c"></div> <a href="/h/italy-cultural"
-									id="flip${n}" class="span" onclick="return false">서울 특별시</a>
+									id="flip${n}" class="span" onclick="return false">${n.cate_state}</a>
 									<div class="tr" id="icon${n}"></div>
 									<ul class="sub" id="panel${n}" style="margin-top: 15px;">
-										<li data-pid="7"><span>강남구</span></li>
+										<li data-pid="7"><span></span></li>
 										<li data-pid="77"><span>종로구</span></li>
 										<li data-pid="178"><span>마포구</span></li>
 										<li data-pid="6"><span>중구</span></li>

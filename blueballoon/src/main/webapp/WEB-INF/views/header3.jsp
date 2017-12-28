@@ -108,13 +108,13 @@
 						<li class="sep"><a href="board_list">여행후기</a></li>
 					</ul>
 				</nav></li>
-			<li class="dropdown profile"><span class="initials"
-				style="background: #afd54d">N</span>
+			<li class="dropdown profile"  style="padding-top: 22px;">
+			<span class="initials" style="background: #afd54d">N</span>
 				<nav>
-					<ul>
+					<ul class="bot">
 						<li><a href="member_profile">내 정보 보기</a></li>
 						<li><a href="member_edit">내 정보 수정</a></li>
-						<li><a href="member_wishlist">위시리스트<span>2</span></a></li>
+						<li><a href="member_wishlist">위시리스트</a></li>
 						<li><a href="member_booking">예약 관리</a></li>
 						<li class="sep"><a href="member_logout">Logout</a></li>
 					</ul>

@@ -121,7 +121,8 @@
 						<li><a href="member_join">회원가입</a></li>
 						<li><a href="book_">예약관리</a></li>
 					</ul>
-				</nav></li>
+				</nav>
+			</li>
 		</ul>
 	</div>
 </header>
