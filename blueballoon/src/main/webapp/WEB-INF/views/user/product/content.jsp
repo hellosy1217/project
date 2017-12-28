@@ -6,7 +6,7 @@
 <head>
 <title>여행상품 상세페이지</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=12333"
+	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=1233"
 	rel="stylesheet" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -149,7 +149,7 @@
 	$(document).ready(function() {
 		$('${like}').click(function() {
 			//$(this).toggleClass('likeI');
-			$('${Y}').css('color','#409cd1');
+			$('${Y}').css('color', '#409cd1');
 		});
 	})
 
@@ -169,7 +169,6 @@
 
 		});
 	}); */
-
 </script>
 
 </head>
@@ -200,7 +199,27 @@
 		<div class="br">
 			<div class="b val">
 				<h2 style="margin-bottom: 20px;">지도보기</h2>
-				<div id="map"></div>
+				<!-- <div id="map" style="width: 320px; height: 302px;"></div> -->
+
+				<div class="map_wrap">
+					<div id="map"
+						style="width: 320px; height: 302px; position: relative; overflow: hidden;"></div>
+					<!-- 지도타입 컨트롤 div 입니다 -->
+					<div class="custom_typecontrol radius_border">
+						<span id="btnRoadmap" class="selected_btn"
+							onclick="setMapType('roadmap')">지도</span> <span id="btnSkyview"
+							class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+					</div>
+					<!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+					<div class="custom_zoomcontrol radius_border">
+						<span onclick="zoomIn()"><img
+							src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
+							alt="확대"></span> <span onclick="zoomOut()"><img
+							src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+							alt="축소"></span>
+					</div>
+				</div>
+
 			</div>
 
 		</div>
@@ -255,12 +274,12 @@
 					<a href="product_like?prod_num=${getProd.prod_num}">
 						<div id="like">
 							<c:if test="${like == 'Y'}">
-								<i class="fa fa-thumbs-o-up like_icon" style="color:#409cd1;"></i>
+								<i class="fa fa-thumbs-o-up like_icon" style="color: #409cd1;"></i>
 							</c:if>
 							<c:if test="${like == 'N'}">
-								<i class="fa fa-thumbs-o-up like_icon" style="color:#ddd;"></i>
+								<i class="fa fa-thumbs-o-up like_icon" style="color: #ddd;"></i>
 							</c:if>
-							
+
 						</div>
 					</a>
 					<div class="sub_text">
@@ -456,26 +475,68 @@
 		</div>
 	</footer>
 
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bac524d796bfc8a7d5809708b224646c&libraries=services"></script>
 	<script>
-		function initMap() {
-			var uluru = {
-				lat : 37.556,
-				lng : 126.923
-			};
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom : 17,
-				center : uluru
-			});
-			var marker = new google.maps.Marker({
-				position : uluru,
-				map : map
-			});
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
+
+		// 지도를 생성합니다    
+		var map = new daum.maps.Map(mapContainer, mapOption);
+
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('${getProd.prod_old_address}', function(result,
+				status) {
+
+			// 정상적으로 검색이 완료됐으면 
+			if (status === daum.maps.services.Status.OK) {
+
+				var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new daum.maps.Marker({
+					map : map,
+					position : coords
+				});
+
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			}
+		});
+		
+		// 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
+		function setMapType(maptype) { 
+		    var roadmapControl = document.getElementById('btnRoadmap');
+		    var skyviewControl = document.getElementById('btnSkyview'); 
+		    if (maptype === 'roadmap') {
+		        map.setMapTypeId(daum.maps.MapTypeId.ROADMAP);    
+		        roadmapControl.className = 'selected_btn';
+		        skyviewControl.className = 'btn';
+		    } else {
+		        map.setMapTypeId(daum.maps.MapTypeId.HYBRID);    
+		        skyviewControl.className = 'selected_btn';
+		        roadmapControl.className = 'btn';
+		    }
+		}
+
+		// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+		function zoomIn() {
+		    map.setLevel(map.getLevel() - 1);
+		}
+
+		// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+		function zoomOut() {
+		    map.setLevel(map.getLevel() + 1);
 		}
 	</script>
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZSdS0Rq8yfR9AE2r0Hc26LGNOU8Su6W8&callback=initMap">
-		
-	</script>
+
 
 	<script>
 		(function(event, event2) {
