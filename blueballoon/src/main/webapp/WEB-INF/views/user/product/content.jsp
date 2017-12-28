@@ -145,30 +145,11 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-	//좋아요 클릭시 색변경하기
-	$(document).ready(function() {
-		$('${like}').click(function() {
-			//$(this).toggleClass('likeI');
-			$('${Y}').css('color', '#409cd1');
-		});
-	})
-
-	/* //좋아요 카운트
-	$(function() {
-		$('#increaseQuantity').click(function(e) {
-			e.preventDefault();
-			var stat = $('#numberUpDown').text();
-			var num = parseInt(stat, 10);
-			num++;
-
-			if (num > 2) {
-				alert('이미 좋아요를 눌렀습니다.');
-				num = 2;
-			}
-			$('#numberUpDown').text(num);
-
-		});
-	}); */
+$(document).ready(function() {
+	$("#flip").click(function() {
+		$("#panel").slideToggle(0);
+	});
+});
 </script>
 
 </head>
