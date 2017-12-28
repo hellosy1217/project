@@ -154,6 +154,15 @@ public class MemberController {
 		return mav;
 	}
 
+	@RequestMapping(value = "member_profile", method = RequestMethod.GET)
+	public ModelAndView profile(HttpServletRequest arg0) {
+		
+		// 채워야 함
+		
+		mav.setViewName("user/member/profile");
+		return mav;
+	}
+	
 	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest arg0) {
 		arg0.getSession().removeAttribute("member_num");
