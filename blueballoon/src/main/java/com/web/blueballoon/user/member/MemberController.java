@@ -27,7 +27,7 @@ public class MemberController {
 
 	@RequestMapping(value = "member_login", method = RequestMethod.GET)
 	public String login() {
-		return "user/member/login_us";
+		return "user/member/login";
 	}
 
 	// 로그인
@@ -49,9 +49,7 @@ public class MemberController {
 			session = req.getSession();
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
-			mav.addObject("msg", "success");
-			mav.addObject("url", "home");
-			mav.setViewName("user/member/message");
+			mav.setViewName("home");
 		}
 		return mav;
 	}
@@ -154,5 +152,12 @@ public class MemberController {
 		}
 
 		return mav;
+	}
+
+	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest arg0) {
+		arg0.getSession().removeAttribute("member_num");
+		arg0.getSession().removeAttribute("member_email");
+		return "home";
 	}
 }
