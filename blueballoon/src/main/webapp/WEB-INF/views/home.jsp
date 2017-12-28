@@ -24,7 +24,14 @@
 </script>
 </head>
 <body class="tb" data-b-sale="">
-	<%@include file="header1.jsp"%>
+	<c:choose>
+		<c:when test="${member_email eq null }">
+			<%@include file="header1.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%@include file="header3.jsp"%>
+		</c:otherwise>
+	</c:choose>
 	<main data-page="home">
 	<div class="top">
 

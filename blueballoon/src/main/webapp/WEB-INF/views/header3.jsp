@@ -12,7 +12,7 @@
 				회원 찾기</a></span><span class="hide-sm"><a href="member_edit">일단은
 				회원정보수정</a></span><span class="pull-right"><a href="admin_index">일단은
 				ad min</a></span>
-	</div> 
+	</div>
 </div>
 <header>
 	<div class="c">
@@ -108,18 +108,15 @@
 						<li class="sep"><a href="board_list">여행후기</a></li>
 					</ul>
 				</nav></li>
-			<li class="dropdown profile" style="padding-top: 22px;"><svg
-					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path fill="rgb(204,204,204)"
-						d="M9.74 0A10 10 0 1 0 20 9.74 10 10 0 0 0 9.74 0zm.5 19A9 9 0 1 1 19 9.76 9 9 0 0 1 10.24 19z"></path>
-                  <path fill="rgb(204,204,204)"
-						d="M10.21 11.5H10a6.5 6.5 0 0 0-5.5 3.4.5.5 0 1 0 .88.48 5.5 5.5 0 0 1 4.69-2.87h.15a5.5 5.5 0 0 1 4.69 2.62.5.5 0 0 0 .85-.52 6.5 6.5 0 0 0-5.55-3.11zm-.29-1H10A3.5 3.5 0 0 0 13.42 7v-.09a3.5 3.5 0 0 0-3.5-3.41h-.09A3.5 3.5 0 0 0 6.42 7v.09a3.5 3.5 0 0 0 3.5 3.41zm-.06-6h.07a2.5 2.5 0 0 1 2.5 2.43V7A2.5 2.5 0 0 1 10 9.5h-.08a2.5 2.5 0 0 1-2.5-2.43V7a2.5 2.5 0 0 1 2.43-2.5z"></path>
-               </svg>
+			<li class="dropdown profile"><span class="initials"
+				style="background: #afd54d">N</span>
 				<nav>
-					<ul class="bot">
-						<li><a href="member_login">로그인</a></li>
-						<li><a href="member_join">회원가입</a></li>
-						<li><a href="book_">예약관리</a></li>
+					<ul>
+						<li><a href="member_profile">내 정보 보기</a></li>
+						<li><a href="member_edit">내 정보 수정</a></li>
+						<li><a href="member_wishlist">위시리스트<span>2</span></a></li>
+						<li><a href="member_booking">예약 관리</a></li>
+						<li class="sep"><a href="member_logout">Logout</a></li>
 					</ul>
 				</nav></li>
 		</ul>
