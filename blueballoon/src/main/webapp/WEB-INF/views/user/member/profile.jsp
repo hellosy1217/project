@@ -112,13 +112,13 @@
 				<div class="span8">
 					<div class="profile-left span12" id="block-me">
 						<div id="user-image">
-							<img src="/images/responsive/profile/traveller.png">
+							<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${profile.member_str_img}">
 							<div>
 								<a href="member_edit">내 정보 수정</a>
 							</div>
 						</div>
 						<div id="user-info">
-							<h3>이름 들어갈 위치 :</h3>
+							<h3>${profile.member_name}</h3>
 							<h4>Korea, South</h4>
 							<div id="since">Member since December 02, 2017</div>
 							<ul id="stats">
@@ -207,7 +207,7 @@
 				<div class="social">
 					<div>
 						<div id="copyright">
-							Copyright © TourRadar. All rights reserved. <a
+							Copyright © BlueBalloon. All rights reserved. <a
 								href="/legalnotice">Legal notice</a>
 						</div>
 					</div>

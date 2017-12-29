@@ -139,7 +139,6 @@ public class MemberController {
 			dto.setMember_str_img(null);
 			dto.setMember_email(null);
 		}
-		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.setViewName("user/member/member_edit");
 		} else {
@@ -152,10 +151,17 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_profile", method = RequestMethod.GET)
-	public ModelAndView profile(HttpServletRequest arg0) {
-
-		// 채워야 함
-
+	public ModelAndView profile(HttpServletRequest arg0, HttpSession session) {
+		session = arg0.getSession();
+		if(session == null) {
+			mav.addObject("msg","로그인이 필요한 페이지입니다. 로그인해주세요.");
+			mav.addObject("url","member_login");
+			mav.setViewName("user/member/message"); return mav;
+		}
+		String member_email = (String) session.getAttribute("member_email");
+		System.out.println("member_email : "+member_email);
+		BBMemberDTO dto = memberMapper.getMember(member_email);
+		mav.addObject("myMember",dto);
 		mav.setViewName("user/member/profile");
 		return mav;
 	}
