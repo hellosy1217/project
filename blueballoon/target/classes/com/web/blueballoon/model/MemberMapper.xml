@@ -6,16 +6,10 @@
 <mapper namespace="com.web.blueballoon.model">
 
 	<insert id="joinMember" parameterType="BBMemberDTO">
-		insert into bb_member(member_num, member_name, member_email,
-		member_passwd, member_org_img, member_str_img, member_phone,
-		member_birth, member_gender, member_reg_date)
-		values(bb_member_seq.nextval,#{member_name},#{member_email},
-		#{member_passwd},#{member_org_img,
-		jdbcType=VARCHAR},#{member_str_img, jdbcType=VARCHAR},
-		#{member_phone, jdbcType=VARCHAR},#{member_birth, jdbcType=VARCHAR},#{member_gender,
-		jdbcType=VARCHAR},sysdate)
+		insert into bb_member values(bb_member_seq.nextval,#{member_name , jdbcType=VARCHAR},#{member_email, jdbcType=VARCHAR},
+		#{member_passwd, jdbcType=VARCHAR},#{member_org_img, jdbcType=VARCHAR},#{member_str_img, jdbcType=VARCHAR},
+		#{member_phone, jdbcType=VARCHAR},#{member_birth, jdbcType=VARCHAR},#{member_gender, jdbcType=VARCHAR}, sysdate)
 	</insert>
-
 	<select parameterType="BBMemberDTO" id="checkEmail" resultType="java.lang.Integer">
 		SELECT NVL(COUNT(*),0) FROM bb_member WHERE member_email=#{member_email} </select>
 

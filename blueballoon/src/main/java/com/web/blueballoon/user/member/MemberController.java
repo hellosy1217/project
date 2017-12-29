@@ -37,7 +37,6 @@ public class MemberController {
 		boolean isLogin = false;
 		if (dto == null)
 			isLogin = true;
-		ModelAndView mav = new ModelAndView();
 		if (isLogin) {
 			// login.jsp로 이동
 			mav.addObject("msg", "failure");
@@ -64,7 +63,6 @@ public class MemberController {
 	public ModelAndView joinPro(HttpServletRequest arg0, @ModelAttribute BBMemberDTO dto, BindingResult result) {
 
 		int res = memberMapper.joinMember(dto);
-		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.setViewName("user/member/login");
 		} else {
@@ -72,7 +70,6 @@ public class MemberController {
 			mav.addObject("url", "member_list");
 			mav.setViewName("user/member/message");
 		}
-
 		return mav;
 	}
 
