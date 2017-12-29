@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -48,46 +49,90 @@
 				});
 	});
 </script>
+<script>
+function replaceElement(){
+	var select=document.getElementById('mySelectMenu');
+	var chosenoption=select.options[select.selectedIndex];
+	var oChild= document.getElementsByTagName('input');
+	var br1= document.getElementsByTagName('br');
+	var brLeng=br1.length;
+
+	if (brLeng - chosenoption.value > 0) {
+ 		var temp = brLeng - chosenoption.value;
+ 		alert(temp);
+ 		for(var i=0; i<temp; i++){
+  		alert("박스삭제" + i);
+  		myform.removeChild(oChild[0]);
+  		alert("줄바꿈삭제" + i);
+  		myform.removeChild(br1[0]);
+ 		}		
+	}
+
+ 	if (brLeng - chosenoption.value < 0) {
+ 		var temp = -(brLeng - chosenoption.value);
+		 for(var i=0; i<temp; i++){
+ 		 	alert("줄바꿈" + i);
+  			var br2 = document.createElement('br');
+  			myform.appendChild(br2);
+  			alert("박스추가" + i);
+  			var oNewChild=document.createElement('input');
+  			oNewChild.setAttribute("type", "text");
+  			oNewChild.setAttribute("size", "6");
+  			myform.appendChild(oNewChild);
+ 			}
+		}
+}
+
+</script>
 <div align="center">
-<form name="f" action="BB_pack_insert" method="post" enctype="multipart/form-data">
-      <table width="800">
-		<caption>패키지 상품 등록</caption>
-		<tr>
-			<th width="10%">패키지 이름</th>
-			<td>* <input type="text" name="pack_title" placeholder="ex.맛깔나는 서울맛집투어 "></td>
-		</tr>
-		<tr>
-			<th width="10%">담당 이메일</th>
-			<td>   <input type="email" name="pack_email" ></td>
-		</tr>
-		<tr>
-			<th width="10%">담당 전화</th>
-			<td>* <input type="text" name="pack_phone" placeholder="담당자 번호 입력해주세요."></td>
-		</tr>
-		<tr>
-			<th width="10%">패키지 이미지</th>
-			<td>* <input type="file" name="pack_org_img"></td>
-		</tr>
-		<tr>
-			<th width="10%">패키지 가격</th>
-			<td>* <input type="text" name="pack_price"></td>
-		</tr>
-		<tr>
-            <th>패키지 기간</th>
-            <td>* <input type="text" name="pack_period" id="fromDate"></td>
-            <td>~ <input type="text" name="pack_period" id="toDate"></td>
-         </tr>
-		<tr>
-			<th width= 15%>패키지 설명</th>
-			<td>*<textarea name="pack_content" rows="6" cols="100"></textarea></td>
-         </tr>
-         <tr>
-			<th width="10%">패키지 구성 요소</th>
-			<td>*<input type="text" id="packagePick" name="pack_config"></td>
-		</tr>
-		<th>
-		<b>*은 필수 입력사항 입니다.</b>
-		</th>
+	<form name="f" action="BB_pack_insert" method="post"
+		enctype="multipart/form-data">
+		<table width="800">
+			<caption>패키지 상품 등록</caption>
+			<tr>
+				<th width="10%">패키지 이름</th>
+				<td><input type="text" name="pack_title"
+					placeholder="ex.맛깔나는 서울맛집투어 "></td>
+			</tr>
+			<tr>
+				<th width="10%">담당 이메일</th>
+				<td><input type="email" name="pack_email"></td>
+			</tr>
+			<tr>
+				<th width="10%">담당 전화</th>
+				<td><input type="text" name="pack_phone"
+					placeholder="담당자 번호 입력해주세요."></td>
+			</tr>
+			<tr>
+				<th width="10%">패키지 이미지</th>
+				<td><input type="file" name="pack_org_img"></td>
+			</tr>
+			<tr>
+				<th width="10%">패키지 가격</th>
+				<td><input type="text" name="pack_price"></td>
+			</tr>
+			<tr>
+				<th>패키지 기간</th>
+				<td><input type="text" name="pack_period" id="fromDate"></td>
+				<td><input type="text" name="pack_period" id="toDate"></td>
+			</tr>
+			<tr>
+				<th>패키지 일수</th>
+				<td>
+				<select name="pack_days" id="mySelectMenu" onchange="replaceElement()">
+						<c:forEach var="per" begin="1" end="20" step="1">
+							<option value="${per}">${per}일</option>
+						</c:forEach>
+				</select></td>
+			</tr>
+			<tr>
+				<th width=15%>패키지 설명</th>
+				<td><textarea name="pack_content" rows="6" cols="100"></textarea></td>
+			</tr>
+			<tr>
+				<th width="10%">패키지 구성 요소</th>
+				<td><input type="text" id="packagePick" name="pack_config"></td>
+			</tr>
 		</table>
 	</form>
 </div>

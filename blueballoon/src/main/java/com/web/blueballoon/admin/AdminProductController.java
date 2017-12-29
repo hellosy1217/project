@@ -65,7 +65,7 @@ public class AdminProductController {
 
 		if (filename == null || filename.trim().equals("")) {
 			// 사진을 올리지 않을 경우 거의 존재 하지 않음.
-			dto.setProd_org_img("0");
+			dto.setProd_org_img(null);
 		} else {
 			// 아마존 업로드 이후 저장한 파일 이름 return 받아 저장해주기(str_file_name)
 			String upload = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), multipartFiles);
@@ -78,6 +78,7 @@ public class AdminProductController {
 			res = adminMapper.insertBBProduct(dto);
 		} catch (NullPointerException ne) { // not null 아닌 애들 값 안넣었을 때 에러처리
 			dto.setProd_detail_address(null);
+			dto.setProd_org_img(null);
 			dto.setProd_old_address(null);
 			dto.setProd_email(null);
 			dto.setProd_str_img(null);
@@ -129,6 +130,7 @@ public class AdminProductController {
 			BindingResult result) {
 		// 비교를 위한 dto 값 불러오기.
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
+		System.out.println("기존 str_img : "+editDTO.getProd_str_img());
 		String prod_edit_img = mf.getOriginalFilename();
 		System.out.println("새로운 파일 : " +prod_edit_img);
 		String file = null;
@@ -153,8 +155,8 @@ public class AdminProductController {
 				dto.setProd_org_img(prod_edit_img);
 				dto.setProd_str_img(file);
 			} else if (prod_edit_img == null || prod_edit_img.trim().equals("")) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
-				dto.setProd_org_img(null);
-				dto.setProd_str_img(null);
+				dto.setProd_org_img(editDTO.getProd_org_img());
+				dto.setProd_str_img(editDTO.getProd_str_img());
 			}
 		}
 
