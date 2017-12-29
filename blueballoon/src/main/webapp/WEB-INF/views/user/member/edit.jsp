@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,20 +60,20 @@
 								<div class="row">
 									<div class="title">프로필 사진</div>
 									<div class="value">
-										<input type="file" name="userpic" /><br />
+										<input type="file" name="userpick" /><br />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">이름</div>
 									<div class="value">
 										<input type="text" name="name" placeholder="Full name"
-											value="name" />
+											value="${getMember.member_name}" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">Email</div>
 									<div class="value">
-										<input type="text" disabled /><a href="#email_popup"
+										<input type="text" disabled value="${getMember.member_email}"/><a href="#email_popup"
 											id="email_link">변경</a>
 									</div>
 								</div>
@@ -86,23 +87,23 @@
 								<div class="row">
 									<div class="title">휴대전화</div>
 									<div class="value">
-										<input type="text" name="phone" placeholder="Phone number" />
+										<input type="text" name="phone" value="${getMember.member_phone}" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">생년월일</div>
 									<div class="value">
-										<input type="text" name="birthdate" placeholder="YYYY/MM/DD"
+										<input type="text" name="birthdate" value="${getMember.member_birth}"
 											value="" id="date" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">성별</div>
 									<div class="value">
-										<select name="gender"><option value="">-- 선택
-												--</option>
-											<option value="male">남성</option>
-											<option value="female">여성</option></select>
+										<select name="gender">
+										<option value="">-- 선택 --</option>
+											<option value="male" <c:if test="${getMember.member_gender eq 'male'}">selected </c:if>>남성</option>
+											<option value="female" <c:if test="${getMember.member_gender eq 'female'}">selected </c:if>>여성</option></select>
 									</div>
 								</div>
 							</div>
