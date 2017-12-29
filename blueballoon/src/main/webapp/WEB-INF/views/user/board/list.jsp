@@ -3,8 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html class=" logged">
 <head>
-<title>River Cruises - Cruising Reviews, Itineraries and Prices
-	- TourRadar</title>
+<title>후기 게시판 -BlueBalloon</title>
 <link
 	href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=1"
 	rel="stylesheet" type="text/css" />
@@ -41,47 +40,53 @@
 		<div class="im"
 			style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
 		<div class="in">
-			<h1>여기는 뭐 넣을 지 생각 중</h1>
-			게시판 관ㄹㄴ 글
+			<h1></h1>
+			<!--게시판 관련-->
 			<ul>
-				<li>뭐 넣을 지 생각 중</li>
+				<li></li>
 			</ul>
 		</div>
 	</div>
 	<div class="c">
 		<div class="list">
 			<h2>베스트 리뷰</h2>
-			<c:forEach var="a" begin="1" end="3" step="1">
+			<c:forEach var="best" items="${Listmap.bestReview}">
 				<div class="item" data-id="163442">
-					<a href="board_content?board_num="><div class="preview">
+					<a href="board_content?board_num=${best.board_num}">
+					<div class="preview">
 							<img
 								src="//cdn.tourradar.com/s3/serp/360x210/163442_WkBBbSNA.jpg"
 								data-src="//cdn.tourradar.com/s3/serp/360x210/163442_WkBBbSNA.jpg"
 								class="bg lazy">
 							<div class="mask"></div>
-							<div class="title">상품(패키지) 이름</div>
+							<div class="title">${best.board_title}</div>
 							<div class="river-info">
-								<div class="info tours">별점</div>
-								<div class="info len">좋아요수</div>
+								<div class="info tours">별점 : ${best.board_readcount}</div>
+								<div class="info len">좋아요 수 : ${best.board_likecount}</div>
 							</div>
-						</div></a>
+						</div>
+						</a>
 					<div class="description">
-						게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분
-						게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 게시글 내용 앞부분 ... <a
-							href="board_content?board_num=">더보기</a>
+						${best.board_content}
+						<a href="board_content?board_num=${best.board_num}">더보기</a>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 		<div class="content faq" data-total="16" data-onpage="10">
-			<h3>일단 게시판 부분</h3>
+				<a class="but r write" href="board_write?prod_num=1" 
+					target="_blank" rel="nofollow">리뷰 작성하기</a>
+				<ul>
+			<h3>게시판 부분</h3>
 			<!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
 			<ul>
-				<c:forEach var="a" items="${Listmap.boardList}">
-					<li data-id="5036"><table class="qst" width="100%">
+				<c:forEach var="dto" items="${Listmap.boardList}">
+					<li data-id="5036">
+						<table class="qst" width="100%">
 							<tr>
-								<td width="10%">글 번호</td>
-								<td><a href="board_content?board_num=">글제목</a>(댓글수)</td>
+								<td width="10%">${dto.board_num}</td>
+								<td><a href="board_content?board_num=${dto.board_num}">${dto.board_title}</a></td>
+								<td style="float: right;">${dto.board_reg_date}</td>
 							</tr>
 						</table></li>
 				</c:forEach>

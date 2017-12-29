@@ -148,8 +148,8 @@ star-input>.input.focus {
 								value="${getBoard.board_content}"></textarea>
 						</div>
 						<div>
-							<h3>사진 업로드</h3>
-								<input multiple="multiple" type="file" name="org_img" class="box" size="40">
+							<h3>사진 업로드(선택 항목)</h3>
+								<input type="file" name="board_org_img">
 						</div>
 						<input type="hidden">
 

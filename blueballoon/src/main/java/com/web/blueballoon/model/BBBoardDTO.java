@@ -5,16 +5,13 @@ public class BBBoardDTO {
 	private String member_email;
 	private String board_title;
 	private String board_content;
-	private int board_img;
+	private String board_org_img;
+	private String board_str_img;
 	private String board_reg_date;
 	private int board_readcount;
 	private int board_likecount;
-	private int prod_pick;
+	private int board_score;
 	private int prod_num;
-	private int pack_num;
-	private int prod_score;
-	private int pack_score;
-	
 	public int getBoard_num() {
 		return board_num;
 	}
@@ -39,11 +36,17 @@ public class BBBoardDTO {
 	public void setBoard_content(String board_content) {
 		this.board_content = board_content;
 	}
-	public int getBoard_img() {
-		return board_img;
+	public String getBoard_org_img() {
+		return board_org_img;
 	}
-	public void setBoard_img(int board_img) {
-		this.board_img = board_img;
+	public void setBoard_org_img(String board_org_img) {
+		this.board_org_img = board_org_img;
+	}
+	public String getBoard_str_img() {
+		return board_str_img;
+	}
+	public void setBoard_str_img(String board_str_img) {
+		this.board_str_img = board_str_img;
 	}
 	public String getBoard_reg_date() {
 		return board_reg_date;
@@ -63,11 +66,11 @@ public class BBBoardDTO {
 	public void setBoard_likecount(int board_likecount) {
 		this.board_likecount = board_likecount;
 	}
-	public int getProd_pick() {
-		return prod_pick;
+	public int getBoard_score() {
+		return board_score;
 	}
-	public void setProd_pick(int prod_pick) {
-		this.prod_pick = prod_pick;
+	public void setBoard_score(int board_score) {
+		this.board_score = board_score;
 	}
 	public int getProd_num() {
 		return prod_num;
@@ -75,22 +78,6 @@ public class BBBoardDTO {
 	public void setProd_num(int prod_num) {
 		this.prod_num = prod_num;
 	}
-	public int getPack_num() {
-		return pack_num;
-	}
-	public void setPack_num(int pack_num) {
-		this.pack_num = pack_num;
-	}
-	public int getProd_score() {
-		return prod_score;
-	}
-	public void setProd_score(int prod_score) {
-		this.prod_score = prod_score;
-	}
-	public int getPack_score() {
-		return pack_score;
-	}
-	public void setPack_score(int pack_score) {
-		this.pack_score = pack_score;
-	}
+	
+	
 }

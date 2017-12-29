@@ -119,10 +119,10 @@ star-input>.input.focus {
 			<%@include file="../../header2.jsp"%>
 			<div class="inside" style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w" style="min-width: 400px;">
-					<form class="clearfix" action="board_write" method="POST" name="f"
+					<form class="clearfix" action="board_insert" method="POST" name="f"
 						enctype="multipart/form-data">
-						<input type="hidden" name="pnum" value="${map.pnum}" /> <input
-							type="hidden" name="prod_pick" value="${map.prod_pick}" />
+						<input type="hidden" name="prod_num" value="${prod_num}" />
+						<input type="hidden" name="member_email" value="${member_email}" />
 						<div>
 							<h3>후기 제목</h3>
 							<input name="board_title" id="title" size="40"
@@ -150,9 +150,8 @@ star-input>.input.focus {
 								placeholder="내용을 입력하세요"></textarea>
 						</div>
 						<div>
-							<h3>사진 업로드</h3>
-							<input multiple="multiple" type="file" name="org_img" class="box"
-								size="40">
+							<h3>사진 업로드 (선택 항목)</h3>
+							<input type="file" name="board_org_img">
 						</div>
 						<input type="hidden">
 
