@@ -48,7 +48,7 @@ public class MemberController {
 			session = req.getSession();
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
-			mav.setViewName("home");
+			mav.setViewName("/");
 		}
 		return mav;
 	}
