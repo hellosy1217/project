@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,20 +108,27 @@
 	</div>
 	<div id="content" class="clearfix profile ">
 		<div id="content_details"
-			class="clearfix profile profile-my container-fluid">
+			class="clearfix profile profile-my container-fluid" style="margin-bottom: 70px; margin-top: 40px;">
 			<div class="row-fluid">
 				<div class="span8">
 					<div class="profile-left span12" id="block-me">
 						<div id="user-image">
-							<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${profile.member_str_img}">
+						<c:choose>
+							<c:when test="${empty myMember.member_str_img}">
+								<img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
+							</c:when>
+							<c:otherwise>
+								<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
+							</c:otherwise>
+						</c:choose>
 							<div>
 								<a href="member_edit">내 정보 수정</a>
 							</div>
 						</div>
 						<div id="user-info">
-							<h3>${profile.member_name}</h3>
-							<h4>Korea, South</h4>
-							<div id="since">Member since December 02, 2017</div>
+							<h3>${myMember.member_name}</h3>
+							<h4>${myMember.member_gender }</h4>
+							<div id="since">Member since ${myMember.member_reg_date}</div>
 							<ul id="stats">
 								<li>후기
 									<div>
@@ -202,18 +210,14 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer" class="clearfix">
-			<div id="footer_content">
-				<div class="social">
-					<div>
-						<div id="copyright">
-							Copyright © BlueBalloon. All rights reserved. <a
-								href="/legalnotice">Legal notice</a>
-						</div>
-					</div>
-				</div>
+	<footer>
+		<div class="c">
+			<div class="cop">
+				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
+					notice</a>
 			</div>
 		</div>
+	</footer>
 		<div id="traveller_login">
 			<div id="login-top">
 				<div>
