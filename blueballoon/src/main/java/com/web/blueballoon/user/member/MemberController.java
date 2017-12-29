@@ -66,7 +66,7 @@ public class MemberController {
 		int res = memberMapper.joinMember(dto);
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
-			mav.setViewName("user/member/login_us");
+			mav.setViewName("user/member/login");
 		} else {
 			mav.addObject("msg", "회원가입 실패!!");
 			mav.addObject("url", "member_list");
