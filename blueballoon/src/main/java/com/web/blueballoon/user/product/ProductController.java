@@ -26,6 +26,7 @@ import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBLikeDTO;
+import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BookDateDTO;
@@ -43,6 +44,21 @@ public class ProductController {
 
 	@RequestMapping(value = "product_list", method = RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		int member_num;
+		String member_email;
+		char member_name;
+		try {
+			member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			member_email = (String) arg0.getSession().getAttribute("member_email");
+			member_name = (Character) arg0.getSession().getAttribute("member_name");
+
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
+			mav.addObject("member_name", member_name);
+		} catch (NullPointerException e) {
+			member_num = 0;
+			member_email = null;
+		}
 
 		// 총 페이지 수
 		int pageNum = ProductMapper.countList();

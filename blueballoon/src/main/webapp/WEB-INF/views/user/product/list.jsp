@@ -82,8 +82,14 @@
 </head>
 <body class="tb resp" data-b-sale="0">
 	<div class="darken hid"></div>
-	<%@include file="../../header1.jsp"%>
-
+	<c:choose>
+		<c:when test="${member_num==0}">
+			<%@include file="../../header1.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%@include file="../../header3.jsp"%>
+		</c:otherwise>
+	</c:choose>
 	<main data-page="2583" data-type="country" data-curr="USD"
 		data-onpage="15" data-destination="Italy">
 	<div class="mapply">
@@ -215,9 +221,9 @@
 							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 							<c:forTokens items="${city}" delims="," var="c"
 								varStatus="status">
-								<li><div class="th"
-										style="background: #e74c3c"></div> <a href="product_list?cate_city=${c}"
-									id="flip${status.count}" class="span" onclick="return false">${c}</a>
+								<li><div class="th" style="background: #e74c3c"></div> <a
+									href="product_list?cate_city=${c}" id="flip${status.count}"
+									class="span" onclick="return false">${c}</a>
 									<div class="tr" id="icon${status.count}"></div>
 									<ul class="sub" id="panel${status.count}"
 										style="margin-top: 15px;">

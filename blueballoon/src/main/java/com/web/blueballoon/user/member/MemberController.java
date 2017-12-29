@@ -48,6 +48,7 @@ public class MemberController {
 			session = req.getSession();
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
+			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
 			mav.setViewName("redirect:/main");
 		}
 		return mav;
