@@ -113,12 +113,20 @@ public class ProductController {
 
 	@RequestMapping(value = "product_content", method = RequestMethod.GET)
 	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+
 		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 		BBProductDTO dto = ProductMapper.getProd(prod_num);
 		int likeCount = ProductMapper.likeCount(prod_num);
 		mav.addObject("likeCount", likeCount);
 		try {
 			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			String member_email = (String) arg0.getSession().getAttribute("member_email");
+			char member_name = (Character) arg0.getSession().getAttribute("member_name");
+
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
+			mav.addObject("member_name", member_name);
+
 			BBLikeDTO likedto = new BBLikeDTO();
 			likedto.setProd_num(prod_num);
 			likedto.setMember_num(member_num);

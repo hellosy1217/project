@@ -145,16 +145,23 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-$(document).ready(function() {
-	$("#flip").click(function() {
-		$("#panel").slideToggle(0);
+	$(document).ready(function() {
+		$("#flip").click(function() {
+			$("#panel").slideToggle(0);
+		});
 	});
-});
 </script>
 
 </head>
 <body class="tb" data-b-sale="">
-	<%@include file="../../header1.jsp"%>
+	<c:choose>
+		<c:when test="${member_num == 0}">
+			<%@include file="../../header1.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%@include file="../../header3.jsp"%>
+		</c:otherwise>
+	</c:choose>
 
 	<main data-id="88570" data-code="AA-AIA" data-op="1853" data-curr="USD"
 		data-sym="$" data-price="1789" data-value="$54" "="" itemscope=""
@@ -491,30 +498,30 @@ $(document).ready(function() {
 				map.setCenter(coords);
 			}
 		});
-		
+
 		// 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
-		function setMapType(maptype) { 
-		    var roadmapControl = document.getElementById('btnRoadmap');
-		    var skyviewControl = document.getElementById('btnSkyview'); 
-		    if (maptype === 'roadmap') {
-		        map.setMapTypeId(daum.maps.MapTypeId.ROADMAP);    
-		        roadmapControl.className = 'selected_btn';
-		        skyviewControl.className = 'btn';
-		    } else {
-		        map.setMapTypeId(daum.maps.MapTypeId.HYBRID);    
-		        skyviewControl.className = 'selected_btn';
-		        roadmapControl.className = 'btn';
-		    }
+		function setMapType(maptype) {
+			var roadmapControl = document.getElementById('btnRoadmap');
+			var skyviewControl = document.getElementById('btnSkyview');
+			if (maptype === 'roadmap') {
+				map.setMapTypeId(daum.maps.MapTypeId.ROADMAP);
+				roadmapControl.className = 'selected_btn';
+				skyviewControl.className = 'btn';
+			} else {
+				map.setMapTypeId(daum.maps.MapTypeId.HYBRID);
+				skyviewControl.className = 'selected_btn';
+				roadmapControl.className = 'btn';
+			}
 		}
 
 		// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
 		function zoomIn() {
-		    map.setLevel(map.getLevel() - 1);
+			map.setLevel(map.getLevel() - 1);
 		}
 
 		// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
 		function zoomOut() {
-		    map.setLevel(map.getLevel() + 1);
+			map.setLevel(map.getLevel() + 1);
 		}
 	</script>
 
