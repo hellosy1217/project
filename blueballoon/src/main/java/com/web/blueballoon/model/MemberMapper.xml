@@ -32,6 +32,9 @@
 		member_num=#{member_num , jdbcType=NUMERIC} 
 	</update>
 	<delete id="deleteMember" parameterType="int"> 
-	delete from bb_member where member_num = #{member_num} 
+		delete from bb_member where member_num = #{member_num} 
 	</delete>
+	<select id="getLikeProducts" parameterType="int" resultType="BBLikeDTO">
+		select * from bb_product_like where member_num = #{member_num}
+	</select>
 </mapper>

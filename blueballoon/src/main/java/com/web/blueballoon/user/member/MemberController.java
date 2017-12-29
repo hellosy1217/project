@@ -1,5 +1,7 @@
 package com.web.blueballoon.user.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
 
 @Controller
@@ -171,7 +174,9 @@ public class MemberController {
 	public ModelAndView likelist(HttpServletRequest arg0) {
 		int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 		String member_email = (String) arg0.getSession().getAttribute("member_email");
-
+		
+		List<BBLikeDTO> likeList = memberMapper.listProducts(member_num);
+		
 		mav.addObject("member_num", member_num);
 		mav.addObject("member_email", member_email);
 		mav.setViewName("user/member/likelist");

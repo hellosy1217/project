@@ -1,8 +1,12 @@
 package com.web.blueballoon.user.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
 
 
@@ -40,8 +44,11 @@ public class MemberMapper {
 			return res;
 	}
 
-	
 	public BBMemberDTO getMember(String member_email) {		
 		return sqlSession.selectOne("getLoginedMember", member_email);
 	}
+	
+	 public List<BBLikeDTO> listProducts(int member_num){
+		 return sqlSession.selectList("getLikeProducts",member_num);
+	 }
 }
