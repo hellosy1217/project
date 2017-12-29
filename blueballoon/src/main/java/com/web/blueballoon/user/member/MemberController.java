@@ -48,7 +48,7 @@ public class MemberController {
 			session = req.getSession();
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
-			mav.setViewName("/");
+			mav.setViewName("redirect:/main");
 		}
 		return mav;
 	}
@@ -181,6 +181,6 @@ public class MemberController {
 	public String logout(HttpServletRequest arg0) {
 		arg0.getSession().removeAttribute("member_num");
 		arg0.getSession().removeAttribute("member_email");
-		return "home";
+		return "redirect:/main";
 	}
 }

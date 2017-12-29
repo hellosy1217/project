@@ -30,6 +30,35 @@ public class HomeController {
 	private ProductMapper ProductMapper;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView home(HttpServletRequest arg0, HttpServletResponse arg1) {
+		ModelAndView mav = new ModelAndView();
+		int member_num;
+		String member_email;
+		char member_name;
+		try {
+			member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			member_email = (String) arg0.getSession().getAttribute("member_email");
+			BBMemberDTO getMember = memberMapper.getMember(member_email);
+			mav.addObject("getMember", getMember);
+
+			if (getMember.getMember_name() != null) {
+				member_name = getMember.getMember_name().toUpperCase().charAt(0);
+			} else {
+				member_name = 'N';
+			}
+			mav.addObject("member_name", member_name);
+		} catch (NullPointerException e) {
+			member_num = 0;
+			member_email = null;
+		}
+
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
+		
+		mav.setViewName("home");
+		return mav;
+	}
+	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public ModelAndView blueballoon(HttpServletRequest arg0, HttpServletResponse arg1) {
 		ModelAndView mav = new ModelAndView();
 		int member_num;
