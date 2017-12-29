@@ -7,23 +7,6 @@
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css?ver=12"
 	rel="stylesheet" type="text/css" />
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="//cdn.tourradar.com/include/bower/braintree-web-3/client.v1513001935.js"
-	async=""></script>
-<script
-	src="//cdn.tourradar.com/include/bower/braintree-web-3/hosted-fields.v1513001935.js"
-	async=""></script>
-<script async=""
-	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/zepto.v1513930789.min.js"></script>
-<script
-	src="//cdn.tourradar.com/include/pw/book_now/script.v1513001935.min.js"
-	async=""></script>
-<script src="//www.googleadservices.com/pagead/conversion_async.js"
-	async=""></script>
-<script src="//www.google-analytics.com/cx/api.js" async=""></script>
-<script src="//cdn.tourradar.com/include/js/om/om.v1513001935.js"
-	async=""></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=12"></script>
 <script type="text/javascript">
@@ -52,7 +35,6 @@
 		}
 	}
 </script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
@@ -69,7 +51,7 @@
 			</div>
 		</div>
 	</header>
-	<main data-parameters="" data-phone="+1 844 311 3006 ">
+	<main data-parameters="">
 	<div class="c">
 		<div class="fline">
 			<h1>${getProd.prod_name}</h1>
@@ -243,9 +225,9 @@
 						ㅇㅇㅇㅇㅇ
 					</div>
 					<div class="text">한국소비자원</div>
-					<div class="text grey">주소</div>
+					<div class="text grey">충청북도 음성군 맹동면 용두로 54 충북혁신도시 한국소비자원</div>
 					<div class="text">BlueBalloon</div>
-					<div class="text grey">주소</div>
+					<div class="text grey">서울특별시 종로구 돈화문로 26 4층 KG아이티뱅크</div>
 				</div>
 			</div>
 		</div>

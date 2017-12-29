@@ -1,7 +1,8 @@
+// 달력
 function bbCalendar(id, date, begin) {
 	var bbCalendar = document.getElementById(id);
 	var current = date;
-	
+
 	if (typeof (date) !== 'undefined') {
 		date = date.split('-');
 		date[1] = date[1] - 1;
@@ -10,17 +11,13 @@ function bbCalendar(id, date, begin) {
 		var date = new Date();
 	}
 	var currentYear = date.getFullYear();
-	// 년도를 구함
 
 	var currentMonth = date.getMonth() + 1;
-	// 연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
 
 	var currentDate = date.getDate();
-	// 오늘 일자.
 
 	date.setDate(1);
 	var currentDay = date.getDay();
-	// 이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
 
 	if (begin == 0) {
 		begin = currentYear + '-';
@@ -178,9 +175,7 @@ function bbCalendar(id, date, begin) {
 		}
 		calendar += '</tr>';
 	}
-
 	calendar += '</tbody></table></div>'
-
 	bbCalendar.innerHTML = calendar;
 }
 

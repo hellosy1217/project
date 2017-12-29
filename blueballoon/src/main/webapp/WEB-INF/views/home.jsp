@@ -34,7 +34,6 @@
 	</c:choose>
 	<main data-page="home">
 	<div class="top">
-
 		<h1
 			alt="Booking Tours Made Easy - TourRadar - Search, Compare &amp; Book Group Tours Online">
 			<div class="im" style="background-color: white;">

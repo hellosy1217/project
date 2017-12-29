@@ -81,8 +81,8 @@
 					</div>
 					<div id="dashboard_expand">
 						<a href="member_profile"><div class="item">내 정보 보기</div></a><a
-							href="member_wishlist" class="compare"><div class="item">위시
-								리스트</div></a><a href="member_booking" class="manage-bookings"><div
+							href="member_likelist" class="compare"><div class="item">좋아요
+								목록</div></a><a href="member_booking" class="manage-bookings"><div
 								class="item">예약관리</div></a><a href="member_edit"><div
 								class="item">내 정보 수정</div></a><a href="member_logout"><div
 								class="item">로그아웃</div></a>
@@ -128,9 +128,9 @@
 									</div>
 								</li>
 
-								<li>위시 리스트
+								<li>좋아요 목록
 									<div>
-										<a href="member_wishlist">2</a>
+										<a href="member_likelist">2</a>
 									</div>
 								</li>
 							</ul>
@@ -164,16 +164,16 @@
 						</div>
 
 						<div>
-							<a href="#reviews">나의 후기 보기</a>
+							<a href="member_review">내 후기 보기</a>
 						</div>
 						<div>
-							<a href="/wishlists/traveller/439550">위시 리스트</a>
+							<a href="member_likelist">좋아요 목록</a>
 						</div>
 						<div>
-							<a href="https://www.tourradar.com/members/settings">나의 정보 수정</a>
+							<a href="member_edit">내 정보 수정</a>
 						</div>
 						<div>
-							<a href="/travellers/logout?type=web">Log out</a>
+							<a href="member_logout">로그아웃</a>
 						</div>
 					</div>
 					<div class="block span12">

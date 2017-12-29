@@ -156,13 +156,24 @@ public class MemberController {
 
 	@RequestMapping(value = "member_profile", method = RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest arg0) {
-		
+
 		// 채워야 함
-		
+
 		mav.setViewName("user/member/profile");
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "member_likelist", method = RequestMethod.GET)
+	public ModelAndView likelist(HttpServletRequest arg0) {
+		int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+		String member_email = (String) arg0.getSession().getAttribute("member_email");
+
+		mav.addObject("member_num", member_num);
+		mav.addObject("member_email", member_email);
+		mav.setViewName("user/member/likelist");
+		return mav;
+	}
+
 	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest arg0) {
 		arg0.getSession().removeAttribute("member_num");
