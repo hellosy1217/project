@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <title>여행상품 상세페이지</title>
@@ -151,7 +151,6 @@
 		});
 	});
 </script>
-
 </head>
 <body class="tb" data-b-sale="">
 	<c:choose>
@@ -169,13 +168,23 @@
 	<div class="c">
 		<nav>
 			<ul>
-				<li><a itemprop="item" href="/">Home
+				<li><a itemprop="item" href="main">Home
 						<meta itemprop="name" content="TourRadar">
 				</a></li>
-				<li>&nbsp;&nbsp;〉&nbsp; <a href="/d/europe" itemprop="item"><span
-						itemprop="name">${getProd.prod_cate}</span></a></li>
-				<li>&nbsp;&nbsp;〉&nbsp; <a href="/h/iceland-nature-adventure"
-					itemprop="item"><span itemprop="name">${getProd.prod_name}</span></a></li>
+				<c:forTokens items="${getProd.prod_cate}" delims="-" var="c"
+					varStatus="status">
+					<li>&nbsp;&nbsp;〉&nbsp; <c:choose>
+							<c:when test="${status.count==1}">
+								<a href="product_list?cate_state=${c}" itemprop="item">
+							</c:when>
+							<c:otherwise>
+								<a href="product_list?cate_city=${c}" itemprop="item">
+							</c:otherwise>
+						</c:choose><span itemprop="name">${c}</span></a></li>
+				</c:forTokens>
+				<li>&nbsp;&nbsp;〉&nbsp; <a
+					href="product_content?prod_num=${getProd.prod_num}" itemprop="item"><span
+						itemprop="name">${getProd.prod_name}</span></a></li>
 			</ul>
 		</nav>
 		<h1 itemprop="name" class="ttip" title="" data-action="click"
@@ -183,7 +192,6 @@
 
 	</div>
 	<div class="c" style="height: 3500px;">
-
 		<div class="br">
 			<div class="b val">
 				<h2 style="margin-bottom: 20px;">지도보기</h2>
@@ -207,28 +215,26 @@
 							alt="축소"></span>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
-
 		<div class="bl">
 			<div class="b img">
-
 				<div class="pic has-thumbnails" style="height: 400px;">
 					<img
 						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProd.prod_pick}/${getProd.prod_str_img}">
 				</div>
-
 			</div>
-
 			<div class="b pad hgl">
 
 				<dl class="properties">
 					<dt class="label">상품 이름</dt>
 					<dd class="value age">${getProd.prod_name}</dd>
 					<dt class="label">지역</dt>
-					<dd class="value accommodation">${getProd.prod_cate}</dd>
+					<dd class="value accommodation">
+					<c:forTokens items="${getProd.prod_cate}" delims="-" var="c">
+					${c} 
+					</c:forTokens>
+					</dd>
 					<dt class="label">주소</dt>
 					<dd class="value">${getProd.prod_old_address}</dd>
 					<dt class="label">이메일</dt>
@@ -236,10 +242,11 @@
 					<dt class="label">전화번호</dt>
 					<dd class="value transport">${getProd.prod_phone}</dd>
 					<dt class="label">가격</dt>
-					<dd class="value transport">${getProd.prod_price}</dd>
+					<dd class="value transport">
+					<fmt:formatNumber value="${getProd.prod_price}" pattern="#,###.##"/>원
+					</dd>
 					<dt class="label">상품 분류</dt>
 					<!--<dd class="value transport">${getProd.prod_pick}</dd>-->
-
 					<c:if test="${getProd.prod_pick == 1}">
 						<dd class="value transport">지역</dd>
 					</c:if>
@@ -249,15 +256,10 @@
 					<c:if test="${getProd.prod_pick == 3}">
 						<dd class="value transport">숙소</dd>
 					</c:if>
-
-
 				</dl>
-
 				<h2 class="sm">상세 정보</h2>
 				<br>
 				<p style="width: 500px; display: inline-block;">${getProd.prod_content}</p>
-
-
 				<div class="likeC">
 					<a href="product_like?prod_num=${getProd.prod_num}">
 						<div id="like">
@@ -274,15 +276,12 @@
 						좋아요 <span>${likeCount}</span>
 					</div>
 				</div>
-
-
 				<div style="padding-top: 45px;">
 					<a class="but r write" href="product_booking?prod_num=141"
 						target="_blank" rel="nofollow"
 						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>
 			</div>
-
 			<div class="b pad rev" data-total="51" data-onpage="10">
 				<div class="atm-m-stars">
 					<div class="star full"></div>
@@ -292,7 +291,6 @@
 					<div class="star half"></div>
 				</div>
 				<h2>리뷰</h2>
-
 				<a class="but r write" href="board_write?prod_num=1&prod_pick=1"
 					target="_blank" rel="nofollow">리뷰 작성하기</a>
 				<ul>
@@ -333,8 +331,6 @@
 					<a class="board_list?prod_num=">리뷰 더보기</a>
 				</div>
 			</div>
-
-
 			<div class="b pad itn" data-tagible-script="">
 				<h2>여행 일정 (패키지 상품일때만 적용)</h2>
 				<ol>
@@ -359,7 +355,6 @@
 								<div
 									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/18714839_280.jpg)"
 									class="l"></div>
-
 							</div>
 							일정에 대한 상세 소개
 							<div class="point">
@@ -384,7 +379,6 @@
 								<div
 									data-bg="background-image:url(//cdn.tourradar.com/s3/serp/360x210/5813_XvvfqmqP.jpg)"
 									class="l"></div>
-
 								<div class="ann">사진에 대한 간략한 소개</div>
 							</div>
 							일정 상세 내용
@@ -393,11 +387,9 @@
 					<li class="active">3일차 : 관광지/맛집/숙소 등등
 						<div class="i">일정 상세 내용</div>
 					</li>
-
 					<li class="active">4일차 : 마지막
 						<div class="i">
 							사진이나 내용 들어갈 곳 <br> <br> -End of services-
-
 						</div>
 					</li>
 				</ol>
@@ -450,19 +442,16 @@
 				<a class="but ask-q blue hid" href="#cs_popup">Ask a question</a>
 			</div>
 		</div>
-
 	</div>
 	</main>
-
 	<footer>
 		<div class="c">
 			<div class="cop">
-				Copyright © TourRadar. All rights reserved. <a href="/legalnotice">Legal
+				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
 					notice</a>
 			</div>
 		</div>
 	</footer>
-
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bac524d796bfc8a7d5809708b224646c&libraries=services"></script>
 	<script>
@@ -546,8 +535,6 @@
 			window.addEventListener(event2, cb);
 		})("mousemove", "touchmove");
 	</script>
-	<noscript>&lt;img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=806188949420761&amp;ev=PageView&amp;noscript=1"&gt;</noscript>
 	<script async=""
 		src="//cdn.tourradar.com/include/js/ttip/ttip.v1-1-2.min.js?v=1512312729"></script>
 	<script async=""

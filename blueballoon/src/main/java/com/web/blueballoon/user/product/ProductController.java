@@ -151,7 +151,6 @@ public class ProductController {
 		mav.addObject("prod_num", prod_num);
 		try {
 			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
-			System.out.println("member_num = " + member_num);
 			BBLikeDTO dto = new BBLikeDTO();
 			dto.setProd_num(prod_num);
 			dto.setMember_num(member_num);
@@ -160,7 +159,7 @@ public class ProductController {
 				mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
 			} catch (NullPointerException e1) {
 				ProductMapper.insertLike(dto);
-				mav.setViewName("product_content");
+				mav.setViewName("redirect:/product_content?prod_num" + prod_num);
 				return mav;
 			}
 			mav.addObject("url", "product_content");

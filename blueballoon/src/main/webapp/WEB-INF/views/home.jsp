@@ -53,8 +53,7 @@
 				go<span><b class="is-f">touring</b><b>trekking</b><b>tasting</b><b>sailing</b><b>feeling</b></span>
 			</div>
 			<h2>Best prices on 1 million departures in Korea.</h2>
-			<form name="f" id="searchForm" action="search">
-			</form>
+			<form name="f" id="searchForm" action="search"></form>
 		</div>
 		<div class="nxt"></div>
 	</div>
@@ -72,56 +71,55 @@
 			</a></li>
 		</ul>
 	</section>
-
 	<div class="wl">
 		<div class="c">
 			<h2>인기여행지</h2>
 			<!-- 인기여행지(지역) 6개 정도  -->
 			<ul class="cf">
-				<a href="product_list">
+				<a href="product_list?cate_state='서울,경기'">
 					<li data-wishlist="816784"><img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/seoul/seoul1.png" />
 						<div class="name">서울/경기</div></li>
 				</a>
-				<a href="product_list"><li data-wishlist="6"><img
+				<a href="product_list?cate_state='강원도'"><li data-wishlist="6"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/gangwon/gangwon1.png" />
 						<div class="name">강원도</div></li></a>
-				<a href="product_list"><li data-wishlist="787113"><img
-						class="lazy"
+				<a href="product_list?cate_state='충청도'"><li
+					data-wishlist="787113"><img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/chungcheong/chungcheong1.jpg" />
 						<div class="name">충청도</div></li></a>
-				<a href="product_list"><li data-wishlist="1"><img
+				<a href="product_list?cate_state='전라도'"><li data-wishlist="1"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeolla/jeolla1.png" />
 						<div class="name">전라도</div></li></a>
-				<a href="product_list"><li data-wishlist="786447"><img
-						class="lazy"
+				<a href="product_list?cate_state='경상도'"><li
+					data-wishlist="786447"><img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/kyungsang/kyungsang2.png" />
 						<div class="name">경상도</div></li></a>
-				<a href="product_list"><li data-wishlist="2"><img
+				<a href="product_list?cate_state='제주도'"><li data-wishlist="2"><img
 						class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/jeju/jeju1.png" />
 						<div class="name">제주도</div></li></a>
 			</ul>
 		</div>
 	</div>
-
-	<div class="lin cen">
-		<c:forEach begin="1" end="6" step="1">
-			<div class="bl">
-				<img class="lazy"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-					data-src="//cdn.tourradar.com/im/r/pw/home/link/c/europe_v2.jpg"
-					alt="Europe">
-				<div class="clin">
-					<a href="product_list">강남구</a><a href="/d/france">종로구/중구</a><a
-						href="/d/iceland">마포구</a><a href="/d/greece">중구</a><a
-						href="/d/croatia">용산구</a>
-				</div>
-				<a href="/d/europe" class="dlin"><h4>서울/경기</h4></a>
+	<div class="dl">
+		<div class="c">
+			<h2>특가 상품</h2>
+			<c:forEach begin="1" end="5">
+				<a href="product_content" class="con" data-p="56"><img
+					class="lazy"
+					src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
+					data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
+					<div class="text">서울/경기</div></a>
+			</c:forEach>
+		</div>
+		<div class="pc">
+			<div class="p">
+				Up to <span><span>56</span>% OFF</span>
 			</div>
-		</c:forEach>
+		</div>
 	</div>
 	<div class="cs">
 		<div class="c">
@@ -378,24 +376,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="dl">
-		<div class="c">
-			<h2>특가</h2>
-			<c:forEach begin="1" end="5">
-				<a href="product_content" class="con" data-p="56"><img
-					class="lazy"
-					src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-					data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-					<div class="text">서울/경기</div></a>
-			</c:forEach>
-		</div>
-		<div class="pc">
-			<div class="p">
-				Up to <span><span>56</span>% OFF</span>
-			</div>
-		</div>
-	</div>
-
 	</main>
 	<footer>
 		<div class="c">
