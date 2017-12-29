@@ -68,7 +68,7 @@
       <use xmlns:xlink="http://www.w3.org/1999/xlink"
 							xlink:href="/images/responsive/svg/sprites.svg?v=1#svg-icon-menu"></use></svg>
 				</div>
-				<a href="home"><div id="block-1">
+				<a href="/"><div id="block-1">
 						<div class="logo" style="margin-right: 0px;">
 							<img
 								src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"

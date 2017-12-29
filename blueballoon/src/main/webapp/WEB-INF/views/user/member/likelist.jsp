@@ -16,7 +16,7 @@
 			<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
 				<li itemprop="itemListElement" itemscope=""
 					itemtype="http://schema.org/ListItem"><a itemprop="item"
-					href="home">Home
+					href="/">Home
 				</a> &nbsp;&nbsp;〉&nbsp;</li>
 				<li itemprop="itemListElement" itemscope=""
 					itemtype="http://schema.org/ListItem"><a href=""

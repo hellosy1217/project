@@ -39,7 +39,7 @@
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
 		<div class="c">
-			<a href="/blueballoon"><img
+			<a href="/"><img
 				src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/header/logo1.png"
 				width="170" height="35"></a>
 			<div class="tag">

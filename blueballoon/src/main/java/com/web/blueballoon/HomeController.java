@@ -37,20 +37,15 @@ public class HomeController {
 		char member_name;
 		try {
 			member_num = (Integer) arg0.getSession().getAttribute("member_num");
-			System.out.println("1");
 			member_email = (String) arg0.getSession().getAttribute("member_email");
-			System.out.println("2");
 			BBMemberDTO getMember = memberMapper.getMember(member_email);
-			System.out.println("3");
 			mav.addObject("getMember", getMember);
-			System.out.println("4");
 
 			if (getMember.getMember_name() != null) {
 				member_name = getMember.getMember_name().toUpperCase().charAt(0);
 			} else {
 				member_name = 'N';
 			}
-			System.out.println("member_name = " + member_name);
 			mav.addObject("member_name", member_name);
 		} catch (NullPointerException e) {
 			member_num = 0;
