@@ -97,3 +97,30 @@
 		margin-right: 10px
 	}
 }
+
+footer {
+	width: 100%;
+	background: #fff;
+	padding-bottom: 10px
+}
+
+footer .c {
+	width: 100%;
+	max-width: 1164px;
+	margin: 0 auto;
+	padding: 0
+}
+
+
+footer .cop {
+	color: #ccc;
+	font-size: 12px;
+	line-height: 20px;
+	padding: 20px 0;
+	text-align: center
+}
+
+footer .cop a {
+	color: #ccc;
+	margin-left: 3px
+}

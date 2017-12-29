@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	href="//cdn.tourradar.com//include/css/responsive.min.css?v=1513962178"
 	type="text/css" media="all">
-<link href="/blueballoon/resources/user/member/css/profile1.css?ver=12"
+<link href="${pageContext.request.contextPath}/resources/user/member/css/profile1.css?ver=12"
 	rel="stylesheet" type="text/css" />
 </head>
 <body class=" ">
@@ -107,7 +107,8 @@
 	</div>
 	<div id="content" class="clearfix profile ">
 		<div id="content_details"
-			class="clearfix profile profile-my container-fluid">
+			class="clearfix profile profile-my container-fluid" 
+			style="margin-top:40px; margin-bottom:70px;">
 			<div class="row-fluid">
 				<div class="span8">
 					<div class="profile-left span12" id="block-me">
@@ -209,81 +210,17 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer" class="clearfix">
-			<div id="footer_content">
-				<div class="social">
-					<div>
-						<div id="copyright">
-							Copyright © BlueBalloon. All rights reserved. <a
-								href="/legalnotice">Legal notice</a>
-						</div>
-					</div>
+		
+		<footer>
+			<div class="c">
+				<div class="cop">
+				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
+					notice</a>
 				</div>
 			</div>
-		</div>
-		<div id="traveller_login">
-			<div id="login-top">
-				<div>
-					Members pay <span></span>
-				</div>
-				<div>when booking this departure</div>
-			</div>
-			<div id="login-hidden" class="hidden">$59</div>
-			<div class="close">X</div>
-			<div class="title">Sign up</div>
-			<div class="buttons">
-				<div class="facebook-up"></div>
-				<div class="google-up" id="signin_google">
-					<div class="invisible"></div>
-				</div>
-			</div>
-			<div id="or">
-				<div>Or</div>
-			</div>
-			<div id="form_login" style="display: none;">
-				<form class="clearfix" onsubmit="return false">
-					<input type="email" id="email" placeholder="Email" def="1"
-						deftext="Email"><input id="password_vis" value="Password"><input
-						id="password_hid" value="" type="password"><input
-						class="button button-green" id="submit" type="submit"
-						value="Log In">
-				</form>
-				<div class="link">
-					<div>
-						<a href="#" onclick="return false">Forgot password?</a>
-					</div>
-					<div>
-						Don't have an account yet? <a href="#" onclick="return false">Sign
-							up here</a>
-					</div>
-				</div>
-			</div>
-			<div id="form_signup" class="" style="display: block;">
-				<form class="clearfix" onsubmit="return false">
-					<input id="name" value="Name" def="1" deftext="Name"
-						maxlength="100"><input type="email" id="email"
-						placeholder="Email" def="1" deftext="Email" maxlength="100"><input
-						id="password_vis" value="Password"><input
-						id="password_hid" value="" type="password"><input
-						id="password_repeat_vis" value="Repeat password"><input
-						id="password_repeat_hid" value="" type="password">
-					<div id="grey">
-						By creating an account, you're agreeing with our <a
-							href="/terms-conditions" target="_blank">Terms and Conditions</a>
-					</div>
-					<input class="button button-green" id="submit" type="submit"
-						value="Sign Up">
-				</form>
-				<div class="link">
-					<div>&nbsp;</div>
-					<div>
-						Already have an account? <a href="#" onclick="return false">Log
-							in</a>
-					</div>
-				</div>
-			</div>
-			<div class="hidden" id="traveller_success_id"></div>
-		</div>
+		</footer>
+		
+		
 		<div id="svg_content_load" style="display: none"></div>
 
 		<script type="text/javascript"
