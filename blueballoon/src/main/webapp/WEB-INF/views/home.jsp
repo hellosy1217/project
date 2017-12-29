@@ -14,13 +14,12 @@
 	rel="stylesheet" />
 <link rel="preconnect"
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/home/js/home1.js?ver=12"></script>
 <script type="text/javascript">
-	function changeMonth(month) {
-		document.f.month.value=month+"월"
-	}
-	function search(){
-		alert("검색 기능 아직 안넣음")
-	}
+	window.onload = function() {
+		bbSearch('searchForm');
+	};
 </script>
 </head>
 <body class="tb" data-b-sale="">
@@ -34,8 +33,7 @@
 	</c:choose>
 	<main data-page="home">
 	<div class="top">
-		<h1
-			alt="Booking Tours Made Easy - TourRadar - Search, Compare &amp; Book Group Tours Online">
+		<h1>
 			<div class="im" style="background-color: white;">
 				<video id="video" preload="auto" autoplay="true" loop="loop"
 					muted="muted" volume="0" style="width: 100%; height: 100%;">
@@ -55,37 +53,7 @@
 				go<span><b class="is-f">touring</b><b>trekking</b><b>tasting</b><b>sailing</b><b>feeling</b></span>
 			</div>
 			<h2>Best prices on 1 million departures in Korea.</h2>
-			<form name="f" action="search">
-				<div class="autocomplete">
-					<input class="a autocomplete-field" type="text"
-						placeholder="어디로 가고싶으세요?" autocomplete="off" data-url="">
-					<ul class="autocomplete-list pre" style="display: none;">
-						<li class="autocomplete-item" data-url="d/europe"
-							data-type="CONTINENT">Europe<span>CONTINENT</span></li>
-						<li class="autocomplete-item" data-url="d/india"
-							data-type="COUNTRY">India<span>COUNTRY</span></li>
-						<li class="autocomplete-item" data-url="d/iceland"
-							data-type="COUNTRY">Iceland<span>COUNTRY</span></li>
-						<li class="autocomplete-item" data-url="d/asia"
-							data-type="CONTINENT">Asia<span>CONTINENT</span></li>
-						<li class="autocomplete-item" data-url="d/japan"
-							data-type="COUNTRY">Japan<span>COUNTRY</span></li>
-						<li class="autocomplete-item" data-url="d/new-zealand"
-							data-type="COUNTRY">New Zealand<span>COUNTRY</span></li>
-						<li class="autocomplete-item" data-url="d/morocco"
-							data-type="COUNTRY">Morocco<span>COUNTRY</span></li>
-					</ul>
-				</div>
-				<div class="b">
-					<input class="b" name="month" type="text" placeholder="2018년"
-						readonly>
-					<div class="months hid">
-						<c:forEach var="month" begin="1" end="12" step="1">
-							<div onclick="changeMonth(${month})">${month}월</div>
-						</c:forEach>
-					</div>
-				</div>
-				<span class="but blue" onclick="search()">Search</span>
+			<form name="f" id="searchForm" action="search">
 			</form>
 		</div>
 		<div class="nxt"></div>
