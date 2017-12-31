@@ -3126,20 +3126,20 @@ main .route li:last-child {
 	display: none
 }
 
-main .calendar .dates table td .day {
+#bb_calendar .dates table td .day {
 	position: absolute;
 	top: 5px;
 	left: 5px
 }
 
-main .calendar .dates table td .seats {
+#bb_calendar .dates table td .seats {
 	position: absolute;
 	right: 5px;
 	bottom: 5px;
 	padding-right: 17px
 }
 
-main .calendar .dates table td .seats:after {
+#bb_calendar .dates table td .seats:after {
 	position: absolute;
 	content: "";
 	width: 12px;
@@ -3150,22 +3150,22 @@ main .calendar .dates table td .seats:after {
 		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'%3E%3Cg fill='%23CCC'%3E%3Ccircle cx='10' cy='5' r='5'/%3E%3Ccircle cx='10' cy='21' r='10'/%3E%3C/g%3E%3C/svg%3E")
 }
 
-main .calendar .dates table td .seats.orange {
+#bb_calendar .dates table td .seats.orange {
 	color: #f39a2d
 }
 
-main .calendar .dates table td .seats.orange:after {
+#bb_calendar .dates table td .seats.orange:after {
 	background-image:
 		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'%3E%3Cg fill='%23F39A2D'%3E%3Ccircle cx='10' cy='5' r='5'/%3E%3Ccircle cx='10' cy='21' r='10'/%3E%3C/g%3E%3C/svg%3E")
 }
 
-main .calendar .dates table td .price {
+#bb_calendar .dates table td .price {
 	position: absolute;
 	left: 5px;
 	bottom: 5px
 }
 
-main .calendar .dates table td .pcs {
+#bb_calendar .dates table td .pcs {
 	width: 0;
 	height: 0;
 	border-style: solid;
@@ -3177,7 +3177,7 @@ main .calendar .dates table td .pcs {
 	z-index: 1
 }
 
-main .calendar .dates.loading:after {
+#bb_calendar .dates.loading:after {
 	content: "";
 	position: absolute;
 	width: 100%;

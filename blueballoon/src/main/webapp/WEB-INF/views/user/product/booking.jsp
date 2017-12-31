@@ -71,9 +71,6 @@
 					window.onload = function () {
 						bbCalendar('bb_calendar','${beginDate}',0);
 					};</script>
-					<c:forEach items="${book_date} var="bd">
-					
-					</c:forEach>
 					<div id="seats">
 						<div class="content">
 							<div class="i icon currency usd">예약 취소시 ~~~~ 청구됩니다.</div>
@@ -212,7 +209,7 @@
 													</c:if>
 													</c:forTokens>
 												</div>
-												<div>${room.room_name}</div></b> 방 설명
+												<div>${room.room_name}</div></b> ${room.room_content }
 										</div>
 										<div class="pr">
 											<b>+추가금액</b>
