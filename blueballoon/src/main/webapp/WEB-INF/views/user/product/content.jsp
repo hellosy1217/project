@@ -19,74 +19,6 @@
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/user/product/ttip.v1-1-2.min.js"
 	async=""></script>
 <script>
-	window.addEventListener
-			&& addEventListener(
-					"error",
-					function(e) {
-						window
-								.setTimeout(
-										function() {
-											if (document.documentElement.className
-													.match(/translated/)) {
-												return;
-											}
-
-											e
-													&& window.tracker
-													&& tracker(
-															'addEvent',
-															'JSError',
-															(e.filename || 'code'),
-															(e.message || 'No message'),
-															{
-																filename : e.filename,
-																lineno : e.lineno,
-																colono : e.colono,
-																error : e.error
-															});
-
-											var info = {
-												"url" : document.location.href,
-												"languge" : navigator.language,
-												"useragent" : navigator.userAgent,
-												"platform" : navigator.platform,
-												"oscpu" : navigator.oscpu,
-												"referrer" : document.referrer,
-												"error[message]" : e.message,
-												"error[colno]" : e.colno,
-												"error[lineno]" : e.lineno,
-												"error[filename]" : e.filename,
-												"error[stack]" : e.error ? e.error.stack
-														: null
-											};
-
-											var encodedInfo = [];
-											for ( var key in info) {
-												var value = info[key];
-												value = ((typeof value === 'undefined') || value === null) ? ''
-														: encodeURIComponent(value);
-												encodedInfo
-														.push(encodeURIComponent(key)
-																+ '=' + value);
-											}
-											var postParams = encodedInfo
-													.join('&');
-
-											var request = new XMLHttpRequest();
-											request.open('POST',
-													'/utils/jserror', true);
-											request
-													.setRequestHeader(
-															'Content-Type',
-															'application/x-www-form-urlencoded; charset=UTF-8');
-											request.send(postParams);
-										}, 1);
-					});
-</script>
-<script>
-	document.cookie = 'GE-gq-0n6OlTjaA4T5i06WHeg=0; max-age=2592000; path=/';
-</script>
-<script>
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
@@ -111,24 +43,6 @@
 
 	ga('send', 'pageview');
 </script>
-<script>
-	!function(f, v, n) {
-		if (f.fbq)
-			return;
-		n = f.fbq = function() {
-			n.callMethod ? n.callMethod.apply(n, arguments) : n.queue
-					.push(arguments)
-		};
-		if (!f._fbq)
-			f._fbq = n;
-		n.push = n;
-		n.loaded = !0;
-		n.version = '2.0';
-		n.queue = [];
-	}(window);
-	fbq('init', '806188949420761');
-	fbq('track', "PageView");
-</script>
 <script type="text/javascript"
 	src="https://www.google.com/uds/?file=visualization&amp;v=1&amp;packages=corechart&amp;async=2"></script>
 <link type="text/css"
@@ -139,7 +53,6 @@
 <link
 	href="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/core/tooltip.css"
 	rel="stylesheet" type="text/css">
-
 <!-- 좋아요 버튼 아이콘  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -512,28 +425,6 @@
 		function zoomOut() {
 			map.setLevel(map.getLevel() + 1);
 		}
-	</script>
-
-
-	<script>
-		(function(event, event2) {
-			function cb(e) {
-				this.removeEventListener(event, cb);
-				this.removeEventListener(event2, cb);
-				(new Image(1, 1)).src = "//bat.bing.com/action/0?ti=5089755&Ver=2";
-
-				!function(b, e, v, t, s) {
-					t = b.createElement(e);
-					t.async = !0;
-					t.src = v;
-					s = b.getElementsByTagName(e)[0];
-					s.parentNode.insertBefore(t, s)
-				}(document, 'script',
-						'https://connect.facebook.net/en_US/fbevents.js');
-			}
-			window.addEventListener(event, cb);
-			window.addEventListener(event2, cb);
-		})("mousemove", "touchmove");
 	</script>
 	<script async=""
 		src="//cdn.tourradar.com/include/js/ttip/ttip.v1-1-2.min.js?v=1512312729"></script>

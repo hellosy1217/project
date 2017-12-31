@@ -10,9 +10,6 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=12"></script>
 <script type="text/javascript">
-	function changeMonth(year, month,day){
-		location.href="product_booking?prod_num="+${prod_num}+"&selectedYear="+year+"&selectedMonth="+month+"&selectedDay="+day;
-	}
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
 			if (mode == 'add') {
@@ -35,7 +32,17 @@
 		}
 	}
 </script>
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/plugins/ua/ec.js"></script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script async=""
+	src="//cdn.tourradar.com/include/js/zepto.v1514557673.min.js"></script>
+<script async=""
+	src="//cdn.tourradar.com/include/js/zepto-fx.v1514557673.min.js"></script>
+<link type="text/css" rel="stylesheet"
+	href="//cdn.tourradar.com/include/pw/book_now/async.v1514557673.css">
 </head>
+
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
 		<div class="c">
@@ -62,8 +69,11 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('bb_calendar','${selectedDate}',0);
+						bbCalendar('bb_calendar','${beginDate}',0);
 					};</script>
+					<c:forEach items="${book_date} var="bd">
+					
+					</c:forEach>
 					<div id="seats">
 						<div class="content">
 							<div class="i icon currency usd">예약 취소시 ~~~~ 청구됩니다.</div>
@@ -91,16 +101,93 @@
 						<div class="in quantity">
 							<form name="f">
 								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',${min_person},${max_person})"></span>
-								<input type="number" name="book_person" value="${min_person}"
-									min="${min_person}" max="${max_person}" inputmode="numeric"
-									pattern="[0-9]*" readonly> <span class="number plus"
-									id="plus"
-									onclick="changeBookPerson('add',${min_person},${max_person})"></span>
+									onclick="changeBookPerson('remove',${min_person},${max_person})"
+									style="margin-top: 2px;"></span> <input type="number"
+									name="book_person" value="${min_person}" min="${min_person}"
+									max="${max_person}" inputmode="numeric" pattern="[0-9]*"
+									readonly> <span class="number plus" id="plus"
+									onclick="changeBookPerson('add',${min_person},${max_person})"
+									style="margin-top: 2px;"></span>
 							</form>
 						</div>
 						<div class="in solo"></div>
 					</div>
+					<form>
+						<div class="traveller" data-traveller-number="1">
+							<div class="fields">
+								<div class="row travin">
+									<div class="cell title">
+										<b>예약자 정보</b>
+									</div>
+								</div>
+								<section>
+									<div>
+										<div class="row" data-id="2"
+											data-error-empty="Please enter a name"
+											data-error-wrong="Please enter a name" data-required="1">
+											<label class="cell title unselectable" for="t2-1"> 이름
+											</label>
+											<div class="cell validity-con" data-type="string">
+												<input type="text" autocomplete="section-1 given-name"
+													name="field2[]" placeholder="Enter FullName" value=""
+													id="t2-1">
+											</div>
+										</div>
+										<div class="row" data-seo="email" data-id="5"
+											data-error-empty="Please enter a valid email address"
+											data-error-wrong="Please enter a valid email address"
+											data-required="1">
+											<label class="cell title unselectable" for="t5-1">
+												Email </label>
+											<div class="cell validity-con" data-type="email">
+												<input type="email" autocomplete="section-1 email"
+													name="field5[]" placeholder="Enter email address" value=""
+													id="t5-1">
+											</div>
+										</div>
+										<div class="row" data-seo="phone-number" data-id="6"
+											data-error-empty="Please enter your full number"
+											data-error-wrong="Please enter your full number"
+											data-required="1">
+											<label class="cell title unselectable" for="t6-1">
+												휴대전화 </label>
+											<div class="cell validity-con" data-type="phone">
+												<input class="tel" type="tel" name="field6-tel"
+													placeholder="e.g. 010-1234-5678" value="" id="t6-1"
+													autocomplete="section-1 tel">
+											</div>
+										</div>
+										<div class="row" data-seo="date-of-birth" data-id="7"
+											data-error-empty="Please enter date of birth"
+											data-error-wrong="Please enter date of birth"
+											data-required="1">
+											<label class="cell title unselectable" for="t7-1">
+												생년월일 </label>
+											<div class="cell validity-con input-grp" data-type="date"
+												data-direction="past">
+												<select name="field7-year" class="third"><option
+														selected="" disabled="" value="">Year</option>
+													<c:forEach var="y" begin="1918" end="2018" step="1">
+														<option value="${y }">${y }년</option>
+													</c:forEach>
+												</select><select name="field7-month" class="third"><option
+														selected="" disabled="" value="">Month</option>
+													<c:forEach var="m" begin="1" end="12" step="1">
+														<option value="${m }">${m }월</option>
+													</c:forEach>
+												</select><select name="field7-day" class="third" id="t7-1"><option
+														selected="" disabled="" value="">Day</option>
+													<c:forEach var="d" begin="1" end="31" step="1">
+														<option value="${d }">${d }일</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="block accommodation ">
 					<div class="head">
@@ -111,7 +198,7 @@
 					<div class="content" data-friends="1">
 						<div class="types">
 							<c:forEach items="${listRoom}" var="room">
-								<div class="radio" data-lack="1">
+								<div class="radio" data-lack="1" >
 									<input type="radio" name="accommodation" value="Twin"
 										id="accommodation-0">
 									<div class="check"></div>
@@ -136,29 +223,30 @@
 						</div>
 					</div>
 				</div>
-				<div class="block price-main ">
-					<div class="head">
-						<h3>이 부분은 비회원일 때만 보여줄 예정</h3>
+				<c:if test="${member_num eq 0}">
+					<div class="block price-main ">
+						<div class="head">
+							<h3>BlueBalloon Savings</h3>
+						</div>
+						<ul class="prices promo des" data-value="memberSaving">
+							<li class="discount exp">지금 회원가입하시면 <b class="green">-가격</b>
+								만큼 회원 할인을 받으실 수 있습니다.
+							</li>
+							<li class="link"><a href="member_join">가입하기</a></li>
+						</ul>
 					</div>
-					<ul class="prices promo des" data-value="memberSaving">
-						<li class="discount exp">지금 회원가입하면 <b class="green">-얼마</b>
-							만큼 회원 할인을 받으실 수 있습니다.
-						</li>
-						<li class="link"><a href="member_join">가입하기</a></li>
-					</ul>
-				</div>
+				</c:if>
 				<div class="block agents">
 					<div class="head">
 						<h3>도움이 필요하세요?</h3>
 					</div>
-					<div class="title tit">24/7 Customer Support</div>
+					<div class="title tit">BlueBalloon 고객 센터</div>
 					<div class="text">고객상담에 대한 설명 들어갈 곳, 아래는 이미지 들어갈 부분</div>
 					<div class="t">
 						<c:forEach var="a" begin="1" end="5" step="1">
 							<div class="wp">
 								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/e.png"
-									alt="Carla"><span>이름</span>
+									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/e.png"><span>이름</span>
 							</div>
 						</c:forEach>
 					</div>

@@ -1,7 +1,6 @@
 package com.web.blueballoon.util;
 
 import java.io.File;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,7 +28,7 @@ public class FileUtils {
 				return null;
 			}
 			CommonUtils util = new CommonUtils();
-			String originalFileExtension = member_org_img.substring(member_org_img.lastIndexOf("."));							
+			String originalFileExtension = member_org_img.substring(member_org_img.lastIndexOf("."));
 			String member_str_img = util.getRandomString() + originalFileExtension;
 			// 서버에 파일 쓰기
 			File file = new File(upPath, member_str_img);
