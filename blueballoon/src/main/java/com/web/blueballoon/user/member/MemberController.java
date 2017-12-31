@@ -103,7 +103,8 @@ public class MemberController {
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
-
+		
+		
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
 
 		String file = null;

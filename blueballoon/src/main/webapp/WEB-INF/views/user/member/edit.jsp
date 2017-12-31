@@ -55,7 +55,7 @@
 				<div class="span8 settings-left">
 					<div class="profile-left span12" id="block-edit">
 						<h2>내 정보 수정</h2>
-						<form method="post" enctype="multipart/form-data">
+						<form method="post" action="member_edit"  enctype="multipart/form-data">
 						<input type="hidden" name="member_passwd" value="${getMember.member_passwd}">
 							<div class="form">
 								<div class="row">
@@ -74,8 +74,9 @@
 								<div class="row">
 									<div class="title">Email</div>
 									<div class="value">
-										<input type="text" disabled value="${getMember.member_email}"/><a href="#email_popup"
-											id="email_link">변경</a>
+										<input type="text" disabled value="${getMember.member_email}"/>
+										<input type ="hidden" name="member_email" vlaue="${getMember.member_email}">
+										<a href="#email_popup" id="email_link">변경</a>
 									</div>
 								</div>
 								<div class="row">
@@ -87,20 +88,20 @@
 								<div class="row">
 									<div class="title">휴대전화</div>
 									<div class="value">
-										<input type="text" name="phone" value="${getMember.member_phone}" />
+										<input type="text" name="member_phone" value="${getMember.member_phone}" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">생년월일</div>
 									<div class="value">
-										<input type="text" name="birthdate" value="${getMember.member_birth}"
+										<input type="text" name="member_birth" value="${getMember.member_birth}"
 											value="" id="date" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="title">성별</div>
 									<div class="value">
-										<select name="gender">
+										<select name="member_gender">
 										<option value="">-- 선택 --</option>
 											<option value="male" <c:if test="${getMember.member_gender eq 'male'}">selected </c:if>>남성</option>
 											<option value="female" <c:if test="${getMember.member_gender eq 'female'}">selected </c:if>>여성</option></select>
@@ -118,8 +119,8 @@
 						<h2>로그아웃</h2>
 						<p>BlueBalloon에서 로그아웃하시면 더 이상 BlueBalloon의 모든 기능을 사용할 수 없습니다.</p>
 						<div class="footer">
-							<a href="/travellers/logout?type=web"><input type="submit"
-								class="button button-grey" value="로그아웃" /></a>
+							<a href="/travellers/logout?type=web">
+							<input type="submit" class="button button-grey" value="로그아웃" /></a>
 						</div>
 					</div>
 				</div>

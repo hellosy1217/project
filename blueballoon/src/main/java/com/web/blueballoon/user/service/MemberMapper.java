@@ -36,16 +36,10 @@ public class MemberMapper {
 		return dto;
 	}
 	public  int editMember(BBMemberDTO dto) {
-		int res = 0;
-		BBMemberDTO dto2 =  sqlSession.selectOne("getLoginedMember", dto.getMember_email());
-			if (dto2.getMember_passwd().equals(dto.getMember_passwd())) {
-				res = sqlSession.update("editMember", dto);
-			}
-			return res;
+		return sqlSession.update("editMember", dto);
 	}
 	public int editMemberForNull(BBMemberDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("editMemberForNull", dto);
 	}
 	public BBMemberDTO getMember(String member_email) {		
 		return sqlSession.selectOne("getLoginedMember", member_email);
