@@ -130,9 +130,7 @@ public class AdminProductController {
 			BindingResult result) {
 		// 비교를 위한 dto 값 불러오기.
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
-		System.out.println("기존 str_img : "+editDTO.getProd_str_img());
 		String prod_edit_img = mf.getOriginalFilename();
-		System.out.println("새로운 파일 : " +prod_edit_img);
 		String file = null;
 		if (editDTO.getProd_str_img() != null) {// 1. 기존 이지가 있을때 (검색 O)
 			if (prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
@@ -140,7 +138,7 @@ public class AdminProductController {
 				if(existFile) {
 					amazon.deleteFile("bb_product" + editDTO.getProd_pick(), editDTO.getProd_str_img());
 				}else {
-					System.out.println("기존 파일 존재하지 않음. DB확인 요망");
+					System.err.println("기존 파일 존재하지 않음. DB확인 요망");
 				}
 				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
 				dto.setProd_org_img(prod_edit_img);
@@ -160,22 +158,14 @@ public class AdminProductController {
 			}
 		}
 
-		System.out.println("prod_num : " + dto.getProd_num());
-		System.out.println("prod_name : " + dto.getProd_name());
-		System.out.println("prod_phone : " + dto.getProd_phone());
-		System.out.println("prod_price : " + dto.getProd_price());
-		System.out.println("prod_org_img :" + dto.getProd_org_img());
-		System.out.println("prod_str_img : " + dto.getProd_str_img());
-		System.out.println("prod_post_number : " + dto.getProd_post_number());
-		System.out.println("prod_road_address : " + dto.getProd_road_address());
-		System.out.println("prod_old_address : " + dto.getProd_old_address());
-		System.out.println("prod_detail_address : " + dto.getProd_detail_address());
-		System.out.println("prod_content : " + dto.getProd_content());
-		System.out.println("prod_pick : " + dto.getProd_pick());
-
 		int res = 0;
 		try {
-			res = adminMapper.editBBProduct(dto);
+			if(dto.getProd_org_img()==null || dto.getProd_org_img().trim().equals("") || 
+					prod_edit_img ==null || prod_edit_img.trim().equals("")) {
+				res = adminMapper.editBBProductForNull(dto);
+			}else {
+				res = adminMapper.editBBProduct(dto);
+			}
 		} catch (NullPointerException ne) {
 			ne.printStackTrace();
 			dto.setProd_org_img(null);

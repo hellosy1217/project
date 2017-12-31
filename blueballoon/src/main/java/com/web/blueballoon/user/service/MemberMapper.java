@@ -43,7 +43,10 @@ public class MemberMapper {
 			}
 			return res;
 	}
-
+	public int editMemberForNull(BBMemberDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	public BBMemberDTO getMember(String member_email) {		
 		return sqlSession.selectOne("getLoginedMember", member_email);
 	}
@@ -51,4 +54,6 @@ public class MemberMapper {
 	 public List<BBLikeDTO> listProducts(int member_num){
 		 return sqlSession.selectList("getLikeProducts",member_num);
 	 }
+
+
 }

@@ -116,27 +116,29 @@ public class MemberController {
 				file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 				dto.setMember_org_img(newFileName);
 				dto.setMember_str_img(file);
-				System.out.println("1-1 : org / str : " + dto.getMember_org_img() + " / " + dto.getMember_str_img());
 			} else if (existFile && newFileName == null) {// -2. 기존 파일 있고 새로운 파일 없을 때.
 				dto.setMember_org_img(editDTO.getMember_org_img());
 				dto.setMember_str_img(editDTO.getMember_str_img());
-				System.out.println("1-2 : org / str : " + dto.getMember_org_img() + " / " + dto.getMember_str_img());
 			}
 		} else if (editDTO.getMember_str_img() == null) {// 2. 검색 안할 때 (기존 파일 없을 때) / 새로운 파일이 있으면 생성해주기. amazon검색 불필요.
 			if (newFileName != null) { // -1. 새로운 파일 있을 때.
 				file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 				dto.setMember_org_img(newFileName);
 				dto.setMember_str_img(file);
-				System.out.println("2-1 : org / str : " + dto.getMember_org_img() + " / " + dto.getMember_str_img());
 			} else if (newFileName == null) {// -2. 새로운 파일 없을 떄.
 				dto.setMember_org_img(null);
 				dto.setMember_str_img(null);
-				System.out.println("2-2 : org / str : " + dto.getMember_org_img() + " / " + dto.getMember_str_img());
 			}
 		}
 		int res = 0;
 		try {
-			res = memberMapper.editMember(dto);
+			if (dto.getMember_org_img() == null || dto.getMember_org_img().trim().equals("") || newFileName == null
+					|| newFileName.trim().equals("")) {
+				res = memberMapper.editMember(dto);
+			} else {
+				res = memberMapper.editMemberForNull(dto);
+
+			}
 		} catch (NullPointerException ne) {
 			ne.printStackTrace();
 			dto.setMember_org_img(null);
@@ -150,22 +152,22 @@ public class MemberController {
 			mav.addObject("url", "home");
 			mav.setViewName("user/member/message");
 		}
-
 		return mav;
 	}
 
 	@RequestMapping(value = "member_profile", method = RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest arg0, HttpSession session) {
 		session = arg0.getSession();
-		if(session == null) {
-			mav.addObject("msg","로그인이 필요한 페이지입니다. 로그인해주세요.");
-			mav.addObject("url","member_login");
-			mav.setViewName("user/member/message"); return mav;
+		if (session == null) {
+			mav.addObject("msg", "로그인이 필요한 페이지입니다. 로그인해주세요.");
+			mav.addObject("url", "member_login");
+			mav.setViewName("user/member/message");
+			return mav;
 		}
 		String member_email = (String) session.getAttribute("member_email");
-		System.out.println("member_email : "+member_email);
+		System.out.println("member_email : " + member_email);
 		BBMemberDTO dto = memberMapper.getMember(member_email);
-		mav.addObject("myMember",dto);
+		mav.addObject("myMember", dto);
 		mav.setViewName("user/member/profile");
 		return mav;
 	}
@@ -174,9 +176,9 @@ public class MemberController {
 	public ModelAndView likelist(HttpServletRequest arg0) {
 		int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 		String member_email = (String) arg0.getSession().getAttribute("member_email");
-		
+
 		List<BBLikeDTO> likeList = memberMapper.listProducts(member_num);
-		
+
 		mav.addObject("member_num", member_num);
 		mav.addObject("member_email", member_email);
 		mav.setViewName("user/member/likelist");

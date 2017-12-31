@@ -30,7 +30,14 @@ public class AdminMapper {
 				res = sqlSession.update("editMember", dto);
 			}
 			return res;
-
+		}
+		public int editMemberForNull(BBMemberDTO dto) {
+			int res = 0;
+			BBMemberDTO dto2 = sqlSession.selectOne("getMember", dto.getMember_num());
+			if (dto2.getMember_passwd().equals(dto.getMember_passwd())) {
+				res = sqlSession.update("editMemberForNull", dto);
+			}
+			return res;
 		}
 		//멤버 삭제!(이메일 인증과 시간 통과 후에만)
 		public int deleteMember(int member_num, String member_passwd) {
@@ -81,6 +88,10 @@ public class AdminMapper {
 	public int editBBProduct(BBProductDTO dto) {
 		return sqlSession.update("editBBProduct",dto);
 	}
+	//수정 - 이미지 없을 때 들어오는 수정
+	public int editBBProductForNull(BBProductDTO dto) {
+		return sqlSession.update("editBBProductForNull", dto);
+	}
 	public List<BBProductDTO>listBBProductForRoom(){
 		return sqlSession.selectList("listBBProductForRoom");
 	}
@@ -99,5 +110,5 @@ public class AdminMapper {
 	public int editBBRoom(BBRoomDTO dto) {
 		return sqlSession.update("editBBRoom",dto);
 	}
-	
+
 }
