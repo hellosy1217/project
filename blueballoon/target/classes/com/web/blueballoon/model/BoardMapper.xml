@@ -32,9 +32,9 @@
 
 <insert id="insertBoard" parameterType="BBBoardDTO">
 	INSERT INTO bb_board (board_num, member_email,board_title,board_content,
-	board_org_img, board_str_img,board_reg_date, board_readcount, board_likecount,board_score,prod_num) 
+	board_org_img, board_str_img,board_reg_date, board_readcount, board_likecount,board_score) 
 	values(bb_board_seq.nextval,#{member_email},#{board_title},#{board_content},
-	#{board_org_img, jdbcType=VARCHAR},#{board_str_img, jdbcType=VARCHAR},SYSDATE,0,0, #{board_score},#{prod_num})
+	#{board_org_img, jdbcType=VARCHAR},#{board_str_img, jdbcType=VARCHAR},SYSDATE,0,0, #{board_score})
 </insert>
 
 <select id="getBoardNum" parameterType="BBBoardDTO" resultType="int">

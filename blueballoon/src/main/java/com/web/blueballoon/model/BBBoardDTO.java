@@ -12,6 +12,7 @@ public class BBBoardDTO {
 	private int board_likecount;
 	private int board_score;
 	private int prod_num;
+	
 	public int getBoard_num() {
 		return board_num;
 	}
