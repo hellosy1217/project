@@ -49,5 +49,9 @@ public class MemberMapper {
 		 return sqlSession.selectList("getLikeProducts",member_num);
 	 }
 
+	public int changePasswd(BBMemberDTO checkUser) {
+		return sqlSession.update("changePasswd",checkUser);
+	}
+
 
 }

@@ -34,7 +34,7 @@ public class AdminMemberController {
 	@Autowired
 	private AmazonFileUtils amazonUtil;
 	 @Autowired
-	  private JavaMailSender mailSender;
+	private JavaMailSender mailSender;
 	 
 	// ==============멤버 리스트 관련========================
 	@RequestMapping(value = "BB_member_list")
@@ -197,6 +197,7 @@ public class AdminMemberController {
 	    } catch(Exception e){
 	      System.out.println(e);
 	    }
+	   
 	   mav.addObject("msg", "메일 발송 완료! 멤버 목록 페이지로 이동");
 	   mav.addObject("url","BB_member_list");
 	   mav.setViewName("admin/message");

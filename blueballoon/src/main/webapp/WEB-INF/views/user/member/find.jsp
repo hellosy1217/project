@@ -4,6 +4,7 @@
 <head>
 <title>Reset Password - BlueBalloon</title>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <link
 	href="${pageContext.request.contextPath}/resources/member/css/find1.css"
 	rel="stylesheet" />
@@ -26,8 +27,7 @@
 			email.focus();
 			return false;
 		}
-		
-		f.email.submit();
+		 document.getElementById('frm').submit();
 		return true;
 	}
 </script>
@@ -40,7 +40,7 @@
 				style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w">
 					<div class="form-title">비밀번호를 잊으셨나요?</div>
-					<form class="clearfix" action="BB_member_find" method="POST">
+					<form name="f" id="frm" class="clearfix" action="member_find" method="POST">
 						<div class="b-lnk forgot">걱정 마세요. 저희가 도와드릴게요.</div>
 						<div class="b-lnk">
 							이메일을 입력하시면 새로운 비밀번호를<br />이메일로 발송해 드립니다.

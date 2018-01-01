@@ -1,11 +1,15 @@
 package com.web.blueballoon.user.member;
 
+import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +29,9 @@ public class MemberController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private AmazonFileUtils amazonUtil;
-
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	private ModelAndView mav = new ModelAndView();
 
 	@RequestMapping(value = "member_login", method = RequestMethod.GET)
@@ -51,7 +57,7 @@ public class MemberController {
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
 			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
-			mav.setViewName("redirect:/main");
+			mav.setViewName("/");
 		}
 		return mav;
 	}
@@ -83,8 +89,60 @@ public class MemberController {
 
 	// 멤버 찾기
 	@RequestMapping(value = "member_find", method = RequestMethod.POST)
-	public ModelAndView findPro(HttpServletRequest arg0) {
-		//이메일 쏴주는 폼과 uuid 발송, 또한 그 해당 계정이 있는지 여부, 해당 계정 비번도 UUID로 바꿔줘야함.
+	public ModelAndView findPro(HttpServletRequest arg0, @RequestParam String member_email) {
+		// 이메일 쏴주는 폼과 uuid 발송, 또한 그 해당 계정이 있는지 여부, 해당 계정 비번도 UUID로 바꿔줘야함.
+		System.out.println("오니??");
+		System.out.println(member_email);
+		BBMemberDTO checkUser = null;
+		if (member_email == null || member_email.trim().equals("")) {
+			mav.addObject("msg", "잘못된 접근입니다.");
+			mav.addObject("url", "member_find");
+			mav.setViewName("user/member/message");
+			return mav;
+		}
+		checkUser = memberMapper.getMember(member_email);
+		if(checkUser.getMember_email() ==null) {
+			mav.addObject("msg", "계정이 존재하지 않습니다.");
+			mav.addObject("url", "member_find");
+			mav.setViewName("user/member/message");
+			return mav;
+		}
+		String newPasswd = UUID.randomUUID().toString();
+		checkUser.setMember_passwd(newPasswd.substring(0, 19));
+		
+		System.out.println(checkUser.getMember_passwd());
+		
+		int res = memberMapper.changePasswd(checkUser);
+		if(res < 0) {
+			mav.addObject("msg", "DB 문제 발생 관리자에게 문의하세요. (blueballoonteam@gmail.com)");
+			mav.addObject("url", "member_find");
+			mav.setViewName("user/member/message");
+			return mav;
+		}
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+		    MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+		    Date today = new Date();
+		    System.out.println(today);
+		    String setfrom = "blueballoonteam@gmail.com";
+		    String title = "BlueBalloon에서 고객님의 요청에 따른 메일 수신드립니다.(비번찾기 관련)";
+		    String content = "고객님의 요청으로 새로운 비밀번호를 전송해 드립니다. \n "+"새로운 비밀 번호 : "+checkUser.getMember_passwd()+
+		    		"\n 정상적으로 BlueBalloon 서비스를 이용하실 수 있습니다. \n 감사합니다. \n"+today+"Blue Balloon 드림";
+		    messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+		    messageHelper.setTo(member_email);     // 받는사람 이메일
+		    messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+		    messageHelper.setText(content);  // 메일 내용
+		    
+		    mailSender.send(message);
+		    
+		    mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
+			mav.addObject("url","member_login");
+			mav.setViewName("user/member/message");
+		    
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return mav;
 	}
 
@@ -102,8 +160,7 @@ public class MemberController {
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
-		
-		
+
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
 
 		String file = null;
@@ -188,9 +245,9 @@ public class MemberController {
 	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest arg0, HttpSession session) {
 		session = arg0.getSession();
-		if(session != null) {
+		if (session != null) {
 			arg0.getSession().removeAttribute("member_num");
-			arg0.getSession().removeAttribute("member_email");	
+			arg0.getSession().removeAttribute("member_email");
 		}
 		return "redirect:/main";
 	}
