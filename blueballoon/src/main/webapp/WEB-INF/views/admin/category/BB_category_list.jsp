@@ -1,15 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../top.jsp"%>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 	function checkDel(cate_num){
-		var isDel = confirm("정말로 삭제하시겠습니까?")
+		var isDel;
+		swal({
+		      title: "삭제하시겠습니까?", 
+		      text: "삭제버튼을 누르시면 복구할 수 없습니다.", 
+		      type: "warning",
+		      showCancelButton: true,
+		      confirmButtonColor: "#DD6B55",
+		      confirmButtonText: "삭제",
+		      cancelButtonText: "취소",
+		      closeOnConfirm: true,
+		      closeOnCancel: true,
+		    } , function() {
+		    	isDel = confirm();
+		    	if(isDel){
+		    		window.location.href="BB_category_delete?cate_num="+cate_num;	
+		    	}
+		    });
+		/* var isDel = confirm("정말로 삭제하시겠습니까?")
 		if (isDel){
 			location.href="BB_category_delete?cate_num="+cate_num;
-		}
+		} */
 	}
+	function myAlertFunction(event) {
+		  event.preventDefault()
+		  swal({
+		      title: "Remove book?",
+		      text: "Watch out",
+		      type: "warning",
+		      showCancelButton: true,
+		      confirmButtonColor: "#DD6B55",
+		      confirmButtonText: "Yes.",
+		      cancelButtonText: "No.",
+		      closeOnConfirm: false,
+		      closeOnCancel: false
+		    },
+		    function(isConfirm) {
+		      if (isConfirm) {
+		        swal({
+		          title: "Deleted.",
+		          text: "Done.",
+		          type: "success"
+		        }, function() {
+		          $("#remove_book").submit();
+		        });
+		      } else {
+		        swal("Cancelled", "Not done.", "error");
+		      }
+		    });
+		}
 </script>
 <div align="center">
 	<table border="1" width="400">
