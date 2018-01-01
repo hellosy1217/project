@@ -1,5 +1,5 @@
 // 달력
-function bbCalendar(id, date, begin) {
+function bbCalendar(id, date, begin, days) {
 	var bbCalendar = document.getElementById(id);
 	var current = date;
 
@@ -96,18 +96,22 @@ function bbCalendar(id, date, begin) {
 	calendar += '<div class="head"><div class="point">1</div><h3>날짜를 선택해주세요.</h3><b class="date date-start">';
 	calendar += currentYear + '년 ' + currentMonth + '월 ' + currentDate
 			+ '일</b></div>';
-	calendar += '<div class="months"><div class="right-arrow" onclick="changeDate(\''
+	calendar += '<div class="months"><div class="right-arrow" onclick="bbCalendar(\''
 			+ id
 			+ '\', \''
 			+ current
 			+ '\', \''
 			+ nextDate
-			+ '\')"></div><div class="left-arrow inactive" onclick="changeDate(\''
+			+ '\', \''
+			+ days
+			+ '\')"></div><div class="left-arrow inactive" onclick="bbCalendar(\''
 			+ id
 			+ '\', \''
 			+ current
 			+ '\', \''
 			+ prevDate
+			+ '\', \''
+			+ days
 			+ '\')"></div><div class="content"><ul style="width: 1016.6666666666667px; margin-left: 0px;">';
 
 	for (var i = 0; i < 6; i++) {
@@ -131,10 +135,10 @@ function bbCalendar(id, date, begin) {
 		} else {
 			calendar += '<li id="month'
 					+ (beginMonth + i)
-					+ '" class="border" style="width: 101.66666666666667px;" onclick="changeDate(\''
-					+ id + '\', \'' + cal_date + '\', \'' + beginDay
-					+ '\')"><div><span></span>' + cal_year + '년 ' + cal_month
-					+ '월</div></li>'
+					+ '" class="border" style="width: 101.66666666666667px;" onclick="bbCalendar(\''
+					+ id + '\', \'' + cal_date + '\', \'' + beginDay + '\', \''
+					+ days + '\')"><div><span></span>' + cal_year + '년 '
+					+ cal_month + '월</div></li>'
 		}
 	}
 	calendar += '</ul></div></div>';
@@ -151,10 +155,51 @@ function bbCalendar(id, date, begin) {
 				continue;
 			}
 			if (currentDate == dateNum) {
-				calendar += '<td id="day'
-						+ dateNum
-						+ '" class="all selected possible"><div class="container"><div class="day">'
-						+ dateNum + '</div><div class="next"></div></div></td>';
+				if (dateNum == currentLastDate) {
+					calendar += '<td id="day'
+							+ dateNum
+							+ '" class="all possible selected next"><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
+				} else {
+					calendar += '<td id="day'
+							+ dateNum
+							+ '" class="all possible selected"><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
+				}
+			} else if (currentDate < dateNum
+					&& dateNum < (currentDate * 1 + days * 1)) {
+				var clickDate = currentYear + '-';
+				if (currentMonth < 10) {
+					clickDate += '0';
+				}
+				clickDate += currentMonth + '-';
+				if (dateNum < 10) {
+					clickDate += '0';
+				}
+				clickDate += dateNum;
+
+				if (currentLastDate == dateNum
+						&& (dateNum * 1 + days * 1) > currentLastDate) {
+					calendar += '<td id="day'
+							+ dateNum
+							+ '" class="all empty onway next" onclick="bbCalendar(\''
+							+ id + '\', \'' + clickDate + '\', \'' + beginDay
+							+ '\', \'' + days
+							+ '\')"><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
+				} else {
+					calendar += '<td id="day'
+							+ dateNum
+							+ '" class="all empty onway" onclick="bbCalendar(\''
+							+ id + '\', \'' + clickDate + '\', \'' + beginDay
+							+ '\', \'' + days
+							+ '\')"><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
+				}
 			} else {
 				var clickDate = currentYear + '-';
 				if (currentMonth < 10) {
@@ -167,8 +212,9 @@ function bbCalendar(id, date, begin) {
 				clickDate += dateNum;
 
 				calendar += '<td id="day' + dateNum
-						+ '" class="all possible" onclick="changeDate(\'' + id
-						+ '\', \'' + clickDate + '\', \'' + beginDay
+						+ '" class="all possible" onclick="bbCalendar(\'' + id
+						+ '\', \'' + clickDate + '\', \'' + beginDay + '\', \''
+						+ days
 						+ '\')"><div class="container"><div class="day">'
 						+ dateNum + '</div><div class="next"></div></div></td>';
 			}
@@ -177,8 +223,4 @@ function bbCalendar(id, date, begin) {
 	}
 	calendar += '</tbody></table></div>'
 	bbCalendar.innerHTML = calendar;
-}
-
-function changeDate(id, date, begin) {
-	bbCalendar(id, date, begin);
 }

@@ -69,7 +69,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('bb_calendar','${beginDate}',0);
+						bbCalendar('bb_calendar','${beginDate}',0,5);
 					};</script>
 					<div id="seats">
 						<div class="content">

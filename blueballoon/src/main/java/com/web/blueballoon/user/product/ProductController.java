@@ -253,9 +253,7 @@ public class ProductController {
 						for (int k = 0; k < book_date.size(); k++) {
 							if (room_num == book_date.get(k).getRoom_num()
 									&& room_date.equals(book_date.get(k).getBook_date())) {
-								System.out.println("kdate: "+room_date);
 								book_date.remove(k);
-								System.out.println("삭제 완료");
 							}
 						}
 					}
