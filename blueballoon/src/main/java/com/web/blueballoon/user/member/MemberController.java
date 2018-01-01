@@ -57,7 +57,9 @@ public class MemberController {
 			session.setAttribute("member_num", dto.getMember_num());
 			session.setAttribute("member_email", dto.getMember_email());
 			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
-			mav.setViewName("/");
+			mav.addObject("msg", "로그인 성공! 메인페이지로 이동합니다.");
+			mav.addObject("url","main");
+			mav.setViewName("user/member/message");
 		}
 		return mav;
 	}
