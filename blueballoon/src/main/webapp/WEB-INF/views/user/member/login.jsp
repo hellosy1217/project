@@ -39,7 +39,7 @@
 						action="member_login" method="POST">
 						<div id="message-sign-in"></div>
 						<div class="input-c">
-							<input class="text" type="text" value="" id="g_email"
+							<input class="text" type="email" value="" id="g_email"
 								placeholder="Enter your Email" name="member_email">
 						</div>
 						<div class="input-c">
@@ -84,7 +84,6 @@
 	</div>
 	<script type="text/javascript" src="https://apis.google.com/js/plus.js"
 		gapi_processed="true"></script>
-	<script type="text/javascript"
-		src="//cdn.tourradar.com//include/js/responsive.min.js?v=1512138643"></script>
+	<script type="text/javascript" src="//cdn.tourradar.com//include/js/responsive.min.js?v=1512138643"></script>
 </body>
 </html>

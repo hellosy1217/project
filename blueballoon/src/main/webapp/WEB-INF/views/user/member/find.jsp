@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 <title>Reset Password - BlueBalloon</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link
 	href="${pageContext.request.contextPath}/resources/member/css/find1.css"
 	rel="stylesheet" />
@@ -19,33 +20,16 @@
 	async=""></script>
 <script type="text/javascript">
 	function findPasswd() {
-		var email = document.getElementById('g_email')
-		
-		alert("비밀번호 찾기 함수")
+		/* var email = document.getElementById('g_email');
+		if(email.value == '' || email == null ){
+			swal(
+				alert('이메일을 입력해 주세요.');
+				email.focus();
+				return false;
+			)
+		} */
+		swal("비밀번호 찾기 함수")
 	}
-	// email check function
-	function email_check( email ) {    
-	    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-	    return (email != '' && email != 'undefined' && regex.test(email)); 
-	}
-
-	// check when email input lost foucus
-	$(".input-check-email").blur(function(){
-	  var email = $(this).val();
-
-	  // if value is empty then exit
-	  if( email == '' || email == 'undefined') return;
-
-	  // valid check
-	  if(! email_check(email) ) {
-	  	$("#result-check").text('Not valid email.');
-	    $(this).focus();
-	    return false;
-	  }
-	  else {
-	  	$("#result-check").text('Email address test OK.');
-	  }
-	});
 </script>
 </head>
 <body class="reg-page-bg ">
@@ -62,7 +46,7 @@
 							이메일을 입력하시면 새로운 비밀번호를<br />이메일로 발송해 드립니다.
 						</div>
 						<div class="input-c">
-							<input class="text" type="text" name="member_email" id="g_email"
+							<input class="text" type="email" name="member_email" id="g_email"
 								placeholder="가입된 계정 이메일을 입력해주세요.">
 						</div>
 						<div class="input-c clearfix">

@@ -42,10 +42,9 @@ public class MemberController {
 			isLogin = true;
 		if (isLogin) {
 			// login.jsp로 이동
-			mav.addObject("msg", "failure");
+			mav.addObject("msg", "아이디/비밀번호를 확인해주세요.");
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/message");
-
 		} else { // 로그인 성공
 			// main.jsp로 이동
 			session = req.getSession();
