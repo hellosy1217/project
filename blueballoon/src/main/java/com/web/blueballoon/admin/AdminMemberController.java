@@ -1,10 +1,13 @@
 package com.web.blueballoon.admin;
 
 import java.util.List;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -30,7 +33,9 @@ public class AdminMemberController {
 	private ControllerMessage cm;
 	@Autowired
 	private AmazonFileUtils amazonUtil;
-
+	 @Autowired
+	  private JavaMailSender mailSender;
+	 
 	// ==============멤버 리스트 관련========================
 	@RequestMapping(value = "BB_member_list")
 	public ModelAndView list_Member() {
@@ -163,25 +168,25 @@ public class AdminMemberController {
 		return mav;
 	}
 	// mailForm
-	  @RequestMapping(value = "/mail/mailForm")
-	  public String mailForm() {
-	   
-	    return "amdin/member/BB_member_mail";
+	  @RequestMapping(value = "BB_member_mail", method=RequestMethod.GET)
+	  public ModelAndView mailForm(@RequestParam String member_email) {
+		mav.addObject("email",member_email);
+		mav.setViewName("admin/member/BB_member_mail");
+	    return mav;
 	  }  
 	 
 	  // mailSending 코드
-	  @RequestMapping(value = "/mail/mailSending")
-	  public String mailSending(HttpServletRequest request) {
+	  @RequestMapping(value = "BB_member_mail", method = RequestMethod.POST)
+	  public ModelAndView mailSending(HttpServletRequest request) {
 	   
-	    String setfrom = "아이디@gmail.com";         
+	    String setfrom = "blueballoonteam@gmail.com";         
 	    String tomail  = request.getParameter("tomail");     // 받는 사람 이메일
 	    String title   = request.getParameter("title");      // 제목
 	    String content = request.getParameter("content");    // 내용
 	   
-	 /*   try {
+	   try {
 	      MimeMessage message = mailSender.createMimeMessage();
-	      MimeMessageHelper messageHelper 
-	                        = new MimeMessageHelper(message, true, "UTF-8");
+	      MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 	 
 	      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
 	      messageHelper.setTo(tomail);     // 받는사람 이메일
@@ -191,8 +196,10 @@ public class AdminMemberController {
 	      mailSender.send(message);
 	    } catch(Exception e){
 	      System.out.println(e);
-	    }*/
-	   
-	    return "redirect:/mail/mailForm";
+	    }
+	   mav.addObject("msg", "메일 발송 완료! 멤버 목록 페이지로 이동");
+	   mav.addObject("url","BB_member_list");
+	   mav.setViewName("admin/message");
+	    return mav;
 	  }
 }

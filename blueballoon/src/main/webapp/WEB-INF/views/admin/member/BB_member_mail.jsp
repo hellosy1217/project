@@ -1,29 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form" %>
- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
- 
-<!-- Bootstrap -->
-<link href='<c:url value="/css/bootstrap.min.css" />' rel="stylesheet">
-<link href='<c:url value="/css/kfonts2.css" />' rel="stylesheet">
- 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src='<c:url value="/jquery/jquery-1.11.3.min.js" />'></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src='<c:url value="/js/bootstrap.min.js"  />'></script>
- 
+
 <title>메일 보내기</title>
 </head>
 <body>
-<div class="container">
+<div align="center">
   <h4>메일 보내기</h4>
-  <form action="${pageContext.request.contextPath}/mail/mailSending" method="post">
+  <form action="BB_member_mail" method="post">
     <div align="center"><!-- 받는 사람 이메일 -->
-      <input type="text" name="tomail" size="120" style="width:100%" placeholder="상대의 이메일" class="form-control" >
+      <input type="text" name="tomail" size="120" style="width:100%" value="${email}" class="form-control" >
     </div>     
     <div align="center"><!-- 제목 -->
       <input type="text" name="title" size="120" style="width:100%" placeholder="제목을 입력해주세요" class="form-control" >
@@ -35,8 +20,7 @@
     <p>
     <div align="center">
       <input type="submit" value="메일 보내기" class="btn btn-warning">
+      <br><a href="BB_member_list">목록으로</a>
     </div>
   </form>
 </div>
-</body>
-</html> 

@@ -9,15 +9,16 @@
 		<hr color="green" width="300">
 		<table width="100%" class="outline">
 			<tr>
-				<th class="m3">번호</th>
-				<th class="m3">이름</th>
-				<th class="m3">프로필사진</th>
-				<th class="m3">이메일</th>
-				<th class="m3">전화번호</th>
-				<th class="m3">생일</th>
-				<th class="m3">성별</th>
-				<th class="m3">가입일</th>
-				<th class="m3">수정 | 삭제</th>
+				<th>번호</th>
+				<th>이름</th>
+				<th>프로필사진</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>생일</th>
+				<th>성별</th>
+				<th>가입일</th>
+				<th>수정 | 삭제</th>
+				<th>메일 발송</th>
 			</tr>
 			<c:if test="${empty listMember}">
 				<tr>
@@ -37,6 +38,7 @@
 					<td>${dto.member_reg_date}</td>
 					<td><a href="member_passwd?member_num=${dto.member_num}">수정</a> |
 						<a href="BB_member_delete?member_num=${dto.member_num}">삭제</a></td>
+					<td><a href="BB_member_mail?member_email=${dto.member_email}">메일 보내기</a></td>
 				</tr>
 			</c:forEach>
 		</table>
