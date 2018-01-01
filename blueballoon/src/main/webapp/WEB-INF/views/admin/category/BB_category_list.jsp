@@ -22,7 +22,7 @@
 		        $.ajax({
 		            url: "BB_category_delete?cate_num=",
 		            data: {
-		                cate_num
+		                cate_num : cate_num
 		            },
 		            dataType: "jsp",
 		            success: function () {
