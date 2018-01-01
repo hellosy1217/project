@@ -85,7 +85,7 @@ public class MemberController {
 	// 멤버 찾기
 	@RequestMapping(value = "member_find", method = RequestMethod.POST)
 	public ModelAndView findPro(HttpServletRequest arg0) {
-		// 채워야 함
+		//이메일 쏴주는 폼과 uuid 발송, 또한 그 해당 계정이 있는지 여부, 해당 계정 비번도 UUID로 바꿔줘야함.
 		return mav;
 	}
 
@@ -187,9 +187,12 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest arg0) {
-		arg0.getSession().removeAttribute("member_num");
-		arg0.getSession().removeAttribute("member_email");
+	public String logout(HttpServletRequest arg0, HttpSession session) {
+		session = arg0.getSession();
+		if(session != null) {
+			arg0.getSession().removeAttribute("member_num");
+			arg0.getSession().removeAttribute("member_email");	
+		}
 		return "redirect:/main";
 	}
 }

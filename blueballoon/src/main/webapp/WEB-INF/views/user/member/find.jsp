@@ -19,9 +19,33 @@
 	async=""></script>
 <script type="text/javascript">
 	function findPasswd() {
-		//이메일 형식 유효성 검사
+		var email = document.getElementById('g_email')
+		
 		alert("비밀번호 찾기 함수")
 	}
+	// email check function
+	function email_check( email ) {    
+	    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    return (email != '' && email != 'undefined' && regex.test(email)); 
+	}
+
+	// check when email input lost foucus
+	$(".input-check-email").blur(function(){
+	  var email = $(this).val();
+
+	  // if value is empty then exit
+	  if( email == '' || email == 'undefined') return;
+
+	  // valid check
+	  if(! email_check(email) ) {
+	  	$("#result-check").text('Not valid email.');
+	    $(this).focus();
+	    return false;
+	  }
+	  else {
+	  	$("#result-check").text('Email address test OK.');
+	  }
+	});
 </script>
 </head>
 <body class="reg-page-bg ">
@@ -32,14 +56,14 @@
 				style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w">
 					<div class="form-title">비밀번호를 잊으셨나요?</div>
-					<form class="clearfix" onsubmit="return false">
-						<div class="b-lnk forgot">걱정하지 마세요. 저희가 도와드릴게요.</div>
+					<form class="clearfix" onsubmit="return false" action="BB_member_find" method="POST">
+						<div class="b-lnk forgot">걱정 마세요. 저희가 도와드릴게요.</div>
 						<div class="b-lnk">
-							이메일을 입력하시면 새로운 비밀번호를<br />작성하기 위한 이메일이 발송됩니다.
+							이메일을 입력하시면 새로운 비밀번호를<br />이메일로 발송해 드립니다.
 						</div>
 						<div class="input-c">
-							<input class="text" type="text" value="" id="g_email"
-								placeholder="Enter your email">
+							<input class="text" type="text" name="member_email" id="g_email"
+								placeholder="가입된 계정 이메일을 입력해주세요.">
 						</div>
 						<div class="input-c clearfix">
 							<a class="reg-page-button" href="#" onclick="findPasswd()"
