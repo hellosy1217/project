@@ -3,6 +3,7 @@
 <%@ include file="../top.jsp"%> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
 	function categoryChange(e) {
 		var city_0 = [ "강남구", "종로구", "마포구", "중구" ,"용산구","영등포구","송파구"];
@@ -39,9 +40,24 @@
 		}
 	}
 </script>
+<script type="text/javascript">
+		function check(){
+			if (f.cate_state.value==""){
+				swal( 'Oops...', ' "도"카테고리를 선택해주세요!', 'error');
+				f.cate_state.focus();
+				return false;
+			}
+			if (f.cate_city.value==""){
+				swal('Oops...', ' "시" 카테고리를 선택해주세요!', 'error');
+				f.cate_city.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
 
 <div align="center">
-	<form name="f" action="BB_category_insert" method="post">
+	<form name="f" action="BB_category_insert" method="post" onsubmit="return check()">
 		<table border="1" width="300">
 			<caption>여행 지역 카테고리 등록</caption>
 			<tr>

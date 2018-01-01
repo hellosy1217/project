@@ -20,15 +20,15 @@
 	async=""></script>
 <script type="text/javascript">
 	function findPasswd() {
-		/* var email = document.getElementById('g_email');
+		var email = document.getElementById('g_email');
 		if(email.value == '' || email == null ){
-			swal(
-				alert('이메일을 입력해 주세요.');
-				email.focus();
-				return false;
-			)
-		} */
-		swal("비밀번호 찾기 함수")
+			swal('이런...', '이메일을 입력해 주세요!', 'error');
+			email.focus();
+			return false;
+		}
+		
+		f.email.submit();
+		return true;
 	}
 </script>
 </head>
@@ -40,7 +40,7 @@
 				style="margin-top: 30px; opacity: 100;">
 				<div class="inside-w">
 					<div class="form-title">비밀번호를 잊으셨나요?</div>
-					<form class="clearfix" onsubmit="return false" action="BB_member_find" method="POST">
+					<form class="clearfix" action="BB_member_find" method="POST">
 						<div class="b-lnk forgot">걱정 마세요. 저희가 도와드릴게요.</div>
 						<div class="b-lnk">
 							이메일을 입력하시면 새로운 비밀번호를<br />이메일로 발송해 드립니다.
@@ -50,8 +50,7 @@
 								placeholder="가입된 계정 이메일을 입력해주세요.">
 						</div>
 						<div class="input-c clearfix">
-							<a class="reg-page-button" href="#" onclick="findPasswd()"
-								id="g_send"><span class="title">확인</span></a>
+							<a class="reg-page-button" onclick="findPasswd()" id="g_send"><span class="title">확인</span></a>
 						</div>
 					</form>
 					<!-- 버튼 누르면 나와야 하는 창 -->

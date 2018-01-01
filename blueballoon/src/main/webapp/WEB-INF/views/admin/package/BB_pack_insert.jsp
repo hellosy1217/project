@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -82,11 +82,50 @@ function replaceElement(){
  			}
 		}
 }
-
 </script>
+<script type="text/javascript">
+		function check(){
+			if (f.pack_title.value==""){
+				swal(
+						 'Oops...',
+						 '패키지 이름을 입력해주세요!',
+						 'error'
+						)
+				f.pack_title.focus()
+				return false
+			}
+			if (f.pack_phone.value==""){
+				swal(
+						 'Oops...',
+						 '담당자 번호를 입력해 주세요!',
+						 'error'
+						)
+				f.pack_phone.focus()
+				return false
+			}
+			if (f.pack_price.value==""){
+				swal(
+						 'Oops...',
+						 '패키지 가격을 입력해 주세요!',
+						 'error'
+						)
+				f.pack_price.focus()
+				return false
+			}
+			if (f.pack_content.value==""){
+				swal(
+						 'Oops...',
+						 '패키지 설명을 입력해 주세요!',
+						 'error'
+						)
+				f.pack_content.focus()
+				return false
+			}
+			return true
+		}
+	</script>
 <div align="center">
-	<form name="f" action="BB_pack_insert" method="post"
-		enctype="multipart/form-data">
+	<form name="f" action="BB_pack_insert" method="post" onsubmit="return check()" enctype="multipart/form-data">
 		<table width="800">
 			<caption>패키지 상품 등록</caption>
 			<tr>
@@ -132,6 +171,7 @@ function replaceElement(){
 			<tr>
 				<th width="10%">패키지 구성 요소</th>
 				<td><input type="text" id="packagePick" name="pack_config"></td>
+				<td colspan="2" align="center"><input type="submit" value="등록"> <input type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>

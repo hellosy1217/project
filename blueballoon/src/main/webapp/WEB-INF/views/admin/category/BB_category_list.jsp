@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../top.jsp"%>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 	function checkDel(cate_num){
-		var isDel;
 		swal({
 		      title: "삭제하시겠습니까?", 
 		      text: "삭제버튼을 누르시면 복구할 수 없습니다.", 
@@ -17,44 +17,60 @@
 		      cancelButtonText: "취소",
 		      closeOnConfirm: true,
 		      closeOnCancel: true,
-		    } , function() {
+		    } ,function (isConfirm) {
+		        if (!isConfirm) return;
+		        $.ajax({
+		            url: "BB_category_delete?cate_num=",
+		            data: {
+		                cate_num
+		            },
+		            dataType: "jsp",
+		            success: function () {
+		                swal("Done!", "It was succesfully deleted!", "success");
+		            },
+		            error: function (xhr, ajaxOptions, thrownError) {
+		                swal("Error deleting!", "Please try again", "error");
+		            }
+		        });
+		    });
+		   /*  function() {
 		    	isDel = confirm();
 		    	if(isDel){
 		    		window.location.href="BB_category_delete?cate_num="+cate_num;	
 		    	}
-		    });
+		    }); */
 		/* var isDel = confirm("정말로 삭제하시겠습니까?")
 		if (isDel){
 			location.href="BB_category_delete?cate_num="+cate_num;
 		} */
 	}
-	function myAlertFunction(event) {
-		  event.preventDefault()
-		  swal({
-		      title: "Remove book?",
-		      text: "Watch out",
-		      type: "warning",
-		      showCancelButton: true,
-		      confirmButtonColor: "#DD6B55",
-		      confirmButtonText: "Yes.",
-		      cancelButtonText: "No.",
-		      closeOnConfirm: false,
-		      closeOnCancel: false
-		    },
-		    function(isConfirm) {
-		      if (isConfirm) {
-		        swal({
-		          title: "Deleted.",
-		          text: "Done.",
-		          type: "success"
-		        }, function() {
-		          $("#remove_book").submit();
-		        });
-		      } else {
-		        swal("Cancelled", "Not done.", "error");
-		      }
-		    });
-		}
+	/* function confirmDelete() {
+	    swal({
+	        title: "Are you sure?",
+	        text: "You will not be able to recover this imaginary file!",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "#DD6B55",
+	        confirmButtonText: "Yes, delete it!",
+	        closeOnConfirm: false
+	    }, function (isConfirm) {
+	        if (!isConfirm) return;
+	        $.ajax({
+	            url: "scriptDelete.php",
+	            type: "POST",
+	            data: {
+	                id: 5
+	            },
+	            dataType: "html",
+	            success: function () {
+	                swal("Done!", "It was succesfully deleted!", "success");
+	            },
+	            error: function (xhr, ajaxOptions, thrownError) {
+	                swal("Error deleting!", "Please try again", "error");
+	            }
+	        });
+	    });
+	} */
 </script>
 <div align="center">
 	<table border="1" width="400">
