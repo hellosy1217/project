@@ -60,7 +60,7 @@ public class BoardController {
 		//session에 있는 이메일값 넘겨주기
 		HttpSession session = req.getSession();
 		String memberEmail = (String) session.getAttribute("member_email");
-		
+
 		//좋아요 수로 best리뷰 뽑기
 		List<BBBoardDTO> bestReview = boardMapper.bestReview();
 
@@ -223,27 +223,27 @@ public class BoardController {
 	@RequestMapping(value="board_likecount")
 	public ModelAndView likeCount(HttpServletRequest req,HttpServletResponse resp,@RequestParam String board_num) throws Exception{
 		//cookie변수를 만들어서 값을 저장, 값이 있으면 조회수 증가 안됨
-				boolean isCheck = false;
-				Cookie[] cookies = req.getCookies();
-				if(cookies != null || cookies.length != 0) {
-					for(int i = 0; i < cookies.length; i++) {
-						if(cookies[i].getName().equals("like"+board_num)){
-							//board_num쿠키가 있는 경우
-							isCheck = true;
-							mav.addObject("board_num", Integer.parseInt(board_num));
-							mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
-							mav.addObject("url", "board_content");
-							mav.setViewName("user/board/message");
-							break;
-						}
-					}
+		boolean isCheck = false;
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null || cookies.length != 0) {
+			for(int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals("like"+board_num)){
+					//board_num쿠키가 있는 경우
+					isCheck = true;
+					mav.addObject("board_num", Integer.parseInt(board_num));
+					mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
+					mav.addObject("url", "board_content");
+					mav.setViewName("user/board/message");
+					break;
 				}
-				if(!isCheck) {
-					int res = boardMapper.likecount(Integer.parseInt(board_num));
-					Cookie c = new Cookie("like"+board_num, board_num);
-					c.setMaxAge(24*60*60);//하루 저장
-					resp.addCookie(c);
-				}
+			}
+		}
+		if(!isCheck) {
+			int res = boardMapper.likecount(Integer.parseInt(board_num));
+			Cookie c = new Cookie("like"+board_num, board_num);
+			c.setMaxAge(24*60*60);//하루 저장
+			resp.addCookie(c);
+		}
 		return new ModelAndView("redirect:board_content?board_num="+board_num);
 	}
 
@@ -273,6 +273,18 @@ public class BoardController {
 	@RequestMapping(value="board_update",method = RequestMethod.POST)
 	public ModelAndView boardUpdatePro(HttpServletRequest req, 
 			@RequestParam("board_org_img") MultipartFile mf,@ModelAttribute BBBoardDTO dto, BindingResult result) {
+		//태그 문자 처리 & 공백 문자 처리& 줄바꿈 문자처리
+		String title = dto.getBoard_title();
+		String content = dto.getBoard_content();
+		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
+		title = title.replace("<", "&lt;");
+		title = title.replace(">", "&gt;");
+		// *공백문자 처리
+		title = title.replace("  ",    "&nbsp;&nbsp;");
+		// *줄바꿈 문자처리
+		content = content.replace("\n", "<br>");
+		dto.setBoard_title(title);
+		dto.setBoard_content(content);
 		BBBoardDTO bdto = boardMapper.getBoard(dto.getBoard_num());
 		String star = req.getParameter("star");
 		if(star == null) {
@@ -366,7 +378,7 @@ public class BoardController {
 		int res = boardMapper.insertComment(dto);
 		return new ModelAndView("redirect:board_content?board_num="+dto.getBoard_num());
 	}
-	
+
 	@RequestMapping(value="comment_delete")
 	public ModelAndView deleteComment(@RequestParam int comment_num) {
 		System.out.println("댓글 번호 = "+ comment_num);
