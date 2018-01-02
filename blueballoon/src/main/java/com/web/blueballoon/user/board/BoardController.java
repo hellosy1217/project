@@ -374,7 +374,6 @@ public class BoardController {
 		content = content.replace("\n", "<br>");
 		dto.setComment_content(content);
 		//session에 저장된 member_email을 BBBoardDTO에 저장
-
 		int res = boardMapper.insertComment(dto);
 		return new ModelAndView("redirect:board_content?board_num="+dto.getBoard_num());
 	}
