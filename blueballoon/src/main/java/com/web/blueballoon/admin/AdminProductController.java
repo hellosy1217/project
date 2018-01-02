@@ -63,9 +63,8 @@ public class AdminProductController {
 		String filename = multipartFiles.getOriginalFilename();
 		System.out.println("filename : " + filename);
 
-		if (filename == null || filename.trim().equals("")) {
-			// 사진을 올리지 않을 경우 거의 존재 하지 않음.
-			dto.setProd_org_img(null);
+		if (multipartFiles.getSize() == 0 || multipartFiles.getSize() < 0) {
+			dto.setProd_org_img(null); //존재 할 수 없음.
 		} else {
 			// 아마존 업로드 이후 저장한 파일 이름 return 받아 저장해주기(str_file_name)
 			String upload = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), multipartFiles);

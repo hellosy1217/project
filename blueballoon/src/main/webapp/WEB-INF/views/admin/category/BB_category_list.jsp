@@ -44,17 +44,19 @@
 </script>
 <div align="center">
 	<table border="1" width="400">
-		<caption>여행 지역 카테고리목록</caption>
+		<tr height="25">
+			<th colspan="3">여행 지역 카테고리목록</th>
+			<th align="center"><a href="BB_category_insert">지역 등록</a></th>
+		</tr>
 		<tr>
 			<th width="10%">번호</th>
 			<th width="30%">지역 카테고리 도</th>
 			<th width="30%">지역 카테고리 시</th>
 			<th width="20%">수정 | 삭제</th>
-			<th width="10%"><a href="BB_category_insert">추가</a></th>
 		</tr>
 		<tr>
 		<c:if test="${empty BBCategory}">
-			<td colspan="5">등록된 카테고리목록이 없습니다.</td>
+			<td colspan="5">등록된 지역 카테고리 목록이 없습니다.</td>
 		</c:if>
 		</tr>	
 		<c:forEach var="dto" items="${BBCategory}">

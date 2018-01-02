@@ -136,15 +136,6 @@ function addInputTimes(inputNo) {
 				f.pack_price.focus()
 				return false
 			}
-			if (f.pack_content.value==""){
-				swal(
-						 'Oops...',
-						 '패키지 설명을 입력해 주세요!',
-						 'error'
-						)
-				f.pack_content.focus()
-				return false
-			}
 			return true
 		}
 	</script>

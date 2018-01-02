@@ -5,13 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
 <h2 align="center">여행 상품 목록</h2>
-<div align ="right">
-	<table border="0" width="300">
-		<tr>
-			<th align="right"><a href="BB_prod_insert">추가</a></th>
-		</tr>
-	</table>
-</div>
 <script type="text/javascript">
 	function checkDel(prod_num){
 		var isDel = confirm("정말로 삭제하시겠습니까?")
@@ -22,6 +15,9 @@
 </script>
 <div align="center">
 	<table border="1" width="700">
+		<tr>
+			<th colspan="7" align="right"><a href="BB_prod_insert">여행 상품 추가</a></th>
+		</tr>
 		<tr>
 			<th width="10%">번호</th>
 			<th width="15%">지역 카테고리</th> 

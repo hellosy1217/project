@@ -3,11 +3,11 @@
 <%@ include file="../top.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link
-	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
+<link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
 	rel="stylesheet" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -60,9 +60,77 @@
         }).open();
     }
 </script>
+<script type="text/javascript">
+		function check(){
+			if (f.prod_name.value==""){
+				swal(
+						 '이런...',
+						 '여행 상품 이름을 입력해주세요!',
+						 'error'
+						)
+				f.prod_name.focus()
+				return false
+			}
+			if (f.prod_phone.value==""){
+				swal(
+						 '이런...',
+						 '전화 번호를 입력해 주세요!',
+						 'error'
+						)
+				f.prod_phone.focus()
+				return false
+			}
+			if (f.prod_price.value==""){
+				swal(
+						 '이런...',
+						 '가격을 입력해 주세요!',
+						 'error'
+						)
+				f.prod_price.focus()
+				return false
+			}
+			if (f.prod_org_img.value==""){
+				swal(
+						 '이런...',
+						 '사진을 등록해 주세요!',
+						 'error'
+						)
+				f.prod_org_img.focus()
+				return false
+			}
+			if (f.prod_cate.value==""){
+				swal(
+						 '이런...',
+						 '카테고리를 입력해 주세요!',
+						 'error'
+						)
+				f.prod_cate.focus();
+				return false
+			}
+			if (f.prod_post_number.value=="" || f.prod_road_address.value==""){
+				swal(
+						 '이런...',
+						 '주소를 입력해 주세요!',
+						 'error'
+						)
+				f.prod_post_number.focus();
+				f.prod_road_address.focus();
+				return false;
+			}
+			if(f.prod_content.value=""){
+				swal(
+						 '이런...',
+						 '상품 내용을 입력해 주세요!',
+						 'error'
+						)
+				f.prod_content.focus();
+				return false;
+			}
+			return true
+		}
+	</script>
 <div align="center">
-   <form name="f" action="BB_prod_insert" method="post"
-      enctype="multipart/form-data">
+   <form name="f" action="BB_prod_insert" method="post" enctype="multipart/form-data" onsubmit="return check()">
       <table width="700">
          <caption>상품 등록</caption>
          <tr>
