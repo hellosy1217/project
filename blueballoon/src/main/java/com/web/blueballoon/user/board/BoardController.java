@@ -260,7 +260,7 @@ public class BoardController {
 		mav.addObject("msg", "삭제되었습니다.");
 		mav.addObject("url", "board_list");
 		mav.setViewName("user/board/message");
-		return new ModelAndView("redirect:board_list"); 
+		return mav; 
 	}
 
 	@RequestMapping(value="board_update", method=RequestMethod.GET)
@@ -273,18 +273,7 @@ public class BoardController {
 	@RequestMapping(value="board_update",method = RequestMethod.POST)
 	public ModelAndView boardUpdatePro(HttpServletRequest req, 
 			@RequestParam("board_org_img") MultipartFile mf,@ModelAttribute BBBoardDTO dto, BindingResult result) {
-		//태그 문자 처리 & 공백 문자 처리& 줄바꿈 문자처리
-		String title = dto.getBoard_title();
-		String content = dto.getBoard_content();
-		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
-		title = title.replace("<", "&lt;");
-		title = title.replace(">", "&gt;");
-		// *공백문자 처리
-		title = title.replace("  ",    "&nbsp;&nbsp;");
-		// *줄바꿈 문자처리
-		content = content.replace("\n", "<br>");
-		dto.setBoard_title(title);
-		dto.setBoard_content(content);
+		System.out.println("컨트롤러 진입");
 		BBBoardDTO bdto = boardMapper.getBoard(dto.getBoard_num());
 		String star = req.getParameter("star");
 		if(star == null) {
@@ -293,14 +282,14 @@ public class BoardController {
 			dto.setBoard_score(Integer.parseInt(star));
 		}
 		//사진을 받았다면 지우고 새로운 사진을 저장
+		System.out.println("기존값 불러온 것들");
 		System.out.println("bdto_org =" + bdto.getBoard_org_img());
 		System.out.println("bdto_str = " + bdto.getBoard_str_img());
 		String board_edit_img = mf.getOriginalFilename();
-		System.out.println("board_edit = "+ board_edit_img);
 		String file = null;
-		if(bdto.getBoard_str_img() != null) {
+		if(bdto.getBoard_str_img() != null) { //1. 기존 이미지 존재 
 			//insert때 이미지 있음
-			if(board_edit_img != null) { // 이부분이 에러난다.
+			if(mf.getSize() != 0) { // -1. 새로운 이미지 존재
 				//기존 이미지가 있을때 
 				boolean existFile = amazon.existFile("bb_board", bdto.getBoard_str_img());
 				if(existFile) {
@@ -309,43 +298,51 @@ public class BoardController {
 				file = amazon.one_FileUpload("bb_board", mf);
 				dto.setBoard_org_img(board_edit_img);
 				dto.setBoard_str_img(file);
+				System.out.println("1-1로 진입 : 기존 이미지를 새로운 이미지로 변경");
 			}
-			if(board_edit_img == null || board_edit_img.trim().equals("")) {
-				//새로운 파일 없을 때
-				System.out.println("board_org = " + bdto.getBoard_org_img());
+			if(mf.getSize() == 0) {// -2. 새로운 이미지 X
+				//새로운 파일 없을 때 
+				// 이부분이 에러난다.
 				dto.setBoard_org_img(bdto.getBoard_org_img());
-				System.out.println("board_org_img ="+ dto.getBoard_org_img());
 				dto.setBoard_str_img(bdto.getBoard_str_img());			
-				System.out.println("board_str =" + dto.getBoard_str_img());
+				System.out.println("1-2로 진입 : 새로운 이미지X -> 기존 이미지로 넣어줌.");
 			}
-		} else if(bdto.getBoard_str_img() == null) {
+		} else if(bdto.getBoard_str_img() == null) {//2. 기존 이미지 X
 			//기존 이미지 없을 때
-			if(board_edit_img != null) {
+			if(mf.getSize() != 0) {// -1.새로운 이미지 O
 				//새로운 파일이 있을때
 				file = amazon.one_FileUpload("bb_board", mf);
 				dto.setBoard_str_img(file);
 				dto.setBoard_org_img(board_edit_img);
+				System.out.println("2-1로 진입 : 기존 이미지 X , 새로운 이미지 추가");
 			}
-			if(board_edit_img == null || board_edit_img.trim().equals("")) {
+			if(mf.getSize() == 0) {//-2. 새로운 이미지 X
 				dto.setBoard_org_img("0");
+				dto.setBoard_str_img(null);
 				System.out.println("사진없고 수정에도 없다 이건 org이미지 = " + dto.getBoard_org_img());
+				System.out.println("2-2로 진입 : 기존 이미지 X / 새로운 이미지 X");
 			}
 		}
-		System.out.println("title = "+ dto.getBoard_title());
+		/*System.out.println("title = "+ dto.getBoard_title());
 		System.out.println("cotent =" + dto.getBoard_content());
-		System.out.println("예전org_img = " + bdto.getBoard_org_img());
+		System.out.println("예전org_img = " + bdto.getBoard_org_img());*/
+		System.out.println("마지막 값 확인해보기!!");
 		System.out.println("org_img = " + dto.getBoard_org_img());
 		System.out.println("str_img = " + dto.getBoard_str_img());
-		System.out.println("board_score ="+ dto.getBoard_score());
+		/*System.out.println("board_score ="+ dto.getBoard_score());*/
 		int res = 0; 
 		try {
+			
 			boardMapper.updateBoard(dto);
 		} catch(NullPointerException ne) {
 			ne.printStackTrace();
 			dto.setBoard_org_img(null);
 			dto.setBoard_str_img(null);
 		}
-		return new ModelAndView("redirect:board_list");
+		mav.addObject("msg", "수정되었습니다.");
+		mav.addObject("url", "board_list");
+		mav.setViewName("user/board/message");
+		return mav;
 	}
 
 	@RequestMapping(value="comment_write", method = RequestMethod.POST)
@@ -382,6 +379,7 @@ public class BoardController {
 	public ModelAndView deleteComment(@RequestParam int comment_num) {
 		System.out.println("댓글 번호 = "+ comment_num);
 		int res = boardMapper.deleteComment(comment_num);
+		
 		mav.addObject("msg", "삭제되었습니다.");
 		mav.addObject("url", "board_list");
 		mav.setViewName("user/board/message");
