@@ -46,7 +46,7 @@
 									<c:forEach items="${listCate}" var="list">
 										<c:if test="${list.cate_state == c}">
 											<li><a
-												href="product_list?cate_city=${list.cate_city }">${list.cate_city }</a></li>
+												href="product_list?cate_state=${c }&cate_city=${list.cate_city }">${list.cate_city }</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>
