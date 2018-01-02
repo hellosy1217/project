@@ -10,9 +10,6 @@
 <script
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.SXv6EGggdTE.O/m=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCM4d_gJSwgxQZOKnWSuoyAU-mhtrg/cb=gapi.loaded_0"
 	async=""></script>
-<script
-	src="https://connect.facebook.net/signals/config/806188949420761?v=2.8.6&amp;r=stable"
-	async=""></script>
 <script async="" src="//www.google-analytics.com/analytics.js"></script>
 <script type="text/javascript">
 	function finish() {

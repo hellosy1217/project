@@ -950,3 +950,18 @@ a.PIN_1514879356565_embed_grid_ft span.PIN_1514879356565_embed_grid_ft_logo
 .PIN_1514879356565_hidden {
 	display: none !important;
 }
+
+#content .operator-review.step3 .finishButton {
+    -webkit-appearance: none;
+    background: #41c4ab;
+    height: 43px;
+    padding: 0 50px;
+    font: 14px Helvetica,Arial,sans-serif;
+    color: #fff;
+    border: 1px solid #41c4ab;
+    margin: 20px 0 50px;
+}
+
+#content .operator-review.step3 button {
+    outline: none;
+}
