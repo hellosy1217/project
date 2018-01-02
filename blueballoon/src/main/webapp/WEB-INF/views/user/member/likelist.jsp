@@ -6,13 +6,13 @@
 <title>BlueBalloon - ${getMember.name}'s Like Lists</title>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <link
-	href="${pageContext.request.contextPath}/resources/user/member/css/likelist1.css?ver=12"
+	href="${pageContext.request.contextPath}/resources/user/member/css/likelist1.css?ver=124"
 	rel="stylesheet" type="text/css" />
 </head>
 <body data-b-sale="">
 	<main> <%@include file="../../header3.jsp"%>
 	<div class="c">
-		<nav>
+		<nav class="nlist">
 			<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
 				<li itemprop="itemListElement" itemscope=""
 					itemtype="http://schema.org/ListItem"><a itemprop="item"

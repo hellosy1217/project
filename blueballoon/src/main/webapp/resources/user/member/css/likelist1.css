@@ -465,6 +465,11 @@ header ul li.profile svg {
 	height: 35px
 }
 
+header ul li.profile nav > ul.bot li {
+	padding-top: 14px !important;
+    padding-bottom: 14px !important;
+}
+
 header ul li.support .phone {
 	color: #333
 }
@@ -987,11 +992,8 @@ main .c {
 	padding: 0 12px
 }
 
-main .c, main nav {
-	width: 100%
-}
 
-main nav ul {
+main nav.nlist ul {
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -1002,22 +1004,22 @@ main nav ul {
 	line-height: 14px
 }
 
-main nav ul li {
+main nav.nlist ul li {
 	font-size: 10px;
 	display: inherit;
 	vertical-align: top
 }
 
-main nav ul a {
+main nav.nlist ul a {
 	color: #999;
 	font-size: 12px
 }
 
-main nav ul a, main nav ul a span {
+main nav.nlist ul a, main nav.nlist ul a span {
 	font-weight: 400
 }
 
-main nav ul span {
+main nav.nlist ul span {
 	font-weight: 700;
 	font-size: 12px
 }
