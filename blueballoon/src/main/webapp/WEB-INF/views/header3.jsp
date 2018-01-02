@@ -41,12 +41,12 @@
 					<ul class="top">
 						<c:forTokens items="${state}" delims="," var="c"
 							varStatus="status">
-							<li><a href="product_list?cate_state='${c}'"><span>${c}</span></a>
+							<li><a href="product_list?cate_state=${c}"><span>${c}</span></a>
 								<ul class="bot">
 									<c:forEach items="${listCate}" var="list">
 										<c:if test="${list.cate_state == c}">
 											<li><a
-												href="product_list?cate_city='${list.cate_city }'">${list.cate_city }</a></li>
+												href="product_list?cate_city=${list.cate_city }">${list.cate_city }</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>

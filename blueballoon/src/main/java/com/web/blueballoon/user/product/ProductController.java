@@ -59,8 +59,56 @@ public class ProductController {
 			member_email = null;
 		}
 
+		// 카테고리 목록
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
+
+		// 상품 목록
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		try {
+			String cate_state = ServletRequestUtils.getStringParameter(arg0, "cate_state");
+			if (cate_state != null) {
+				for (int i = listProd.size() - 1; i >= 0; i--) {
+					StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
+					if (!str.nextToken().equals(cate_state)) {
+						listProd.remove(i);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println("cate_state = null");
+		}
+
+		try {
+			String cate_city = ServletRequestUtils.getStringParameter(arg0, "cate_city");
+			if (cate_city != null) {
+				for (int i = listProd.size() - 1; i >= 0; i--) {
+					StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
+					String state = str.nextToken();
+					if (!str.nextToken().equals(cate_city)) {
+						listProd.remove(i);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println("cate_city = null");
+		}
+
+		try {
+			int prod_pick = ServletRequestUtils.getIntParameter(arg0, "prod_pick");
+			if (prod_pick != 0) {
+				for (int i = listProd.size() - 1; i >= 0; i--) {
+					if (listProd.get(i).getProd_pick() != prod_pick) {
+						listProd.remove(i);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println("prod_pick = 0");
+		}
+
 		// 총 페이지 수
-		int pageNum = ProductMapper.countList();
+		int pageNum = listProd.size();
 		if (pageNum % 9 != 0) {
 			pageNum = pageNum / 9 + 1;
 		}
@@ -93,48 +141,11 @@ public class ProductController {
 				endPage = pageNum;
 			}
 		} else {
-			endPage = 9;
+			endPage = pageNum;
 		}
 		mav.addObject("endPage", endPage);
 
-		// 카테고리 목록
-		List<BBCategoryDTO> listCate = ProductMapper.listCate();
-		mav.addObject("listCate", listCate);
-
-		// 상품 목록
-		List<BBProductDTO> listProd = ProductMapper.listProd();
-		try {
-			String cate_state = ServletRequestUtils.getStringParameter(arg0, "cate_state");
-			for (int i = 0; i < listProd.size(); i++) {
-				StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
-				String state = str.nextToken();
-				String city = str.nextToken();
-				System.out.println("cate_state: "+cate_state+", state: "+state);
-				if (!cate_state.equals(state)) {
-					listProd.remove(i);
-				}
-			}
-		} catch (NullPointerException e) {
-		}
-
-//		for(int i=0;i<listProd.size();i++) {
-//			System.out.println("cate: "+listProd.get(i).getProd_cate());
-//		}
-		try {
-			String cate_city = ServletRequestUtils.getStringParameter(arg0, "cate_city");
-			for (int i = 0; i < listProd.size(); i++) {
-				StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
-				String state = str.nextToken();
-				String city = str.nextToken();
-				if (!cate_city.equals(city)) {
-					listProd.remove(i);
-				}
-			}
-		} catch (NullPointerException e) {
-		}
-
 		mav.addObject("listProd", listProd);
-
 		mav.setViewName("user/product/list");
 
 		return mav;
@@ -167,6 +178,7 @@ public class ProductController {
 			}
 		} catch (NullPointerException e2) {
 			mav.addObject("like", "N");
+			mav.addObject("member_num", 0);
 		}
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
@@ -193,7 +205,7 @@ public class ProductController {
 			}
 			mav.addObject("url", "product_content");
 		} catch (NullPointerException e) {
-			mav.addObject("msg", "로그인을 해주세요..");
+			mav.addObject("msg", "로그인을 해주세요.");
 			mav.addObject("url", "member_login");
 		}
 		mav.setViewName("/message");
