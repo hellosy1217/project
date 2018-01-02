@@ -221,8 +221,12 @@
 							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 							<c:forTokens items="${city}" delims="," var="c"
 								varStatus="status">
-								<li><div class="th" style="background: #e74c3c"></div> <a
-									href="product_list?cate_city=${c}" id="flip${status.count}"
+								<li><c:forTokens items="${color }" var="col" delims=";"
+										varStatus="st">
+										<c:if test="${status.count eq st.count}">
+											<div class="th" style="background: ${col}"></div>
+										</c:if>
+									</c:forTokens> <a href="product_list?cate_city=${c}" id="flip${status.count}"
 									class="span" onclick="return false">${c}</a>
 									<div class="tr" id="icon${status.count}"></div>
 									<ul class="sub" id="panel${status.count}"

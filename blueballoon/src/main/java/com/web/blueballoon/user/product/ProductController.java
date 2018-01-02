@@ -276,6 +276,7 @@ public class ProductController {
 			});
 
 			mav.addObject("beginDate", book_date.get(0).getBook_date());
+			mav.addObject("endDate", book_date.get(book_date.size() - 1).getBook_date());
 			mav.addObject("book_date", book_date);
 
 			mav.setViewName("user/product/booking");

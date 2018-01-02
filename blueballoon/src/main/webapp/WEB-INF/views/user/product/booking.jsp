@@ -69,7 +69,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('bb_calendar','${beginDate}',0,5);
+						bbCalendar('bb_calendar','${beginDate}','${beginDate}','${beginDate}','${endDate}',5);
 					};</script>
 					<div id="seats">
 						<div class="content">
@@ -185,40 +185,6 @@
 							</div>
 						</div>
 					</form>
-				</div>
-				<div class="block accommodation ">
-					<div class="head">
-						<div class="point">3</div>
-						<h3>방을 선택해주세요.</h3>
-					</div>
-					<div class="room-content"></div>
-					<div class="content" data-friends="1">
-						<div class="types">
-							<c:forEach items="${listRoom}" var="room">
-								<div class="radio" data-lack="1" >
-									<input type="radio" name="accommodation" value="Twin"
-										id="accommodation-0">
-									<div class="check"></div>
-									<div class="label" for="accommodation-0">
-										<div class="descr">
-											<b><div class="beds ">
-													<c:forTokens var="person" varStatus="pstatus"
-														items="${room.room_person}" delims=",">
-														<c:if test="${pstatus.count==2}">
-															<span>✕</span>${person}
-													</c:if>
-													</c:forTokens>
-												</div>
-												<div>${room.room_name}</div></b> ${room.room_content }
-										</div>
-										<div class="pr">
-											<b>+추가금액</b>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
 				</div>
 				<c:if test="${member_num eq 0}">
 					<div class="block price-main ">

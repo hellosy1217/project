@@ -1,5 +1,5 @@
-// 달력
-function bbCalendar(id, date, begin, days) {
+// 달력 (달력 들어갈 위치, 선택된 날짜, 선택된 월, 시작일, 종료일, 기간)
+function bbCalendar(id, date, select, begin, end, days) {
 	var bbCalendar = document.getElementById(id);
 	var current = date;
 
@@ -19,17 +19,33 @@ function bbCalendar(id, date, begin, days) {
 	date.setDate(1);
 	var currentDay = date.getDay();
 
-	if (begin == 0) {
-		begin = currentYear + '-';
+	if (select == 0) {
+		select = currentYear + '-';
 		if (currentMonth < 10) {
-			begin += '0';
+			select += '0';
 		}
-		begin += currentMonth + '-';
+		select += currentMonth + '-';
 		if (currentDate < 10) {
-			begin += '0';
+			select += '0';
 		}
-		begin += currentDate;
+		select += currentDate;
 	}
+
+	if (typeof (select) !== 'undefined') {
+		select = select.split('-');
+		select[1] = select[1] - 1;
+		select = new Date(select[0], select[1], select[2]);
+	}
+
+	var selectYear = select.getFullYear();
+	var selectMonth = select.getMonth() + 1;
+	var selectDate = select.getDate();
+
+	var selectDay = selectYear + '-';
+	if (selectMonth < 10) {
+		selectDay += '0';
+	}
+	selectDay += (selectMonth + '-01');
 
 	if (typeof (begin) !== 'undefined') {
 		begin = begin.split('-');
@@ -38,13 +54,8 @@ function bbCalendar(id, date, begin, days) {
 	}
 
 	var beginYear = begin.getFullYear();
-	// 년도를 구함
-
 	var beginMonth = begin.getMonth() + 1;
-	// 연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
-
 	var beginDate = begin.getDate();
-	// 오늘 일자.
 
 	var beginDay = beginYear + '-';
 	if (beginMonth < 10) {
@@ -52,71 +63,99 @@ function bbCalendar(id, date, begin, days) {
 	}
 	beginDay += (beginMonth + '-01');
 
+	if (typeof (end) !== 'undefined') {
+		end = end.split('-');
+		end[1] = end[1] - 1;
+		end = new Date(end[0], end[1], end[2]);
+	}
+
+	var endYear = end.getFullYear();
+	var endMonth = end.getMonth() + 1;
+	var endDate = end.getDate();
+
+	var endDay = endYear + '-';
+	if (endMonth < 10) {
+		endDay += '0';
+	}
+	endDay += (endMonth + '-01');
+
 	var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
 	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 	if ((currentYear % 4 === 0 && currentYear % 100 !== 0)
 			|| currentYear % 400 === 0)
 		lastDate[1] = 29;
-	// 각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일
-	// 임.
+	// 각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일임.
 
 	var currentLastDate = lastDate[currentMonth - 1];
 	var week = Math.ceil((currentDay + currentLastDate) / 7);
 	// 총 몇 주인지 구함.
 
-	if (beginMonth != 1) {
-		var prevDate = beginYear + '-';
-		if (beginMonth < 11) {
+	if (selectMonth != 1) {
+		var prevDate = selectYear + '-';
+		if (selectMonth < 11) {
 			prevDate += '0';
 		}
-		prevDate += (beginMonth - 1);
+		prevDate += (selectMonth - 1);
 		prevDate += '-01';
 	} else
-		var prevDate = (beginYear - 1) + '-12-01';
-	// 만약 이번달이 1월이라면 1년 전 12월로 출력.
+		var prevDate = (selectYear - 1) + '-12-01';
 
-	if (beginMonth != 12) {
-		var nextDate = beginYear + '-';
-		if (beginMonth < 9) {
+	if (selectMonth != 12) {
+		var nextDate = selectYear + '-';
+		if (selectMonth < 9) {
 			nextDate += '0';
 		}
-		nextDate += (beginMonth + 1);
+		nextDate += (selectMonth + 1);
 		nextDate += '-01';
 	} else {
-		var nextDate = (beginYear + 1) + '-01-01';
+		var nextDate = (selectYear + 1) + '-01-01';
 	}
-	// 만약 이번달이 12월이라면 1년 후 1월로 출력.
 
 	if (currentMonth < 10)
 		var currentMonth = '0' + currentMonth;
-	// 10월 이하라면 앞에 0을 붙여준다.
 
 	var calendar = '';
 
 	calendar += '<div class="head"><div class="point">1</div><h3>날짜를 선택해주세요.</h3><b class="date date-start">';
 	calendar += currentYear + '년 ' + currentMonth + '월 ' + currentDate
 			+ '일</b></div>';
-	calendar += '<div class="months"><div class="right-arrow" onclick="bbCalendar(\''
+	calendar += '<div class="months"><div class="right-arrow" id="right-arrow" onclick="bbCalendar(\''
 			+ id
 			+ '\', \''
 			+ current
 			+ '\', \''
 			+ nextDate
 			+ '\', \''
-			+ days
-			+ '\')"></div><div class="left-arrow inactive" onclick="bbCalendar(\''
-			+ id
-			+ '\', \''
-			+ current
-			+ '\', \''
-			+ prevDate
-			+ '\', \''
-			+ days
-			+ '\')"></div><div class="content"><ul style="width: 1016.6666666666667px; margin-left: 0px;">';
+			+ beginDay + '\', \'' + endDay + '\', \'' + days + '\')"></div>';
 
+	var by = beginYear;
+	var bm = beginMonth * 1 + 5;
+	if (bm > 12) {
+		bm -= 12;
+		by++;
+	}
+	if ((selectYear < by && selectMonth <= bm * 1 + 12)
+			|| (selectYear == by && selectMonth <= bm)) {
+		calendar += '<div class="left-arrow inactive" id="left-arrow"></div>';
+	} else {
+		calendar += '<div class="left-arrow" id="left-arrow" onclick="bbCalendar(\''
+				+ id
+				+ '\', \''
+				+ current
+				+ '\', \''
+				+ prevDate
+				+ '\',\''
+				+ beginDay
+				+ '\', \''
+				+ endDay
+				+ '\', \''
+				+ days
+				+ '\')"></div>';
+	}
+	calendar += '<div class="content"><ul style="width: 1016.6666666666667px; margin-left: 0px;">';
 	for (var i = 0; i < 6; i++) {
-		var cal_month = beginMonth + i;
-		var cal_year = beginYear;
+		var cal_month = selectMonth + i;
+		var cal_year = selectYear;
 		if (cal_month > 12) {
 			cal_month -= 12;
 			cal_year++;
@@ -134,12 +173,14 @@ function bbCalendar(id, date, begin, days) {
 					+ cal_year + '년 ' + cal_month + '월</div></li>'
 		} else {
 			calendar += '<li id="month'
-					+ (beginMonth + i)
+					+ (selectMonth + i)
 					+ '" class="border" style="width: 101.66666666666667px;" onclick="bbCalendar(\''
-					+ id + '\', \'' + cal_date + '\', \'' + beginDay + '\', \''
-					+ days + '\')"><div><span></span>' + cal_year + '년 '
-					+ cal_month + '월</div></li>'
+					+ id + '\', \'' + cal_date + '\', \'' + selectDay
+					+ '\', \'' + beginDay + '\',\'' + endDay + '\', \'' + days
+					+ '\')"><div><span></span>' + cal_year + '년 ' + cal_month
+					+ '월</div></li>'
 		}
+
 	}
 	calendar += '</ul></div></div>';
 	calendar += '<div class="dates"><table><tbody>';
@@ -185,8 +226,9 @@ function bbCalendar(id, date, begin, days) {
 					calendar += '<td id="day'
 							+ dateNum
 							+ '" class="all empty onway next" onclick="bbCalendar(\''
-							+ id + '\', \'' + clickDate + '\', \'' + beginDay
-							+ '\', \'' + days
+							+ id + '\', \'' + clickDate + '\', \'' + selectDay
+							+ '\',\'' + beginDay + '\',\'' + endDay + '\', \''
+							+ days
 							+ '\')"><div class="container"><div class="day">'
 							+ dateNum
 							+ '</div><div class="next"></div></div></td>';
@@ -194,8 +236,9 @@ function bbCalendar(id, date, begin, days) {
 					calendar += '<td id="day'
 							+ dateNum
 							+ '" class="all empty onway" onclick="bbCalendar(\''
-							+ id + '\', \'' + clickDate + '\', \'' + beginDay
-							+ '\', \'' + days
+							+ id + '\', \'' + clickDate + '\', \'' + selectDay
+							+ '\', \'' + beginDay + '\',\'' + endDay + '\',\''
+							+ days
 							+ '\')"><div class="container"><div class="day">'
 							+ dateNum
 							+ '</div><div class="next"></div></div></td>';
@@ -213,8 +256,8 @@ function bbCalendar(id, date, begin, days) {
 
 				calendar += '<td id="day' + dateNum
 						+ '" class="all possible" onclick="bbCalendar(\'' + id
-						+ '\', \'' + clickDate + '\', \'' + beginDay + '\', \''
-						+ days
+						+ '\', \'' + clickDate + '\', \'' + selectDay + '\',\''
+						+ beginDay + '\',\'' + endDay + '\', \'' + days
 						+ '\')"><div class="container"><div class="day">'
 						+ dateNum + '</div><div class="next"></div></div></td>';
 			}
