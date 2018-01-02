@@ -19,18 +19,6 @@ function bbCalendar(id, date, select, begin, end, days) {
 	date.setDate(1);
 	var currentDay = date.getDay();
 
-	if (select == 0) {
-		select = currentYear + '-';
-		if (currentMonth < 10) {
-			select += '0';
-		}
-		select += currentMonth + '-';
-		if (currentDate < 10) {
-			select += '0';
-		}
-		select += currentDate;
-	}
-
 	if (typeof (select) !== 'undefined') {
 		select = select.split('-');
 		select[1] = select[1] - 1;

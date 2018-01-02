@@ -161,13 +161,13 @@
 		<h2>원하는 모든 것과 더 많은 것</h2>
 		<div class="grid" style="margin-left: -1434px;">
 			<div class="l">
-				<a href="product_content"><img class="lazy"
+				<a href="product_content?prod_num=208"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/5.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/5.jpg"
 					width="189" height="284">
 					<div class="ls">
 						호미곶<span>경상북도 포항시</span>
-					</div></a><a href="product_content"><img class="lazy"
+					</div></a><a href="product_content?prod_num=210"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/6.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/6.jpg"
 					width="189" height="189">
@@ -188,7 +188,7 @@
 					width="189" height="189">
 					<div class="ls">
 						도깨비 촬영지<span>강원도 강릉시 주문읍</span>
-					</div></a><a href="product_content"><img class="lazy"
+					</div></a><a href="product_content?prod_num=211"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/8.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/8.jpg"
 					width="189" height="189">
@@ -199,11 +199,11 @@
 					</div></a>
 			</div>
 			<div class="l">
-				<a href="product_content"><img class="lazy"
+				<a href="product_content?prod_num=213"><img class="lazy"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/2.jpg"
 					width="284" height="483">
 					<div class="ls">
-						세계불꽃축제<span>서울 여의도</span>
+						세계불꽃축제<span>서울 여의도 한강 공원</span>
 					</div></a><a href="product_content?prod_num=101"><img class="lazy"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/1.jpg"
 					width="284" height="189">
@@ -241,7 +241,7 @@
 					width="189" height="284">
 					<div class="ls">
 						빈대떡<span>광장시장</span>
-					</div></a><a href="product_content"><img class="lazy"
+					</div></a><a href="product_content?prod_num=201"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/27.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/27.jpg"
 					width="189" height="189">
@@ -267,7 +267,7 @@
 					</div></a>
 			</div>
 			<div class="l">
-				<a href="product_content"><img class=""
+				<a href="product_content?prod_num=202"><img class=""
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/21.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/21.jpg"
 					width="189" height="284">
@@ -279,7 +279,7 @@
 					width="189" height="189">
 					<div class="ls">
 						동대문디자인플라자<span>서울특별시 중구</span>
-					</div></a><a href="product_content"><img class=""
+					</div></a><a href="product_content?prod_num=204"><img class=""
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/22.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/22.jpg"
 					width="189" height="189">
@@ -290,13 +290,13 @@
 			<div class="l">
 				<a href="product_content" class="e1"><div class="w189 h189">
 						관광지<span>문화 관련 상품 수</span>
-					</div></a><a href="product_content"><img class=""
+					</div></a><a href="product_content?prod_num=205"><img class=""
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/14.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/14.jpg"
 					width="189" height="189">
 					<div class="ls">
 						안압지<span>경상북도 경주시</span>
-					</div></a><a href="product_content"><img class=""
+					</div></a><a href="product_content?prod_num=205"><img class=""
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/15.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/15.jpg"
 					width="189" height="284">
@@ -337,7 +337,7 @@
 					</div></a>
 			</div>
 			<div class="l">
-				<a href="product_content"><img class=""
+				<a href="product_content?prod_num=207"><img class=""
 					src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/11.jpg"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/mainimage/11.jpg"
 					width="284" height="284">

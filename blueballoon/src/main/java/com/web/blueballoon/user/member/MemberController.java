@@ -31,7 +31,7 @@ public class MemberController {
 	private AmazonFileUtils amazonUtil;
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 	private ModelAndView mav = new ModelAndView();
 
 	@RequestMapping(value = "member_login", method = RequestMethod.GET)
@@ -53,13 +53,15 @@ public class MemberController {
 			mav.setViewName("user/member/message");
 		} else { // 로그인 성공
 			// main.jsp로 이동
-			session = req.getSession();
-			session.setAttribute("member_num", dto.getMember_num());
-			session.setAttribute("member_email", dto.getMember_email());
-			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
-			mav.addObject("msg", "로그인 성공! 메인페이지로 이동합니다.");
-			mav.addObject("url","main");
-			mav.setViewName("user/member/message");
+			if (dto.getMember_num() == 1) {
+				mav.setViewName("redirect:/admin_index");
+			} else {
+				session = req.getSession();
+				session.setAttribute("member_num", dto.getMember_num());
+				session.setAttribute("member_email", dto.getMember_email());
+				session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
+				mav.setViewName("main");
+			}
 		}
 		return mav;
 	}
@@ -103,7 +105,7 @@ public class MemberController {
 			return mav;
 		}
 		checkUser = memberMapper.getMember(member_email);
-		if(checkUser.getMember_email() ==null) {
+		if (checkUser.getMember_email() == null) {
 			mav.addObject("msg", "계정이 존재하지 않습니다.");
 			mav.addObject("url", "member_find");
 			mav.setViewName("user/member/message");
@@ -111,37 +113,37 @@ public class MemberController {
 		}
 		String newPasswd = UUID.randomUUID().toString();
 		checkUser.setMember_passwd(newPasswd.substring(0, 19));
-		
+
 		System.out.println(checkUser.getMember_passwd());
-		
+
 		int res = memberMapper.changePasswd(checkUser);
-		if(res < 0) {
+		if (res < 0) {
 			mav.addObject("msg", "DB 문제 발생 관리자에게 문의하세요. (blueballoonteam@gmail.com)");
 			mav.addObject("url", "member_find");
 			mav.setViewName("user/member/message");
 			return mav;
 		}
-		
+
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
-		    MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-		    Date today = new Date();
-		    System.out.println(today);
-		    String setfrom = "blueballoonteam@gmail.com";
-		    String title = "BlueBalloon에서 고객님의 요청에 따른 메일 수신드립니다.(비번찾기 관련)";
-		    String content = "고객님의 요청으로 새로운 비밀번호를 전송해 드립니다. \n "+"새로운 비밀 번호 : "+checkUser.getMember_passwd()+
-		    		"\n 정상적으로 BlueBalloon 서비스를 이용하실 수 있습니다. \n 감사합니다. \n"+today+"Blue Balloon 드림";
-		    messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
-		    messageHelper.setTo(member_email);     // 받는사람 이메일
-		    messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-		    messageHelper.setText(content);  // 메일 내용
-		    
-		    mailSender.send(message);
-		    
-		    mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
-			mav.addObject("url","member_login");
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			Date today = new Date();
+			System.out.println(today);
+			String setfrom = "blueballoonteam@gmail.com";
+			String title = "BlueBalloon에서 고객님의 요청에 따른 메일 수신드립니다.(비번찾기 관련)";
+			String content = "고객님의 요청으로 새로운 비밀번호를 전송해 드립니다. \n " + "새로운 비밀 번호 : " + checkUser.getMember_passwd()
+					+ "\n 정상적으로 BlueBalloon 서비스를 이용하실 수 있습니다. \n 감사합니다. \n" + today + "Blue Balloon 드림";
+			messageHelper.setFrom(setfrom); // 보내는사람 생략하거나 하면 정상작동을 안함
+			messageHelper.setTo(member_email); // 받는사람 이메일
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+			messageHelper.setText(content); // 메일 내용
+
+			mailSender.send(message);
+
+			mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
+			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/message");
-		    
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
