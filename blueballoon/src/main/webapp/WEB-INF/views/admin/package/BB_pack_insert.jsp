@@ -45,8 +45,11 @@
 						$("#fromDate").datepicker("option", "maxDate", selectedDate);
 					}
 				});
-		//패키지 시작일
-		//$('.datepicker').removeClass('hasDatepicker').datepicker(
+		
+		$('body').on('focus',".datepicker", function(){
+		    $(this).datepicker();
+		});
+		
 		$('.datepicker').datepicker(
 				{
 					dateFormat : "yy-mm-dd",
@@ -63,6 +66,8 @@
 						$(".datepicker").datepicker("option", "maxDate", selectedDate);
 					}
 				});
+		//패키지 시작일
+		//$('.datepicker').removeClass('hasDatepicker').datepicker(
 	});
 </script>
 <script type="text/javascript">
@@ -74,6 +79,7 @@ function addInput(inputNo) {
 	}
 	inputBox.innerHTML = strInput; 
 	}
+	
 function addInputTimes(inputNo) {
 	var strInput = "";
 	inputStart.innerHTML = "";
@@ -81,8 +87,18 @@ function addInputTimes(inputNo) {
 	  strInput += "<input type='text' name='pack_start_date' class='datepicker'><br>";
 	}
 	inputStart.innerHTML = strInput; 
+	 $(document).find("input[id=datepicker]").removeClass('hasDatepicker').datepicker();     
 	}
 </script>
+<script type="text/javascript">
+	function addRow(inputNo) {
+		for (var i = 0; i < inputNo ; i++){
+			  $(".datepicker").append("<input type='text' name='pack_start_date' class='datepicker' value=''><br>");
+			  $(document).find("input[id=datepicker]").removeClass('hasDatepicker').datepicker();   
+			  $('.datepicker').each(function(){ $(this).datepicker(); });  
+				}
+		}
+	</script>
 <script type="text/javascript">
 		function check(){
 			if (f.pack_title.value==""){
@@ -123,11 +139,6 @@ function addInputTimes(inputNo) {
 			}
 			return true
 		}
-	</script>
-	<script type="text/javascript">
-	function makeToStart(){
-		
-	}
 	</script>
 <div align="center">
 	<form name="f" action="BB_pack_insert" method="post" onsubmit="return check()" enctype="multipart/form-data">
@@ -172,7 +183,7 @@ function addInputTimes(inputNo) {
 			<tr>
 				<th>패키지 일수</th>
 				<td>
-				<select name="pack_days" id="mySelectMenu" onchange="addInput(this.value);">
+				<select name="pack_days" id="mySelectMenu" onchange="addRow(this.value);">
 					<c:forEach var="per" begin="1" end="20" step="1">
 						<option value="${per}">${per}일</option>
 					</c:forEach>
