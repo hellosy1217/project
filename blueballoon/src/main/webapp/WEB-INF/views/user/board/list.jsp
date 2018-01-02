@@ -74,8 +74,6 @@
 			</c:forEach>
 		</div>
 		<div class="content faq" data-total="16" data-onpage="10">
-				<a class="but r write" href="board_write?prod_num=1" 
-					target="_blank" rel="nofollow">리뷰 작성하기</a>
 				<ul>
 			<h3>게시판 부분</h3>
 			<!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
