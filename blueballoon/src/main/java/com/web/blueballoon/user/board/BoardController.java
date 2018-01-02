@@ -90,7 +90,7 @@ public class BoardController {
 			return mav;
 		}
 		mav.addObject("member_email", memberEmail);
-		mav.setViewName("user/board/writeForm");
+		mav.setViewName("user/board/write");
 		return mav;
 	}
 
