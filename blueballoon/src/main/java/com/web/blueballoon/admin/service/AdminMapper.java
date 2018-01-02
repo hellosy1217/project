@@ -9,6 +9,7 @@ import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBPackageDTO;
 
 @Service
 public class AdminMapper {
@@ -109,6 +110,9 @@ public class AdminMapper {
 	}
 	public int editBBRoom(BBRoomDTO dto) {
 		return sqlSession.update("editBBRoom",dto);
+	}
+	public int insertBBPackage(BBPackageDTO dto) {
+		return sqlSession.insert("insertBBPackage",dto);
 	}
 
 }
