@@ -51,7 +51,7 @@ public class MemberController {
 			mav.addObject("msg", "아이디/비밀번호를 확인해주세요.");
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/message");
-		} else { // 로그인 성공
+		} else { // 로그인 성 공 
 			// main.jsp로 이동
 			if (dto.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
