@@ -45,11 +45,6 @@
 						$("#fromDate").datepicker("option", "maxDate", selectedDate);
 					}
 				});
-		
-		$('body').on('focus',".datepicker", function(){
-		    $(this).datepicker();
-		});
-		
 		$('.datepicker').datepicker(
 				{
 					dateFormat : "yy-mm-dd",
@@ -66,6 +61,19 @@
 						$(".datepicker").datepicker("option", "maxDate", selectedDate);
 					}
 				});
+		
+		$('body').on('focus',".datepicker", function(){
+		    $('.datepicker').datepicker({
+		    	dateFormat : "yy-mm-dd",
+		    	monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
+					"7월", "8월", "9월", "10월", "11월", "12월" ],
+			dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+			dateFormat : "yy-mm-dd",
+			changeMonth : true,
+			minDate : 0,
+			maxDate : 365,
+		    });
+		});
 		//패키지 시작일
 		//$('.datepicker').removeClass('hasDatepicker').datepicker(
 	});
@@ -183,7 +191,7 @@ function addInputTimes(inputNo) {
 			<tr>
 				<th>패키지 일수</th>
 				<td>
-				<select name="pack_days" id="mySelectMenu" onchange="addRow(this.value);">
+				<select name="pack_days" id="mySelectMenu" onchange="addInput(this.value);">
 					<c:forEach var="per" begin="1" end="20" step="1">
 						<option value="${per}">${per}일</option>
 					</c:forEach>

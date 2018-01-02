@@ -74,7 +74,10 @@
 		room_offer = #{room_offer, jdbcType=NUMERIC} where room_num = #{room_num, jdbcType=NUMERIC}
 	</update>
 	<insert id="insertBBPackage" parameterType="BBPackageDTO">
-		insert into bb_package value (bb_pack_seq.nextval, #{pack_title, jdbcType=VARCHAR}, #{pack_email, jdbcType=VARCHAR}, #{pack_phone, jdbcType=VARCHAR},
-		#{pack_price, jdbcType=NUMERIC}, #{pack_org_img, jdbcType=VARCHAR}, #{pack_str_img, jdbcType=VARCHAR}, #{pack_period, jdbcType=VARCHAR}, #{pack_days, jdbcType=NUMERIC}, #{pack_start_date, jdbcType=VARCHAR}, #{pack_content, jdbcType=VARCHAR})
+		insert into bb_package values(bb_pack_seq.nextval, #{pack_title, jdbcType=VARCHAR}, #{pack_email, jdbcType=VARCHAR}, #{pack_phone, jdbcType=VARCHAR},#{pack_price, jdbcType=NUMERIC}, #{pack_org_img, jdbcType=VARCHAR}, 
+		#{pack_str_img, jdbcType=VARCHAR}, #{pack_period, jdbcType=VARCHAR}, #{pack_days, jdbcType=NUMERIC}, #{pack_start_date, jdbcType=VARCHAR}, #{pack_content, jdbcType=VARCHAR}, #{pack_place, jdbcType=VARCHAR})
 	</insert>
+	<select id="listBBPackage" resultType="BBPackageDTO">
+		select * from bb_package
+	</select>
 </mapper>

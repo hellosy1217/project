@@ -114,5 +114,8 @@ public class AdminMapper {
 	public int insertBBPackage(BBPackageDTO dto) {
 		return sqlSession.insert("insertBBPackage",dto);
 	}
+	public List<BBPackageDTO> listBBPackage() {
+		return sqlSession.selectList("listBBPackage");
+	}
 
 }
