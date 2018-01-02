@@ -132,11 +132,11 @@ public class AdminProductController {
 		boolean session = false; // 쿼리를 다르게 보내기 위한 구분.(이미지쿼리 손대지 X)
 		// 비교를 위한 dto 값 불러오기.
 		BBProductDTO editDTO = adminMapper.getBBProduct(dto.getProd_num());
-		String prod_edit_img = mf.getOriginalFilename();
-		System.out.println("먼저 찍어보자 !! edit File : "+prod_edit_img);
+		int check = (int) mf.getSize();
+		System.out.println("먼저 찍어보자 !! File size : "+check);
 		String file = null;
 		if (editDTO.getProd_str_img() != null) {// 1. 기존 이지가 있을때 (검색 O)
-			if (prod_edit_img != null) {// -1. 새로운 파일이 있을 때.
+			if (check > 0) {// -1. 새로운 파일이 있을 때.
 				boolean existFile = amazon.existFile("bb_product" + editDTO.getProd_pick(), editDTO.getProd_str_img());
 				if(existFile) {
 					amazon.deleteFile("bb_product" + editDTO.getProd_pick(), editDTO.getProd_str_img());
@@ -144,10 +144,10 @@ public class AdminProductController {
 					System.err.println("기존 파일 존재하지 않음. DB확인 요망");
 				}
 				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
-				dto.setProd_org_img(prod_edit_img);
+				dto.setProd_org_img(mf.getOriginalFilename());
 				dto.setProd_str_img(file);
 				System.out.println("1-1. 기존 이미지 O, 새로운 이미지 O");
-			} else if (prod_edit_img == null || prod_edit_img.trim().equals("")) {// -2. 새로운 파일 없을 때.
+			} else if (check <= 0) {// -2. 새로운 파일 없을 때.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
 				System.out.println("1-2. 기존 이미지 O , 새로운 이미지 X");
@@ -156,12 +156,12 @@ public class AdminProductController {
 				session = true;
 			}
 		} else if (editDTO.getProd_str_img() == null) {// 2. 기존 이미지 없을 때 (검색 X) 그럴일 거의 없지만. 혹시라도.
-			if (prod_edit_img != null) { // -1. 새로운 파일 있을 때.
+			if (check > 0) { // -1. 새로운 파일 있을 때.
 				file = amazon.one_FileUpload("bb_product" + dto.getProd_pick(), mf);
-				dto.setProd_org_img(prod_edit_img);
+				dto.setProd_org_img(mf.getOriginalFilename());
 				dto.setProd_str_img(file);
 				System.out.println("2-1. 접근. 기존 이미지 X, 새로운 이미지 O");
-			} else if (prod_edit_img == null || prod_edit_img.trim().equals("")) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
+			} else if (check <= 0) { // -2. 새로운 파일 없을 때. 존재하면 안되지만 그럴 경우.
 				dto.setProd_org_img(editDTO.getProd_org_img());
 				dto.setProd_str_img(editDTO.getProd_str_img());
 				System.out.println("2-2. 접근 . 기존 이미지 X, 새로운 이미지 X");

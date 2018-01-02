@@ -3,15 +3,11 @@
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <h2 align="center">패키지 목록</h2>
-<div align ="right">
-<table border="0">
-		<tr>
-			<th align="right"><a href="BB_pack_insert">패키지 상품 추가</a></th>
-		</tr>
-	</table>
-</div>
 <div align="center">
 	<table border="1" width="700">
+		<tr>
+			<th colspan="8" align="right"><a href="BB_pack_insert">패키지 상품 추가</a></th>
+		</tr>
 		<tr>
 			<th>번호</th>
 			<th>패키지 타이틀</th>
@@ -34,7 +30,7 @@
 			<td align="center">${dto.pack_price}</td>
 			<td align="center">${dto.pack_period}</td>
 			<td align="center">${dto.pack_days}</td>
-			<td><a href="BB_pack_edit?pack_num=${dto.pack_num}">수정</a> | 
+			<td align="center"><a href="BB_pack_edit?pack_num=${dto.pack_num}">수정</a> | 
 			<a href="BB_pack_delete?pack_num=${dto.pack_num}">삭제</a></td>
 		</tr>
 		</c:forEach>	

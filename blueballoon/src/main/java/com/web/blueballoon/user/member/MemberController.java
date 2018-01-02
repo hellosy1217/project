@@ -105,12 +105,16 @@ public class MemberController {
 			return mav;
 		}
 		checkUser = memberMapper.getMember(member_email);
-		if (checkUser.getMember_email() == null) {
+		try {
+			if (checkUser.getMember_email() == null) {
+			}
+		}catch (NullPointerException ne) {
 			mav.addObject("msg", "계정이 존재하지 않습니다.");
 			mav.addObject("url", "member_find");
 			mav.setViewName("user/member/message");
 			return mav;
 		}
+		
 		String newPasswd = UUID.randomUUID().toString();
 		checkUser.setMember_passwd(newPasswd.substring(0, 19));
 
