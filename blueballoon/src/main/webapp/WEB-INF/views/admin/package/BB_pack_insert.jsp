@@ -8,7 +8,6 @@
 <script type="text/javascript">
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
-
 		//시작일
 		$('#fromDate').datepicker(
 				{
@@ -20,12 +19,11 @@
 					dateFormat : "yy-mm-dd", // 날짜의 형식
 					changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
 					minDate : 0,
-					maxDate : 180, // 0 : 오늘 이후 날짜 선택 불가 : 최대 선택 가능한 날짜.
+					maxDate : 365, // 0 : 오늘 이후 날짜 선택 불가 : 최대 선택 가능한 날짜.
 					onClose : function(selectedDate) {
 						// 시작일(fromDate) datepicker가 닫힐때
 						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#toDate").datepicker("option", "minDate",
-								selectedDate);
+						$("#toDate").datepicker("option", "minDate", selectedDate);
 					}
 				});
 
@@ -38,50 +36,52 @@
 					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 					dateFormat : "yy-mm-dd",
 					changeMonth : true,
+					mode: 'multiple',
 					minDate : 0,
-					maxDate : 180, // 오늘 이후 날짜 선택 불가
+					maxDate : 365, // 오늘 이후 날짜 선택 불가
 					onClose : function(selectedDate) {
 						// 종료일(toDate) datepicker가 닫힐때
 						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-						$("#fromDate").datepicker("option", "maxDate",
-								selectedDate);
+						$("#fromDate").datepicker("option", "maxDate", selectedDate);
+					}
+				});
+		//패키지 시작일
+		//$('.datepicker').removeClass('hasDatepicker').datepicker(
+		$('.datepicker').datepicker(
+				{
+					dateFormat : "yy-mm-dd",
+					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
+							"7월", "8월", "9월", "10월", "11월", "12월" ],
+					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+					dateFormat : "yy-mm-dd",
+					changeMonth : true,
+					minDate : 0,
+					maxDate : 365, // 오늘 이후 날짜 선택 불가
+					onClose : function(selectedDate) {
+						// 종료일(toDate) datepicker가 닫힐때
+						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+						$(".datepicker").datepicker("option", "maxDate", selectedDate);
 					}
 				});
 	});
 </script>
-<script>
-function replaceElement(){
-	var select=document.getElementById('mySelectMenu');
-	var chosenoption=select.options[select.selectedIndex];
-	var oChild= document.getElementsByTagName('input');
-	var br1= document.getElementsByTagName('br');
-	var brLeng=br1.length;
-
-	if (brLeng - chosenoption.value > 0) {
- 		var temp = brLeng - chosenoption.value;
- 		alert(temp);
- 		for(var i=0; i<temp; i++){
-  		alert("박스삭제" + i);
-  		myform.removeChild(oChild[0]);
-  		alert("줄바꿈삭제" + i);
-  		myform.removeChild(br1[0]);
- 		}		
+<script type="text/javascript">
+function addInput(inputNo) {
+	var strInput = "";
+	inputBox.innerHTML = "";
+	for (var i=1; i <= inputNo; i++) {
+	  strInput += "<textarea name='pack_content'+i rows='6' cols='100'></textarea>&nbsp;&nbsp;";
 	}
-
- 	if (brLeng - chosenoption.value < 0) {
- 		var temp = -(brLeng - chosenoption.value);
-		 for(var i=0; i<temp; i++){
- 		 	alert("줄바꿈" + i);
-  			var br2 = document.createElement('br');
-  			myform.appendChild(br2);
-  			alert("박스추가" + i);
-  			var oNewChild=document.createElement('input');
-  			oNewChild.setAttribute("type", "text");
-  			oNewChild.setAttribute("size", "6");
-  			myform.appendChild(oNewChild);
- 			}
-		}
-}
+	inputBox.innerHTML = strInput; 
+	}
+function addInputTimes(inputNo) {
+	var strInput = "";
+	inputStart.innerHTML = "";
+	for (var i=1; i <= inputNo; i++) {
+	  strInput += "<input type='text' name='pack_start_date' class='datepicker'><br>";
+	}
+	inputStart.innerHTML = strInput; 
+	}
 </script>
 <script type="text/javascript">
 		function check(){
@@ -124,55 +124,67 @@ function replaceElement(){
 			return true
 		}
 	</script>
+	<script type="text/javascript">
+	function makeToStart(){
+		
+	}
+	</script>
 <div align="center">
 	<form name="f" action="BB_pack_insert" method="post" onsubmit="return check()" enctype="multipart/form-data">
-		<table width="800">
+		<table>
 			<caption>패키지 상품 등록</caption>
 			<tr>
-				<th width="10%">패키지 이름</th>
-				<td><input type="text" name="pack_title"
-					placeholder="ex.맛깔나는 서울맛집투어 "></td>
+				<th>패키지 이름</th>
+				<td><input type="text" name="pack_title" placeholder="ex.맛깔나는 서울맛집투어 "></td>
+				<th>패키지 지역</th>
+				<td><input type="text" name="pack_place" placeholder="ex.서울 남서지역 (큰 지역 개념 )"></td>
 			</tr>
 			<tr>
-				<th width="10%">담당 이메일</th>
+				<th>담당 이메일</th>
 				<td><input type="email" name="pack_email"></td>
-			</tr>
-			<tr>
-				<th width="10%">담당 전화</th>
+				<th>담당 전화</th>
 				<td><input type="text" name="pack_phone"
 					placeholder="담당자 번호 입력해주세요."></td>
 			</tr>
 			<tr>
-				<th width="10%">패키지 이미지</th>
+				<th>패키지 이미지</th>
 				<td><input type="file" name="pack_org_img"></td>
-			</tr>
-			<tr>
-				<th width="10%">패키지 가격</th>
+				<th>패키지 가격</th>
 				<td><input type="text" name="pack_price"></td>
 			</tr>
 			<tr>
-				<th>패키지 기간</th>
+				<th>패키지 시작 날짜</th>
 				<td><input type="text" name="pack_period" id="fromDate"></td>
+				<th>패키지 끝 날짜</th>
 				<td><input type="text" name="pack_period" id="toDate"></td>
+			</tr>
+			<tr>
+				<th>패키지 출발 횟수</th>
+				<td>
+				<select id="times" onchange="addInputTimes(this.value);">
+					<c:forEach var="per" begin="1" end="10" step="1">
+						<option value="${per}">${per}회</option>
+					</c:forEach>
+				</select></td>
+				<th>패키지 출발일</th>
+				<td id="inputStart"><input type="text" name="pack_period" class="datepicker"><br></td>
 			</tr>
 			<tr>
 				<th>패키지 일수</th>
 				<td>
-				<select name="pack_days" id="mySelectMenu" onchange="replaceElement()">
-						<c:forEach var="per" begin="1" end="20" step="1">
-							<option value="${per}">${per}일</option>
-						</c:forEach>
+				<select name="pack_days" id="mySelectMenu" onchange="addInput(this.value);">
+					<c:forEach var="per" begin="1" end="20" step="1">
+						<option value="${per}">${per}일</option>
+					</c:forEach>
 				</select></td>
 			</tr>
+			<tr><th colspan="2">일차 대로 패키지 설명을 작성해 주세요.</th></tr>
 			<tr>
 				<th width=15%>패키지 설명</th>
-				<td><textarea name="pack_content" rows="6" cols="100"></textarea></td>
+				<td height="30" id="inputBox"><textarea name="pack_content" rows="6" cols="100"></textarea></td>
 			</tr>
 			<tr>
-				<th width="10%">패키지 구성 요소</th>
-				<td><input type="text" id="packagePick" name="pack_config"></td>
-				<td colspan="2" align="center"><input type="submit" value="등록"> <input type="reset" value="취소"></td>
-			</tr>
+			<td colspan="2" align="center"><input type="submit" value="등록">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></tr>
 		</table>
 	</form>
 </div>
