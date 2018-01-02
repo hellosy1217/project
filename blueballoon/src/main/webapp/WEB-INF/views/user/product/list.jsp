@@ -200,15 +200,27 @@
 							<li data-pid="december-2017"><a
 								href="/m/italy-december-2017" class="span"
 								onclick="return false">패키지 여행</a></li>
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">관광지</a></li>
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">맛집</a></li>
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">숙소</a></li>
+
+							<!-- <c:if test="${getProd.prod_pick == 1}">
+								<dd class="value transport">지역</dd>
+							</c:if>
+							<c:if test="${getProd.prod_pick == 2}">
+								<dd class="value transport">맛집</dd>
+							</c:if>
+							<c:if test="${getProd.prod_pick == 3}">
+								<dd class="value transport">숙소</dd>
+							</c:if> -->
+							
+							<li data-pid="december-2017">
+								<a href="product_list?prod_pick=1" class="span">관광지</a>
+							</li>
+							<li data-pid="december-2017">
+								<a href="product_list?cate_city='${getProd.prod_pick == 2}'" class="span">맛집</a>
+							</li>
+							<li data-pid="december-2017">
+								<a href="product_list?cate_city='${getProd.prod_pick == 3}'" class="span">숙소</a>
+							</li>
+							
 						</ul>
 					</div>
 				</div>

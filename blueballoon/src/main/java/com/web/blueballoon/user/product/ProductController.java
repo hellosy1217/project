@@ -101,8 +101,38 @@ public class ProductController {
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
 
-		// 카테고리 목록
+		// 상품 목록
 		List<BBProductDTO> listProd = ProductMapper.listProd();
+		try {
+			String cate_state = ServletRequestUtils.getStringParameter(arg0, "cate_state");
+			for (int i = 0; i < listProd.size(); i++) {
+				StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
+				String state = str.nextToken();
+				String city = str.nextToken();
+				System.out.println("cate_state: "+cate_state+", state: "+state);
+				if (!cate_state.equals(state)) {
+					listProd.remove(i);
+				}
+			}
+		} catch (NullPointerException e) {
+		}
+
+//		for(int i=0;i<listProd.size();i++) {
+//			System.out.println("cate: "+listProd.get(i).getProd_cate());
+//		}
+		try {
+			String cate_city = ServletRequestUtils.getStringParameter(arg0, "cate_city");
+			for (int i = 0; i < listProd.size(); i++) {
+				StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
+				String state = str.nextToken();
+				String city = str.nextToken();
+				if (!cate_city.equals(city)) {
+					listProd.remove(i);
+				}
+			}
+		} catch (NullPointerException e) {
+		}
+
 		mav.addObject("listProd", listProd);
 
 		mav.setViewName("user/product/list");
