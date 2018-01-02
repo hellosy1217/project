@@ -106,37 +106,37 @@
 				<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
 					<li itemprop="itemListElement" itemscope=""
 						itemtype="http://schema.org/ListItem"><a itemprop="item"
-						href="/"> Home
+						href="main"> Home
 							<meta itemprop="name" content="TourRadar">
 					</a></li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">〉 <a href="/d/europe"
-						itemprop="item"><span itemprop="name">서울특별시</span></a>
+						itemtype="http://schema.org/ListItem">〉 <a
+						href="product_list?cate_state=${cate_state}" itemprop="item"><span
+							itemprop="name">${cate_state}</span></a>
 					</li>
-					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">〉 <span itemprop="item"><span
-							itemprop="name">마포구</span></span>
-					</li>
+					<c:if test="${!empty cate_city }">
+						<li itemprop="itemListElement" itemscope=""
+							itemtype="http://schema.org/ListItem">〉 <span
+							itemprop="item"><span itemprop="name">${cate_city }</span></span>
+						</li>
+					</c:if>
 				</ul>
 			</nav>
 
-			<h1>Seoul Tours</h1>
+			<h1>${cate_state } ${cate_city }</h1>
 		</div>
 	</div>
 
 	<div class="c">
 		<div class="stat">
-			<h2>서울의 인기 관광지</h2>
+			<h2>여기 h2 지우면 화면 깨지는데 고쳐주세요... 지우고싶어요...</h2>
 			<div class="sort">
 				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
 					<option value="lendesc">최신순</option>
 					<option value="popularity">인기순</option>
 					<option value="rec">리뷰순</option>
-
 				</select>
-
 			</div>
-
 		</div>
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
@@ -148,8 +148,11 @@
 								<img
 									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
 									alt="" width="245" style="margin-top: 0px;">
-							</div> <span class="spot">${prod.prod_cate}</span> <strong
-							class="title">${prod.prod_name}</strong> <span class="cover"></span>
+							</div> <span class="spot"><c:forTokens items="${prod.prod_cate}"
+									delims="-" var="pc">
+									${pc} 
+									</c:forTokens></span> <strong class="title">${prod.prod_name}</strong> <span
+							class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
 									<li><i class="fa fa-thumbs-up" aria-hidden="true"
@@ -159,7 +162,6 @@
 											<i>${likeCount}</i>
 										</p>
 									</li>
-
 								</ul>
 							</div>
 						</a>
@@ -191,36 +193,43 @@
 		<div class="as">
 			<aside id="params">
 				<div class="b blue">
-					<h5>필터링 기준 :</h5>
+					<c:choose>
+						<c:when test="${prod_pick eq 1}">
+							<h5>필터링 기준 : 관광지</h5>
+						</c:when>
+						<c:when test="${prod_pick eq 2 }">
+							<h5>필터링 기준 : 맛집</h5>
+						</c:when>
+						<c:when test="${prod_pick eq 3}">
+							<h5>필터링 기준 : 숙소</h5>
+						</c:when>
+						<c:otherwise>
+							<h5>필터링 기준 :</h5>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="b b_dep">
 					<h5 id="flip">추천 여행지</h5>
 					<div class="c" id="panel">
 						<ul style="padding-bottom: 15px;">
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">패키지 여행</a></li>
+							<li data-pid="december-2017"><a href="pack_list"
+								class="span" onclick="return false">패키지 여행</a></li>
+							<c:set var="pick" value="관광지,맛집,숙소" />
+							<c:forTokens items="${pick}" delims="," varStatus="st" var="p">
+								<c:choose>
+									<c:when test="${!empty cate_city}">
+										<li><a
+											href="product_list?cate_state=${cate_state}&cate_city=${cate_city}&prod_pick=${st.count}"
+											class="span">${p}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="product_list?cate_state=${cate_state}&prod_pick=${st.count}"
+											class="span">${p}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forTokens>
 
-							<!-- <c:if test="${getProd.prod_pick == 1}">
-								<dd class="value transport">지역</dd>
-							</c:if>
-							<c:if test="${getProd.prod_pick == 2}">
-								<dd class="value transport">맛집</dd>
-							</c:if>
-							<c:if test="${getProd.prod_pick == 3}">
-								<dd class="value transport">숙소</dd>
-							</c:if> -->
-							
-							<li data-pid="december-2017">
-								<a href="product_list?prod_pick=1" class="span">관광지</a>
-							</li>
-							<li data-pid="december-2017">
-								<a href="product_list?cate_city='${getProd.prod_pick == 2}'" class="span">맛집</a>
-							</li>
-							<li data-pid="december-2017">
-								<a href="product_list?cate_city='${getProd.prod_pick == 3}'" class="span">숙소</a>
-							</li>
-							
 						</ul>
 					</div>
 				</div>
@@ -233,7 +242,7 @@
 							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 							<c:forTokens items="${city}" delims="," var="c"
 								varStatus="status">
-								<li><c:forTokens items="${color }" var="col" delims=";"
+								<li><c:forTokens items="${color}" var="col" delims=";"
 										varStatus="st">
 										<c:if test="${status.count eq st.count}">
 											<div class="th" style="background: ${col}"></div>
@@ -245,7 +254,8 @@
 										style="margin-top: 15px;">
 										<c:forEach items="${listCate}" var="list">
 											<c:if test="${list.cate_state == c}">
-												<li><span>${list.cate_city}</span></li>
+												<li><span><a
+														href="product_list?cate_state=${c}&cate_city=${list.cate_city}">${list.cate_city}</a></span></li>
 											</c:if>
 										</c:forEach>
 									</ul></li>
@@ -253,8 +263,6 @@
 						</ul>
 					</div>
 				</div>
-
-
 				<div class="b b_dep">
 					<h5 id="flipp">여행 후기</h5>
 					<div class="c" id="panell">
@@ -265,17 +273,11 @@
 						</ul>
 					</div>
 				</div>
-
 			</aside>
-
 		</div>
-
-
-
 		<div class="e"></div>
 	</div>
 	</main>
-
 	<footer>
 		<div class="c">
 			<div class="cop">
@@ -284,7 +286,6 @@
 			</div>
 		</div>
 	</footer>
-
 	<script>
 		setTimeout(
 				function() {
@@ -296,28 +297,6 @@
 					document.getElementsByTagName('head')[0].appendChild(link);
 				}, 1);
 	</script>
-	<script>
-		(function(event, event2) {
-			function cb(e) {
-				this.removeEventListener(event, cb);
-				this.removeEventListener(event2, cb);
-				(new Image(1, 1)).src = "//bat.bing.com/action/0?ti=5089755&Ver=2";
-
-				!function(b, e, v, t, s) {
-					t = b.createElement(e);
-					t.async = !0;
-					t.src = v;
-					s = b.getElementsByTagName(e)[0];
-					s.parentNode.insertBefore(t, s)
-				}(document, 'script',
-						'https://connect.facebook.net/en_US/fbevents.js');
-			}
-			window.addEventListener(event, cb);
-			window.addEventListener(event2, cb);
-		})("mousemove", "touchmove");
-	</script>
-	<noscript>&lt;img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=806188949420761&amp;ev=PageView&amp;noscript=1"&gt;</noscript>
 	<script async=""
 		src="//cdn.tourradar.com/include/js/ttip/ttip.v1-1-2.min.js?v=1512838537"></script>
 	<div class="tooltip hid"></div>

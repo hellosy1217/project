@@ -51,13 +51,13 @@ public class ProductController {
 			member_email = (String) arg0.getSession().getAttribute("member_email");
 			member_name = (Character) arg0.getSession().getAttribute("member_name");
 
-			mav.addObject("member_num", member_num);
 			mav.addObject("member_email", member_email);
 			mav.addObject("member_name", member_name);
 		} catch (NullPointerException e) {
 			member_num = 0;
 			member_email = null;
 		}
+		mav.addObject("member_num", member_num);
 
 		// 카테고리 목록
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
@@ -67,6 +67,7 @@ public class ProductController {
 		List<BBProductDTO> listProd = ProductMapper.listProd();
 		try {
 			String cate_state = ServletRequestUtils.getStringParameter(arg0, "cate_state");
+			mav.addObject("cate_state", cate_state);
 			if (cate_state != null) {
 				for (int i = listProd.size() - 1; i >= 0; i--) {
 					StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
@@ -76,11 +77,11 @@ public class ProductController {
 				}
 			}
 		} catch (NullPointerException e) {
-			System.out.println("cate_state = null");
 		}
 
 		try {
 			String cate_city = ServletRequestUtils.getStringParameter(arg0, "cate_city");
+			mav.addObject("cate_city", cate_city);
 			if (cate_city != null) {
 				for (int i = listProd.size() - 1; i >= 0; i--) {
 					StringTokenizer str = new StringTokenizer(listProd.get(i).getProd_cate(), "-");
@@ -91,11 +92,11 @@ public class ProductController {
 				}
 			}
 		} catch (NullPointerException e) {
-			System.out.println("cate_city = null");
 		}
 
 		try {
 			int prod_pick = ServletRequestUtils.getIntParameter(arg0, "prod_pick");
+			mav.addObject("prod_pick", prod_pick);
 			if (prod_pick != 0) {
 				for (int i = listProd.size() - 1; i >= 0; i--) {
 					if (listProd.get(i).getProd_pick() != prod_pick) {
@@ -104,7 +105,6 @@ public class ProductController {
 				}
 			}
 		} catch (NullPointerException e) {
-			System.out.println("prod_pick = 0");
 		}
 
 		// 총 페이지 수
