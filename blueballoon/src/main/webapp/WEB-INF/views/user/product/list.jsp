@@ -5,7 +5,7 @@
 <head>
 <title>여행상품 리스트</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=23"
+	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=123"
 	rel="stylesheet" type="text/css" />
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css?ver=1"
@@ -129,7 +129,7 @@
 
 	<div class="c">
 		<div class="stat">
-			<h2>여기 h2 지우면 화면 깨지는데 고쳐주세요... 지우고싶어요...</h2>
+			
 			<div class="sort">
 				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
 					<option value="lendesc">최신순</option>
@@ -138,58 +138,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="list">
-			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
-					<div class="spotListIn">
-						<a href="product_content?prod_num=${prod.prod_num}"
-							class="spotIn focusedLink">
-							<div class="thumb">
-								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
-									alt="" width="245" style="margin-top: 0px;">
-							</div> <span class="spot"><c:forTokens items="${prod.prod_cate}"
-									delims="-" var="pc">
-									${pc} 
-									</c:forTokens></span> <strong class="title">${prod.prod_name}</strong> <span
-							class="cover"></span>
-							<div class="likeArea simple">
-								<ul>
-									<li><i class="fa fa-thumbs-up" aria-hidden="true"
-										style="font-size: 16px;"></i></li>
-									<li class="good">
-										<p>
-											<i>${likeCount}</i>
-										</p>
-									</li>
-								</ul>
-							</div>
-						</a>
-					</div>
-				</c:forEach>
-			</div>
-			<div class="pag">
-				<c:if test="${currentPage > 9}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage-1})">«<span>Previous</span></a>
-				</c:if>
-				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
-					<c:choose>
-						<c:when test="${currentPage eq page}">
-							<a href="javascript:void(0)" onclick="changePage(${page})"
-								class="active">${page}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0)" onclick="changePage(${page})">${page}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<c:if test="${endPage ne pageNum}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage+1})"><span>Next
-					</span>»</a>
-				</c:if>
-			</div>
-			<a class="but blue p hid">Load more</a>
-		</div>
+		
 		<div class="as">
 			<aside id="params">
 				<div class="b blue">
@@ -275,6 +224,60 @@
 				</div>
 			</aside>
 		</div>
+		
+		<div class="list">
+			<div class="prod_list" style="height: 1000px;">
+				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
+					<div class="spotListIn">
+						<a href="product_content?prod_num=${prod.prod_num}"
+							class="spotIn focusedLink">
+							<div class="thumb">
+								<img
+									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
+									alt="" width="245" style="margin-top: 0px;">
+							</div> <span class="spot"><c:forTokens items="${prod.prod_cate}"
+									delims="-" var="pc">
+									${pc} 
+									</c:forTokens></span> <strong class="title">${prod.prod_name}</strong> <span
+							class="cover"></span>
+							<div class="likeArea simple">
+								<ul>
+									<li><i class="fa fa-thumbs-up" aria-hidden="true"
+										style="font-size: 16px;"></i></li>
+									<li class="good">
+										<p>
+											<i>${likeCount}</i>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</a>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="pag">
+				<c:if test="${currentPage > 9}">
+					<a href="javascript:void(0)" onclick="changePage(${currentPage-1})">«<span>Previous</span></a>
+				</c:if>
+				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
+					<c:choose>
+						<c:when test="${currentPage eq page}">
+							<a href="javascript:void(0)" onclick="changePage(${page})"
+								class="active">${page}</a>
+						</c:when>
+						<c:otherwise>
+							<a href="javascript:void(0)" onclick="changePage(${page})">${page}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${endPage ne pageNum}">
+					<a href="javascript:void(0)" onclick="changePage(${currentPage+1})"><span>Next
+					</span>»</a>
+				</c:if>
+			</div>
+			<a class="but blue p hid">Load more</a>
+		</div>
+		
 		<div class="e"></div>
 	</div>
 	</main>
