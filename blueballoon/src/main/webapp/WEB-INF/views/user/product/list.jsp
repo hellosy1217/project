@@ -139,7 +139,6 @@
 					</c:if>
 				</ul>
 			</nav>
-
 			<h1>${cate_state }${cate_city }</h1>
 		</div>
 	</div>
@@ -159,20 +158,14 @@
 		<div class="as">
 			<aside id="params">
 				<div class="b blue">
-					<c:choose>
-						<c:when test="${prod_pick eq 1}">
-							<h5>필터링 기준 : 관광지</h5>
-						</c:when>
-						<c:when test="${prod_pick eq 2 }">
-							<h5>필터링 기준 : 맛집</h5>
-						</c:when>
-						<c:when test="${prod_pick eq 3}">
-							<h5>필터링 기준 : 숙소</h5>
-						</c:when>
-						<c:otherwise>
-							<h5>필터링 기준 :</h5>
-						</c:otherwise>
-					</c:choose>
+					<c:set var="fil" value="관광지,맛집,숙소" />
+					<h5>필터링 기준 : 
+					<c:forTokens items="${fil}" delims="," varStatus="vs" var="ff">
+						<c:if test="${prod_pick eq vs.count}">
+							${ff}
+						</c:if>
+					</c:forTokens>
+					</h5>
 				</div>
 				<div class="b b_dep">
 					<h5 id="flip">추천 여행지</h5>
@@ -183,7 +176,7 @@
 							<c:set var="pick" value="관광지,맛집,숙소" />
 							<c:forTokens items="${pick}" delims="," varStatus="st" var="p">
 								<li><a class="span"
-									onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})">${p}</a></li>
+									onclick="change('${cate_state}','${cate_city}',${p},1)">${p}</a></li>
 							</c:forTokens>
 
 						</ul>
