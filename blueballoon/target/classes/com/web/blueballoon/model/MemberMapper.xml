@@ -33,7 +33,7 @@
 	</update>
 	<update id="editMemberForNull" parameterType="BBMemberDTO"> 
 		update bb_member set member_name=#{member_name, jdbcType=VARCHAR}
-		, member_email=#{member_email, jdbcType=VARCHAR}member_phone=#{member_phone},
+		, member_email=#{member_email, jdbcType=VARCHAR}, member_phone=#{member_phone},
 		member_birth=#{member_birth, jdbcType=VARCHAR}, member_gender=#{member_gender} where
 		member_num=#{member_num , jdbcType=NUMERIC} 
 	</update>

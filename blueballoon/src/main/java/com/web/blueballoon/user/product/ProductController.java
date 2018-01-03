@@ -212,7 +212,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@RequestMapping(value = "product_booking", method = RequestMethod.GET)
+	@RequestMapping(value = "package_booking", method = RequestMethod.GET)
 	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		mav.clear();
 		int member_num;
@@ -321,7 +321,7 @@ public class ProductController {
 			mav.addObject("endDate", book_date.get(book_date.size() - 1).getBook_date());
 			mav.addObject("book_date", book_date);
 
-			mav.setViewName("user/product/booking");
+			mav.setViewName("user/package/booking");
 		} catch (
 
 		NullPointerException e) {

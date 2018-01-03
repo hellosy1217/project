@@ -5,10 +5,10 @@
 <head>
 <title>booking - 상품/패키지 명 - BlueBalloon</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/booking1.css?ver=12"
+	href="${pageContext.request.contextPath}/resources/user/package/css/booking1.css?ver=12"
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/user/product/js/booking1.js?ver=12"></script>
+	src="${pageContext.request.contextPath}/resources/user/package/js/booking1.js?ver=12"></script>
 <script type="text/javascript">
 	function changeBookPerson(mode, min_date, max_date) {
 		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {

@@ -6,7 +6,7 @@
 <head>
 <title>여행상품 상세페이지</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=1233"
+	href="${pageContext.request.contextPath}/resources/user/package/css/content.css?ver=1233"
 	rel="stylesheet" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
