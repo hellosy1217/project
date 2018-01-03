@@ -1,5 +1,535 @@
 @charset "UTF-8";
 
+main .header {
+	min-height: 230px;
+	overflow: hidden;
+	position: relative;
+	background-color: #fff;
+	z-index: 1
+}
+
+main .header .collapse-header {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	z-index: 1;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg width='40' height='40' viewBox='0 0 43 43' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle fill-opacity='.3' fill='%23fff' cx='21.5' cy='21.5' r='21.5'/%3E%3Cpath d='M13 13l17.68 17.68m0-17.68L13 30.68' stroke='%23FFF' stroke-width='.9' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+	cursor: pointer
+}
+
+main .header:after {
+	content: "";
+	top: 0;
+	background: #000;
+	opacity: .4;
+	z-index: -2
+}
+
+main .header .bgimg, main .header:after {
+	position: absolute;
+	width: 100%;
+	height: 100%
+}
+
+main .header .bgimg {
+	z-index: -1
+}
+
+main .header .bgimg.overlay {
+	opacity: .5
+}
+
+main .header .bgimg.bg-all:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)) repeat
+		0 0;
+	top: 0;
+	left: 0
+}
+
+main .header .bgimg.bg-all.no-afrer:after {
+	content: none
+}
+
+main .header .c {
+	padding-top: 62px;
+}
+
+main .header .c h1 {
+	text-align: center;
+    color: #fff;
+    font-family: Georgia, Nimbus Roman No9 L, serif;
+    font-size: 42px;
+    font-weight: 500;
+}
+
+
+main .header .stat {
+	display: none
+}
+
+main .header .back-link {
+	display: inline-block;
+	padding: 4px 30px;
+	margin: -10px 30px 0;
+	font: 10px/12px Helvetica, Arial, FreeSans, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	background-color: #409cd1;
+	vertical-align: middle
+}
+
+main .header .back-link:hover {
+	background-color: #66b0da
+}
+
+main .header .back-link:active {
+	background-color: #30759d
+}
+
+main .header p {
+	color: #fff;
+	line-height: 21px;
+	max-height: 63px;
+	overflow-y: hidden
+}
+
+main .header p:not (.unlock-info ) a {
+	color: #fff;
+	text-decoration: underline
+}
+
+main .header .fmon {
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff
+}
+
+main .header .mon {
+	width: 100%;
+	max-width: 1164px;
+	padding: 0 12px;
+	display: table;
+	table-layout: fixed;
+	text-align: center;
+	margin: 0 auto
+}
+
+main .header .mon>li, main .header .mon a {
+	padding: 12px 0;
+	display: table-cell;
+	color: #999
+}
+
+main .header .mon>li {
+	opacity: .5
+}
+
+main .header .mon>li.cur {
+	color: #409cd1;
+	font-weight: 700;
+	opacity: 1;
+	position: relative
+}
+
+main .header .mon>li.cur:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 66%;
+	height: 3px;
+	left: 17%;
+	background: #409cd1
+}
+
+main .header .opimg {
+	width: 60px;
+	float: left;
+	margin: 26px 30px 12px 0;
+	height: 60px;
+	background: #fff;
+	border: 1px solid #ccc;
+	position: relative
+}
+
+main .header .opimg img {
+	max-width: 50px;
+	max-height: 50px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto
+}
+
+main .header.empty h1, main .header.empty h2, main .header.empty p {
+	color: #333
+}
+
+main .header.empty p a {
+	text-decoration: underline;
+	color: #333
+}
+
+main .header.empty .details {
+	color: #333
+}
+
+main .header.empty:after {
+	content: none
+}
+
+main .header.empty nav ul, main .header.empty nav ul a, main .header.empty nav ul span
+	{
+	color: #999
+}
+
+main .header .header-info, main .header .unlock-container {
+	display: inline-block;
+	vertical-align: top
+}
+
+main .header .header-info {
+	max-width: 60%;
+	padding-right: 140px
+}
+
+main .header .header-info.full {
+	max-width: 100%;
+	padding-right: 0
+}
+
+main .header .header-info.full .stat, main .header .header-info.full p {
+	padding-bottom: 25px;
+	max-height: none
+}
+
+main .header .header-info.full p.m-bot {
+	margin-bottom: 25px
+}
+
+main .header .header-info .details {
+	display: block
+}
+
+main .header .operator .header-info {
+	width: calc(60% - 90px)
+}
+
+main .header .operator .header-info.full {
+	width: calc(100% - 90px)
+}
+
+main .header .details {
+	display: none;
+	font-weight: 700;
+	text-align: left;
+	color: #fff;
+	padding-top: 30px
+}
+
+main .header .details li {
+	margin-bottom: 20px
+}
+
+main .header .details .icon {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2341c4ab'%3E%3Cpath d='M10 19c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9M9.86 0C4.34.08-.08 4.62 0 10.14c.08 5.52 4.62 9.94 10.14 9.86 5.52-.08 9.94-4.62 9.86-10.14C19.92 4.34 15.38-.08 9.86 0'/%3E%3Cpath d='M15.15 6.15L8 13.3l-3.15-3.15c-.2-.2-.5-.2-.7 0-.2.2-.2.5 0 .7l3.5 3.5a.485.485 0 0 0 .7 0l7.5-7.5c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0'/%3E%3C/g%3E%3C/svg%3E")
+}
+
+main .header .details .details-description, main .header .details .icon
+	{
+	display: inline-block;
+	vertical-align: middle
+}
+
+main .header .unlock-container {
+	min-width: 40%;
+	max-width: 40%
+}
+
+main .header .unlock-container .locked, main .header .unlock-container .unlocked
+	{
+	margin-top: 30px;
+	margin-bottom: 40px;
+	min-width: 340px;
+	min-height: 320px;
+	border-radius: 1px;
+	padding: 20px 30px;
+	background-color: #fff
+}
+
+main .header .unlock-container .locked {
+	position: relative
+}
+
+main .header .unlock-container .locked h2 {
+	margin: 0;
+	margin-bottom: 8px;
+	font-family: Helvetica, Arial, FreeSans, sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 22px;
+	text-align: center;
+	color: #333
+}
+
+main .header .unlock-container .locked p {
+	font-size: 12px;
+	line-height: 20px;
+	color: #333;
+	text-align: center;
+	margin-bottom: 17px
+}
+
+main .header .unlock-container .locked p.message.error {
+	max-width: none;
+	text-align: center;
+	line-height: 18px;
+	color: #d0021b;
+	margin-bottom: 5px;
+	visibility: hidden
+}
+
+main .header .unlock-container .locked p.message.error.active {
+	visibility: visible
+}
+
+main .header .unlock-container .locked input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 12px 20px;
+	line-height: 19px;
+	border: 1px solid #ccc;
+	border-radius: 1px
+}
+
+main .header .unlock-container .locked input.error {
+	border-color: #ec7063
+}
+
+main .header .unlock-container .locked input::-webkit-input-placeholder
+	{
+	color: #999;
+	font-weight: 400
+}
+
+main .header .unlock-container .locked input:-moz-placeholder, main .header .unlock-container .locked input::-moz-placeholder
+	{
+	color: #999;
+	font-weight: 400
+}
+
+main .header .unlock-container .locked input:-ms-input-placeholder {
+	color: #999;
+	font-weight: 400
+}
+
+main .header .unlock-container .locked input::placeholder {
+	color: #999;
+	font-weight: 400
+}
+
+main .header .unlock-container .locked input:nth-of-type(2) {
+	margin-bottom: 5px
+}
+
+main .header .unlock-container .locked p.unlock-info.unlock-info {
+	max-width: none;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 21px;
+	text-align: center;
+	color: #ccc;
+	margin-bottom: 0
+}
+
+main .header .unlock-container .locked p.unlock-info.unlock-info span {
+	font-style: italic
+}
+
+main .header .unlock-container .locked .popup {
+	cursor: pointer;
+	color: #409cd1
+}
+
+main .header .unlock-container .locked .popup:hover {
+	text-decoration: underline
+}
+
+main .header .unlock-container .locked .ends {
+	background-color: #319380;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 2px;
+	padding: 3px 10px;
+	border-radius: 100px;
+	font-weight: 700;
+	position: absolute;
+	right: 0;
+	top: -10px;
+	color: #fff
+}
+
+main .header .unlock-container .locked .ends:before {
+	display: none
+}
+
+main .header .unlock-container .locked.permanent h2 {
+	margin: 0 0 18px;
+	font-family: Helvetica, Arial, FreeSans, sans-serif;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 36px;
+	text-align: center;
+	color: #333
+}
+
+main .header .unlock-container .locked.permanent .unlock-button {
+	margin: 30px 0 22px
+}
+
+main .header .unlock-container .locked .saving-badge, main .header .unlock-container .unlocked .saving-badge
+	{
+	position: absolute;
+	top: -40px;
+	left: -40px;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	line-height: 16px;
+	padding: 12px 0;
+	font-weight: 400;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #e54f3b
+}
+
+main .header .unlock-container .locked .saving-badge .saving, main .header .unlock-container .unlocked .saving-badge .saving
+	{
+	font-size: 21px;
+	line-height: 24px;
+	font-weight: 700
+}
+
+main .header .unlock-container .locked button, main .header .unlock-container .unlocked button
+	{
+	font-size: 16px;
+	line-height: 19px;
+	border: 0;
+	cursor: pointer;
+	outline: 0;
+	padding: 12px;
+	margin-bottom: 10px;
+	width: 100%
+}
+
+main .header .unlock-container .locked button:focus, main .header .unlock-container .unlocked button:focus
+	{
+	outline: none
+}
+
+main .header .unlock-container .locked button::-moz-focus-inner, main .header .unlock-container .unlocked button::-moz-focus-inner
+	{
+	border: 0
+}
+
+main .header .unlock-container .locked button .btn-icon, main .header .unlock-container .locked button .btn-text,
+	main .header .unlock-container .unlocked button .btn-icon, main .header .unlock-container .unlocked button .btn-text
+	{
+	display: inline-block;
+	vertical-align: middle
+}
+
+main .header .unlock-container .locked button .btn-text, main .header .unlock-container .unlocked button .btn-text
+	{
+	margin-right: 40px
+}
+
+main .header .unlock-container .locked button .btn-icon, main .header .unlock-container .unlocked button .btn-icon
+	{
+	width: 20px;
+	height: 20px;
+	margin-right: 20px;
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4 17.4c-1 1-2.4 1.6-3.9 1.6s-2.9-.6-3.9-1.6C5.63 16.4 5 15 5 13.5s.62-2.9 1.6-3.9C7.6 8.63 9 8 10.5 8s2.9.62 3.9 1.6c1 1 1.6 2.38 1.6 3.9s-.6 2.9-1.6 3.9zM8 3.5a2.5 2.5 0 0 1 5 0v4c-.77-.32-1.6-.5-2.5-.5-.9 0-1.73.18-2.5.5v-4zm6 4.53V3.5C14 1.57 12.43 0 10.5 0S7 1.57 7 3.5v4.53C5.2 9.18 4 11.2 4 13.5c0 3.6 2.9 6.5 6.5 6.5s6.5-2.9 6.5-6.5c0-2.3-1.2-4.32-3-5.47z' fill='%23fff'/%3E%3Cpath d='M10 12v3c0 .28.22.5.5.5s.5-.22.5-.5v-3c0-.28-.22-.5-.5-.5s-.5.22-.5.5' fill='%23fff'/%3E%3C/svg%3E")
+}
+
+main .header .unlock-container .locked button:hover, main .header .unlock-container .unlocked button:hover
+	{
+	background-color: #67d0bc
+}
+
+main .header .unlock-container .unlocked {
+	position: relative;
+	padding-top: 50px;
+	background-color: #fff;
+	font-family: Helvetica, Arial, FreeSans, sans-serif;
+	font-size: 14px;
+	line-height: 23px;
+	text-align: center;
+	color: #333
+}
+
+main .header .unlock-container .unlocked .lower-prices-info {
+	display: none
+}
+
+main .header .unlock-container .unlocked .icon {
+	width: 64px;
+	height: 64px;
+	margin: 0 auto 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-image:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0v20h13V0H0z'/%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(4)'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a'/%3E%3C/mask%3E%3Cpath d='M10.4 17.4c-1 1-2.4 1.6-3.9 1.6s-2.9-.6-3.9-1.6S1 15 1 13.5s.6-2.9 1.6-3.9C3.6 8.63 5 8 6.5 8s2.9.62 3.9 1.6c.98 1 1.6 2.38 1.6 3.9s-.62 2.9-1.6 3.9M10 8.02V3.5C10 1.57 8.43 0 6.5 0S3 1.57 3 3.5c0 .28.22.5.5.5s.5-.22.5-.5a2.5 2.5 0 0 1 5 0v4C8.23 7.18 7.4 7 6.5 7 2.9 7 0 9.9 0 13.5S2.9 20 6.5 20s6.5-2.9 6.5-6.5c0-2.3-1.2-4.32-3-5.47' fill='%2341c4ab' mask='url(%23b)'/%3E%3C/g%3E%3Cpath d='M10 12v3c0 .28.22.5.5.5s.5-.22.5-.5v-3c0-.28-.22-.5-.5-.5s-.5.22-.5.5' fill='%2341c4ab'/%3E%3C/g%3E%3C/svg%3E")
+}
+
+main .header .unlock-container .unlocked .congrats {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
+	margin-bottom: 13px
+}
+
+main .header .unlock-container .unlocked h2, main .header .unlock-container .unlocked p
+	{
+	color: #333
+}
+
+main .header .unlock-container .unlocked button {
+	margin-top: 40px
+}
+
+
 a:hover {
 	text-decoration: none !important;
 }

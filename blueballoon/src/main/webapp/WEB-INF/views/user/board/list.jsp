@@ -7,6 +7,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=1"
 	rel="stylesheet" type="text/css" />
+	
 <script
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/8.js"
 	async=""></script>
@@ -36,17 +37,26 @@
 <body class="tb" data-b-sale="">
 	<%@include file="../../header1.jsp"%>
 	<main data-id="155404">
-	<div class="top">
+<!--	<div class="top">
 		<div class="im"
 			style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
 		<div class="in">
-			<h1></h1>
-			<!--게시판 관련-->
-			<ul>
-				<li></li>
-			</ul>
+			<h1>여행 후기</h1>			
+		</div>
+
+	</div>
+ -->
+ 
+ 	<div class="header">
+		<div class="bgimg bg-all">
+			<img src="//cdn.tourradar.com/im/r/pw/river/main-c.jpg" alt="Italy Tours and Trips 2018 ">
+		</div>
+		<div class="c">
+
+			<h1>travel review</h1>
 		</div>
 	</div>
+ 	
 	<div class="c">
 		<div class="list">
 			<h2>베스트 리뷰</h2>
