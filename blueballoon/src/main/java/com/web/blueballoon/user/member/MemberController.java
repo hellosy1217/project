@@ -163,14 +163,8 @@ public class MemberController {
 
 	// 멤버 정보 수정.
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
-	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
-			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
-
-		System.out.println("들어오는 값 찍기 \n phone : " + dto.getMember_phone());
-		System.out.println("member_num : " + dto.getMember_num());
-		System.out.println("member_name : "+dto.getMember_name());
-		System.out.println("gender : " + dto.getMember_gender());
-		System.out.println("birth : " + dto.getMember_birth());
+	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto, 
+			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result, HttpSession session) throws Exception {
 
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
 		int check = (int) multipartFiles.getSize();
@@ -200,7 +194,6 @@ public class MemberController {
 				dto.setMember_str_img(null);
 			}
 		}
-
 		int res = 0;
 		try {
 			if (check > 0) {// 파일 있으면 기존 업데이트로
@@ -214,14 +207,14 @@ public class MemberController {
 			dto.setMember_str_img(null);
 			dto.setMember_email(null);
 		}
-		System.out.println("DB 결과  : " + res);
 		if (res > 0) {
 			mav.addObject("msg", "회원정보 수정 성공!!");
+			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
+			mav.addObject("url", "main");
 		} else {
 			mav.addObject("msg", "회원정보 수정 실패!!");
+			mav.addObject("url", "member_edit");
 		}
-
-		mav.addObject("url", "member_edit");
 		mav.setViewName("user/member/message");
 		return mav;
 	}
