@@ -25,15 +25,17 @@ public class MemberMapper {
 		return isEmailExist;
 	}
 
-	public BBMemberDTO checkUser(BBMemberDTO check) {
-		java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-		map.put("member_email", check.getMember_email());
-		map.put("member_password", check.getMember_passwd());
-		BBMemberDTO dto = sqlSession.selectOne("checkUser", map);
-		/*
-		 * if(dto==null) return true; return false;
-		 */
-		return dto;
+	public boolean checkUser(BBMemberDTO check) {
+		boolean login = false;
+		BBMemberDTO newDto =sqlSession.selectOne("checkUser", check);
+		try {
+			if(newDto.getMember_email()!=null) {//로그인이 값이 있을때 true! true가 성공
+				login = true;
+			}
+		}catch(NullPointerException ne) {
+			return login;
+		}
+		return login;
 	}
 	public  int editMember(BBMemberDTO dto) {
 		return sqlSession.update("editMember", dto);
@@ -52,6 +54,4 @@ public class MemberMapper {
 	public int changePasswd(BBMemberDTO checkUser) {
 		return sqlSession.update("changePasswd",checkUser);
 	}
-
-
 }

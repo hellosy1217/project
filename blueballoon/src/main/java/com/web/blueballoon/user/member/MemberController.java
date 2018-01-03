@@ -42,17 +42,9 @@ public class MemberController {
 	// 로그인
 	@RequestMapping(value = "member_login", method = RequestMethod.POST)
 	public ModelAndView checkUser(BBMemberDTO dto, HttpSession session, HttpServletRequest req) {
-		dto = memberMapper.checkUser(dto);
-		boolean isLogin = false;
-		if (dto == null)
-			isLogin = true;
-		if (isLogin) {
-			// login.jsp로 이동
-			mav.addObject("msg", "아이디/비밀번호를 확인해주세요.");
-			mav.addObject("url", "member_login");
-			mav.setViewName("user/member/message");
-		} else { // 로그인 성 공 
-			// main.jsp로 이동
+		boolean isLogin =memberMapper.checkUser(dto);	//true값이 성공
+		
+		if(isLogin) {
 			if (dto.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
 			} else {
@@ -62,7 +54,12 @@ public class MemberController {
 				session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
 				mav.setViewName("redirect:/main");
 			}
+		}else {
+			mav.addObject("msg", "아이디/비밀번호를 확인해주세요.");
+			mav.addObject("url", "member_login");
+			mav.setViewName("user/member/message");
 		}
+		
 		return mav;
 	}
 
@@ -108,13 +105,13 @@ public class MemberController {
 		try {
 			if (checkUser.getMember_email() == null) {
 			}
-		}catch (NullPointerException ne) {
+		} catch (NullPointerException ne) {
 			mav.addObject("msg", "계정이 존재하지 않습니다.");
 			mav.addObject("url", "member_find");
 			mav.setViewName("user/member/message");
 			return mav;
 		}
-		
+
 		String newPasswd = UUID.randomUUID().toString();
 		checkUser.setMember_passwd(newPasswd.substring(0, 19));
 
@@ -168,46 +165,47 @@ public class MemberController {
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
-		
-		System.out.println("들어오는 값 찍기 phone : "+dto.getMember_phone());
-		System.out.println("gender : "+dto.getMember_gender());
-		System.out.println("email : "+dto.getMember_email());
-		System.out.println("birth : "+dto.getMember_birth());
-		
+
+		System.out.println("들어오는 값 찍기 phone : " + dto.getMember_phone());
+		System.out.println("member_num : " + dto.getMember_num());
+		System.out.println("gender : " + dto.getMember_gender());
+		System.out.println("email : " + dto.getMember_email());
+		System.out.println("birth : " + dto.getMember_birth());
+
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
-		int check = (int)multipartFiles.getSize();
+		int check = (int) multipartFiles.getSize();
 
 		String file = null;
 		String newFileName = multipartFiles.getOriginalFilename();
 		try {
-			if(editDTO.getMember_str_img() ==null) {//기존 파일 없으면 catch로 넘어감
-			}else if(editDTO.getMember_str_img() != null) {//기존 파일 있으면 실행
-				if(check > 0) {// 새로운 파일 들어옴
+			if (editDTO.getMember_str_img() == null) {// 기존 파일 없으면 catch로 넘어감
+			} else if (editDTO.getMember_str_img() != null) {// 기존 파일 있으면 실행
+				if (check > 0) {// 새로운 파일 들어옴
 					amazonUtil.deleteFile("bb_member", dto.getMember_str_img());
 					file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 					dto.setMember_org_img(newFileName);
 					dto.setMember_str_img(file);
-				}else if(check <= 0 || check ==0) {//새로운 파일 없음
+				} else if (check <= 0 || check == 0) {// 새로운 파일 없음
 					dto.setMember_org_img(editDTO.getMember_org_img());
 					dto.setMember_str_img(editDTO.getMember_str_img());
 				}
 			}
-		}catch(NullPointerException ne) {
-			if(check > 0) {//파일 있을 경우
+		} catch (NullPointerException ne) {
+			if (check > 0) {// 파일 있을 경우
 				file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 				dto.setMember_org_img(newFileName);
 				dto.setMember_str_img(file);
-			}else if(check == 0 || check <= 0) {
+			} else if (check == 0 || check <= 0) {
 				dto.setMember_org_img(null);
 				dto.setMember_str_img(null);
 			}
 		}
-		
+
 		int res = 0;
 		try {
-			if (check >0 ) {//파일 있으면 기존 업데이트로
+			if (check > 0) {// 파일 있으면 기존 업데이트로
 				res = memberMapper.editMember(dto);
-			} else {//파일 없으면 img 수정 빠진 업데이트로
+			} else {// 파일 없으면 img 수정 빠진 업데이트로
 				res = memberMapper.editMemberForNull(dto);
 			}
 		} catch (NullPointerException ne) {
@@ -216,13 +214,13 @@ public class MemberController {
 			dto.setMember_str_img(null);
 			dto.setMember_email(null);
 		}
-		
+		System.out.println("DB 결과  : " + res);
 		if (res > 0) {
 			mav.addObject("msg", "회원정보 수정 성공!!");
 		} else {
 			mav.addObject("msg", "회원정보 수정 실패!!");
 		}
-		
+
 		mav.addObject("url", "admin/member/edit");
 		mav.setViewName("user/member/message");
 		return mav;
