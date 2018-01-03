@@ -56,6 +56,7 @@
 					<div class="profile-left span12" id="block-edit">
 						<h2>내 정보 수정</h2>
 						<form method="post" action="member_edit"  enctype="multipart/form-data">
+						<input type="hidden" name="member_num" value="${getMember.member_num}">
 							<div class="form">
 								<div class="row">
 									<div class="title">프로필 사진</div>
@@ -66,8 +67,7 @@
 								<div class="row">
 									<div class="title">이름</div>
 									<div class="value">
-										<input type="text" name="name" placeholder="Full name"
-											value="${getMember.member_name}" />
+										<input type="text" name="member_name" value="${getMember.member_name}" />
 									</div>
 								</div>
 								<div class="row">

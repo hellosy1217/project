@@ -48,10 +48,11 @@ public class MemberController {
 			if (dto.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
 			} else {
+				BBMemberDTO login = memberMapper.getMember(dto.getMember_email());
 				session = req.getSession();
-				session.setAttribute("member_num", dto.getMember_num());
-				session.setAttribute("member_email", dto.getMember_email());
-				session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
+				session.setAttribute("member_num", login.getMember_num());
+				session.setAttribute("member_email", login.getMember_email());
+				session.setAttribute("member_name", login.getMember_name().toUpperCase().charAt(0));
 				mav.setViewName("redirect:/main");
 			}
 		}else {
@@ -59,7 +60,6 @@ public class MemberController {
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/message");
 		}
-		
 		return mav;
 	}
 
@@ -166,10 +166,10 @@ public class MemberController {
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
 
-		System.out.println("들어오는 값 찍기 phone : " + dto.getMember_phone());
+		System.out.println("들어오는 값 찍기 \n phone : " + dto.getMember_phone());
 		System.out.println("member_num : " + dto.getMember_num());
+		System.out.println("member_name : "+dto.getMember_name());
 		System.out.println("gender : " + dto.getMember_gender());
-		System.out.println("email : " + dto.getMember_email());
 		System.out.println("birth : " + dto.getMember_birth());
 
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
@@ -221,7 +221,7 @@ public class MemberController {
 			mav.addObject("msg", "회원정보 수정 실패!!");
 		}
 
-		mav.addObject("url", "admin/member/edit");
+		mav.addObject("url", "member_edit");
 		mav.setViewName("user/member/message");
 		return mav;
 	}
