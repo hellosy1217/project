@@ -56,7 +56,6 @@
 					<div class="profile-left span12" id="block-edit">
 						<h2>내 정보 수정</h2>
 						<form method="post" action="member_edit"  enctype="multipart/form-data">
-						<input type="hidden" name="member_passwd" value="${getMember.member_passwd}">
 							<div class="form">
 								<div class="row">
 									<div class="title">프로필 사진</div>

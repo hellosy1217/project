@@ -168,41 +168,47 @@ public class MemberController {
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result) throws Exception {
-
+		
+		System.out.println("들어오는 값 찍기 phone : "+dto.getMember_phone());
+		System.out.println("gender : "+dto.getMember_gender());
+		System.out.println("email : "+dto.getMember_email());
+		System.out.println("birth : "+dto.getMember_birth());
+		
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
+		int check = (int)multipartFiles.getSize();
 
 		String file = null;
 		String newFileName = multipartFiles.getOriginalFilename();
-
-		if (editDTO.getMember_str_img() != null) { // 1. 검색 할 때(기존 파일 있을 때) / DB내에 str 이미지가 있으면 amazon검색 해주기.
-			boolean existFile = amazonUtil.existFile("bb_member", dto.getMember_str_img());
-			if (existFile && newFileName != null) {// -1 .기존 파일 있고 새로운 파일 있을 때.
-				amazonUtil.deleteFile("bb_member", dto.getMember_str_img());
-				file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
-				dto.setMember_org_img(newFileName);
-				dto.setMember_str_img(file);
-			} else if (existFile && newFileName == null) {// -2. 기존 파일 있고 새로운 파일 없을 때.
-				dto.setMember_org_img(editDTO.getMember_org_img());
-				dto.setMember_str_img(editDTO.getMember_str_img());
+		try {
+			if(editDTO.getMember_str_img() ==null) {//기존 파일 없으면 catch로 넘어감
+			}else if(editDTO.getMember_str_img() != null) {//기존 파일 있으면 실행
+				if(check > 0) {// 새로운 파일 들어옴
+					amazonUtil.deleteFile("bb_member", dto.getMember_str_img());
+					file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
+					dto.setMember_org_img(newFileName);
+					dto.setMember_str_img(file);
+				}else if(check <= 0 || check ==0) {//새로운 파일 없음
+					dto.setMember_org_img(editDTO.getMember_org_img());
+					dto.setMember_str_img(editDTO.getMember_str_img());
+				}
 			}
-		} else if (editDTO.getMember_str_img() == null) {// 2. 검색 안할 때 (기존 파일 없을 때) / 새로운 파일이 있으면 생성해주기. amazon검색 불필요.
-			if (newFileName != null) { // -1. 새로운 파일 있을 때.
+		}catch(NullPointerException ne) {
+			if(check > 0) {//파일 있을 경우
 				file = amazonUtil.one_FileUpload("bb_member", multipartFiles);
 				dto.setMember_org_img(newFileName);
 				dto.setMember_str_img(file);
-			} else if (newFileName == null) {// -2. 새로운 파일 없을 떄.
+			}else if(check == 0 || check <= 0) {
 				dto.setMember_org_img(null);
 				dto.setMember_str_img(null);
 			}
 		}
+		
 		int res = 0;
 		try {
-			if (dto.getMember_org_img() == null || dto.getMember_org_img().trim().equals("") || newFileName == null
-					|| newFileName.trim().equals("")) {
+			if (check >0 ) {//파일 있으면 기존 업데이트로
 				res = memberMapper.editMember(dto);
-			} else {
+			} else {//파일 없으면 img 수정 빠진 업데이트로
 				res = memberMapper.editMemberForNull(dto);
-
 			}
 		} catch (NullPointerException ne) {
 			ne.printStackTrace();
@@ -210,13 +216,15 @@ public class MemberController {
 			dto.setMember_str_img(null);
 			dto.setMember_email(null);
 		}
+		
 		if (res > 0) {
-			mav.setViewName("user/member/member_edit");
+			mav.addObject("msg", "회원정보 수정 성공!!");
 		} else {
 			mav.addObject("msg", "회원정보 수정 실패!!");
-			mav.addObject("url", "home");
-			mav.setViewName("user/member/message");
 		}
+		
+		mav.addObject("url", "admin/member/edit");
+		mav.setViewName("user/member/message");
 		return mav;
 	}
 
