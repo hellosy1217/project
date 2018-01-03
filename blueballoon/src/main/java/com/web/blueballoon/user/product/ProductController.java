@@ -27,6 +27,7 @@ import com.web.blueballoon.model.BBBookRoomDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBProductDTO;
+import com.web.blueballoon.model.BBProductLikeDTO;
 import com.web.blueballoon.model.BBRoomDTO;
 import com.web.blueballoon.model.BookDateDTO;
 import com.web.blueballoon.user.service.ProductMapper;
@@ -109,6 +110,50 @@ public class ProductController {
 			mav.addObject("prod_pick", 0);
 		}
 
+		try {
+			String sort = ServletRequestUtils.getStringParameter(arg0, "sort");
+			if (sort.equals(null) || sort.equals("")) {
+				mav.addObject("sort", sort);
+				if (sort.equals("인기순")) {
+					List<BBProductLikeDTO> rateList = new ArrayList<BBProductLikeDTO>();
+					for (int i = 0; i < listProd.size(); i++) {
+						BBProductLikeDTO dto = new BBProductLikeDTO();
+						dto.setProd_num(i);
+						dto.setLikeCount(ProductMapper.likeCount(i));
+						rateList.add(dto);
+					}
+					Collections.sort(rateList, new Comparator<BBProductLikeDTO>() {
+						public int compare(BBProductLikeDTO o1, BBProductLikeDTO o2) {
+							return o1.getLikeCount() > o2.getLikeCount() ? -1
+									: o1.getLikeCount() < o2.getLikeCount() ? 1 : 0;
+						}
+					});
+					for (int i = 0; i < rateList.size(); i++) {
+						for (int j = 0; j < listProd.size(); j++) {
+							if (rateList.get(i).getProd_num() == listProd.get(j).getProd_num()) {
+								listProd.get(j).setProd_likeCount(rateList.get(i).getLikeCount());
+							}
+						}
+					}
+					Collections.sort(listProd, new Comparator<BBProductDTO>() {
+						public int compare(BBProductDTO o1, BBProductDTO o2) {
+							return o1.getProd_likeCount() > o2.getProd_likeCount() ? -1
+									: o1.getProd_likeCount() < o2.getProd_likeCount() ? 1 : 0;
+						}
+					});
+				}
+				// else if (sort.equals("후기순")) {
+				// Collections.sort(listProd, new Comparator<BBProductDTO>() {
+				// public int compare(BBProductDTO o1, BBProductDTO o2) {
+				// return o1.getBook_date().compareTo(o2.getBook_date());
+				// }
+				// });
+				// }
+			}
+		} catch (NullPointerException e) {
+			mav.addObject("sort", "최신순");
+		}
+
 		// 총 페이지 수
 		int pageNum = listProd.size();
 		if (pageNum % 9 != 0) {
@@ -148,7 +193,7 @@ public class ProductController {
 		mav.addObject("endPage", endPage);
 
 		// 9개만 보내기
-		for (int i = listProd.size()-1; i >= 0; i--) {
+		for (int i = listProd.size() - 1; i >= 0; i--) {
 			if (i < currentPage * 9 - 9 || i > currentPage * 9 - 1) {
 				listProd.remove(i);
 			}
