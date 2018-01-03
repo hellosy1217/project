@@ -75,8 +75,24 @@
 	});
 </script>
 <script type="text/javascript">
-	function changePage(currentPage) {
-		location.href="product_list?currentPage="+currentPage
+	function change(cate_state,cate_city,prod_pick,currentPage) {
+		var lh = 'product_list?';
+		if(cate_state!=''){
+			lh += 'cate_state='+cate_state;
+		}
+		if(cate_city!=''){
+			if(cate_state!=null||cate_state!='')
+				lh+='&';
+			alert("cate_city: "+cate_city+":::");
+			lh+='cate_city='+cate_city;
+		}
+		if(cate_state!=''||cate_city!='')
+			lh+='&';
+		lh+='prod_pick='+prod_pick;
+		
+		lh+='&currentPage='+currentPage;
+		
+		location.href=lh;
 	}
 </script>
 </head>
@@ -110,8 +126,9 @@
 							<meta itemprop="name" content="TourRadar">
 					</a></li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">〉 <a
-						href="product_list?cate_state=${cate_state}" itemprop="item"><span
+						itemtype="http://schema.org/ListItem">〉 <a href="#"
+						itemprop="item"
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})"><span
 							itemprop="name">${cate_state}</span></a>
 					</li>
 					<c:if test="${!empty cate_city }">
@@ -123,13 +140,13 @@
 				</ul>
 			</nav>
 
-			<h1>${cate_state } ${cate_city }</h1>
+			<h1>${cate_state }${cate_city }</h1>
 		</div>
 	</div>
 
 	<div class="c">
 		<div class="stat">
-			
+
 			<div class="sort">
 				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
 					<option value="lendesc">최신순</option>
@@ -138,7 +155,7 @@
 				</select>
 			</div>
 		</div>
-		
+
 		<div class="as">
 			<aside id="params">
 				<div class="b blue">
@@ -165,18 +182,8 @@
 								class="span" onclick="return false">패키지 여행</a></li>
 							<c:set var="pick" value="관광지,맛집,숙소" />
 							<c:forTokens items="${pick}" delims="," varStatus="st" var="p">
-								<c:choose>
-									<c:when test="${!empty cate_city}">
-										<li><a
-											href="product_list?cate_state=${cate_state}&cate_city=${cate_city}&prod_pick=${st.count}"
-											class="span">${p}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li><a
-											href="product_list?cate_state=${cate_state}&prod_pick=${st.count}"
-											class="span">${p}</a></li>
-									</c:otherwise>
-								</c:choose>
+								<li><a class="span"
+									onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})">${p}</a></li>
 							</c:forTokens>
 
 						</ul>
@@ -196,15 +203,14 @@
 										<c:if test="${status.count eq st.count}">
 											<div class="th" style="background: ${col}"></div>
 										</c:if>
-									</c:forTokens> <a href="product_list?cate_city=${c}" id="flip${status.count}"
-									class="span" onclick="return false">${c}</a>
+									</c:forTokens> <a href="#" id="flip${status.count}" class="span">${c}</a>
 									<div class="tr" id="icon${status.count}"></div>
 									<ul class="sub" id="panel${status.count}"
 										style="margin-top: 15px;">
 										<c:forEach items="${listCate}" var="list">
 											<c:if test="${list.cate_state == c}">
 												<li><span><a
-														href="product_list?cate_state=${c}&cate_city=${list.cate_city}">${list.cate_city}</a></span></li>
+														onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})">${list.cate_city}</a></span></li>
 											</c:if>
 										</c:forEach>
 									</ul></li>
@@ -216,18 +222,16 @@
 					<h5 id="flipp">여행 후기</h5>
 					<div class="c" id="panell">
 						<ul style="padding-bottom: 15px;">
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">후기 보러가기</a></li>
+							<li><a href="board_list" class="span">후기 보러가기</a></li>
 						</ul>
 					</div>
 				</div>
 			</aside>
 		</div>
-		
+
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
+				<c:forEach var="prod" items="${listProd}">
 					<div class="spotListIn">
 						<a href="product_content?prod_num=${prod.prod_num}"
 							class="spotIn focusedLink">
@@ -257,27 +261,31 @@
 			</div>
 			<div class="pag">
 				<c:if test="${currentPage > 9}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage-1})">«<span>Previous</span></a>
+					<a
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage-1})"">«<span>Previous</span></a>
 				</c:if>
 				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
 					<c:choose>
 						<c:when test="${currentPage eq page}">
-							<a href="javascript:void(0)" onclick="changePage(${page})"
+							<a href="javascript:void(0)"
+								onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})"
 								class="active">${page}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="javascript:void(0)" onclick="changePage(${page})">${page}</a>
+							<a href="javascript:void(0)"
+								onclick="change('${cate_state}','${cate_city}',${prod_pick},${page})">${page}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${endPage ne pageNum}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage+1})"><span>Next
+					<a href="javascript:void(0)"
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage+1})"><span>Next
 					</span>»</a>
 				</c:if>
 			</div>
 			<a class="but blue p hid">Load more</a>
 		</div>
-		
+
 		<div class="e"></div>
 	</div>
 	</main>

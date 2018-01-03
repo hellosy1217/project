@@ -43,6 +43,7 @@ public class ProductController {
 
 	@RequestMapping(value = "product_list", method = RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		// 로그인 여부
 		int member_num;
 		String member_email;
 		char member_name;
@@ -146,6 +147,12 @@ public class ProductController {
 		}
 		mav.addObject("endPage", endPage);
 
+		// 9개만 보내기
+		for (int i = listProd.size()-1; i >= 0; i--) {
+			if (i < currentPage * 9 - 9 || i > currentPage * 9 - 1) {
+				listProd.remove(i);
+			}
+		}
 		mav.addObject("listProd", listProd);
 		mav.setViewName("user/product/list");
 
