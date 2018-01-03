@@ -1,10 +1,7 @@
 package com.web.blueballoon.user.board;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -19,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBBoardDTO;
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBCommentDTO;
 import com.web.blueballoon.model.BBMemberDTO;
-import com.web.blueballoon.model.ImageDTO;
 import com.web.blueballoon.user.service.BoardMapper;
 import com.web.blueballoon.user.service.BoardPager;
+import com.web.blueballoon.user.service.ProductMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
 
 @Controller
@@ -35,6 +32,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	@Autowired
+	private ProductMapper ProductMapper;
 
 	@Autowired
 	private AmazonFileUtils amazon;
@@ -44,6 +44,24 @@ public class BoardController {
 	@RequestMapping(value = "board_list", method = RequestMethod.GET)
 	// @RequestParam(defaultValue="") ==> 기본값 할당 : 현재페이지를 1로 초기화
 	public ModelAndView boardlist(HttpServletRequest req,@RequestParam(defaultValue = "1") int curPage) {
+		int member_num;
+		String member_email;
+		char member_name;
+		try {
+			member_num = (Integer) req.getSession().getAttribute("member_num");
+			member_email = (String) req.getSession().getAttribute("member_email");
+			member_name = (Character) req.getSession().getAttribute("member_name");
+
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
+			mav.addObject("member_name", member_name);
+		} catch (NullPointerException e) {
+			member_num = 0;
+			member_email = null;
+		}
+
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
 		// 게시글 갯수 계산
 		int count = boardMapper.countBoard();
 
