@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.admin.service.AdminMapper;
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.ControllerMessage;
@@ -47,18 +48,8 @@ public class AdminPackageController {
 			mav.addObject("url", "BB_pack_insert");
 			mav.setViewName("admin/message"); return mav;
 		}
-		System.out.println("1. title : "+dto.getPack_title());
-		System.out.println("2. email : "+dto.getPack_email());
-		System.out.println("3. phone: "+dto.getPack_phone());
-		System.out.println("4. price : "+dto.getPack_price());
-		System.out.println("5. period : "+dto.getPack_period());
-		System.out.println("6. days : "+dto.getPack_days());
-		System.out.println("7. start_date : "+dto.getPack_start_date());
-		System.out.println("8. contents : "+dto.getPack_content());
-		System.out.println("9. place : "+dto.getPack_place());
 		
 		String filename = multipartFile.getOriginalFilename();
-		System.out.println("filename : "+filename );
 		
 		if(filename ==null || filename.trim().equals("")) {
 			dto.setPack_org_img(null);
@@ -68,8 +59,6 @@ public class AdminPackageController {
 			dto.setPack_str_img(upload);
 		}
 		int res = 0;
-		System.out.println("10. org_img : "+dto.getPack_org_img());
-		System.out.println("11. str_img : "+dto.getPack_str_img());
 		try {
 			res = adminMapper.insertBBPackage(dto);
 		}catch (NullPointerException ne) {

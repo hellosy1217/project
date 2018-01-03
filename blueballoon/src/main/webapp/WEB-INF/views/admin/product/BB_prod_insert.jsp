@@ -137,12 +137,13 @@
             <th width="20%">여행 상품 지역</th>
             <td>
                <select id="category" name="prod_cate">
-                  <c:if test="${empty cateList}">
-                  	<option>등록된 카테고리가 없습니다.</option>
-                  </c:if>
-                  <c:forEach var="dto" items="${cateList}">
-                     <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state}-${dto.cate_city}</option>
-                  </c:forEach>
+                  <option value="0">서울특별시</option>
+						<option value="강원도">강원도</option>
+						<option value="경기도">경기도</option>
+						<option value="경상도">경상도</option>
+						<option value="전라도">전라도</option>
+						<option value="제주도">제주도</option>
+						<option value="충청도">충청도</option>
                </select>
             </td>
          </tr>

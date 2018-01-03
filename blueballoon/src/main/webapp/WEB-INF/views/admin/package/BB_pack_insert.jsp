@@ -147,7 +147,15 @@ function addInputTimes(inputNo) {
 				<th>패키지 이름</th>
 				<td><input type="text" name="pack_title" placeholder="ex.맛깔나는 서울맛집투어 "></td>
 				<th>패키지 지역</th>
-				<td><input type="text" name="pack_place" placeholder="ex.서울 남서지역 (큰 지역 개념 )"></td>
+				<td><select name="pack_place">
+					<c:if test="${empty cateList}">
+                  		<option>등록된 카테고리가 없습니다.</option>
+                  	</c:if>
+					<c:forEach var="dto" items="${cateList}">
+						<option value="${dto.cate_state}">${dto.cate_state}</option>
+					</c:forEach>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>담당 이메일</th>
