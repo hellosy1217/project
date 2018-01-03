@@ -105,6 +105,7 @@ public class ProductController {
 				}
 			}
 		} catch (NullPointerException e) {
+			mav.addObject("prod_pick", 0);
 		}
 
 		// 총 페이지 수
