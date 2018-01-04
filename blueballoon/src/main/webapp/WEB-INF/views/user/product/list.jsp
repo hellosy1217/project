@@ -162,7 +162,7 @@
 					<h5>필터링 기준 : 
 					<c:forTokens items="${fil}" delims="," varStatus="vs" var="ff">
 						<c:if test="${prod_pick eq vs.count}">
-							<a href="#" onclick="change('${cate_state}','${cate_city}',${vs.count},1)">${ff}</a>
+							${ff}
 						</c:if>
 					</c:forTokens>
 					</h5>
@@ -203,7 +203,7 @@
 										<c:forEach items="${listCate}" var="list">
 											<c:if test="${list.cate_state == c}">
 												<li><span><a
-														onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})">${list.cate_city}</a></span></li>
+														onclick="change('${list.cate_state}','${list.cate_city}',${prod_pick},${currentPage})">${list.cate_city}</a></span></li>
 											</c:if>
 										</c:forEach>
 									</ul></li>

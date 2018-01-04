@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>BlueBalloon</title>
 <link
 	href="${pageContext.request.contextPath}/resources/home/css/home1.css?ver=12"
 	rel="stylesheet" type="text/css" />
@@ -16,11 +16,11 @@
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/home/main.MOV">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/home/js/home1.js?ver=12"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	window.onload = function() {
 		bbSearch('searchForm');
 	};
-</script>
+</script> -->
 </head>
 <body class="tb" data-b-sale="">
 	<c:choose>

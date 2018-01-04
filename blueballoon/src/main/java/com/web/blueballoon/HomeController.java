@@ -50,7 +50,7 @@ public class HomeController {
 
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
-
+		arg0.getSession().setAttribute("listCate", listCate);
 		mav.setViewName("home");
 		return mav;
 	}
@@ -66,8 +66,8 @@ public class HomeController {
 			member_email = (String) arg0.getSession().getAttribute("member_email");
 			member_name = (Character) arg0.getSession().getAttribute("member_name");
 
-			mav.addObject("member_num",member_num);
-			mav.addObject("member_email",member_email);
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
 			mav.addObject("member_name", member_name);
 		} catch (NullPointerException e) {
 			member_num = 0;

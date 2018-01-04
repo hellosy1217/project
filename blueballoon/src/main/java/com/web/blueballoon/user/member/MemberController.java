@@ -41,7 +41,7 @@ public class MemberController {
 
 	// 로그인
 	@RequestMapping(value = "member_login", method = RequestMethod.POST)
-	public ModelAndView checkUser(BBMemberDTO dto, HttpSession session, HttpServletRequest req) {
+	public ModelAndView checkUser(BBMemberDTO dto, HttpServletRequest req) {
 		boolean isLogin =memberMapper.checkUser(dto);	//true값이 성공
 		
 		if(isLogin) {
@@ -49,10 +49,9 @@ public class MemberController {
 				mav.setViewName("redirect:/admin_index");
 			} else {
 				BBMemberDTO login = memberMapper.getMember(dto.getMember_email());
-				session = req.getSession();
-				session.setAttribute("member_num", login.getMember_num());
-				session.setAttribute("member_email", login.getMember_email());
-				session.setAttribute("member_name", login.getMember_name().toUpperCase().charAt(0));
+				req.getSession().setAttribute("member_num", login.getMember_num());
+				req.getSession().setAttribute("member_email", login.getMember_email());
+				req.getSession().setAttribute("member_name", login.getMember_name().toUpperCase().charAt(0));
 				mav.setViewName("redirect:/main");
 			}
 		}else {

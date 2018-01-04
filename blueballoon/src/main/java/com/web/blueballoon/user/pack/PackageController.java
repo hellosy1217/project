@@ -48,8 +48,7 @@ public class PackageController {
 		mav.addObject("member_num", member_num);
 
 		// 카테고리 목록
-		List<BBCategoryDTO> listCate = ProductMapper.listCate();
-		mav.addObject("listCate", listCate);
+		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
 
 		// 상품 목록
 		List<BBProductDTO> listProd = ProductMapper.listProd();

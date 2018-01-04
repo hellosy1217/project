@@ -44,6 +44,7 @@ public class ProductController {
 
 	@RequestMapping(value = "product_list", method = RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		mav.clear();
 		// 로그인 여부
 		int member_num;
 		String member_email;
@@ -61,9 +62,7 @@ public class ProductController {
 		}
 		mav.addObject("member_num", member_num);
 
-		// 카테고리 목록
-		List<BBCategoryDTO> listCate = ProductMapper.listCate();
-		mav.addObject("listCate", listCate);
+		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
 
 		// 상품 목록
 		List<BBProductDTO> listProd = ProductMapper.listProd();
@@ -206,7 +205,7 @@ public class ProductController {
 
 	@RequestMapping(value = "product_content", method = RequestMethod.GET)
 	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-
+		mav.clear();
 		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 		BBProductDTO dto = ProductMapper.getProd(prod_num);
 		int likeCount = ProductMapper.likeCount(prod_num);
@@ -233,6 +232,7 @@ public class ProductController {
 			mav.addObject("like", "N");
 			mav.addObject("member_num", 0);
 		}
+		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
 		return mav;
@@ -241,6 +241,7 @@ public class ProductController {
 	// 좋아요 기능
 	@RequestMapping(value = "product_like", method = RequestMethod.GET)
 	public ModelAndView like(HttpServletRequest arg0, HttpServletResponse arg1, HttpSession session) throws Exception {
+		mav.clear();
 		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
 		mav.addObject("prod_num", prod_num);
 		try {
