@@ -11,7 +11,7 @@
 		}
 	}
 </script>
-<div align="center">
+<div  class="c" align="center">
 	<table border="1" width="700">
 		<tr>
 			<th colspan="8" align="right"><a href="BB_pack_insert">패키지 상품 추가</a></th>

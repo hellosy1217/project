@@ -147,7 +147,7 @@ function addInputTimes(inputNo) {
 				<th>패키지 이름</th>
 				<td><input type="text" name="pack_title" placeholder="ex.맛깔나는 서울맛집투어 "></td>
 				<th>패키지 지역</th>
-				<td><select id="category" name="prod_cate">
+				<td><select id="category" name="pack_place">
                   		<option value="서울특별시">서울특별시</option>
 						<option value="강원도">강원도</option>
 						<option value="경기도">경기도</option>
