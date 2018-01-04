@@ -120,5 +120,8 @@ public class AdminMapper {
 	public BBPackageDTO getBBPackageDTO(int pack_num) {
 		return sqlSession.selectOne("getBBPackage",pack_num);
 	}
+	public int deleteBBPackage(int pack_num) {
+		return sqlSession.delete("deleteBBPackage",pack_num);
+	}
 
 }

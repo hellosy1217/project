@@ -13,6 +13,7 @@ public class BBPackageDTO {
 	private String pack_start_date;
 	private String pack_content;
 	private String pack_place;
+	private int pack_person;
 	private int pack_times;
 	/*pack_num   : 패키지 고유 번호
 	pack_title      : 패키지 이름

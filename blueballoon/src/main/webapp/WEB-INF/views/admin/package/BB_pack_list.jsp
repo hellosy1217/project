@@ -3,6 +3,14 @@
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <h2 align="center">패키지 목록</h2>
+<script type="text/javascript">
+	function checkDel(prod_num){
+		var isDel = confirm("정말로 삭제하시겠습니까?")
+		if (isDel){
+			location.href="BB_prod_delete?prod_num="+prod_num;
+		}
+	}
+</script>
 <div align="center">
 	<table border="1" width="700">
 		<tr>
@@ -31,7 +39,7 @@
 			<td align="center">${dto.pack_period}</td>
 			<td align="center">${dto.pack_days}</td>
 			<td align="center"><a href="BB_pack_edit?pack_num=${dto.pack_num}">수정</a> | 
-			<a href="BB_pack_delete?pack_num=${dto.pack_num}">삭제</a></td>
+			<a href="javascript:checkDel('${dto.pack_num}')">삭제</a></td>
 		</tr>
 		</c:forEach>	
 	</table>

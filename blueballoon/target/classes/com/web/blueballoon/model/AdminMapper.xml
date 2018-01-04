@@ -75,9 +75,15 @@
 	</update>
 	<insert id="insertBBPackage" parameterType="BBPackageDTO">
 		insert into bb_package values(bb_pack_seq.nextval, #{pack_title, jdbcType=VARCHAR}, #{pack_email, jdbcType=VARCHAR}, #{pack_phone, jdbcType=VARCHAR},#{pack_price, jdbcType=NUMERIC}, #{pack_org_img, jdbcType=VARCHAR}, 
-		#{pack_str_img, jdbcType=VARCHAR}, #{pack_period, jdbcType=VARCHAR}, #{pack_days, jdbcType=NUMERIC}, #{pack_start_date, jdbcType=VARCHAR}, #{pack_content, jdbcType=VARCHAR}, #{pack_place, jdbcType=VARCHAR})
+		#{pack_str_img, jdbcType=VARCHAR}, #{pack_period, jdbcType=VARCHAR}, #{pack_days, jdbcType=NUMERIC}, #{pack_start_date, jdbcType=VARCHAR}, #{pack_content, jdbcType=VARCHAR}, #{pack_place, jdbcType=VARCHAR}, #{pack_person, jdbcType=NUMERIC} )
 	</insert>
 	<select id="listBBPackage" resultType="BBPackageDTO">
 		select * from bb_package
 	</select>
+	<select id="getBBPackage" parameterType="int" resultType="BBPackageDTO">
+		select * from bb_package where pack_num = #{pack_num, jdbcType=NUMERIC}
+	</select>
+	<delete id="deleteBBPackage" parameterType="int">
+		delete from bb_package where pack_num = #{pack_num, jdbcType=NUMERIC}
+	</delete>
 </mapper>

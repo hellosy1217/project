@@ -84,4 +84,20 @@ public class AdminPackageController {
 		return mav;
 	}
 	
+	@RequestMapping(value="BB_pack_delete")
+	public ModelAndView deletePackage(@RequestParam int pack_num) {
+		BBPackageDTO dto = adminMapper.getBBPackageDTO(pack_num);
+		if(dto.getPack_str_img() != null || !dto.getPack_str_img().trim().equals("")) {//기존 이미지 있는 경우
+			boolean existFile = amazon.existFile("bb_package", dto.getPack_str_img());
+			if(existFile) {
+				amazon.deleteFile("package", dto.getPack_str_img());
+				System.out.println("파일 삭제 완료");
+			}
+		}
+		int res = adminMapper.deleteBBPackage(pack_num);
+		String[] msg = {"패키지 상품 삭제 완료!", "패키지 상품 삭제 실패!"};
+		String[] url = {"BB_pack_list","BB_pack_list"};
+		return cm.resMassege(res, msg, url);
+	}
+	
 }
