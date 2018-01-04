@@ -1,7 +1,6 @@
 package com.web.blueballoon.admin;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.web.blueballoon.admin.service.AdminMapper;
-import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.ControllerMessage;
@@ -69,6 +66,22 @@ public class AdminPackageController {
 		String[] msg = { "패키지 상품 등록 완료! 패키지 상품 목록 페이지로 이동합니다.", "패키지 상품 등록 실패! 패키지 상품 등록 페이지로 이동합니다." };
 		String[] url = { "BB_pack_list", "BB_pack_insert" };
 		return cm.resMassege(res, msg, url);
+	}
+	
+	@RequestMapping(value="BB_pack_edit", method=RequestMethod.GET)
+	public ModelAndView viewEditPackage(@RequestParam int pack_num) {
+		BBPackageDTO dto = adminMapper.getBBPackageDTO(pack_num);
+		//출발 횟수 계산해서 set 해주기
+		String [] tmp = dto.getPack_start_date().split(",");
+		for(String time : tmp) {//결과 확인
+			System.out.println(time);
+		}
+		dto.setPack_times(tmp.length);
+		
+		mav.addObject("pack",dto);
+		mav.setViewName("admin/package/BB_pack_edit");
+		System.out.println("object 값 넘어감 !!!");
+		return mav;
 	}
 	
 }

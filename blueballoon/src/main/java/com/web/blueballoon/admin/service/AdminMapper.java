@@ -117,5 +117,8 @@ public class AdminMapper {
 	public List<BBPackageDTO> listBBPackage() {
 		return sqlSession.selectList("listBBPackage");
 	}
+	public BBPackageDTO getBBPackageDTO(int pack_num) {
+		return sqlSession.selectOne("getBBPackage",pack_num);
+	}
 
 }

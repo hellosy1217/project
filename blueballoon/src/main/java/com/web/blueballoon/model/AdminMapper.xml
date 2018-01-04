@@ -80,4 +80,7 @@
 	<select id="listBBPackage" resultType="BBPackageDTO">
 		select * from bb_package
 	</select>
+	<select id="getBBPackage" parameterType="int" resultType="BBPackageDTO">
+		select * from bb_package where pack_num = #{pack_num, jdbcType=NUMERIC}
+	</select>
 </mapper>

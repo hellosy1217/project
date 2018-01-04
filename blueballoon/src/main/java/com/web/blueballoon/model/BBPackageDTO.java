@@ -13,7 +13,7 @@ public class BBPackageDTO {
 	private String pack_start_date;
 	private String pack_content;
 	private String pack_place;
-	
+	private int pack_times;
 	/*pack_num   : 패키지 고유 번호
 	pack_title      : 패키지 이름
 	pack_email   : 판매자 이메일
@@ -98,5 +98,11 @@ public class BBPackageDTO {
 	}
 	public void setPack_start_date(String pack_start_date) {
 		this.pack_start_date = pack_start_date;
+	}
+	public int getPack_times() {
+		return pack_times;
+	}
+	public void setPack_times(int pack_times) {
+		this.pack_times = pack_times;
 	}
 }
