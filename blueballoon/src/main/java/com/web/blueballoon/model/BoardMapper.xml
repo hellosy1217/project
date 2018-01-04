@@ -12,6 +12,20 @@
         ) A
     ) WHERE rn BETWEEN #{start} AND #{end}
 </sql>	
+<!-- search sql -->
+<sql id="search">
+    <choose>
+        <!-- 검색옵션이 전체 검색일 경우 -->
+        <when test="searchOption == 'all'">
+            WHERE board_content like '%'||#{keyword}||'%'
+            OR board_title like '%'||#{keyword}||'%'
+        </when>
+        <!-- 전체 검색이 아닐 경우 -->
+        <otherwise>
+            WHERE ${searchOption} like '%'||#{keyword}||'%'
+        </otherwise>
+    </choose>
+</sql>
 
 <select id="boardList" parameterType="HashMap" resultType="BBBoardDTO">
 	<include refid="pagingHeader"></include>
@@ -24,6 +38,20 @@
   	SELECT count(*) FROM bb_board
 </select>
 
+<select id="boardListSearch" parameterType="HashMap" resultType="BBBoardDTO">
+	<include refid="pagingHeader"></include>
+        SELECT ROWNUM, board_num,board_title, board_reg_date, board_readcount
+        FROM bb_board 
+        <include refid="search"></include>
+        ORDER BY board_num DESC
+    <include refid="pagingFooter"></include>   
+</select>
+
+<select id="countBoardSearch" parameterType="HashMap" resultType="int">
+  	SELECT count(*) FROM bb_board
+  	<include refid="search"></include>
+</select>
+
 <select id="bestReview" resultType="BBBoardDTO">
 	<![CDATA[ 
 		SELECT * FROM ( SELECT * FROM bb_board ORDER BY board_likecount DESC) WHERE ROWNUM <=4
@@ -31,17 +59,11 @@
 </select>
 
 <insert id="insertBoard" parameterType="BBBoardDTO">
-	INSERT INTO bb_board (board_num, prod_num, member_email,board_title,board_content,
+	INSERT INTO bb_board (board_num, prod_num, pack_num, member_email,board_title,board_content,
 	board_org_img, board_str_img,board_reg_date, board_readcount, board_likecount,board_score) 
-	values(bb_board_seq.nextval,#{prod_num},#{member_email},#{board_title},#{board_content},
+	values(bb_board_seq.nextval,#{prod_num},#{pack_num},#{member_email},#{board_title},#{board_content},
 	#{board_org_img, jdbcType=VARCHAR},#{board_str_img, jdbcType=VARCHAR},SYSDATE,0,0, #{board_score})
 </insert>
-
-<select id="getBoardNum" parameterType="BBBoardDTO" resultType="int">
-	SELECT board_num FROM bb_board WHERE 
-	(member_email = #{member_email} AND board_title = #{board_title})
-	AND (prod_num = #{prod_num} AND pack_num =#{pack_num})
-</select> 
 
 <update id="readcount" parameterType="int">
 	UPDATE bb_board SET board_readcount = board_readcount + 1 WHERE board_num = #{board_num}
@@ -63,6 +85,10 @@
  		DELETE FROM bb_board WHERE board_num = #{board_num}
 </delete>
 
+<delete id="deleteBoardComments" parameterType="int">
+		DELETE FROM bb_comment WHERE board_num = #{board_num}
+</delete>
+
 <update id="updateBoard" parameterType="BBBoardDTO">
  		UPDATE bb_board SET board_title =#{board_title},board_content=#{board_content},
  		board_org_img=#{board_org_img, jdbcType=VARCHAR},board_str_img=#{board_str_img, jdbcType=VARCHAR},board_score=#{board_score} WHERE board_num = #{board_num}
@@ -73,7 +99,7 @@
 </insert>
 
 <select id="commentList" resultType="BBCommentDTO" parameterType="int">
-		SELECT * FROM bb_comment WHERE board_num = #{board_num}
+		SELECT * FROM bb_comment WHERE board_num = #{board_num} ORDER BY comment_num ASC
 </select>
 
 <delete id="deleteComment" parameterType="int">

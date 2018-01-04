@@ -44,7 +44,8 @@ public class BoardController {
 
 	@RequestMapping(value = "board_list", method = RequestMethod.GET)
 	// @RequestParam(defaultValue="") ==> 기본값 할당 : 현재페이지를 1로 초기화
-	public ModelAndView boardlist(HttpServletRequest req, @RequestParam(defaultValue = "1") int curPage) {
+	public ModelAndView boardlist(HttpServletRequest req, @RequestParam(defaultValue = "1") int curPage,
+			@RequestParam(defaultValue="") String keyword) {
 		mav.clear();
 		int member_num;
 		String member_email;
@@ -63,18 +64,48 @@ public class BoardController {
 		}
 
 		mav.addObject("listCate", req.getSession().getAttribute("listCate"));
-		// 게시글 갯수 계산
-		int count = boardMapper.countBoard();
 
-		// 페이지 나누기 관련 처리
-		BoardPager boardPager = new BoardPager(count, curPage);
-		int start = boardPager.getPageBegin();
-		int end = boardPager.getPageEnd();
+		String searchOption = req.getParameter("seachOption");
+		int count = 0;
+		BoardPager boardPager = null;
+		List<BBBoardDTO> boardList = null;
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("start", start);
-		map.put("end", end);
-		List<BBBoardDTO> boardList = boardMapper.boardList(map);
+		if(keyword == null || keyword.trim().equals("")) {
+			//검색어가 없음
+			// 게시글 갯수 계산
+			count = boardMapper.countBoard();
+
+			// 페이지 나누기 관련 처리
+			boardPager = new BoardPager(count, curPage);
+			int start = boardPager.getPageBegin();
+			int end = boardPager.getPageEnd();
+
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			boardList = boardMapper.boardList(map);
+
+		}else {
+			//검색어가 있음
+			// 게시글 갯수 계산
+			System.out.println("검색어 있음.");
+			HashMap<String, Object> countMap = new HashMap<String, Object>();
+			countMap.put("searchOption", searchOption);
+			countMap.put("keyword", keyword);
+			count = boardMapper.countBoardSearch(countMap);
+
+			// 페이지 나누기 관련 처리
+			boardPager = new BoardPager(count, curPage);
+			int start = boardPager.getPageBegin();
+			int end = boardPager.getPageEnd();
+
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("searchOption", searchOption);
+			map.put("keyword", keyword);
+			boardList = boardMapper.boardListSearch(map);
+		}
 
 		// session에 있는 이메일값 넘겨주기
 		HttpSession session = req.getSession();
@@ -116,58 +147,63 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping(value = "board_write")
+	@RequestMapping(value = "board_write") //상품에 대한 리뷰 작성
 	public ModelAndView boardWriteForm(@RequestParam int prod_num, HttpServletRequest req) {
 		mav.clear();
+		mav.addObject("prod_num", prod_num);
 		HttpSession session = req.getSession();
 		String memberEmail = (String) session.getAttribute("member_email");
-		mav.addObject("prod_num", prod_num);
 		if (memberEmail == null) {
 			mav.addObject("msg", "로그인을 해주세요");
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/board/message");
 			return mav;
 		}
+		//상품에 대한 사진과 이름을 받기 위해
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		String prod_name = null;
+		String str_img = null;
+		int prod_pick = 0;
+		for (int j = 0; j < listProd.size(); j++) {
+			if (prod_num == listProd.get(j).getProd_num()) {
+				prod_name =listProd.get(j).getProd_name();
+				str_img = listProd.get(j).getProd_str_img();
+				prod_pick = listProd.get(j).getProd_pick();
+			}
+		}
+		int pack_num = 0;
+		mav.addObject("pack_num", pack_num);
+		mav.addObject("prod_name", prod_name);
+		mav.addObject("str_img", str_img);
+		mav.addObject("prod_pick", prod_pick);
+		mav.addObject("member_email", memberEmail);
+		mav.setViewName("user/board/write");
+		return mav;
+	}
+	
+	@RequestMapping(value = "board_write") //패키지에 대한 리뷰 작성
+	public ModelAndView boardWriteFormPack(@RequestParam int pack_num, HttpServletRequest req) {
+		mav.clear();
+		HttpSession session = req.getSession();
+		String memberEmail = (String) session.getAttribute("member_email");
+		mav.addObject("pack_num", pack_num);
+		if (memberEmail == null) {
+			mav.addObject("msg", "로그인을 해주세요");
+			mav.addObject("url", "member_login");
+			mav.setViewName("user/board/message");
+			return mav;
+		}
+		int prod_num = 0;
+		mav.addObject("prod_num", prod_num);
 		mav.addObject("member_email", memberEmail);
 		mav.setViewName("user/board/write");
 		return mav;
 	}
 
-	@RequestMapping(value = "board_insert", method = RequestMethod.POST)
-	public ModelAndView boardWritePro(HttpServletRequest req,
-			@RequestParam("board_org_img") MultipartFile multipartFiles, @ModelAttribute BBBoardDTO dto,
-			BindingResult result) {
-		System.out.println("prod_num = " + dto.getProd_num());
-		System.out.println("memberEmail = " + dto.getMember_email());
-		String star = req.getParameter("star");
-		// if(star == null || star.trim().equals("")) {
-		// mav.addObject("prod_num", dto.getProd_num());
-		// mav.addObject("member_email", dto.getMember_email());
-		// mav.addObject("msg", "별점을 선택하세요");
-		// mav.addObject("url", "board_write");
-		// mav.setViewName("user/board/message");
-		// return mav;
-		// }
-		// if(dto.getBoard_title() == null || dto.getBoard_title().trim().equals("")) {
-		// mav.addObject("prod_num", dto.getProd_num());
-		// mav.addObject("member_email", dto.getMember_email());
-		// mav.addObject("msg", "제목을 입력하세요");
-		// mav.addObject("url", "board_write");
-		// mav.setViewName("user/board/message");
-		// return mav;
-		// }
-		// if(dto.getBoard_content() == null ||
-		// dto.getBoard_content().trim().equals("")) {
-		// mav.addObject("prod_num", dto.getProd_num());
-		// mav.addObject("member_email", dto.getMember_email());
-		// mav.addObject("msg", "내용을 입력하세요");
-		// mav.addObject("url", "board_write");
-		// mav.setViewName("user/board/message");
-		// return mav;
-		// }
-		System.out.println("star =" + star);
-		// 별점 저장
-		dto.setBoard_score(Integer.parseInt(star));
+	@RequestMapping(value = "board_insert", method = RequestMethod.POST) //리뷰 insert controller
+	public ModelAndView boardWritePro(@RequestParam("board_org_img") MultipartFile multipartFiles, 
+			@ModelAttribute BBBoardDTO dto, BindingResult result) {
+		mav.clear();
 		// 태그 문자 처리 & 공백 문자 처리& 줄바꿈 문자처리
 		String title = dto.getBoard_title();
 		String content = dto.getBoard_content();
@@ -201,11 +237,15 @@ public class BoardController {
 			dto.setBoard_score(0);
 			dto.setProd_num(0);
 		}
-		return new ModelAndView("redirect:board_list");
+		mav.addObject("msg", "등록되었습니다.");
+		mav.addObject("url", "board_list");
+		mav.setViewName("user/board/message");
+		return mav;
 	}
 
 	@RequestMapping(value = "board_content")
 	public ModelAndView contentBoard(HttpServletRequest req, HttpServletResponse resp, @RequestParam String board_num) {
+		mav.clear();
 		int boardNum = Integer.parseInt(board_num);
 		// cookie변수를 만들어서 값을 저장, 값이 있으면 조회수 증가 안됨
 		boolean isCheck = false;
@@ -244,9 +284,6 @@ public class BoardController {
 		} else if (!org_img.equals("0")) {
 			existImg = "Y";
 		}
-		System.out.println("existImg = " + existImg);
-		System.out.println("board_org_img =" + boarddto.getBoard_org_img());
-		System.out.println("board_str_img =" + boarddto.getBoard_str_img());
 		// 모두 담기
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("getBoard", boarddto);
@@ -263,6 +300,10 @@ public class BoardController {
 	@RequestMapping(value = "board_likecount")
 	public ModelAndView likeCount(HttpServletRequest req, HttpServletResponse resp, @RequestParam String board_num)
 			throws Exception {
+		mav.clear();
+		mav.addObject("board_num", Integer.parseInt(board_num));
+		mav.addObject("url", "board_content");
+		mav.setViewName("user/board/message");
 		// cookie변수를 만들어서 값을 저장, 값이 있으면 조회수 증가 안됨
 		boolean isCheck = false;
 		Cookie[] cookies = req.getCookies();
@@ -271,10 +312,7 @@ public class BoardController {
 				if (cookies[i].getName().equals("like" + board_num)) {
 					// board_num쿠키가 있는 경우
 					isCheck = true;
-					mav.addObject("board_num", Integer.parseInt(board_num));
 					mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
-					mav.addObject("url", "board_content");
-					mav.setViewName("user/board/message");
 					break;
 				}
 			}
@@ -285,11 +323,12 @@ public class BoardController {
 			c.setMaxAge(24 * 60 * 60);// 하루 저장
 			resp.addCookie(c);
 		}
-		return new ModelAndView("redirect:board_content?board_num=" + board_num);
+		return mav;
 	}
 
 	@RequestMapping(value = "board_delete")
 	public ModelAndView deleteBoard(@RequestParam int board_num) {
+		mav.clear();
 		BBBoardDTO dto = boardMapper.getBoard(board_num);
 		if (dto.getBoard_str_img() != null) {
 			boolean existFile = amazon.existFile("bb_board", dto.getBoard_str_img());
@@ -298,6 +337,8 @@ public class BoardController {
 			}
 		}
 		int res = boardMapper.deleteBoard(board_num);
+		int result  = boardMapper.deleteBoardComments(board_num);
+		
 		mav.addObject("msg", "삭제되었습니다.");
 		mav.addObject("url", "board_list");
 		mav.setViewName("user/board/message");
@@ -314,6 +355,7 @@ public class BoardController {
 	@RequestMapping(value = "board_update", method = RequestMethod.POST)
 	public ModelAndView boardUpdatePro(HttpServletRequest req, @RequestParam("board_org_img") MultipartFile mf,
 			@ModelAttribute BBBoardDTO dto, BindingResult result) {
+		mav.clear();
 		System.out.println("컨트롤러 진입");
 		BBBoardDTO bdto = boardMapper.getBoard(dto.getBoard_num());
 		String star = req.getParameter("star");
@@ -375,8 +417,7 @@ public class BoardController {
 		/* System.out.println("board_score ="+ dto.getBoard_score()); */
 		int res = 0;
 		try {
-
-			boardMapper.updateBoard(dto);
+			res = boardMapper.updateBoard(dto);
 		} catch (NullPointerException ne) {
 			ne.printStackTrace();
 			dto.setBoard_org_img(null);
@@ -391,21 +432,20 @@ public class BoardController {
 	@RequestMapping(value = "comment_write", method = RequestMethod.POST)
 	public ModelAndView commentWritePro(HttpServletRequest req, @ModelAttribute BBCommentDTO dto,
 			BindingResult result) {
+		mav.clear();
+		mav.addObject("board_num", dto.getBoard_num());
+		mav.setViewName("user/board/message");
 		HttpSession session = req.getSession();
 		String memberEmail = (String) session.getAttribute("member_email");
 		if (memberEmail == null) {
-			mav.addObject("board_num", dto.getBoard_num());
 			mav.addObject("msg", "로그인을 해주세요");
 			mav.addObject("url", "member_login");
-			mav.setViewName("user/board/message");
 			return mav;
 		}
 		dto.setMember_email(memberEmail);
 		if (dto.getComment_content() == null || dto.getComment_content().trim().equals("")) {
-			mav.addObject("board_num", dto.getBoard_num());
 			mav.addObject("msg", "내용을 입력해주세요");
 			mav.addObject("url", "board_content");
-			mav.setViewName("user/board/message");
 			return mav;
 		}
 		// 태그 문자 처리 & 공백 문자 처리& 줄바꿈 문자처리
@@ -415,15 +455,18 @@ public class BoardController {
 		dto.setComment_content(content);
 		// session에 저장된 member_email을 BBBoardDTO에 저장
 		int res = boardMapper.insertComment(dto);
-		return new ModelAndView("redirect:board_content?board_num=" + dto.getBoard_num());
-	}
+		mav.addObject("msg", "댓글이 입력되었습니다.");
+		mav.addObject("url", "board_content");
+		return mav;
+	} 
 
 	@RequestMapping(value = "comment_delete")
 	public ModelAndView deleteComment(@RequestParam int comment_num) {
+		mav.clear();
 		System.out.println("댓글 번호 = " + comment_num);
 		int res = boardMapper.deleteComment(comment_num);
 
-		mav.addObject("msg", "삭제되었습니다.");
+		mav.addObject("msg", "댓글이 삭제되었습니다.");
 		mav.addObject("url", "board_list");
 		mav.setViewName("user/board/message");
 		return mav;

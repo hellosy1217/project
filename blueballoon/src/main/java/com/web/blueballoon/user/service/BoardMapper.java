@@ -27,6 +27,14 @@ public class BoardMapper {
 		return sqlSession.selectOne("countBoard");
 	}
 	
+	public List<BBBoardDTO> boardListSearch(HashMap<String, Object> map){
+		return sqlSession.selectList("boardListSearch", map);
+	}
+	
+	public int countBoardSearch(HashMap<String, Object> map) {
+		return sqlSession.selectOne("countBoardSearch", map);
+	}
+	
 	public List<BBBoardDTO> bestReview(){
 		return sqlSession.selectList("bestReview");
 	}
@@ -36,27 +44,6 @@ public class BoardMapper {
 		return sqlSession.insert("insertBoard", dto);
 	}
 	
-	public int getBoardNum(BBBoardDTO dto) {
-		return sqlSession.selectOne("getBoardNum", dto);
-	}
-	
-	public int countFile(int bnum) {
-		return sqlSession.selectOne("countFile", bnum);
-	}
-	
-	public int boardImgUpdate(HashMap<String, Object> map) {
-		return sqlSession.update("boardImgUpdate", map);
-	}
-	
-	public int insertFile(int part,int selected_num,String org_img, String str_img) {
-		HashMap<Object, Object> hm = new HashMap<Object, Object>();
-		hm.put("part", part);
-		hm.put("selected_num", selected_num);
-		hm.put("org_img", org_img);
-		hm.put("str_img", str_img);
-		return sqlSession.insert("insertFile",hm);
-	}
-	
 	//get
 	public int readcount(int board_num) {
 		return sqlSession.update("readcount", board_num);
@@ -64,10 +51,6 @@ public class BoardMapper {
 	
 	public BBBoardDTO getBoard(int board_num) {
 		return sqlSession.selectOne("getBoard", board_num);
-	}
-	
-	public List<ImageDTO> getImage(int selected_num){
-		return sqlSession.selectList("getImage", selected_num);
 	}
 	
 	public BBMemberDTO getMemberName(String memberEmail) {
@@ -84,14 +67,15 @@ public class BoardMapper {
 		return sqlSession.delete("deleteBoard", board_num);
 	}
 	
+	public int deleteBoardComments(int board_num) {
+		return sqlSession.delete("deleteBoardComments", board_num);
+	}
+	
 	//update
 	public int updateBoard(BBBoardDTO dto) {
 		return sqlSession.update("updateBoard", dto);
 	}
 	
-	public int deleteImage(int board_num) {
-		return sqlSession.delete("deleteImage", board_num);
-	}
 	//comment- insert
 	public int insertComment(BBCommentDTO dto) {
 		return sqlSession.insert("insertComment", dto);
