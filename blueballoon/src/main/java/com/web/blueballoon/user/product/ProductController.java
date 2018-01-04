@@ -197,6 +197,7 @@ public class ProductController {
 				listProd.remove(i);
 			}
 		}
+		
 		mav.addObject("listProd", listProd);
 		mav.setViewName("user/product/list");
 
@@ -266,121 +267,4 @@ public class ProductController {
 		return mav;
 	}
 
-	@RequestMapping(value = "package_booking", method = RequestMethod.GET)
-	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		mav.clear();
-		int member_num;
-		String member_email;
-		try {
-			member_num = (Integer) arg0.getSession().getAttribute("member_num");
-			member_email = (String) arg0.getSession().getAttribute("member_email");
-		} catch (NullPointerException e) {
-			member_num = 0;
-			member_email = null;
-		}
-		mav.addObject("member_num", member_num);
-		mav.addObject("member_email", member_email);
-
-		try {
-			int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
-			BBProductDTO getProd = ProductMapper.getProd(prod_num);
-			mav.addObject("getProd", getProd);
-
-			// 숙소 내 모든 방 목록
-			List<BBRoomDTO> listRoom = ProductMapper.listRoom(prod_num);
-			mav.addObject("listRoom", listRoom);
-
-			// 전체 최소 인원, 최대 인원
-			List<Integer> min_people = new ArrayList<Integer>();
-			List<Integer> max_people = new ArrayList<Integer>();
-
-			for (int i = 0; i < listRoom.size(); i++) {
-				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_person(), ",");
-				min_people.add(Integer.parseInt(str.nextToken()));
-				max_people.add(Integer.parseInt(str.nextToken()));
-			}
-			mav.addObject("min_person", Collections.min(min_people));
-			mav.addObject("max_person", Collections.max(max_people));
-
-			// 전체 예약 가능 일
-			List<BookDateDTO> book_date = new ArrayList<BookDateDTO>();
-
-			// 모든 날짜
-			for (int i = 0; i < listRoom.size(); i++) {
-				StringTokenizer str = new StringTokenizer(listRoom.get(i).getRoom_period(), ",");
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				Date begin_date = formatter.parse(str.nextToken());
-				Date end_date = formatter.parse(str.nextToken());
-
-				long diff = end_date.getTime() - begin_date.getTime();
-				long diffDays = diff / (24 * 60 * 60 * 1000);
-				for (int j = 0; j <= diffDays; j++) {
-					Calendar cal = Calendar.getInstance();
-					cal.setTime(begin_date);
-					cal.add(Calendar.DATE, j);
-					BookDateDTO dto = new BookDateDTO();
-					dto.setRoom_num(listRoom.get(i).getRoom_num());
-					dto.setBook_date(formatter.format(cal.getTime()));
-					book_date.add(dto);
-				}
-			}
-
-			// 불가능한 날짜
-			List<BBBookRoomDTO> listBookRoom = ProductMapper.listBookingRoom(prod_num);
-			for (int i = 0; i < listBookRoom.size(); i++) {
-				int room_num = listBookRoom.get(i).getRoom_num();
-
-				StringTokenizer str = new StringTokenizer(listBookRoom.get(i).getRoom_date(), ",");
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				Date begin_date = formatter.parse(str.nextToken());
-				Date end_date = null;
-				if (str.hasMoreTokens()) {
-					end_date = formatter.parse(str.nextToken());
-
-					long diff = end_date.getTime() - begin_date.getTime();
-					long diffDays = diff / (24 * 60 * 60 * 1000);
-
-					for (int j = 0; j <= diffDays; j++) {
-						Calendar cal = Calendar.getInstance();
-						cal.setTime(begin_date);
-						cal.add(Calendar.DATE, j);
-						String room_date = formatter.format(cal.getTime());
-
-						for (int k = 0; k < book_date.size(); k++) {
-							if (room_num == book_date.get(k).getRoom_num()
-									&& room_date.equals(book_date.get(k).getBook_date())) {
-								book_date.remove(k);
-							}
-						}
-					}
-				} else {
-					for (int k = 0; k < book_date.size(); k++) {
-						String room_date = formatter.format(begin_date);
-						if (room_num == book_date.get(k).getRoom_num()
-								&& room_date.equals(book_date.get(k).getBook_date())) {
-							book_date.remove(k);
-						}
-					}
-
-				}
-
-			}
-			Collections.sort(book_date, new Comparator<BookDateDTO>() {
-				public int compare(BookDateDTO o1, BookDateDTO o2) {
-					return o1.getBook_date().compareTo(o2.getBook_date());
-				}
-			});
-
-			mav.addObject("beginDate", book_date.get(0).getBook_date());
-			mav.addObject("endDate", book_date.get(book_date.size() - 1).getBook_date());
-			mav.addObject("book_date", book_date);
-
-			mav.setViewName("user/package/booking");
-		} catch (
-
-		NullPointerException e) {
-			// 나중에 오류 메세지로 처리
-		}
-		return mav;
-	}
 }

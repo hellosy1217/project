@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html class=" logged">
 <head>
-<title>booking - 상품/패키지 명 - BlueBalloon</title>
+<title>BlueBalloon - booking: ${getPack.pack_name}</title>
 <link
 	href="${pageContext.request.contextPath}/resources/user/package/css/booking1.css?ver=12"
 	rel="stylesheet" type="text/css" />
@@ -61,7 +61,7 @@
 	<main data-parameters="">
 	<div class="c">
 		<div class="fline">
-			<h1>${getProd.prod_name}</h1>
+			<h1>${getPack.pack_name}</h1>
 		</div>
 		<div class="book">
 			<div class="left">
