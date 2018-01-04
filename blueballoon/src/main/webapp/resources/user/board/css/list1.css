@@ -1771,7 +1771,7 @@ main .list .item .preview .bg, main .list .item .preview .mask {
 }
 
 main .list .item .preview .mask {
-	background: rgba(0, 0, 0, .4) repeat 0 0
+	background: rgba(0, 0, 0, 0.1) repeat 0 0
 }
 
 main .list .item .preview .river-info {
@@ -1812,6 +1812,18 @@ main .list .item .preview .river-info .info.len {
 	width: 70%;
 	padding-right: 20px;
 	text-align: right
+}
+
+main .list .item .circle {
+	margin-top: -60px;
+	margin-left: 121px;
+	position: absolute;
+}
+main .list .item .circle img {
+	width: 100px;
+	height: 100px;
+	border: 3px solid #fff;
+	border-radius: 50%;
 }
 
 main .list .item .description {

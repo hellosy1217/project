@@ -70,11 +70,9 @@
                         src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${best.pick_num}/${best.board_image}"
                         class="bg lazy">
                      <div class="mask"></div>
-                     <div class="title">${best.board_title}</div>
                      <div class="river-info">
                         <div class="info tours">
-                          	 별점 :
-                           <!--<c:forEach items="${best.board_score}">★</c:forEach>-->
+                              별점 :
 
                         </div>
                         <div class="info len">
@@ -82,20 +80,19 @@
                               style="font-size: 16px;"></i> ${best.board_likecount}
                         </div>
                      </div>
-
-
                   </div>
-
-               <!--   <div class="circle"
-                     style="margin-top: -60px; margin-left: 121px; position: absolute;">
+                 <div class="circle">
                      <img
                         src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product1/9d8bb93421594daba5164e6c23048af0.jpg"
-                        style="width: 110px; h; height: 110px; border: 3px solid #fff; border-radius: 50%;">
-                  </div>  -->
+                        style="">
+                  </div>
                </a>
                <div class="description">
-                  ${best.board_content} <a
-                     href="board_content?board_num=${best.board_num}">더보기</a>
+                     <div class="title">${best.board_title}</div>   
+                     <div>
+                        ${best.board_content} 
+                        <a href="board_content?board_num=${best.board_num}">더보기</a>
+                   </div>
                </div>
             </div>
          </c:forEach>
