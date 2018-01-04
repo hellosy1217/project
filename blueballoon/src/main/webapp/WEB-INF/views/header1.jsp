@@ -34,7 +34,7 @@
 				</div>
 			</div>
 		</div>
-		<ul style="margin-left: 277px;">
+		<ul style="margin-left: 336px;">
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
 				<nav class="">
 					<c:set var="state" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />

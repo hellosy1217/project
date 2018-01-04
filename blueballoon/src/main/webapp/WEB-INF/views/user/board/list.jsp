@@ -37,7 +37,14 @@
    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body class="tb" data-b-sale="">
-   <%@include file="../../header1.jsp"%>
+   <c:choose>
+		<c:when test="${member_num==0}">
+			<%@include file="../../header1.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%@include file="../../header3.jsp"%>
+		</c:otherwise>
+	</c:choose>
    <main data-id="155404"> <!--   <div class="top">
       <div class="im"
          style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
