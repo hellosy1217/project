@@ -61,7 +61,7 @@
 
    <div class="c">
       <div class="list">
-         <h2>베스트 리뷰</h2>
+         <h2>Best Review</h2>
          <c:forEach var="best" items="${Listmap.bestReview}">
             <div class="item" data-id="163442">
                <a href="board_content?board_num=${best.board_num}">
@@ -70,28 +70,26 @@
                         src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${best.pick_num}/${best.board_image}"
                         class="bg lazy">
                      <div class="mask"></div>
-                     <div class="river-info">
-                        <div class="info tours">
-                              별점 :
-
-                        </div>
-                        <div class="info len">
-                           <i class="fa fa-thumbs-up" aria-hidden="true"
-                              style="font-size: 16px;"></i> ${best.board_likecount}
-                        </div>
-                     </div>
                   </div>
                  <div class="circle">
-                     <img
-                        src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product1/9d8bb93421594daba5164e6c23048af0.jpg"
-                        style="">
+                     <c:choose>
+						<c:when test="${empty myMember.member_str_img}">
+							<img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
+						</c:when>
+						<c:otherwise>
+							<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
+						</c:otherwise>
+					</c:choose>
                   </div>
                </a>
                <div class="description">
+               		 <div class="info tours">
+                            	별점 : ${best.board_score}
+                     </div>
                      <div class="title">${best.board_title}</div>   
                      <div>
                         ${best.board_content} 
-                        <a href="board_content?board_num=${best.board_num}">더보기</a>
+                        <a href="board_content?board_num=${best.board_num}">..더보기</a>
                    </div>
                </div>
             </div>

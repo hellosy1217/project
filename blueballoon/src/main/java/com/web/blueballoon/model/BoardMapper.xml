@@ -26,7 +26,7 @@
 
 <select id="bestReview" resultType="BBBoardDTO">
 	<![CDATA[ 
-		SELECT * FROM ( SELECT * FROM bb_board ORDER BY board_likecount DESC) WHERE ROWNUM <=3
+		SELECT * FROM ( SELECT * FROM bb_board ORDER BY board_likecount DESC) WHERE ROWNUM <=4
 		]]>
 </select>
 

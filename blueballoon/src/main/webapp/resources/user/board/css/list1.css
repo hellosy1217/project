@@ -1729,7 +1729,7 @@ main .list h2 {
 }
 
 main .list .filler, main .list .item {
-	width: 30%;
+	width: 23.5%;
 	max-width: 360px
 }
 
@@ -1743,9 +1743,10 @@ main .list .item>a {
 }
 
 main .list .item .title {
-	padding: 20px 28px 0;
-	color: #fff;
-	font: 700 24px/36px Georgia, Nimbus Roman No9 L, serif
+	padding: 5px 0 7px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 main .list .item .offers {
@@ -1757,7 +1758,7 @@ main .list .item .offers {
 main .list .item .preview {
 	position: relative;
 	width: 100%;
-	height: 208px;
+	height: 200px;
 	background: #999;
 	overflow: hidden;
 	z-index: 0
@@ -1795,39 +1796,23 @@ main .list .item .preview .river-info {
 	max-width: 360px;
 	height: 32px;
 	color: #fff;
-	font: italic 14px Georgia, Nimbus Roman No9 L, serif
-}
-
-main .list .item .preview .river-info .info {
-	width: 30%;
-	white-space: nowrap;
-	word-spacing: normal
-}
-
-main .list .item .preview .river-info .info.tours {
-	padding-left: 20px
-}
-
-main .list .item .preview .river-info .info.len {
-	width: 70%;
-	padding-right: 20px;
-	text-align: right
 }
 
 main .list .item .circle {
-	margin-top: -60px;
-	margin-left: 121px;
+	margin-top: -51px;
+	margin-left: 87px;
 	position: absolute;
 }
 main .list .item .circle img {
-	width: 100px;
-	height: 100px;
-	border: 3px solid #fff;
+	width: 90px;
+    height: 90px;
+    border: 2px solid #fff;
 	border-radius: 50%;
 }
 
 main .list .item .description {
-	margin: 20px;
+	text-align: center;
+	margin: 50px 20px 13px;
 	color: #999;
 	font: 12px/19px Helvetica, Arial, FreeSans, sans-serif;
 	overflow: hidden
