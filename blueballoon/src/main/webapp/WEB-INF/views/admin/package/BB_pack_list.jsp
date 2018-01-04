@@ -4,10 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <h2 align="center">패키지 목록</h2>
 <script type="text/javascript">
-	function checkDel(prod_num){
+	function checkDel(pack_num){
 		var isDel = confirm("정말로 삭제하시겠습니까?")
 		if (isDel){
-			location.href="BB_prod_delete?prod_num="+prod_num;
+			location.href="BB_pack_delete?pack_num="+pack_num;
 		}
 	}
 </script>

@@ -80,7 +80,6 @@ public class AdminPackageController {
 		
 		mav.addObject("pack",dto);
 		mav.setViewName("admin/package/BB_pack_edit");
-		System.out.println("object 값 넘어감 !!!");
 		return mav;
 	}
 	
@@ -98,6 +97,6 @@ public class AdminPackageController {
 		String[] msg = {"패키지 상품 삭제 완료!", "패키지 상품 삭제 실패!"};
 		String[] url = {"BB_pack_list","BB_pack_list"};
 		return cm.resMassege(res, msg, url);
-	}
+	} 
 	
 }

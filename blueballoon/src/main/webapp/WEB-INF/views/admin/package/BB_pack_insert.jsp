@@ -195,6 +195,13 @@ function addInputTimes(inputNo) {
 						<option value="${per}">${per}일</option>
 					</c:forEach>
 				</select></td>
+				<th>패키지 총인원</th><td>
+				<select name="pack_person">
+					<c:forEach var="per" begin="1" end="100" step="1">
+						<option value="${per}">${per}명</option>
+					</c:forEach>
+				</select>
+				</td>
 			</tr>
 			<tr><th colspan="2">일차 대로 패키지 설명을 작성해 주세요.</th></tr>
 			<tr>
