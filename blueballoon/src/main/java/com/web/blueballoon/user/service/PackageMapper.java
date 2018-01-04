@@ -20,7 +20,7 @@ public class PackageMapper {
 	}
 
 	public BBPackageDTO getPack(int pack_num) {
-		return sqlSession.selectOne("getPack");
+		return sqlSession.selectOne("getPack",pack_num);
 	}
 
 	public List<BBPackageBookDTO> listPackBook() {

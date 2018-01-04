@@ -1,11 +1,8 @@
 package com.web.blueballoon.user.pack;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -22,14 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.HomeController;
-import com.web.blueballoon.model.BBBookRoomDTO;
+import com.web.blueballoon.model.BBBookDateDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
-import com.web.blueballoon.model.BBProductDTO;
-import com.web.blueballoon.model.BBRoomDTO;
-import com.web.blueballoon.model.BookDateDTO;
 import com.web.blueballoon.user.service.PackageMapper;
-import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
 public class PackageController {
@@ -128,87 +121,39 @@ public class PackageController {
 			BBPackageDTO getPack = PackageMapper.getPack(pack_num);
 			mav.addObject("getPack", getPack);
 
-			// 전체 최소 인원, 최대 인원
-			mav.addObject("min_person", 1);
-			mav.addObject("max_person", getPack.getPack_person());
+			// 전체 예약 가능 (시작)일
+			List<BBBookDateDTO> book_date = new ArrayList<BBBookDateDTO>();
 
-			// 전체 예약 가능 일
-			List<BookDateDTO> book_date = new ArrayList<BookDateDTO>();
+			StringTokenizer str = new StringTokenizer(getPack.getPack_start_date(), ",");
 
-			StringTokenizer str = new StringTokenizer(getPack.getPack_period(), ",");
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date begin_date = formatter.parse(str.nextToken());
-			Date end_date = formatter.parse(str.nextToken());
-
-			long diff = end_date.getTime() - begin_date.getTime();
-			long diffDays = diff / (24 * 60 * 60 * 1000);
-			for (int j = 0; j <= diffDays; j++) {
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(begin_date);
-				cal.add(Calendar.DATE, j);
-				BookDateDTO dto = new BookDateDTO();
-				dto.setBook_date(formatter.format(cal.getTime()));
+			while (str.hasMoreTokens()) {
+				BBBookDateDTO dto = new BBBookDateDTO();
+				dto.setBook_date(str.nextToken());
+				dto.setPack_person(getPack.getPack_person());
+				dto.setBook_person(0);
 				book_date.add(dto);
 			}
 
 			List<BBPackageBookDTO> listPackBook = new ArrayList<BBPackageBookDTO>();
-
 			for (int i = 0; i < listPackBook.size(); i++) {
-				for(int j=0;j<book_date.size();j++) {
-				if(listPackBook.get(i).getBook_date().equals("")) {
-					
-				}
+				for (int j = 0; j < book_date.size(); j++) {
+					if (listPackBook.get(i).getPack_num() == pack_num
+							&& listPackBook.get(i).getBook_date().equals(book_date.get(j).getBook_date())) {
+						book_date.get(j).setBook_person(
+								book_date.get(j).getBook_person() + listPackBook.get(i).getBook_person());
+					}
 				}
 			}
-//			// 불가능한 날짜
-//			List<BBBookRoomDTO> listBookRoom = ProductMapper.listBookingRoom(prod_num);
-//			for (int i = 0; i < listBookRoom.size(); i++) {
-//				int room_num = listBookRoom.get(i).getRoom_num();
-//
-//				StringTokenizer str = new StringTokenizer(listBookRoom.get(i).getRoom_date(), ",");
-//				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//				Date begin_date = formatter.parse(str.nextToken());
-//				Date end_date = null;
-//				if (str.hasMoreTokens()) {
-//					end_date = formatter.parse(str.nextToken());
-//
-//					long diff = end_date.getTime() - begin_date.getTime();
-//					long diffDays = diff / (24 * 60 * 60 * 1000);
-//
-//					for (int j = 0; j <= diffDays; j++) {
-//						Calendar cal = Calendar.getInstance();
-//						cal.setTime(begin_date);
-//						cal.add(Calendar.DATE, j);
-//						String room_date = formatter.format(cal.getTime());
-//
-//						for (int k = 0; k < book_date.size(); k++) {
-//							if (room_num == book_date.get(k).getRoom_num()
-//									&& room_date.equals(book_date.get(k).getBook_date())) {
-//								book_date.remove(k);
-//							}
-//						}
-//					}
-//				} else {
-//					for (int k = 0; k < book_date.size(); k++) {
-//						String room_date = formatter.format(begin_date);
-//						if (room_num == book_date.get(k).getRoom_num()
-//								&& room_date.equals(book_date.get(k).getBook_date())) {
-//							book_date.remove(k);
-//						}
-//					}
-//
-//				}
-//
-//			}
-//			Collections.sort(book_date, new Comparator<BookDateDTO>() {
-//				public int compare(BookDateDTO o1, BookDateDTO o2) {
-//					return o1.getBook_date().compareTo(o2.getBook_date());
-//				}
-//			});
 
-			mav.addObject("beginDate", book_date.get(0).getBook_date());
-			mav.addObject("endDate", book_date.get(book_date.size() - 1).getBook_date());
+			Collections.sort(book_date, new Comparator<BBBookDateDTO>() {
+				public int compare(BBBookDateDTO o1, BBBookDateDTO o2) {
+					return o1.getBook_date().compareTo(o2.getBook_date());
+				}
+			});
+
+			StringTokenizer str2 = new StringTokenizer(getPack.getPack_period(), ",");
+			mav.addObject("beginDate", str2.nextToken());
+			mav.addObject("endDate", str2.nextToken());
 			mav.addObject("book_date", book_date);
 
 			mav.setViewName("user/package/booking");
