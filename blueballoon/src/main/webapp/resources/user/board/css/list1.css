@@ -1,5 +1,41 @@
 @charset "UTF-8";
 
+#content .reg-page .inside-w {
+	background-color: #fdfdfd;
+	min-width: 850px;
+	min-height: 400px;
+}
+
+#content .reg-page .inside-w .bbox {
+	border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 30px;
+}
+
+#content .inside .circle {
+	float: left;
+	margin-right: 25px;
+}
+
+#content .inside .circle img {
+	width: 90px;
+    height: 90px;
+    border: 2px solid #ddd;
+	border-radius: 50%;
+}
+#content .inside .circle p {
+    font-size: 15px;
+    color: #2f2f2f;
+    margin-top: 5px;
+}
+
+#content .reg-page .inside-w td.date {
+	float: right;
+	font-size: 14px;
+	color: #7d7d7d;
+	margin-top: 6px;
+}
+
 main .header {
 	min-height: 230px;
 	overflow: hidden;
@@ -2095,14 +2131,17 @@ main .faq ul {
 }
 
 main .faq ul li {
-	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	padding: 10px 0;
 	position: relative;
 	line-height: 23px
 }
 
-main .faq ul li:last-child {
-	padding-bottom: 0
+main .faq ul li td:first-child, main .faq ul li td:last-child {
+	text-align: center;
+}
+main .faq ul li td.title {
+	padding-left: 20px;
 }
 
 main .faq .qst {

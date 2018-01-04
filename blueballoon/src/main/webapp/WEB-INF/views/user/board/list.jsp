@@ -5,7 +5,7 @@
 <head>
 <title>후기 게시판 -BlueBalloon</title>
 <link
-   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=1"
+   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=21"
    rel="stylesheet" type="text/css" />
 
 <script
@@ -38,13 +38,13 @@
 </head>
 <body class="tb" data-b-sale="">
    <c:choose>
-		<c:when test="${member_num==0}">
-			<%@include file="../../header1.jsp"%>
-		</c:when>
-		<c:otherwise>
-			<%@include file="../../header3.jsp"%>
-		</c:otherwise>
-	</c:choose>
+      <c:when test="${member_num==0}">
+         <%@include file="../../header1.jsp"%>
+      </c:when>
+      <c:otherwise>
+         <%@include file="../../header3.jsp"%>
+      </c:otherwise>
+   </c:choose>
    <main data-id="155404"> <!--   <div class="top">
       <div class="im"
          style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
@@ -80,18 +80,19 @@
                   </div>
                  <div class="circle">
                      <c:choose>
-						<c:when test="${empty myMember.member_str_img}">
-							<img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
-						</c:when>
-						<c:otherwise>
-							<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
-						</c:otherwise>
-					</c:choose>
+                  <c:when test="${empty myMember.member_str_img}">
+                     <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
+                  </c:when>
+                  <c:otherwise>
+                     <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
+                  </c:otherwise>
+               </c:choose>
                   </div>
+                  
                </a>
                <div class="description">
-               		 <div class="info tours">
-                            	별점 : ${best.board_score}
+                      <div class="info tours">
+                               별점 : ${best.board_score}
                      </div>
                      <div class="title">${best.board_title}</div>   
                      <div>
@@ -107,13 +108,24 @@
             <h3>게시판 부분</h3>
             <!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
             <ul>
+               <li style="background-color: #fafafa; border-top: 1px solid #ccc;">
+                  <table class="qst" width="100%">
+                        <tr>
+                           <td width="15%">번호</td>
+                           <td width="70%" class="title">제목</td>
+                           <td>날짜</td>
+                        </tr>
+                     </table>
+               </li>
                <c:forEach var="dto" items="${Listmap.boardList}">
                   <li data-id="5036">
                      <table class="qst" width="100%">
                         <tr>
-                           <td width="10%">${dto.board_num}</td>
-                           <td><a href="board_content?board_num=${dto.board_num}">${dto.board_title}</a></td>
-                           <td style="float: right;">${dto.board_reg_date}</td>
+                           <td width="15%">${dto.board_num}</td>
+                           <td width="70%" class="title">
+                              <a href="board_content?board_num=${dto.board_num}">${dto.board_title}</a>
+                           </td>
+                           <td>${dto.board_reg_date}</td>
                         </tr>
                      </table>
                   </li>
