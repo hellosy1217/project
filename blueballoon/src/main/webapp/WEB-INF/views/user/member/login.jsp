@@ -19,7 +19,8 @@
 <script
 	src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.ko.r51AHJCBdXk.O/m=plus/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCM7u4NfTrsdn7d2NcaEWtiqMp0Kqg/cb=gapi.loaded_0"
 	async=""></script>
-<script async="" src="//www.googletagmanager.com/gtm.js?idx`=GTM-NSMPC"></script>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
+<script type="text/javascript">
 </head>
 <body class="reg-page-bg ">
 
@@ -76,6 +77,25 @@
 			</script>
 			<script type="text/javascript">
 				function submit() {
+					if(login.member_email.value=""){
+							swal(
+									 '이런...',
+									 '이메일을 입력해주세요!',
+									 'error'
+									)
+							login.member_email.focus()
+							return false
+						}
+					
+					if(login.member_passwd.value=""){
+						swal(
+								 '이런...',
+								 '비밀번호를 입력해주세요!',
+								 'error'
+								)
+						login.member_passwd.focus()
+						return false
+					}
 					document.login.submit();
 				}
 			</script>
