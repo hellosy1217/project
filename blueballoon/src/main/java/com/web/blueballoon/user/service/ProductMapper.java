@@ -29,14 +29,19 @@ public class ProductMapper {
 	public List<BBProductDTO> listProd() {
 		return sqlSession.selectList("listProd");
 	}
-	
+
 	public int like(BBLikeDTO dto) {
 		return sqlSession.selectOne("like", dto);
 	}
+
 	public int likeCount(int prod_num) {
 		return sqlSession.selectOne("likeCount", prod_num);
 	}
-	
+
+	public List<BBLikeDTO> likeList() {
+		return sqlSession.selectList("likeList");
+	}
+
 	public void insertLike(BBLikeDTO dto) {
 		sqlSession.insert("insertLike", dto);
 	}
@@ -53,5 +58,4 @@ public class ProductMapper {
 		return sqlSession.selectOne("getProd", num);
 	}
 
-	
 }

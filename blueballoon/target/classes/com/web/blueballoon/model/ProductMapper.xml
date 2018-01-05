@@ -25,7 +25,9 @@
   	<select id="likeCount" resultType="int" parameterType="int">
   		select count(*) from bb_product_like where prod_num=#{prod_num}
   	</select>
-  	
+  		<select id="likeList" resultType="BBLikeDTO">
+  		select * from bb_product_like
+  	</select>
 	<select id="listRoom" parameterType="int" resultType="BBRoomDTO">
 		select * from
 		bb_room where prod_num=#{prod_num}

@@ -83,7 +83,6 @@
 		if(cate_city!=''){
 			if(cate_state!=null||cate_state!='')
 				lh+='&';
-			alert("cate_city: "+cate_city+":::");
 			lh+='cate_city='+cate_city;
 		}
 		if(cate_state!=''||cate_city!='')
@@ -92,6 +91,8 @@
 		
 		lh+='&currentPage='+currentPage;
 		
+		lh+='&sort='+document.getElementById('sort').options[ document.getElementById('sort').selectedIndex].value;
+
 		location.href=lh;
 	}
 </script>
@@ -128,7 +129,7 @@
 					<li itemprop="itemListElement" itemscope=""
 						itemtype="http://schema.org/ListItem">〉 <a href="#"
 						itemprop="item"
-						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})"><span
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage},${prod_pick },1)"><span
 							itemprop="name">${cate_state}</span></a>
 					</li>
 					<c:if test="${!empty cate_city }">
@@ -145,12 +146,20 @@
 
 	<div class="c">
 		<div class="stat">
-
+			<c:set var="sor" value="최신순,인기순" />
 			<div class="sort">
-				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
-					<option value="lendesc">최신순</option>
-					<option value="popularity">인기순</option>
-					<option value="rec">리뷰순</option>
+				정렬기준 <select name="sort" id="sort"
+					onchange="change('${cate_state}','${cate_city }',${prod_pick },1)">
+					<c:forTokens items="${sor}" delims="," var="srt">
+						<c:choose>
+							<c:when test="${srt eq sort}">
+								<option value="${srt }" selected="selected">${srt }</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${srt }">${srt }</option>
+							</c:otherwise>
+						</c:choose>
+					</c:forTokens>
 				</select>
 			</div>
 		</div>
@@ -159,12 +168,13 @@
 			<aside id="params">
 				<div class="b blue">
 					<c:set var="fil" value="관광지,맛집,숙소" />
-					<h5>필터링 기준 : 
-					<c:forTokens items="${fil}" delims="," varStatus="vs" var="ff">
-						<c:if test="${prod_pick eq vs.count}">
+					<h5>
+						필터링 기준 :
+						<c:forTokens items="${fil}" delims="," varStatus="vs" var="ff">
+							<c:if test="${prod_pick eq vs.count}">
 							${ff}
 						</c:if>
-					</c:forTokens>
+						</c:forTokens>
 					</h5>
 				</div>
 				<div class="b b_dep">

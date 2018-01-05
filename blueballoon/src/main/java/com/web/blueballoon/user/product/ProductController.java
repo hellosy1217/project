@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.HomeController;
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBProductDTO;
-import com.web.blueballoon.model.BBProductLikeDTO;
 import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
@@ -54,8 +54,6 @@ public class ProductController {
 			member_email = null;
 		}
 		mav.addObject("member_num", member_num);
-
-		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
 
 		// 상품 목록
 		List<BBProductDTO> listProd = ProductMapper.listProd();
@@ -104,26 +102,14 @@ public class ProductController {
 
 		try {
 			String sort = ServletRequestUtils.getStringParameter(arg0, "sort");
-			if (sort.equals(null) || sort.equals("")) {
+			if (!sort.equals(null) || !sort.equals("")) {
 				mav.addObject("sort", sort);
+				List<BBLikeDTO> likeList = ProductMapper.likeList();
 				if (sort.equals("인기순")) {
-					List<BBProductLikeDTO> rateList = new ArrayList<BBProductLikeDTO>();
 					for (int i = 0; i < listProd.size(); i++) {
-						BBProductLikeDTO dto = new BBProductLikeDTO();
-						dto.setProd_num(i);
-						dto.setLikeCount(ProductMapper.likeCount(i));
-						rateList.add(dto);
-					}
-					Collections.sort(rateList, new Comparator<BBProductLikeDTO>() {
-						public int compare(BBProductLikeDTO o1, BBProductLikeDTO o2) {
-							return o1.getLikeCount() > o2.getLikeCount() ? -1
-									: o1.getLikeCount() < o2.getLikeCount() ? 1 : 0;
-						}
-					});
-					for (int i = 0; i < rateList.size(); i++) {
-						for (int j = 0; j < listProd.size(); j++) {
-							if (rateList.get(i).getProd_num() == listProd.get(j).getProd_num()) {
-								listProd.get(j).setProd_likeCount(rateList.get(i).getLikeCount());
+						for (int j = 0; j < likeList.size(); j++) {
+							if (listProd.get(i).getProd_num() == likeList.get(j).getProd_num()) {
+								listProd.get(i).setProd_likeCount(listProd.get(i).getProd_likeCount() + 1);
 							}
 						}
 					}
@@ -134,13 +120,6 @@ public class ProductController {
 						}
 					});
 				}
-				// else if (sort.equals("후기순")) {
-				// Collections.sort(listProd, new Comparator<BBProductDTO>() {
-				// public int compare(BBProductDTO o1, BBProductDTO o2) {
-				// return o1.getBook_date().compareTo(o2.getBook_date());
-				// }
-				// });
-				// }
 			}
 		} catch (NullPointerException e) {
 			mav.addObject("sort", "최신순");
@@ -190,7 +169,8 @@ public class ProductController {
 				listProd.remove(i);
 			}
 		}
-		
+		List<BBCategoryDTO> listCate = (List<BBCategoryDTO>) arg0.getSession().getAttribute("listCate");
+		mav.addObject("listCate", listCate);
 		mav.addObject("listProd", listProd);
 		mav.setViewName("user/product/list");
 
@@ -226,7 +206,8 @@ public class ProductController {
 			mav.addObject("like", "N");
 			mav.addObject("member_num", 0);
 		}
-		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
+		List<BBCategoryDTO> listCate = (List<BBCategoryDTO>) arg0.getSession().getAttribute("listCate");
+		mav.addObject("listCate", listCate);
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");
 		return mav;
