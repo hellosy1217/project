@@ -20,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookDateDTO;
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.user.service.PackageMapper;
+import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
 public class PackageController {
@@ -30,6 +32,9 @@ public class PackageController {
 
 	@Autowired
 	private PackageMapper PackageMapper;
+
+	@Autowired
+	private ProductMapper ProductMapper;
 
 	private ModelAndView mav = new ModelAndView();
 
@@ -52,7 +57,8 @@ public class PackageController {
 		mav.addObject("member_num", member_num);
 
 		// 카테고리 목록
-		mav.addObject("listCate", arg0.getSession().getAttribute("listCate"));
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
 
 		// 상품 목록
 		List<BBPackageDTO> listPack = PackageMapper.listPack();
@@ -134,7 +140,7 @@ public class PackageController {
 				book_date.add(dto);
 			}
 
-			List<BBPackageBookDTO> listPackBook = new ArrayList<BBPackageBookDTO>();
+			List<BBPackageBookDTO> listPackBook = PackageMapper.listPackBook();
 			for (int i = 0; i < listPackBook.size(); i++) {
 				for (int j = 0; j < book_date.size(); j++) {
 					if (listPackBook.get(i).getPack_num() == pack_num

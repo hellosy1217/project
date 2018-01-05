@@ -169,7 +169,7 @@ public class ProductController {
 				listProd.remove(i);
 			}
 		}
-		List<BBCategoryDTO> listCate = (List<BBCategoryDTO>) arg0.getSession().getAttribute("listCate");
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
 		mav.addObject("listProd", listProd);
 		mav.setViewName("user/product/list");
@@ -206,7 +206,7 @@ public class ProductController {
 			mav.addObject("like", "N");
 			mav.addObject("member_num", 0);
 		}
-		List<BBCategoryDTO> listCate = (List<BBCategoryDTO>) arg0.getSession().getAttribute("listCate");
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
 		mav.addObject("getProd", dto);
 		mav.setViewName("user/product/content");

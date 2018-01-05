@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html class=" logged">
 <head>
 <title>BlueBalloon - booking: ${getPack.pack_title}</title>
@@ -42,7 +43,6 @@
 <link type="text/css" rel="stylesheet"
 	href="//cdn.tourradar.com/include/pw/book_now/async.v1514557673.css">
 </head>
-
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
 		<div class="c">
@@ -69,7 +69,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('bb_calendar','${beginDate}','${beginDate}','${beginDate}','${endDate}',5);
+						bbCalendar('bb_calendar','${beginDate}','${beginDate}','${beginDate}','${endDate}','${getPack.pack_days}');
 					};</script>
 					<div id="seats">
 						<div class="content">
@@ -98,12 +98,12 @@
 						<div class="in quantity">
 							<form name="f">
 								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',${min_person},${max_person})"
+									onclick="changeBookPerson('remove',1,${max_person})"
 									style="margin-top: 2px;"></span> <input type="number"
-									name="book_person" value="${min_person}" min="${min_person}"
-									max="${max_person}" inputmode="numeric" pattern="[0-9]*"
-									readonly> <span class="number plus" id="plus"
-									onclick="changeBookPerson('add',${min_person},${max_person})"
+									name="book_person" id="book_person" value="1"
+									min="${max_person}" max="${max_person}" inputmode="numeric"
+									pattern="[0-9]*" readonly> <span class="number plus"
+									id="plus" onclick="changeBookPerson('add',1,${max_person})"
 									style="margin-top: 2px;"></span>
 							</form>
 						</div>
@@ -126,8 +126,7 @@
 											</label>
 											<div class="cell validity-con" data-type="string">
 												<input type="text" autocomplete="section-1 given-name"
-													name="field2[]" placeholder="Enter FullName" value=""
-													id="t2-1">
+													name="name" placeholder="Enter FullName" value="" id="t2-1">
 											</div>
 										</div>
 										<div class="row" data-seo="email" data-id="5"
@@ -220,28 +219,34 @@
 				<div class="block">
 					<div class="title-route">영수증</div>
 					<ul class="route exp">
-						<li>상품/패키지명 <span>ㅇdays</span></li>
-						<li>패키지일 경우 시작 위치<span class="date-start">패키지 시작 일</span></li>
-						<li>패키지일 경우 끝 위치<span class="date-end">패키지 끝나는 날</span></li>
-						<li class="wc">패키지일 경우 포함된 상품들 <span> ㅇㅇㅇ,ㅇㅇㅇㅇ,ㅇㅇ,ㅇㅇ </span></li>
+						<li>${getPack.pack_title }<span>${getPack.pack_days}
+								days</span></li>
+						<li>패키지 기간<span class="date-start">시작일~종료일</span></li>
 					</ul>
 					<div class="price-main">
 						<div class="info">
 							<ul class="prices">
-								<li class="blue">Price for 1 person</li>
-								<li>상품/패키지 가격
-									<div class="pr">얼마</div>
+								<li>패키지 가격
+									<div class="pr">
+										<fmt:formatNumber value="${getPack.pack_price}"
+											pattern="#,###.##" />
+										원
+									</div>
 								</li>
 								<li>인원
-									<div class="pr">${book_person}</div>
+									<div class="pr" id="book_pers" name="book_person">1명</div>
 								</li>
-								<li class="pt"><b><div class="pr">얼마</div></b></li>
+								<li class="pt"><b><div class="pr" id="sum_price">얼마</div></b></li>
 							</ul>
 						</div>
 						<ul class="prices promo">
 							<li class="discount exp"><b class="blue txt">BlueBalloon
 									Savings</b><b class="green"><span> 회원 할인가 </span>
-									<div class="pr">-얼마</div></b></li>
+									<div class="pr">
+										<fmt:formatNumber value="${getPack.pack_price*0.05}"
+											pattern="#,###.##" />
+										원
+									</div></b></li>
 						</ul>
 					</div>
 				</div>
@@ -250,22 +255,9 @@
 						<div class="text">
 							<b>총액 </b>
 						</div>
-						<div class="pr px20">
+						<div class="pr px20" id="total_price">
 							KRW<b>￦얼마</b>
 						</div>
-					</div>
-					<div class="block">
-						<ul class="prices final">
-							<li><div class="stext">TO BE PAID NOW</div> 예약금
-								<div class="pr">
-									<b>얼마</b>
-								</div></li>
-							<li><div class="stext">ON 2nd Mar 2018</div>예약금 제외한 금액인데 명칭
-								뭐라고 해야
-								<div class="pr">
-									<b>얼마</b>
-								</div></li>
-						</ul>
 					</div>
 				</div>
 				<div class="block terms">

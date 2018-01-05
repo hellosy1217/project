@@ -7,7 +7,6 @@ public class BBPackageBookDTO {
 	private int book_person;
 	private String book_date;
 	private int book_price;
-	private int book_discount;
 
 	public int getBook_num() {
 		return book_num;
@@ -55,14 +54,6 @@ public class BBPackageBookDTO {
 
 	public void setBook_price(int book_price) {
 		this.book_price = book_price;
-	}
-
-	public int getBook_discount() {
-		return book_discount;
-	}
-
-	public void setBook_discount(int book_discount) {
-		this.book_discount = book_discount;
 	}
 
 }

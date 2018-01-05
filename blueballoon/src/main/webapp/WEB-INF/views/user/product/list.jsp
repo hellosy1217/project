@@ -140,7 +140,7 @@
 					</c:if>
 				</ul>
 			</nav>
-			<h1>${cate_state }${cate_city }</h1>
+			<h1>${cate_state }&nbsp${cate_city }</h1>
 		</div>
 	</div>
 
