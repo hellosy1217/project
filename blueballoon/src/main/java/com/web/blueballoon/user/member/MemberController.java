@@ -42,9 +42,9 @@ public class MemberController {
 	// 로그인
 	@RequestMapping(value = "member_login", method = RequestMethod.POST)
 	public ModelAndView checkUser(BBMemberDTO dto, HttpServletRequest req) {
-		boolean isLogin =memberMapper.checkUser(dto);	//true값이 성공
-		
-		if(isLogin) {
+		boolean isLogin = memberMapper.checkUser(dto); // true값이 성공
+
+		if (isLogin) {
 			if (dto.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
 			} else {
@@ -54,7 +54,7 @@ public class MemberController {
 				req.getSession().setAttribute("member_name", login.getMember_name().toUpperCase().charAt(0));
 				mav.setViewName("redirect:/main");
 			}
-		}else {
+		} else {
 			mav.addObject("msg", "아이디/비밀번호를 확인해주세요.");
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/message");
@@ -162,8 +162,9 @@ public class MemberController {
 
 	// 멤버 정보 수정.
 	@RequestMapping(value = "member_edit", method = RequestMethod.POST)
-	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto, 
-			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result, HttpSession session) throws Exception {
+	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
+			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result, HttpSession session)
+			throws Exception {
 
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
 		int check = (int) multipartFiles.getSize();
@@ -249,12 +250,43 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest arg0, HttpSession session) {
-		session = arg0.getSession();
-		if (session != null) {
+	public String logout(HttpServletRequest arg0) {
+		if (arg0.getSession() != null) {
 			arg0.getSession().removeAttribute("member_num");
 			arg0.getSession().removeAttribute("member_email");
 		}
 		return "redirect:/main";
 	}
+
+	@RequestMapping(value = "member_contact_us", method = RequestMethod.GET)
+	public ModelAndView contact_us(HttpServletRequest arg0, HttpSession session) {
+		mav.clear();
+
+		try {
+			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			String member_email = (String) arg0.getSession().getAttribute("member_email");
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
+			mav.setViewName("user/member/contact_us");
+		} catch (NullPointerException e) {
+			mav.addObject("req","close");
+			mav.addObject("msg", "로그인이 필요한 페이지입니다. 로그인해주세요.");
+			mav.addObject("url","member_login");
+			mav.setViewName("user/member/contact_us");
+		}
+		return mav;
+	}
+
+	@RequestMapping(value = "member_contact_us", method = RequestMethod.POST)
+	public ModelAndView contact_us_pro() {
+		mav.clear();
+
+		// 채워야함
+
+		mav.addObject("msg","전송 완료!");
+		mav.addObject("req", "close"); // 팝업창 닫기
+		mav.setViewName("user/member/contact_us");
+		return mav;
+	}
+
 }

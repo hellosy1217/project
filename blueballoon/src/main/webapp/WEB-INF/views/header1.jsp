@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link
@@ -7,12 +7,24 @@
 <script
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/1.js"
 	async=""></script>
+<script type="text/javascript">
+	function popitup() {
+		var popupX = (window.screen.width / 2) - (500 / 2);
+		var popupY= (window.screen.height /2) - (420 / 2);
+
+		new_window = window.open('member_contact_us', 'contact_us', 'resizable=no,status=no, height=420, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		if (window.focus) {
+			new_window.focus()
+		}
+		return false;
+	}
+</script>
 <div class="ups">
 	<div class="c">
-		<span class="hide-sm pull-left"><a href="member_find">일단은
-				회원 찾기</a></span><span class="hide-sm"><a href="member_edit">일단은
-				회원정보수정</a></span><span class="pull-right"><a href="admin_index">일단은
-				admin</a></span>
+		<span class="hide-sm pull-left"><a
+			href="package_booking?pack_num=22">일단은 예약</a></span><span class="hide-sm"><a
+			href="admin_index">일단은 admin</a></span><span class="pull-right"><a
+			href="#" onclick="popitup()">contact us</a></span>
 	</div>
 </div>
 <header>
@@ -36,7 +48,7 @@
 		</div>
 		<ul style="margin-left: 336px;">
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
-				<nav style="height:auto;">
+				<nav style="height: auto;">
 					<c:set var="state" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 					<ul class="top">
 						<c:forTokens items="${state}" delims="," var="c"
@@ -52,8 +64,7 @@
 								</ul></li>
 						</c:forTokens>
 					</ul>
-				</nav>
-			</li>
+				</nav></li>
 
 			<li class="dropdown profile"><a href="#">여행코스</a>
 				<nav>
