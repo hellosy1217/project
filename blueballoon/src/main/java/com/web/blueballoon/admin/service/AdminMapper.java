@@ -123,5 +123,10 @@ public class AdminMapper {
 	public int deleteBBPackage(int pack_num) {
 		return sqlSession.delete("deleteBBPackage",pack_num);
 	}
-
+	public int editBBPackageDTO(BBPackageDTO dto) {
+		return sqlSession.update("editBBPackage", dto);
+	}
+	public int editBBPackageDTOforNull(BBPackageDTO dto) {
+		return sqlSession.update("editBBPackageForNull",dto);
+	}
 }
