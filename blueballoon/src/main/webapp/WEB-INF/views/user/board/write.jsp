@@ -18,6 +18,17 @@
 		document.f.board_score.value = $(".stars.v").attr("num");
 		document.f.submit();
 	}
+	function image(){
+		int prodNum = ${prod_num} //만약 상품 번호가  0이면 패키지이다.
+		String src = null;
+		if(prodNum == 0){
+			src = "https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${str_img}";
+			return src;
+		}else if(prodNum != 0){
+			src = "https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod_pick}/${str_img}";
+			return src;
+		}
+	}
 </script>
 
 </head>
@@ -29,14 +40,31 @@
 			<div class="heading form1 form2 " style="width:700px">
 				<div class="operator" operator="1504">
 					<div class="img-cnt">
-						<img
-							 src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${pick_num}/${str_img}">
+						<c:set var="prodNum" value="${prod_num}"/>
+						<c:choose>
+						<c:when test="${prodNum eq '0'}">
+						<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${str_img}">
+						</c:when>
+						<c:when test="${prodNum ne '0'}">
+						<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod_pick}/${str_img}">
+						</c:when>
+						</c:choose>
 					</div>
 				</div>
 				<div class="txt">
 					<h1 class="orig" style="margin-top:25px">여행 후기를 적어주세요</h1>
 					<ul class="subtitle clearfix">
-						<li class="com">${prod_name}</li>
+						<li class="com">
+						<c:set var="prodName" value="${prod_name}"/>
+						<c:choose>
+						<c:when test="${prodName eq 'null'}">
+						${pack_title}
+						</c:when>
+						<c:when test="${prodName ne 'null'}">
+						${prod_name}
+						</c:when>
+						</c:choose>
+						</li>
 					</ul>
 				</div>
 			</div>

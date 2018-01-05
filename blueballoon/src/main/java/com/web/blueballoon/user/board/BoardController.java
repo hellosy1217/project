@@ -22,9 +22,11 @@ import com.web.blueballoon.model.BBBoardDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBCommentDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.user.service.BoardMapper;
 import com.web.blueballoon.user.service.BoardPager;
+import com.web.blueballoon.user.service.PackageMapper;
 import com.web.blueballoon.user.service.ProductMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
 
@@ -36,6 +38,9 @@ public class BoardController {
 
 	@Autowired
 	private ProductMapper ProductMapper;
+	
+	@Autowired
+	private PackageMapper packageMapper;
 
 	@Autowired
 	private AmazonFileUtils amazon;
@@ -159,23 +164,23 @@ public class BoardController {
 			mav.setViewName("user/board/message");
 			return mav;
 		}
-//		//상품에 대한 사진과 이름을 받기 위해
-//		List<BBProductDTO> listProd = ProductMapper.listProd();
-//		String prod_name = null;
-//		String str_img = null;
-//		int prod_pick = 0;
-//		for (int j = 0; j < listProd.size(); j++) {
-//			if (prod_num == listProd.get(j).getProd_num()) {
-//				prod_name =listProd.get(j).getProd_name();
-//				str_img = listProd.get(j).getProd_str_img();
-//				prod_pick = listProd.get(j).getProd_pick();
-//			}
-//		}
+		//리뷰 상단에 상품에 대한 이미지와 이름을 받기 위해
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		String prod_name = null;
+		String str_img = null;
+		int prod_pick = 0;
+		for (int j = 0; j < listProd.size(); j++) {
+			if (prod_num == listProd.get(j).getProd_num()) {
+				prod_name =listProd.get(j).getProd_name();
+				str_img = listProd.get(j).getProd_str_img();
+				prod_pick = listProd.get(j).getProd_pick();
+			}
+		}
 		int pack_num = 0;
 		mav.addObject("pack_num", pack_num);
-//		mav.addObject("prod_name", prod_name);
-//		mav.addObject("str_img", str_img);
-//		mav.addObject("prod_pick", prod_pick);
+		mav.addObject("prod_name", prod_name);
+		mav.addObject("str_img", str_img);
+		mav.addObject("prod_pick", prod_pick);
 		mav.addObject("member_email", memberEmail);
 		mav.setViewName("user/board/write");
 		return mav;
@@ -192,8 +197,20 @@ public class BoardController {
 			mav.addObject("url", "member_login");
 			mav.setViewName("user/board/message");
 			return mav;
+		}//리뷰 상단에 상품에 대한 이미지와 이름을 받기 위해
+		List<BBPackageDTO> listPack = packageMapper.listPack();
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		String pack_title = null;
+		String str_img = null;
+		for (int j = 0; j < listPack.size(); j++) {
+			if (pack_num == listPack.get(j).getPack_num()) {
+				pack_title = listPack.get(j).getPack_title();
+				str_img = listPack.get(j).getPack_str_img();
+			}
 		}
 		int prod_num = 0;
+		mav.addObject("pack_title", pack_title);
+		mav.addObject("str_img", str_img);
 		mav.addObject("prod_num", prod_num);
 		mav.addObject("member_email", memberEmail);
 		mav.setViewName("user/board/write");
@@ -346,10 +363,29 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "board_update", method = RequestMethod.GET)
-	public String boardUpdateForm(HttpServletRequest req, @RequestParam String board_num) {
+	public ModelAndView boardUpdateForm(HttpServletRequest req, @RequestParam String board_num) {
+		mav.clear();
+		//수정할 내용을 보여주기 위해
 		BBBoardDTO dto = boardMapper.getBoard(Integer.parseInt(board_num));
-		req.setAttribute("getBoard", dto);
-		return "user/board/updateForm";
+		//상단에 상품 이미지와 사진을 보여주기 위해.
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		String prod_name = null;
+		String str_img = null;
+		int prod_pick = 0;
+		for (int j = 0; j < listProd.size(); j++) {
+			int pnum = dto.getProd_num();
+			if (pnum == listProd.get(j).getProd_num()) {
+				prod_name =listProd.get(j).getProd_name();
+				str_img = listProd.get(j).getProd_str_img();
+				prod_pick = listProd.get(j).getProd_pick();
+			}
+		}
+		mav.addObject("prod_name", prod_name);
+		mav.addObject("str_img", str_img);
+		mav.addObject("prod_pick", prod_pick);
+		mav.addObject("getBoard", dto);
+		mav.setViewName("user/board/update");
+		return mav;
 	}
 
 	@RequestMapping(value = "board_update", method = RequestMethod.POST)
