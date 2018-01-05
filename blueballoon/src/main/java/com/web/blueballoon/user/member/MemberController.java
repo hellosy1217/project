@@ -282,9 +282,9 @@ public class MemberController {
 		mav.clear();
 
 		// 채워야함
-
 		mav.addObject("msg","전송 완료!");
 		mav.addObject("req", "close"); // 팝업창 닫기
+		mav.addObject("url","main");
 		mav.setViewName("user/member/contact_us");
 		return mav;
 	}
