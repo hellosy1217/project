@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class SendMessageUtil {
 	@Autowired
-	private JavaMailSender mailSender;
+	private JavaMailSender mailSender ;
+	@Autowired
+	private JavaMailSender mailSenderUser;
 
 	public boolean sendToEmail(String fromEmail, String toEmail, String title, String content) {
 		boolean res =false;
 		try {
-			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessage message = mailSenderUser.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 			System.out.println("보내는 사람 : "+fromEmail);
 			messageHelper.setFrom(fromEmail); // 보내는사람 생략하거나 하면 정상작동을 안함
@@ -25,11 +27,11 @@ public class SendMessageUtil {
 			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
 			messageHelper.setText(content); // 메일 내용
 
-			mailSender.send(message);
+			mailSenderUser.send(message);
 			
 			res = true;
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			res = false;
 		}
 		return res;
@@ -53,7 +55,7 @@ public class SendMessageUtil {
 			mailSender.send(message);
 			res = true;
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			res = false;
 		}
 		return res;
