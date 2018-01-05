@@ -86,4 +86,13 @@
 	<delete id="deleteBBPackage" parameterType="int">
 		delete from bb_package where pack_num = #{pack_num, jdbcType=NUMERIC}
 	</delete>
+	<update id="editBBPackage" parameterType="BBPackageDTO">
+		update bb_package set pack_title = #{pack_title}, pack_email = #{email.jdbcType=VARCHAR}, pack_phone = #{pack_phone},
+		pack_price = #{pack_price}, pack_org_img = #{pack_org_img}, pack_str_img = #{pack_str_img}, pack_period = #{pack_period},
+		pack_days = #{pack_days}, pack_start_date = #{pack_start_date}, pack_content = #{pack_content}, pack_place = #{pack_place}, pack_person = #{pack_person}
+	</update>
+	<update id="editBBPackageForNull" parameterType="BBPackageDTO">
+		update bb_package set pack_title = #{pack_title}, pack_email = #{email.jdbcType=VARCHAR}, pack_phone = #{pack_phone}, pack_price = #{pack_price}, pack_period = #{pack_period}, 
+		pack_days = #{pack_days}, pack_start_date = #{pack_start_date}, pack_content = #{pack_content}, pack_place = #{pack_place}, pack_person = #{pack_person}
+	</update>
 </mapper>

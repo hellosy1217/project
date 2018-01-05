@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ include file="../top.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
 <h2 align="center">여행 상품 목록</h2>
 <script type="text/javascript">
 	function checkDel(prod_num){

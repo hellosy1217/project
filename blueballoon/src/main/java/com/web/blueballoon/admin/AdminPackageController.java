@@ -80,7 +80,7 @@ public class AdminPackageController {
 			System.out.println(time);
 		}
 		dto.setPack_times(tmp.length); // 출발 횟수 세서 보내줘야함..
-
+System.out.println("pack_content : "+dto.getPack_content());
 		mav.addObject("pack", dto);
 		mav.setViewName("admin/package/BB_pack_edit");
 		return mav;

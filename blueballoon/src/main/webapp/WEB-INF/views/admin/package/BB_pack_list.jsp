@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../top.jsp"%>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <h2 align="center">패키지 목록</h2>
 <script type="text/javascript">
 	function checkDel(pack_num){
@@ -11,7 +13,7 @@
 		}
 	}
 </script>
-<div  class="c" align="center">
+<div align="center">
 	<table border="1" width="700">
 		<tr>
 			<th colspan="8" align="right"><a href="BB_pack_insert">패키지 상품 추가</a></th>

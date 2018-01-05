@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div class="c" align="center">
-		<table border="1" width="1000" height="600">
+		<table border="1" width="1000" height="50">
 			<tr height="10%">
 				<th width="10%"><a href="BB_member_list">회원 목록</a></th>
 				<th width="15%"><a href="BB_category_list">지역카테고리 목록</a></th>
@@ -26,9 +26,6 @@
 				<th width="15%"><a href="BB_pack_list">패키지 상품 목록</a></th>
 				<th width="15%"><a href="BB_lodging_list">숙소 예약 목록</a></th>
 				<th width="15%"><a href="BB_booking_list">여행 예약 목록</a></th>
-			</tr>
-			<tr height="80%">
-				<td colspan="6"></td>
 			</tr>
 		</table>
 	</div>

@@ -5,6 +5,9 @@
 <script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link
+	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css"
+	rel="stylesheet" />
 <script type="text/javascript">
 	function checkDel(cate_num){
 		swal({
@@ -42,7 +45,7 @@
 			})
 		} 
 </script>
-<div align="center">
+<div class="c" align="center">
 	<table border="1" width="400">
 		<tr height="25">
 			<th colspan="3">여행 지역 카테고리목록</th>
