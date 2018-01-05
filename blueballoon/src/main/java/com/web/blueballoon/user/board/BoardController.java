@@ -159,29 +159,29 @@ public class BoardController {
 			mav.setViewName("user/board/message");
 			return mav;
 		}
-		//상품에 대한 사진과 이름을 받기 위해
-		List<BBProductDTO> listProd = ProductMapper.listProd();
-		String prod_name = null;
-		String str_img = null;
-		int prod_pick = 0;
-		for (int j = 0; j < listProd.size(); j++) {
-			if (prod_num == listProd.get(j).getProd_num()) {
-				prod_name =listProd.get(j).getProd_name();
-				str_img = listProd.get(j).getProd_str_img();
-				prod_pick = listProd.get(j).getProd_pick();
-			}
-		}
+//		//상품에 대한 사진과 이름을 받기 위해
+//		List<BBProductDTO> listProd = ProductMapper.listProd();
+//		String prod_name = null;
+//		String str_img = null;
+//		int prod_pick = 0;
+//		for (int j = 0; j < listProd.size(); j++) {
+//			if (prod_num == listProd.get(j).getProd_num()) {
+//				prod_name =listProd.get(j).getProd_name();
+//				str_img = listProd.get(j).getProd_str_img();
+//				prod_pick = listProd.get(j).getProd_pick();
+//			}
+//		}
 		int pack_num = 0;
 		mav.addObject("pack_num", pack_num);
-		mav.addObject("prod_name", prod_name);
-		mav.addObject("str_img", str_img);
-		mav.addObject("prod_pick", prod_pick);
+//		mav.addObject("prod_name", prod_name);
+//		mav.addObject("str_img", str_img);
+//		mav.addObject("prod_pick", prod_pick);
 		mav.addObject("member_email", memberEmail);
 		mav.setViewName("user/board/write");
 		return mav;
 	}
 	
-	@RequestMapping(value = "board_write") //패키지에 대한 리뷰 작성
+	@RequestMapping(value = "packBoard_write") //패키지에 대한 리뷰 작성
 	public ModelAndView boardWriteFormPack(@RequestParam int pack_num, HttpServletRequest req) {
 		mav.clear();
 		HttpSession session = req.getSession();
