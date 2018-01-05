@@ -7,7 +7,6 @@
 <link
    href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=21"
    rel="stylesheet" type="text/css" />
-
 <script
    src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/8.js"
    async=""></script>

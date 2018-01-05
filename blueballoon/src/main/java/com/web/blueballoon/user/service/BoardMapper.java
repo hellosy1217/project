@@ -90,4 +90,5 @@ public class BoardMapper {
 	public int deleteComment(int comment_num) {
 		return sqlSession.delete("deleteComment", comment_num);
 	}
+
 }

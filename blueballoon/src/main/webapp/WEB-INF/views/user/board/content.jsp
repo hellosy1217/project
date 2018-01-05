@@ -59,6 +59,14 @@
                   <div class="form-title">여행 후기</div>
                </div>
                
+               <div>
+               		<div>
+               			<img
+                        src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.pick_num}/${map.board_image}"
+                        >
+               		</div>
+               </div>
+               
                <div class="bbox">
                <div class="circle">
                      <c:choose>
@@ -71,45 +79,45 @@
                </c:choose>
                <p>${map.memberName}</p>
                      </div>
-                  <table border="0" width="84%">
+                  <table border="0" width="84%" style="margin-top:10px;">
                      <tr>
                         <td
-                           style="font-weight: bold; font-size: 20px;">${map.getBoard.board_title}</td>
+                           style="font-weight: bold; font-size:18px; color:#3a3a3a;">${map.getBoard.board_title}</td>
                         <td class="date">
-                           ${map.getBoard.board_reg_date}</td>
+                        	<span style="padding-right:5px;">${map.getBoard.board_reg_date}</span>
+                        </td>
+
                      </tr>
-                     
                      <tr>
                         <td colspan="2" nowrap height="auto"
-                           style="font-size: 16px; padding:20px 0;">${map.getBoard.board_content}</td>
+                           style="font-size: 15px; padding: 17px 0 8px; color: #464646;">
+                           ${map.getBoard.board_content}
+                        </td>
                      </tr>
-                     <tr>
-                        <td style="font-size: 16px; padding-left: 20px;">조회수:
-                           (${map.getBoard.board_readcount})</td>
-                     </tr>
+                     
                      <c:if test="${map.existImg ne 'N'}">
                      <tr style="padding-left: 20px;">
                         <td style="padding: 20px;"><img
                            src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_board/${map.getBoard.board_str_img}" style="width:450px;height: 260px; "/></td>
                      </tr>
                      </c:if>
-                     <tr
-                        style="border-top: 1px solid #7E7E7E; border-bottom: 0.5px solid #A6A6A6;">
+                     <tr>
                         <td>
-                           <a class="but" id="commentBut" style="width: 50px; float:left; margin-top: 15px; margin-left: 7px">댓글</a>
-                           <div style="display: inline-block; padding: 6px 20px;">
+                           
+                           <div class="blike">
                               <a href="board_likecount?board_num=${map.getBoard.board_num}">
-                                 <div id="blike">
-                                    <i class="fa fa-thumbs-o-up like_icon"></i>
-                                 </div>
+                                 <i class="fa fa-thumbs-o-up like_icon"></i> 
                               </a>
-                              <div class="blike_text">
-                                 좋아요 <span>${map.getBoard.board_likecount}</span>
-                              </div>
+                              <span>${map.getBoard.board_likecount}</span>    
+                           </div> 
+                           <div class="rcount">
+                           	<i class="fa fa-eye eye_icon" aria-hidden="true"></i>
+                           	<span>${map.getBoard.board_readcount}</span>
                            </div>
+                           
                         </td>
                         <td style="float: right;">
-                              <a class="but" id="listBut" href="board_list" style=" width: 65px; margin-top: 15px; margin-right: 4px">글목록</a>
+                        	<a class="but" id="commentBut" style="width: 100px; padding-bottom: 10px;">댓글 쓰기</a>
                            <c:if test="${map.memberEmail == map.getBoard.member_email}">
                               <a class="but" id="editBut" href="board_update?board_num=${map.getBoard.board_num}" 
                                  style="width: 65px; margin-top: 15px; margin-right: 4px">글수정</a>

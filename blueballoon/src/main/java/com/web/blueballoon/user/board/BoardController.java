@@ -60,13 +60,14 @@ public class BoardController {
 			member_email = (String) req.getSession().getAttribute("member_email");
 			member_name = (Character) req.getSession().getAttribute("member_name");
 
-			mav.addObject("member_num", member_num);
 			mav.addObject("member_email", member_email);
 			mav.addObject("member_name", member_name);
 		} catch (NullPointerException e) {
 			member_num = 0;
 			member_email = null;
 		}
+		mav.addObject("member_num", member_num);
+		System.out.println("mn: "+member_num);
 
 		mav.addObject("listCate", req.getSession().getAttribute("listCate"));
 
@@ -301,8 +302,22 @@ public class BoardController {
 		} else if (!org_img.equals("0")) {
 			existImg = "Y";
 		}
+		
+		
+		List<BBProductDTO> listProd = ProductMapper.listProd();
+		String str_img = null;
+		int prod_pick = 0;
+		for (int j = 0; j < listProd.size(); j++) {
+			if (boarddto.getProd_num() == listProd.get(j).getProd_num()) {
+				str_img = listProd.get(j).getProd_str_img();
+				prod_pick = listProd.get(j).getProd_pick();
+			}
+		}
+		
 		// 모두 담기
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("prod_pick", prod_pick);
+		map.put("str_img", str_img);
 		map.put("getBoard", boarddto);
 		map.put("memberName", memberName);
 		map.put("memberEmail", memberEmail);
