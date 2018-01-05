@@ -36,7 +36,7 @@
 		</div>
 		<ul style="margin-left: 336px;">
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
-				<nav class="">
+				<nav style="height:auto;">
 					<c:set var="state" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 					<ul class="top">
 						<c:forTokens items="${state}" delims="," var="c"

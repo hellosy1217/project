@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link
@@ -36,7 +36,7 @@
 		</div>
 		<ul style="margin-left: 336px;">
 			<li class="dropdown fill" data-type="destinations"><a href="#">여행지</a>
-				<nav class="">
+				<nav style="height:auto;">
 					<c:set var="state" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
 					<ul class="top">
 						<c:forTokens items="${state}" delims="," var="c"
@@ -52,7 +52,8 @@
 								</ul></li>
 						</c:forTokens>
 					</ul>
-				</nav></li>
+				</nav>
+			</li>
 
 			<li class="dropdown profile"><a href="#">여행코스</a>
 				<nav>
