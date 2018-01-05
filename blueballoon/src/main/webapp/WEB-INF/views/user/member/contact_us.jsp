@@ -12,9 +12,30 @@
 <link type="text/css" rel="stylesheet"
 	href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/magnific-popup.v1-0-2.min.css">
 </head>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
 	function check() {
-		alert("유효성 검사 자바스크립트 입니다.")
+		if(f.email_title.value==""){
+			swal(
+					 '이런...',
+					 '이메일 제목을 입력해주세요!',
+					 'error'
+					)
+			f.email_title.focus()
+			return false
+		}
+		if(f.email_content.value==""){
+			swal(
+					 '이런...',
+					 '이메일 내용을 입력해주세요!',
+					 'error'
+					)
+			f.email_content.focus()
+			return false
+		}
+		if(f.keyCode == 13){ //javascript에서는 13이 enter키를 의미함
+			document.f.submit();
+		}
 		document.f.submit();
 	}
 </script>
@@ -38,7 +59,7 @@
 					<h2 class="dif ask">Contact Us</h2>
 					<input type="text" name="email_title" id="email_title"
 						placeholder="제목을 입력해주세요.">
-					<textarea placeholder="내용을 입력해주세요."></textarea>
+					<textarea name="email_content" id="email_content" placeholder="내용을 입력해주세요."></textarea>
 					<div class="cf"></div>
 					<button type="button" class="but blue" onclick="check()">문의하기</button>
 					<div class="expect">빠른 시일 내 답변을 드리겠습니다.</div>

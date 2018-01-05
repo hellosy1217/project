@@ -1,15 +1,13 @@
 package com.web.blueballoon.user.member;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import javax.mail.internet.MimeMessage;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.web.blueballoon.user.service.MemberMapper;
-import com.web.blueballoon.util.AmazonFileUtils;
+
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.user.service.MemberMapper;
+import com.web.blueballoon.util.AmazonFileUtils;
+import com.web.blueballoon.util.SendMessageUtil;
 
 @Controller
 public class MemberController {
@@ -30,7 +30,7 @@ public class MemberController {
 	@Autowired
 	private AmazonFileUtils amazonUtil;
 	@Autowired
-	private JavaMailSender mailSender;
+	private SendMessageUtil sendMessage;
 
 	private ModelAndView mav = new ModelAndView();
 
@@ -110,8 +110,9 @@ public class MemberController {
 			mav.setViewName("user/member/message");
 			return mav;
 		}
-
+		//새로운 임시 비밀번호 생성
 		String newPasswd = UUID.randomUUID().toString();
+		//임시 비밀번호 DTO에 담아서 DB에 전송 준비
 		checkUser.setMember_passwd(newPasswd.substring(0, 19));
 
 		System.out.println(checkUser.getMember_passwd());
@@ -123,30 +124,12 @@ public class MemberController {
 			mav.setViewName("user/member/message");
 			return mav;
 		}
+		//DB 값이 바꼈으면 이메일 전송
+		sendMessage.findToEmail(checkUser.getMember_email(), checkUser.getMember_passwd());
+		mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
+		mav.addObject("url", "member_login");
+		mav.setViewName("user/member/message");
 
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-			Date today = new Date();
-			System.out.println(today);
-			String setfrom = "blueballoonteam@gmail.com";
-			String title = "BlueBalloon에서 고객님의 요청에 따른 메일 수신드립니다.(비번찾기 관련)";
-			String content = "고객님의 요청으로 새로운 비밀번호를 전송해 드립니다. \n " + "새로운 비밀 번호 : " + checkUser.getMember_passwd()
-					+ "\n 정상적으로 BlueBalloon 서비스를 이용하실 수 있습니다. \n 감사합니다. \n" + today + "Blue Balloon 드림";
-			messageHelper.setFrom(setfrom); // 보내는사람 생략하거나 하면 정상작동을 안함
-			messageHelper.setTo(member_email); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
-
-			mailSender.send(message);
-
-			mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
-			mav.addObject("url", "member_login");
-			mav.setViewName("user/member/message");
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		return mav;
 	}
 
@@ -261,7 +244,6 @@ public class MemberController {
 	@RequestMapping(value = "member_contact_us", method = RequestMethod.GET)
 	public ModelAndView contact_us(HttpServletRequest arg0, HttpSession session) {
 		mav.clear();
-
 		try {
 			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 			String member_email = (String) arg0.getSession().getAttribute("member_email");
@@ -269,24 +251,66 @@ public class MemberController {
 			mav.addObject("member_email", member_email);
 			mav.setViewName("user/member/contact_us");
 		} catch (NullPointerException e) {
-			mav.addObject("req","close");
+			mav.addObject("req", "close");
 			mav.addObject("msg", "로그인이 필요한 페이지입니다. 로그인해주세요.");
-			mav.addObject("url","member_login");
+			mav.addObject("url", "member_login");
 			mav.setViewName("user/member/contact_us");
 		}
 		return mav;
 	}
 
 	@RequestMapping(value = "member_contact_us", method = RequestMethod.POST)
-	public ModelAndView contact_us_pro() {
+	public ModelAndView contact_us_pro(HttpSession session, @RequestParam String email_title, @RequestParam String email_content) {
 		mav.clear();
-
+		if(email_content==null || email_content.trim().equals("") 
+			|| email_title ==null || email_title.trim().equals("")) {
+			mav.addObject("msg","잘못 된 접근입니다. 메인 페이지로 이동합니다.");
+			mav.addObject("url","main");
+			mav.setViewName("user/member/message");
+		}
+		
+		String clientEmail = (String)session.getAttribute("member_email");
+		
+		boolean res =sendMessage.sendToEmail(clientEmail,"blueballoonteam@gmail.com", email_title,email_content);
 		// 채워야함
-		mav.addObject("msg","전송 완료!");
-		mav.addObject("req", "close"); // 팝업창 닫기
-		mav.addObject("url","main");
-		mav.setViewName("user/member/contact_us");
+		if(res) {
+			mav.addObject("msg", "전송 완료!");
+			mav.addObject("req", "close"); // 팝업창 닫기
+			mav.addObject("url", "main");
+			mav.setViewName("user/member/contact_us");
+		}else {
+			mav.addObject("msg","전송 실패! 관리자(070-8282-1004로 문의주세요!!" );
+			mav.addObject("req", "main");
+			mav.setViewName("user/member/contact_us");
+		}
 		return mav;
 	}
-
+	
+	@RequestMapping(value="member_change_passwd", method = RequestMethod.POST)
+	public ModelAndView changePasswd(HttpSession session, @RequestParam String newPasswd1, @RequestParam String newPasswd2 ) {
+		
+		if(newPasswd1==null ||newPasswd1.trim().equals("") || newPasswd2 == null || newPasswd2.trim().equals("")) {
+			mav.addObject("msg", "잘못된 접근입니다. ");
+			mav.addObject("url","member_edit");
+			mav.setViewName("user/member/message");
+		}
+		String clientEmail = (String)session.getAttribute("member_email");
+		BBMemberDTO dto = memberMapper.getMember(clientEmail);
+		int res = 0;
+		if(newPasswd1.equals(newPasswd2)) {
+			dto.setMember_passwd(newPasswd1);
+			res = memberMapper.changePasswd(dto);
+		}
+		if(res > 0) {
+			mav.addObject("msg","비밀번호 변경 성공!");
+			mav.addObject("req", "close"); // 팝업창 닫기
+			mav.addObject("url", "member_edit");
+			mav.setViewName("user/member/edit");
+		}else {
+			mav.addObject("msg","비밀번호 변경 실패!");
+			mav.addObject("url","member_edit");
+			mav.setViewName("user/member/message");
+		}
+		return mav;
+	}
 }

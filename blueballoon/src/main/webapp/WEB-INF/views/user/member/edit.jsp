@@ -17,6 +17,7 @@
 	rel="stylesheet" />
 <script type="text/javascript"
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
+	<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
 	var js_params = {
 		"pending_count" : 0,
@@ -37,16 +38,43 @@
 	}, 10);
 </script>
 <script type="text/javascript">
-	function changeEmail() {
-		alert("이메일 변경 부분입니다")
-	}
 	function changePasswd() {
-		alert("비밀번호 변경 부분입니다")
+		if(f.newPasswd1.value=""){
+			swal(
+					 '이런...',
+					 '비밀번호를 입력칸이 비었어요!',
+					 'error'
+					)
+			f.newPasswd1.focus()
+			return false
+		}
+		if(f.newPasswd2.value=""){
+			swal(
+					 '이런...',
+					 '비밀번호 재 입력이 비었어요!',
+					 'error'
+					)
+			f.newPasswd2.focus()
+			return false
+		}
+		document.f.submit();
 	}
 </script>
 </head>
 <body class=" ">
 	<%@include file="../../header2.jsp"%>
+	<c:if test="${req eq 'close'}">
+		<c:if test="${!empty msg}">
+			<script type="text/javascript">
+				alert("${msg}");
+			</script>
+		</c:if>
+		<script type="text/javascript">
+			if (window.opener && !window.opener.closed)
+				window.opener.location = '${url}';
+			window.open("about:blank", "_self").close();
+		</script>
+	</c:if>
 	<div id="fb-root"></div>
 	<div id="content" class="clearfix profile" style="padding-top: 20px;">
 		<div id="content_details"
@@ -75,7 +103,6 @@
 									<div class="value">
 										<input type="text" disabled value="${getMember.member_email}"/>
 										<input type ="hidden" name="member_email" vlaue="${getMember.member_email}">
-										<a href="#email_popup" id="email_link">변경</a>
 									</div>
 								</div>
 								<div class="row">
@@ -140,19 +167,19 @@
 		</div>
 		<div class="hidden">
 			<div id="password_popup" class="clearfix popup">
-				<form id="change_password" onsubmit="return false">
+				<form name="f" id="change_password" onsubmit="return false" method="POST">
 					<div>
 						<strong>1.</strong> 새로운 비밀번호를 입력해주세요:
 					</div>
 					<div>
-						<input type="text" />
+						<input type="password" name="newPasswd1" />
 					</div>
 					<div>
 						<strong>2.</strong> 새로운 비밀번호를 다시 입력해주세요:
 					</div>
 					<div>
-						<input type="text" /><input type="button"
-							class="multi-line-button flat blue" value="확인" onclick="changePasswd()"/>
+						<input type="password" name="newPasswd2"/>
+						<input type="button" class="multi-line-button flat blue" value="확인" onclick="changePasswd()"/>
 					</div>
 				</form>
 			</div>
