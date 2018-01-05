@@ -302,13 +302,14 @@ public class BoardController {
 		} else if (!org_img.equals("0")) {
 			existImg = "Y";
 		}
-		
-		
+		//상품 이미지
 		List<BBProductDTO> listProd = ProductMapper.listProd();
 		String str_img = null;
 		int prod_pick = 0;
 		for (int j = 0; j < listProd.size(); j++) {
-			if (boarddto.getProd_num() == listProd.get(j).getProd_num()) {
+			int prodNum = boarddto.getProd_num();
+			System.out.println("prodNum =" +prodNum);
+			if (prodNum == listProd.get(j).getProd_num()) {
 				str_img = listProd.get(j).getProd_str_img();
 				prod_pick = listProd.get(j).getProd_pick();
 			}

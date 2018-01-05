@@ -62,7 +62,7 @@
                <div>
                		<div>
                			<img
-                        src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.pick_num}/${map.board_image}"
+                        src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.prod_pick}/${map.str_img}"
                         >
                		</div>
                </div>
