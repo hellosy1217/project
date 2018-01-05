@@ -5,7 +5,7 @@
 <head>
 <title>Review - BlueBalloon</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/board/css/write1.css?ver=125"
+	href="${pageContext.request.contextPath}/resources/user/board/css/write1.css?ver=12"
 	rel="stylesheet" type="text/css" />
 <link rel="stylesheet"
 	href="//cdn.tourradar.com//include/css/responsive.min.css?v=1514557673"
@@ -17,17 +17,6 @@
 	function finish() {
 		document.f.board_score.value = $(".stars.v").attr("num");
 		document.f.submit();
-	}
-	function image(){
-		int prodNum = ${prod_num} //만약 상품 번호가  0이면 패키지이다.
-		String src = null;
-		if(prodNum == 0){
-			src = "https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${str_img}";
-			return src;
-		}else if(prodNum != 0){
-			src = "https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod_pick}/${str_img}";
-			return src;
-		}
 	}
 </script>
 

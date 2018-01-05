@@ -339,6 +339,7 @@ public class BoardController {
 			Cookie c = new Cookie("like" + board_num, board_num);
 			c.setMaxAge(24 * 60 * 60);// 하루 저장
 			resp.addCookie(c);
+			mav.addObject("msg", "좋아요를 눌렀습니다.");
 		}
 		return mav;
 	}

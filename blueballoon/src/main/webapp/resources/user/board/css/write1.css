@@ -22,3 +22,13 @@
 #content button {
     outline: none;
 }
+
+#content .operator-review.step2 .operator {
+	padding: 0 !important;
+}
+
+#content .operator-review.step2 .operator .img-cnt img {
+	width: 105px;
+    height: 105px;
+	
+}
