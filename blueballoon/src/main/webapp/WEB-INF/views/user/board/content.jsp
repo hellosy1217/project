@@ -41,6 +41,18 @@
       $('#commentBut').click(function(){
          $("#commentForm").toggleClass("hide");
       })
+      
+       $('#productBut').click(function(){
+         var res = confirm('상품페이지로 이동하시겠습니까?');
+         if(res){
+            location.href= 'product_content?prod_num=${map.getBoard.prod_num}';
+         }
+      })
+    
+       $('#packageBut').click(function(){
+         	alart("패키지로 이동하겠습니다.");
+         		location.href= 'package_content?pack_num=${map.getBoard.pack_num}'; //패키지 content로 가기
+      })
    });
    
    function emailHidden(email){
@@ -56,7 +68,17 @@
          <div class="inside" style="margin-top: 30px; opacity: 100;">
             <div class="inside-w">
                <div id="review">
-                  <div class="form-title">여행 후기</div>
+                  <div class="form-title">여행 후기
+              	 <c:set var="prodNum" value="${map.getBoard.prod_num}"/>
+						<c:choose>
+						<c:when test="${prodNum eq '0'}">
+							<a class="but" id="packageBut" style="width: 100px; height:45px; float: right;">패키지 보러가기</a>
+						</c:when>
+						<c:when test="${prodNum ne '0'}">
+							<a class="but" id="productBut" style="width: 100px; height:45px; float: right;">상품 보러가기</a>
+						</c:when>
+						</c:choose>
+                  </div>
                </div>
                
                <div>
@@ -90,7 +112,7 @@
                      </tr>
                      <tr>
                         <td colspan="2" nowrap height="auto"
-                           style="font-size: 15px; padding: 17px 0 8px; color: #464646;">
+                           style="font-size: 15px; padding: 17px 0 8px; color: #464646; width:611px;">
                            ${map.getBoard.board_content}
                         </td>
                      </tr>
