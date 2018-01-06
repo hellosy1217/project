@@ -31,6 +31,8 @@
    ga('send', 'pageview');
 </script>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -52,7 +54,6 @@ $(document).ready(function(){
       $(this).css({'border-color':'#ddd'});
    });
 });
-
 
 </script>
 
@@ -132,9 +133,14 @@ $(document).ready(function(){
          <ul>
             <h3 style="display:inline-block;">Review</h3>
             
-            <div class="searchF3 searchF3_2 search_bar">
-            <i class="fa fa-search searchI searchGryI"><input class="search search2 search2_1" placeholder="검색어를 입력해 주세요." /></i>
-         </div>
+            <div style="float:right;">
+            	<div class="searchF3 searchF3_2 search_bar">
+            		<i class="fa fa-search searchI searchGryI">
+            			<input class="search search2 search2_1" placeholder="검색어를 입력해 주세요." />
+            		</i>
+         		</div>
+         		<a class="but">검색</a>
+         	</div>
             
             <!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
             <ul>
