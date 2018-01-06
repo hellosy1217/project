@@ -61,13 +61,28 @@
 	<section class="usps-section">
 		<ul class="usp-list">
 			<li class="usp-el"><a href="#" class="selection">
-					<h3 class="title">Best 여행지</h3>
+					<h3 class="title">Best Selection</h3>
+					<ul class="reason-list">
+						<li class="reason">Compare 500+ carefully screened operators</li>
+						<li class="reason">Read 60,000+ genuine traveller reviews</li>
+						<li class="reason">Choose between 20,000+ tours</li>
+					</ul>
 			</a></li>
 			<li class="usp-el"><a href="#" class="prices">
-					<h3 class="title">Best 후기</h3>
+					<h3 class="title">Best Price</h3>
+					<ul class="reason-list">
+						<li class="reason">Compare 500+ carefully screened operators</li>
+						<li class="reason">Read 60,000+ genuine traveller reviews</li>
+						<li class="reason">Choose between 20,000+ tours</li>
+					</ul>
 			</a></li>
 			<li class="usp-el"><a href="#" class="payments">
-					<h3 class="title">미정</h3>
+					<h3 class="title">Trusted Payments</h3>
+					<ul class="reason-list">
+						<li class="reason">Compare 500+ carefully screened operators</li>
+						<li class="reason">Read 60,000+ genuine traveller reviews</li>
+						<li class="reason">Choose between 20,000+ tours</li>
+					</ul>
 			</a></li>
 		</ul>
 	</section>

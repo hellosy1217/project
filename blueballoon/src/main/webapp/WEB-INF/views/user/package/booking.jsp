@@ -96,16 +96,14 @@
 					<div class="info unselectable " unselectable="on">
 						<b class="in">인원</b>
 						<div class="in quantity">
-							<form name="f">
-								<span class="number minus grey" id="minus"
-									onclick="changeBookPerson('remove',1,${max_person})"
-									style="margin-top: 2px;"></span> <input type="number"
-									name="book_person" id="book_person" value="1"
-									min="${max_person}" max="${max_person}" inputmode="numeric"
-									pattern="[0-9]*" readonly> <span class="number plus"
-									id="plus" onclick="changeBookPerson('add',1,${max_person})"
-									style="margin-top: 2px;"></span>
-							</form>
+							<span class="number minus grey" id="minus"
+								onclick="changeBookPerson('remove',1,${max_person})"
+								style="margin-top: 2px;"></span> <input type="number"
+								name="book_person" id="book_person" value="1"
+								min="${max_person}" max="${max_person}" inputmode="numeric"
+								pattern="[0-9]*" readonly> <span class="number plus"
+								id="plus" onclick="changeBookPerson('add',1,${max_person})"
+								style="margin-top: 2px;"></span>
 						</div>
 						<div class="in solo"></div>
 					</div>
