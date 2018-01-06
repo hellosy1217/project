@@ -57,6 +57,10 @@ public class BoardMapper {
 		return sqlSession.selectOne("getMemberName", memberEmail);
 	}
 	
+	public List<BBMemberDTO> commentMember(){
+		return sqlSession.selectList("commentMember");
+	}
+	
 	//likecount
 	public int likecount(int board_num) {
 		return sqlSession.update("likecount", board_num);

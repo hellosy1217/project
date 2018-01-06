@@ -69,7 +69,8 @@ public class BoardController {
       mav.addObject("member_num", member_num);
       System.out.println("mn: "+member_num);
 
-      mav.addObject("listCate", req.getSession().getAttribute("listCate"));
+      List<BBCategoryDTO> listCate = ProductMapper.listCate();
+      mav.addObject("listCate", listCate);
 
       String searchOption = req.getParameter("seachOption");
       int count = 0;
@@ -293,6 +294,8 @@ public class BoardController {
       String memberName = memberdto.getMember_name();
       // 댓글 정보 가져오기
       List<BBCommentDTO> getComment = boardMapper.commentList(boardNum);
+      //회원 이름 가져오기(댓글)
+      List<BBMemberDTO> commentMember = boardMapper.commentMember(); 
       System.out.println("boardImg = " + boarddto.getBoard_org_img());
       // 이미지가 있으면 Y/이미지가 없으면 N을 보내기 (el이 board_org_img이름이 길어 에러나서)
       String existImg = "N";
@@ -329,6 +332,7 @@ public class BoardController {
       map.put("memberEmail", memberEmail);
       map.put("getCommentList", getComment);
       map.put("existImg", existImg);
+      map.put("commentMember", commentMember);
 
       mav.addObject("map", map);
       mav.setViewName("user/board/content");

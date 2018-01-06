@@ -41,6 +41,14 @@
       $('#commentBut').click(function(){
          $("#commentForm").toggleClass("hide");
       })
+      
+      $('#productBut').click(function(){
+         var res = confirm('이 상품페이지로 이동하시겠습니까?');
+         
+         if(res){
+            location.href= 'product_content?prod_num=${map.getBoard.prod_num}';
+         }
+      })
    });
    
    function emailHidden(email){
@@ -58,7 +66,7 @@
                <div id="review">
                   <div class="form-title">${map.prod_name} 여행 후기</div>
                   <div class="pbtn">
-                     <a class="but r write" href="" 
+                     <a class="but r write" id="productBut" 
                      target="_blank" rel="nofollow" style="width:130px; padding:10px 0;">상품 보러가기</a>
                   </div>
                </div>
@@ -135,10 +143,36 @@
                   
                   <br>
                   <div class="hide" id="commentForm">
-                  <table border="0" width="100%" >
+                     <br>
+                     <form name="comment1" action="comment_write" method="post">
+                        <table border="0" width="100%">
+                           <tr>
+                              <td><input type="hidden" name="board_num" value="${map.getBoard.board_num}"> 
+                                 <textarea name="comment_content" rows="4" style="width: 100%; margin-bottom: 0;"
+                                    placeholder="댓글을 달아주세요"></textarea>
+                                 </td>
+                           </tr>
+                           <tr>
+                              <td style="float:right; margin:20px 0;">
+                              <a class="but" style="width: 100px; padding-top:7px; padding-bottom:9px;" onclick="comment1.submit()">댓글 등록</a>
+                              </td>
+                           </tr>
+                        </table>
+                     </form>
+                  </div>
+
+                  <div>
+                  	<table border="0" width="100%" >
                      <c:forEach var="cdto" items="${map.getCommentList}">
                         <tr class="re">
-                           <td style="font-weight: bold; font-size: 16px;">${cdto.member_email}</td>
+                        	<!--  이메일 대신 이름보여주기
+                        	<c:forEach var="cmember" items="${map.commentMember}">
+                        		<c:if test="${cdto.member_email eq cmember.member_email}">
+                        		 	<td style="font-weight: bold; font-size: 16px;">${cmember.member_name}</td>
+                        		</c:if>
+                        	</c:forEach>
+                      -->
+                        	<td style="font-weight: bold; font-size: 16px;">${cdto.member_email}</td>
                            <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_content}</td>
                            <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_reg_date}</td>
                         
@@ -152,24 +186,7 @@
                         </tr>
                      </c:forEach>
                      </table>
-                     <br>
-                     <form name="comment1" action="comment_write" method="post">
-                        <table border="0" width="100%">
-                           <tr>
-                              <td><input type="hidden" name="board_num" value="${map.getBoard.board_num}"> 
-                                 <textarea name="comment_content" rows="4" style="width: 100%; margin-bottom: 0;"
-                                    placeholder="댓글을 달아주세요"></textarea>
-                                 </td>
-                           </tr>
-                           <tr>
-                              <td style="float:right; margin:20px 0;">
-                              <a class="but" style="width: 100px; padding-top:7px; padding-bottom:9px;" onclick="comment1.submit()">답글 등록</a>
-                              </td>
-                           </tr>
-                        </table>
-                     </form>
                   </div>
-                  <div></div>
                </div>
             </div>
          </div>

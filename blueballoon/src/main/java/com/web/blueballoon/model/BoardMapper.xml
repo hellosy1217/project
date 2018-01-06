@@ -77,6 +77,10 @@
 	SELECT * FROM bb_member WHERE member_email=#{member_email}
 </select>
 
+<select id="commentMember" resultType="BBMemberDTO">
+	SELECT * FROM bb_member
+</select>
+
 <update id="likecount" parameterType="int">
   	UPDATE bb_board SET board_likecount = board_likecount + 1 WHERE board_num = #{board_num}
 </update>
