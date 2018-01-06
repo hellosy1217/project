@@ -49,7 +49,7 @@ public class BoardController {
 
    @RequestMapping(value = "board_list", method = RequestMethod.GET)
    // @RequestParam(defaultValue="") ==> 기본값 할당 : 현재페이지를 1로 초기화
-   public ModelAndView boardlist(HttpServletRequest req, @RequestParam(defaultValue = "1") int curPage,
+   public ModelAndView boardList(HttpServletRequest req, @RequestParam(defaultValue = "1") int curPage,
          @RequestParam(defaultValue="") String keyword) {
       mav.clear();
       int member_num;
