@@ -8,7 +8,7 @@
    href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=12333"
    rel="stylesheet" />
 <link
-   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=125"
+   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=122"
    rel="stylesheet" type="text/css" />
 <link
    href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/async.v1512324069.css"
@@ -28,63 +28,18 @@
 </style>
 <script type="text/javascript"
    src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
-<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
    $(document).ready(function(){
       $('#deleteBut').click(function(){
-    	  swal({
-			  title: '삭제를 원하세요?',
-			  text: "삭제하시면 다시 복구할 수 없습니다!",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#DD6B55',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: '삭제',
-			  cancelButtonText: '취소',
-			  confirmButtonClass: 'btn btn-success',
-			  cancelButtonClass: 'btn btn-danger',
-			  buttonsStyling: false,
-			  reverseButtons: true
-			}).then((result)=>{
-			  if (result.value) {
-			    swal(
-			      '성공!',
-			      '삭제되었습니다.',
-			      'success'
-			    ).then(function () {
-			    	//여기에 ajax가 통신되면 굳이 redirect 하는 시간이 준다.. 이건 추후에 생각!!
-		            location.replace('board_delete?board_num=${map.getBoard.board_num}');
-		          });
-			  // result.dismiss can be 'cancel', 'overlay',
-			  // 'close', and 'timer'
-			  } else if (result.dismiss === 'cancel') {
-			    swal(
-			      '취소!',
-			      '삭제를 취소합니다.',
-			      'error'
-			    )
-			  }
-			})
-        /*  var res = confirm('정말 삭제하시겠습니까?');
+         var res = confirm('정말 삭제하시겠습니까?');
          
          if(res){
             location.href= 'board_delete?board_num=${map.getBoard.board_num}';
-         } */
-      })
-      $('#commentBut').click(function(){
-         $("#commentForm").toggleClass("hide");
-      })
-      
-       $('#productBut').click(function(){
-         var res = confirm('상품페이지로 이동하시겠습니까?');
-         if(res){
-            location.href= 'product_content?prod_num=${map.getBoard.prod_num}';
          }
       })
-    
-       $('#packageBut').click(function(){
-         	alart("패키지로 이동하겠습니다.");
-         		location.href= 'package_content?pack_num=${map.getBoard.pack_num}'; //패키지 content로 가기
+
+      $('#commentBut').click(function(){
+         $("#commentForm").toggleClass("hide");
       })
    });
    
@@ -98,28 +53,20 @@
    <div id="content" class="clearfix wrapc ">
       <div class="reg-page sign-up clearfix">
          <%@include file="../../header2.jsp"%>
-         <div class="inside" style="margin-top: 30px; opacity: 100;">
+         <div class="inside" style="opacity: 100; margin-bottom: 70px;">
             <div class="inside-w">
                <div id="review">
-                  <div class="form-title">여행 후기
-              	 <c:set var="prodNum" value="${map.getBoard.prod_num}"/>
-						<c:choose>
-						<c:when test="${prodNum eq '0'}">
-							<a class="but" id="packageBut" style="width: 100px; height:45px; float: right;">패키지 보러가기</a>
-						</c:when>
-						<c:when test="${prodNum ne '0'}">
-							<a class="but" id="productBut" style="width: 100px; height:45px; float: right;">상품 보러가기</a>
-						</c:when>
-						</c:choose>
+                  <div class="form-title">${map.prod_name} 여행 후기</div>
+                  <div class="pbtn">
+                     <a class="but r write" href="" 
+                     target="_blank" rel="nofollow" style="width:130px; padding:10px 0;">상품 보러가기</a>
                   </div>
                </div>
                
-               <div>
-               		<div>
-               			<img
-                        src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.prod_pick}/${map.str_img}"
-                        >
-               		</div>
+               <div class="pimg">
+                     <img
+                      src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.prod_pick}/${map.str_img}"
+                     >
                </div>
                
                <div class="bbox">
@@ -132,20 +79,22 @@
                      <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
                   </c:otherwise>
                </c:choose>
-               <p>${map.memberName}</p>
-                     </div>
+                     <p>${map.memberName}</p>
+                </div>
+                
+                <div>
                   <table border="0" width="84%" style="margin-top:10px;">
                      <tr>
                         <td
                            style="font-weight: bold; font-size:18px; color:#3a3a3a;">${map.getBoard.board_title}</td>
                         <td class="date">
-                        	<span style="padding-right:5px;">${map.getBoard.board_reg_date}</span>
+                           <span style="padding-right:5px;">${map.getBoard.board_reg_date}</span>
                         </td>
 
                      </tr>
                      <tr>
                         <td colspan="2" nowrap height="auto"
-                           style="font-size: 15px; padding: 17px 0 8px; color: #464646; width:611px;">
+                           style="font-size: 15px; padding: 17px 0 8px; color:#464646; width:610px;">
                            ${map.getBoard.board_content}
                         </td>
                      </tr>
@@ -166,13 +115,13 @@
                               <span>${map.getBoard.board_likecount}</span>    
                            </div> 
                            <div class="rcount">
-                           	<i class="fa fa-eye eye_icon" aria-hidden="true"></i>
-                           	<span>${map.getBoard.board_readcount}</span>
+                              <i class="fa fa-eye eye_icon" aria-hidden="true"></i>
+                              <span>${map.getBoard.board_readcount}</span>
                            </div>
                            
                         </td>
-                        <td style="float: right;">
-                        	<a class="but" id="commentBut" style="width: 100px; padding-bottom: 10px;">댓글 쓰기</a>
+                        <td style="float: right; font-size:13px;">
+                           <a class="but" id="commentBut" style="width: 100px; padding-top:7px; padding-bottom:9px;">답글 쓰기</a>
                            <c:if test="${map.memberEmail == map.getBoard.member_email}">
                               <a class="but" id="editBut" href="board_update?board_num=${map.getBoard.board_num}" 
                                  style="width: 65px; margin-top: 15px; margin-right: 4px">글수정</a>
@@ -181,36 +130,40 @@
                         </td>
                      </tr>
                   </table>
+                  
+                  </div>
+                  
                   <br>
                   <div class="hide" id="commentForm">
                   <table border="0" width="100%" >
                      <c:forEach var="cdto" items="${map.getCommentList}">
-                        <tr>
-                           <td style="font-weight: bold; font-size: 16px; padding-left: 20px;">${cdto.member_email}</td>
-                        </tr>
-                        <tr>
+                        <tr class="re">
+                           <td style="font-weight: bold; font-size: 16px;">${cdto.member_email}</td>
                            <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_content}</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #7E7E7E;">
                            <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_reg_date}</td>
+                        
                            <c:if test="${map.memberEmail == cdto.member_email}">
-                           <td style="float:right;"><a class="but" id="deleteComment" href="comment_delete?comment_num=${cdto.comment_num}" style="width: 65px; margin-right: 4px">삭제</a></td>
+                           <td style="float:right;">
+                              <a class="but" id="deleteComment" href="comment_delete?comment_num=${cdto.comment_num}" 
+                              style="width: 65px; margin-right: 4px">삭제</a>
+                           </td>
                            </c:if>
+                           
                         </tr>
                      </c:forEach>
                      </table>
                      <br>
                      <form name="comment1" action="comment_write" method="post">
                         <table border="0" width="100%">
-                           <tr style="border-top: 0.5px solid #A6A6A6;">
+                           <tr>
                               <td><input type="hidden" name="board_num" value="${map.getBoard.board_num}"> 
                                  <textarea name="comment_content" rows="4" style="width: 100%; margin-bottom: 0;"
                                     placeholder="댓글을 달아주세요"></textarea>
                                  </td>
                            </tr>
-                           <tr style="border-bottom: 0.5px solid #A6A6A6;">
-                              <td style="float: right;">
-                              <a class="but" style="width: 90px;" onclick="comment1.submit()">댓글 등록</a>
+                           <tr>
+                              <td style="float:right; margin:20px 0;">
+                              <a class="but" style="width: 100px; padding-top:7px; padding-bottom:9px;" onclick="comment1.submit()">답글 등록</a>
                               </td>
                            </tr>
                         </table>
@@ -220,8 +173,13 @@
                </div>
             </div>
          </div>
+         
+         
       </div>
    </div>
+   
+   
+   
    <script type="text/javascript">
       var js_params = {
          "RegistrationType" : "sign_up"

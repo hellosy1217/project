@@ -5,7 +5,7 @@
 <head>
 <title>후기 게시판 -BlueBalloon</title>
 <link
-   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=21"
+   href="${pageContext.request.contextPath}/resources/user/board/css/list1.css?ver=221"
    rel="stylesheet" type="text/css" />
 <script
    src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/8.js"
@@ -30,6 +30,32 @@
    ga('create', 'UA-334117-5', 'auto');
    ga('send', 'pageview');
 </script>
+
+<script>
+
+$(document).ready(function(){
+   //검색창에 마우스를 올리고 내리면 색 변경되기
+   $('.search').mouseover(function(){
+      $(this).css('-webkit-text-fill-color','#409cd1');
+      $(this).parent().css('color','#409cd1');
+   });   
+   $('.searchF3').mouseover(function(){
+      $(this).css({'border-color':'#409cd1'});
+   });
+   
+   //마우스를 내렸을 때 원상태로
+   $('.search2').mouseout(function(){
+      $(this).css('-webkit-text-fill-color','#ccc');
+      $(this).parent().css('color','#ccc');
+   });
+   $('.searchF3').mouseout(function(){
+      $(this).css({'border-color':'#ddd'});
+   });
+});
+
+
+</script>
+
 <link rel="stylesheet" type="text/css"
    href="//cdn.tourradar.com/include/pw/serp/async.v1512994931.css">
 <link rel="stylesheet"
@@ -104,7 +130,12 @@
       </div>
       <div class="content faq" data-total="16" data-onpage="10">
          <ul>
-            <h3>게시판 부분</h3>
+            <h3 style="display:inline-block;">Review</h3>
+            
+            <div class="searchF3 searchF3_2 search_bar">
+            <i class="fa fa-search searchI searchGryI"><input class="search search2 search2_1" placeholder="검색어를 입력해 주세요." /></i>
+         </div>
+            
             <!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
             <ul>
                <li style="background-color: #fafafa; border-top: 1px solid #ccc;">

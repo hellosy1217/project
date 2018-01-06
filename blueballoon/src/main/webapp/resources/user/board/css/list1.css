@@ -1,9 +1,94 @@
 @charset "UTF-8";
 
+
+.write-detail-bottom .search-box .search_bar {
+    width: 267px;
+    float: right;
+}
+
+.write-detail-bottom .search-box span {
+    vertical-align: -webkit-baseline-middle;
+    color: #9f9f9f;
+    font-size: 12px;
+}
+
+.write-detail-bottom .search-box span a {
+    margin: 0 5px !important;
+    color: #9f9f9f;
+}
+
+.write-detail-bottom .search-box span a:hover{ color: #f93c23;}
+
+/*검색창 CSS*/
+.searchForm{
+    border-radius: 15px;
+    background-color: transparent;
+    margin: 5px;
+    height: 30px;
+}
+
+.searchF3{
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background-color: #fafafa;
+}
+.searchF3_2{ 
+	width: 210px;
+	height: 36px;
+	float: right;
+}
+.searchF3_2 input {
+	font-size: 13px;
+}
+.searchI{
+	display: inline-block;
+    padding-left: 10px;
+    width: 100%;
+}
+.searchWhiteI{ color: #ffffff;}
+.searchGryI{ color: #ccc;}
+
+
+.search{
+	width: 92%;
+	height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    margin: 0 !important;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    background-color: transparent;
+    outline: none;
+}
+
+.search2_1{
+	height: 35px;
+}
+
 #content .reg-page .inside-w {
 	background-color: #fdfdfd;
 	min-width: 850px;
 	min-height: 400px;
+}
+
+#content .reg-page .inside-w .form-title {
+	float: left;
+}
+
+#content .inside-w .pbtn {
+	float: right;
+}
+
+#content .inside-w .pbtn a:hover {
+	background-color: #409cd1;
+    border-color: #409cd1;
+    color: white;
+    cursor: pointer;
+}
+
+#content .inside-w .pimg img {
+    width: 790px;
+    height: 400px;
 }
 
 #content .reg-page .inside-w .bbox {
@@ -34,6 +119,15 @@
 	font-size: 14px;
 	color: #7d7d7d;
 	margin-top: 6px;
+}
+
+#commentForm tr.re {
+	border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+#commentForm tr.re td {
+    padding: 20px 0;
 }
 
 main .header {
@@ -2125,7 +2219,7 @@ main .faq .more {
 }
 
 main .faq ul {
-	padding-top: 24px
+	padding-top: 10px
 }
 
 main .faq ul li {
