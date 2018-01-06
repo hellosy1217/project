@@ -16,22 +16,20 @@
 			<div class="content">
 				<div class="rh wgr">
 					<a href="/why?top=best-selection" target="_blank"><div
-							class="circle">✓</div>BEST SELECTION <span class="show1">&amp;
+							class="circle">✓</div>최고의 선택<span class="show1">&amp;
 							PRICES</span></a>
 				</div>
 				<div class="rh wgr hide1">
 					<a href="/why?top=best-prices" target="_blank"><div
-							class="circle">✓</div>BEST PRICES</a>
+							class="circle">✓</div>최고의 가격</a>
 				</div>
 				<div class="rh last wgr">
 					<a href="/why?top=trusted-payments" target="_blank"><div
-							class="circle">✓</div>TRUSTED PAYMENTS</a>
+							class="circle">✓</div>최고의 만족</a>
 				</div>
 				<div id="block-7" class="hide3">
 					<span
-						style="display: inline-block; margin: 1px 4px 0 0; border-radius: 50%; width: 16px; height: 16px; overflow: hidden; text-align: center;"><svg
-							xmlns="http://www.w3.org/2000/svg" height="512" width="512"
-							viewBox="0 0 512 512">
+						style="display: inline-block; margin: 1px 4px 0 0; border-radius: 50%; width: 16px; height: 16px; overflow: hidden; text-align: center;">
        <g fill-rule="evenodd" transform="scale(3.9385)">
        <g stroke-width="1pt">
        <path
@@ -49,13 +47,13 @@
 								d="M8.233 44.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zM16.467 51.996l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g>
        <g>
        <path
-								d="M8.233 58.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g></g></g></svg></span><span
-						style="display: inline-block; float: right; font-size: 14px;">+1
-						844 311 3006 Toll free</span>
+								d="M8.233 58.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g></g></g></svg></span>
+								<span style="display: inline-block; float: right; font-size: 14px;">+82
+						02 311 3006 Toll free</span>
 				</div>
 				<div id="why_blocks">
 					<div class="hidden">
-						<a href="tel:+1 844 311 3006 " id="call-to-tr"></a>
+						<a href="tel:+82 02 311 3006 " id="call-to-tr"></a>
 					</div>
 				</div>
 			</div>
@@ -156,7 +154,7 @@
 
 					<a name="reviews"></a>
 					<div class="profile-left span12" id="block-reviews">
-						<h2>my reviews</h2>
+						<h2>내가 쓴 후기</h2>
 						등록한 후기가 없습니다!
 						<div class="footer">
 							<a class="multi-line-button bigb" href="/review"><span

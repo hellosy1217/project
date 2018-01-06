@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.SendMessageUtil;
@@ -222,10 +225,17 @@ public class MemberController {
 		int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 		String member_email = (String) arg0.getSession().getAttribute("member_email");
 
-		List<BBLikeDTO> likeList = memberMapper.listProducts(member_num);
-
-		mav.addObject("member_num", member_num);
+		List<BBLikeDTO> likeList = memberMapper.listLikeProducts(member_num);
+		//상품 이미지 관련 해서 list에 추가 
+		for(BBLikeDTO tmp : likeList) {
+			BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
+			tmp.setProd_str_img(dto.getProd_str_img());
+			System.out.println("like List prod img : "+tmp.getProd_str_img());
+		}
+		
+		mav.addObject("likeList", likeList);
 		mav.addObject("member_email", member_email);
+		mav.addObject("member_num", member_num);
 		mav.setViewName("user/member/likelist");
 		return mav;
 	}

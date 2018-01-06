@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBProductDTO;
 
 
 @Service
@@ -47,11 +48,15 @@ public class MemberMapper {
 		return sqlSession.selectOne("getLoginedMember", member_email);
 	}
 	
-	 public List<BBLikeDTO> listProducts(int member_num){
+	 public List<BBLikeDTO> listLikeProducts(int member_num){
 		 return sqlSession.selectList("getLikeProducts",member_num);
 	 }
 
 	public int changePasswd(BBMemberDTO checkUser) {
 		return sqlSession.update("changePasswd",checkUser);
+	}
+
+	public BBProductDTO getProduct(int prod_num) {
+		return sqlSession.selectOne("getBBProduct", prod_num);
 	}
 }

@@ -17,7 +17,7 @@
 	rel="stylesheet" />
 <script type="text/javascript"
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
-	<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
 	var js_params = {
 		"pending_count" : 0,
@@ -39,6 +39,7 @@
 </script>
 <script type="text/javascript">
 	function changePasswd() {
+		alert("123") return false;
 		if(f.newPasswd1.value=""){
 			swal(
 					 '이런...',
@@ -83,7 +84,7 @@
 				<div class="span8 settings-left">
 					<div class="profile-left span12" id="block-edit">
 						<h2>내 정보 수정</h2>
-						<form method="post" action="member_edit"  enctype="multipart/form-data">
+						<form name ="editMyprofile" method="post" action="member_edit"  enctype="multipart/form-data">
 						<input type="hidden" name="member_num" value="${getMember.member_num}">
 							<div class="form">
 								<div class="row">
@@ -149,19 +150,6 @@
 							<input type="submit" class="button button-grey" value="로그아웃" /></a>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div class="hidden">
-			<div id="email_popup" class="clearfix popup">
-				<div>
-					<strong>1.</strong> 새로운 이메일을 입력해주세요:
-				</div>
-				<div>
-					<form id="change_email" onsubmit="return false">
-						<input type="text" placeholder="Email" /><input type="button"
-							class="multi-line-button flat blue" value="changeEmail()" />
-					</form>
 				</div>
 			</div>
 		</div>

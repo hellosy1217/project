@@ -3,7 +3,8 @@ package com.web.blueballoon.model;
 public class BBLikeDTO {
 	private int prod_num;
 	private int member_num;
-
+	private String prod_str_img;
+	
 	public int getProd_num() {
 		return prod_num;
 	}
@@ -20,4 +21,12 @@ public class BBLikeDTO {
 		this.member_num = member_num;
 	}
 
+	public String getProd_str_img() {
+		return prod_str_img;
+	}
+
+	public void setProd_str_img(String prod_str_img) {
+		this.prod_str_img = prod_str_img;
+	}
+	
 }

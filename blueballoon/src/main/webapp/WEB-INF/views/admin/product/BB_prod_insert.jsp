@@ -117,7 +117,7 @@
 				f.prod_road_address.focus();
 				return false;
 			}
-			if(f.prod_content.value=""){
+			/* if(f.prod_content.value=""){
 				swal(
 						 '이런...',
 						 '상품 내용을 입력해 주세요!',
@@ -125,7 +125,7 @@
 						)
 				f.prod_content.focus();
 				return false;
-			}
+			} */
 			return true
 		}
 	</script>
@@ -137,13 +137,9 @@
             <th width="20%">여행 상품 지역</th>
             <td>
                <select id="category" name="prod_cate">
-                  <option value="0">서울특별시</option>
-						<option value="강원도">강원도</option>
-						<option value="경기도">경기도</option>
-						<option value="경상도">경상도</option>
-						<option value="전라도">전라도</option>
-						<option value="제주도">제주도</option>
-						<option value="충청도">충청도</option>
+                  <c:forEach var="cate" items="${cateList}">
+                  	<option value="${cate.cate_state},${cate.cate_city}">${cate.cate_state},${cate.cate_city}</option>
+                  	</c:forEach>
                </select>
             </td>
          </tr>

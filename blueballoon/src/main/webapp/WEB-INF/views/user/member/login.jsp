@@ -61,7 +61,7 @@
 
 				</div>
 			</div>
-			<script type="text/javascript">
+			 <script type="text/javascript">
 				var js_params = {
 					"RegistrationType" : "login"
 				};
@@ -77,26 +77,7 @@
 			</script>
 			<script type="text/javascript">
 				function submit() {
-					
-					if(login.member_email.value=""){
-						swal(
-								 '이런...',
-								 '이메일을 입력해주세요!',
-								 'error'
-								)
-						login.member_email.focus();
-						return false
-					}
-					
-					if(login.member_passwd.value=""){
-						swal(
-								 '이런...',
-								 '비밀번호를 입력해주세요!',
-								 'error'
-								)
-						login.member_passwd.focus();
-						return false
-					}
+		
 					document.login.submit();
 				}
 			</script>

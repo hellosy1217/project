@@ -184,4 +184,19 @@ public class AdminProductController {
 		String[] url = { "BB_prod_list", "BB_prod_edit?prod_num=" + dto.getProd_num() };
 		return cm.resMassege(res, msg, url);
 	}
+	
+	@RequestMapping(value="BB_prod_content")
+	public ModelAndView viewContent(@RequestParam int prod_num) {
+		
+		if(prod_num <0) {
+			mav.addObject("msg", "잘못된 접근입니다.");
+			mav.addObject("url","BB_prod_list");
+			mav.setViewName("admin/message");
+		}
+		
+		BBProductDTO dto = adminMapper.getBBProduct(prod_num);
+		mav.addObject("dto",dto);
+		mav.setViewName("admin/product/BB_prod_content");
+		return mav;
+	}
 }

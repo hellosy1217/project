@@ -16,10 +16,10 @@
 			<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
 				<li itemprop="itemListElement" itemscope=""
 					itemtype="http://schema.org/ListItem"><a itemprop="item"
-					href="/">Home </a> &nbsp;&nbsp;〉&nbsp;</li>
+					href="main">Home </a> &nbsp;&nbsp;〉&nbsp;</li>
 				<li itemprop="itemListElement" itemscope=""
-					itemtype="http://schema.org/ListItem"><a href=""
-					itemprop="item"><span itemprop="name">Like Lists</span></a>
+					itemtype="http://schema.org/ListItem"><a href="member_profile"
+					itemprop="item"><span itemprop="name">My profile</span></a>
 					&nbsp;&nbsp;〉&nbsp;</li>
 				<li itemprop="itemListElement" itemscope=""
 					itemtype="http://schema.org/ListItem"><span itemprop="item"><span
@@ -33,13 +33,13 @@
 				<div class="im">
 					<span class="initials" style="background: #afd54d">N</span>
 				</div>
-				<h1>My Wish Lists</h1>
+				<h1>내가 찜한 목록 </h1>
 			</div>
 		</div>
 		<ul class="tabs cf">
-			<li><a href="/wishlists">Popular</a></li>
-			<li><a href="/wishlists/tourradar-picks">TourRadar Picks</a></li>
-			<li class="active">My Wish Lists</li>
+			<li><a href="#">Popular</a></li>
+			<li><a href="#">BlueBalloon Picks</a></li>
+			<li class="#">My Wish Lists</li>
 		</ul>
 		<ul class="cf list">
 			<a href="/wishlists/966138"><li><img
