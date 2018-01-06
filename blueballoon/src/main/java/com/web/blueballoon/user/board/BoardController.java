@@ -69,7 +69,8 @@ public class BoardController {
 		mav.addObject("member_num", member_num);
 		System.out.println("mn: "+member_num);
 
-		mav.addObject("listCate", req.getSession().getAttribute("listCate"));
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
 
 		String searchOption = req.getParameter("seachOption");
 		int count = 0;
