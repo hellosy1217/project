@@ -48,11 +48,19 @@
 	</filter-mapping>
 	<!-- 에러 페이지 처리 -->
 	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/error/400ErrorPage.jsp</location>
+	</error-page>
+	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/error/404ErrorPage.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/WEB-INF/view/500ErrorPage.jsp</location>
+		<location>/WEB-INF/error/500ErrorPage.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>505</error-code>
+		<location>/WEB-INF/error/505ErrorPage.jsp</location>
 	</error-page>
 </web-app>
