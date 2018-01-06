@@ -137,34 +137,17 @@
 		</div>
 	</div>
 	<div class="cs">
+	<c:set var="team" value="김수민,김유정,성지연,주소연,지수정"/>
 		<div class="c">
 			<h2>광주불주먹 외 4명</h2>
 			<div class="t">
+			<c:forTokens items="${team }" delims="," var="tm" varStatus="stt">
 				<div class="wp">
 					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/k.png" />
-					<span>김수민</span>
+						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${stt.count }.png" />
+					<span>${tm }</span>
 				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/m.png" />
-					<span>김유정</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/c.png" />
-					<span>성지연</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/d.png" />
-					<span>지수정</span>
-				</div>
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/j.png" />
-					<span>주소연</span>
-				</div>
+				</c:forTokens>
 			</div>
 			<div class="t">
 				우리 팀은 광주불주먹 두니야님의 지휘아래에 편성된 팀입니다. 살려주세요. <a href="contact.html">Contact

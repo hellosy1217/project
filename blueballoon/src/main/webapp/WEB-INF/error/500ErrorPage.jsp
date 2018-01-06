@@ -1,16 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%response.setStatus(200); %>
+	pageEncoding="UTF-8"%>
+<%
+	response.setStatus(200);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Blueballoon - 500 error page</title>
+<style>
+.img {
+	position: relative;
+	background-image:
+		url(https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_error/500error.jpg);
+	height: 100vh;
+	background-size: cover;
+}
+
+.img .content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-32%, 180%);
+	font-size: 5rem;
+	color: black;
+	z-index: 2;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+	function out() {
+		location.href="main";
+	}
+</script>
 </head>
 <body>
-	
-    	<img src="resources/images/500Error.png">
-		<p>500(내부 서버 오류) : 서버에 오류가 발생하여 요청을 수행할 수 없습니다.</p>
-		<a href="main">Main페이지로 가기</a>
+	<div class="img">
+		<div class="content" onclick="out()">
+			<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_other/take1.png" height="103px" width="340px">
+		</div>
+	</div>
 </body>
 </html>

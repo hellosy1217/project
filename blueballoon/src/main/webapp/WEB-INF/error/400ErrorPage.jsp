@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	response.setStatus(HttpServletResponse.SC_OK);
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Blueballoon - 404 error page</title>
+<title>Blueballoon - 400 error page</title>
 <style>
 .img {
 	position: relative;
 	background-image:
-		url(https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_error/404error.jpg);
+		url(https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_error/400error.jpg);
 	height: 100vh;
 	background-size: cover;
 }
@@ -37,7 +34,7 @@
 <body>
 	<div class="img">
 		<div class="content" onclick="out()">
-			<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_other/take3.png" height="103px" width="340px">
+			<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_other/take4.png" height="103px" width="340px">
 		</div>
 	</div>
 </body>
