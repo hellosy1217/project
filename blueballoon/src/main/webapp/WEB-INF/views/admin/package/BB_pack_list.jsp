@@ -35,7 +35,7 @@
 		<c:forEach var="dto" items="${packageList}">
 		<tr>
 			<td align="right">${dto.pack_num}</td>
-			<td align="center">${dto.pack_title}</td>
+			<td align="center"><a href="BB_pack_content?pack_num=${dto.pack_num}">${dto.pack_title}</a></td>
 			<td align="center">${dto.pack_phone}</td>
 			<td align="center">${dto.pack_price}</td>
 			<td align="center">${dto.pack_period}</td>

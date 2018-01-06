@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.admin.service.AdminMapper;
 import com.web.blueballoon.model.BBPackageDTO;
+import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.ControllerMessage;
 
@@ -155,4 +156,18 @@ System.out.println("pack_content : "+dto.getPack_content());
 		return cm.resMassege(res, msg, url);
 	}
 
+	@RequestMapping(value="BB_pack_content")
+	public ModelAndView packageContent(@RequestParam int pack_num) {
+		if(pack_num < 0) {
+			mav.addObject("msg", "잘못된 접근입니다.");
+			mav.addObject("url","BB_pack_list");
+			mav.setViewName("admin/message");
+		}
+		
+		BBPackageDTO dto = adminMapper.getBBPackageDTO(pack_num);
+		
+		mav.addObject("pack", dto);
+		mav.setViewName("admin/package/BB_pack_content");
+		return mav;
+	}
 }

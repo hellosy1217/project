@@ -28,16 +28,49 @@
 </style>
 <script type="text/javascript"
    src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
    $(document).ready(function(){
       $('#deleteBut').click(function(){
-         var res = confirm('정말 삭제하시겠습니까?');
+    	  swal({
+			  title: '삭제를 원하세요?',
+			  text: "삭제하시면 다시 복구할 수 없습니다!",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#DD6B55',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '삭제',
+			  cancelButtonText: '취소',
+			  confirmButtonClass: 'btn btn-success',
+			  cancelButtonClass: 'btn btn-danger',
+			  buttonsStyling: false,
+			  reverseButtons: true
+			}).then((result)=>{
+			  if (result.value) {
+			    swal(
+			      '성공!',
+			      '삭제되었습니다.',
+			      'success'
+			    ).then(function () {
+			    	//여기에 ajax가 통신되면 굳이 redirect 하는 시간이 준다.. 이건 추후에 생각!!
+		            location.replace('board_delete?board_num=${map.getBoard.board_num}');
+		          });
+			  // result.dismiss can be 'cancel', 'overlay',
+			  // 'close', and 'timer'
+			  } else if (result.dismiss === 'cancel') {
+			    swal(
+			      '취소!',
+			      '삭제를 취소합니다.',
+			      'error'
+			    )
+			  }
+			})
+        /*  var res = confirm('정말 삭제하시겠습니까?');
          
          if(res){
             location.href= 'board_delete?board_num=${map.getBoard.board_num}';
-         }
+         } */
       })
-
       $('#commentBut').click(function(){
          $("#commentForm").toggleClass("hide");
       })

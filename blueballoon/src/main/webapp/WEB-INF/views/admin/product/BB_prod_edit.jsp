@@ -61,12 +61,15 @@
 </script>
 <script type="text/javascript">
 	function setSelected(){
-		var prod_pick = ${getProduct.prod_pick};
-		for (i = 0; i < document.getElementById("pick").options.length; i++) {
-		    if (document.getElementById("pick").options[i].value == prod_pick) {
-		        document.getElementById("pick").options[i].selected = "selected";
-		    }
-	}
+		function setSelected(){
+			var prod_cate = ${getProduct.prod_cate};
+			var state = prod_cate.split(",");
+			alert(state);
+			for (i = 0; i < document.getElementById("category").options.length; i++) {
+			    if (document.getElementById("category").options[i].value == state) {
+			        document.getElementById("category").options[i].selected = "selected";
+			    }
+		}
 }
 </script>
 <div align="center">
@@ -78,9 +81,6 @@
             <th width="20%">카테고리</th>
             <td>
                <select id="category" name="prod_cate">
-                  <c:if test="${empty cateList}">
-                  	<option>등록된 카테고리가 없습니다.</option>
-                  </c:if>
                   <c:forEach var="dto" items="${cateList}">
                      <option value="${dto.cate_state}-${dto.cate_city}">${dto.cate_state},${dto.cate_city}</option>
                   </c:forEach>

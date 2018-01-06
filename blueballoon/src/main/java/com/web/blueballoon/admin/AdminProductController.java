@@ -187,7 +187,6 @@ public class AdminProductController {
 	
 	@RequestMapping(value="BB_prod_content")
 	public ModelAndView viewContent(@RequestParam int prod_num) {
-		
 		if(prod_num <0) {
 			mav.addObject("msg", "잘못된 접근입니다.");
 			mav.addObject("url","BB_prod_list");
@@ -195,7 +194,7 @@ public class AdminProductController {
 		}
 		
 		BBProductDTO dto = adminMapper.getBBProduct(prod_num);
-		mav.addObject("dto",dto);
+		mav.addObject("getProduct",dto);
 		mav.setViewName("admin/product/BB_prod_content");
 		return mav;
 	}
