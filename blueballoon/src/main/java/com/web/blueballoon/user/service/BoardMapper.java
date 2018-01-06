@@ -31,8 +31,8 @@ public class BoardMapper {
 		return sqlSession.selectList("boardListSearch", map);
 	}
 	
-	public int countBoardSearch(HashMap<String, Object> map) {
-		return sqlSession.selectOne("countBoardSearch", map);
+	public int countBoardSearch(String keyword) {
+		return sqlSession.selectOne("countBoardSearch", keyword);
 	}
 	
 	public List<BBBoardDTO> bestReview(){

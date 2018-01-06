@@ -67,16 +67,13 @@ public class BoardController {
          member_email = null;
       }
       mav.addObject("member_num", member_num);
-      System.out.println("mn: "+member_num);
 
       List<BBCategoryDTO> listCate = ProductMapper.listCate();
       mav.addObject("listCate", listCate);
 
-      String searchOption = req.getParameter("seachOption");
       int count = 0;
       BoardPager boardPager = null;
       List<BBBoardDTO> boardList = null;
-
       if(keyword == null || keyword.trim().equals("")) {
          //검색어가 없음
          // 게시글 갯수 계산
@@ -96,10 +93,7 @@ public class BoardController {
          //검색어가 있음
          // 게시글 갯수 계산
          System.out.println("검색어 있음.");
-         HashMap<String, Object> countMap = new HashMap<String, Object>();
-         countMap.put("searchOption", searchOption);
-         countMap.put("keyword", keyword);
-         count = boardMapper.countBoardSearch(countMap);
+         count = boardMapper.countBoardSearch(keyword);
 
          // 페이지 나누기 관련 처리
          boardPager = new BoardPager(count, curPage);
@@ -109,7 +103,6 @@ public class BoardController {
          HashMap<String, Object> map = new HashMap<String, Object>();
          map.put("start", start);
          map.put("end", end);
-         map.put("searchOption", searchOption);
          map.put("keyword", keyword);
          boardList = boardMapper.boardListSearch(map);
       }
@@ -313,7 +306,6 @@ public class BoardController {
       int prod_pick = 0;
       for (int j = 0; j < listProd.size(); j++) {
          int prodNum = boarddto.getProd_num();
-         System.out.println("prodNum =" +prodNum);
          if (prodNum == listProd.get(j).getProd_num()) {
             prod_name = listProd.get(j).getProd_name();
             str_img = listProd.get(j).getProd_str_img();
@@ -424,7 +416,7 @@ public class BoardController {
       if (star == null) {
          dto.setBoard_score(bdto.getBoard_score());
       } else {
-         dto.setBoard_score(Integer.parseInt(별));
+         dto.setBoard_score(Integer.parseInt(star));
       }
       // 사진을 받았다면 지우고 새로운 사진을 저장
       System.out.println("기존값 불러온 것들");

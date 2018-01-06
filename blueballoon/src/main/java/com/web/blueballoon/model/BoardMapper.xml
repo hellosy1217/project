@@ -14,17 +14,10 @@
 </sql>	
 <!-- search sql -->
 <sql id="search">
-    <choose>
-        <!-- 검색옵션이 전체 검색일 경우 -->
-        <when test="searchOption == 'all'">
-            WHERE board_content like '%'||#{keyword}||'%'
-            OR board_title like '%'||#{keyword}||'%'
-        </when>
-        <!-- 전체 검색이 아닐 경우 -->
-        <otherwise>
-            WHERE ${searchOption} like '%'||#{keyword}||'%'
-        </otherwise>
-    </choose>
+            <if test="keyword != null">
+            	WHERE board_content like '%'||#{keyword}||'%'
+            	OR board_title like '%'||#{keyword}||'%'
+            </if>
 </sql>
 
 <select id="boardList" parameterType="HashMap" resultType="BBBoardDTO">
@@ -47,9 +40,12 @@
     <include refid="pagingFooter"></include>   
 </select>
 
-<select id="countBoardSearch" parameterType="HashMap" resultType="int">
+<select id="countBoardSearch" parameterType="String" resultType="int">
   	SELECT count(*) FROM bb_board
-  	<include refid="search"></include>
+  	<if test="value != null">
+            	WHERE board_content like '%'||#{value}||'%'
+            	OR board_title like '%'||#{value}||'%'
+    </if>
 </select>
 
 <select id="bestReview" resultType="BBBoardDTO">

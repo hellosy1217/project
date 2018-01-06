@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html class=" logged">
 <head>
 <title>후기 게시판 -BlueBalloon</title>
@@ -122,8 +123,15 @@ $(document).ready(function(){
                      </div>
                      <div class="title">${best.board_title}</div>   
                      <div>
-                        ${best.board_content} 
-                        <a href="board_content?board_num=${best.board_num}">..더보기</a>
+                     	   <c:choose>
+           						  <c:when test="${fn:length(best.board_content) > 20}">
+										${fn:substring(best.board_content,0,19)}...
+           						</c:when>
+           						<c:otherwise>
+           							${best.board_content} 
+           						</c:otherwise> 
+          					</c:choose>
+                        <a href="board_content?board_num=${best.board_num}">더보기</a>
                    </div>
                </div>
             </div>
@@ -132,16 +140,16 @@ $(document).ready(function(){
       <div class="content faq" data-total="16" data-onpage="10">
          <ul>
             <h3 style="display:inline-block;">Review</h3>
-            
             <div style="float:right;">
+            	<form name="searchOption" action="board_list" method="get">
             	<div class="searchF3 searchF3_2 search_bar">
             		<i class="fa fa-search searchI searchGryI">
-            			<input class="search search2 search2_1" placeholder="검색어를 입력해 주세요." />
+            			<input class="search search2 search2_1" name="keyword" placeholder="검색어를 입력해 주세요." />
             		</i>
          		</div>
-         		<a class="but">검색</a>
+         		<a class="but" onclick="searchForm.submit()">검색</a>
+         		</form>
          	</div>
-            
             <!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
             <ul>
                <li style="background-color: #fafafa; border-top: 1px solid #ccc;">
