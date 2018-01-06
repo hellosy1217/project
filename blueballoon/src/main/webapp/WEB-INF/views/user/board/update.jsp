@@ -46,7 +46,7 @@
 						<div class="header-cnt">
 							<div class="btitle" style="margin-bottom:20px">
 								<h2>후기 제목</h2>
-								<input name="board_title" id="title" value="${getBoard.board_title}">
+								<input name="board_title" id="title" value="${getBoard.board_title}" maxlength="20">
 							</div>
 							<h2>후기 작성</h2>
 						</div>

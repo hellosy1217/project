@@ -64,7 +64,7 @@
 						<div class="header-cnt">
 							<div class="btitle" style="margin-bottom:20px">
 								<h2>후기 제목</h2>
-								<input name="board_title" id="title" placeholder="제목을 입력하세요">
+								<input name="board_title" id="title" placeholder="제목을 입력하세요" maxlength="20">
 							</div>
 							<h2>후기 작성</h2>
 						</div>
