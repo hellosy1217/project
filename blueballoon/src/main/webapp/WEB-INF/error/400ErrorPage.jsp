@@ -20,7 +20,7 @@
 .img .content {
 	position: absolute;
 	top: 50%;
-	left: 50%;
+	left: 45%;
 	transform: translate(-32%, 180%);
 	font-size: 5rem;
 	color: black;

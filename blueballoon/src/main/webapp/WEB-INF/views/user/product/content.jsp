@@ -104,7 +104,7 @@
 			data-html="Tour code: AA-AIA">${getProd.prod_name}</h1>
 
 	</div>
-	<div class="c" style="height: 3500px;">
+	<div class="c" style="height: 2300px;">
 		<div class="br">
 			<div class="b val">
 				<h2 style="margin-bottom: 20px;">지도보기</h2>
@@ -232,7 +232,7 @@
 								</div>
 							</div>
 							<p></p>
-							<div itemprop="reviewBody">왈랄라랄ㄹ라</div>
+							<div itemprop="reviewBody">아주 유익한 여행이었습니다. 좋아요^^</div>
 
 							<div class="use cf">
 								<a class="but" data-vote="yes" data-curr="0">좋아요<span></span></a><a
@@ -244,72 +244,10 @@
 					<a class="board_list?prod_num=">리뷰 더보기</a>
 				</div>
 			</div>
-			<div class="b pad itn" data-tagible-script="">
-				<h2>여행 일정 (패키지 상품일때만 적용)</h2>
-				<ol>
-					<li class="">소개
-						<div class="i">
-							<p>여행 일정에 대한 소개</p>
-						</div>
-					</li>
-				</ol>
-				<ol class="det">
-					<li class="active">1일차 : 관광지/맛집/숙소 등등
-						<div class="i">
-							<div class="im">
-								<div class="arrow right"></div>
-								<div class="arrow left"></div>
-								<div
-									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/5804_TCtEXRle.jpg)"
-									class="l show"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/6004117_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/18714839_280.jpg)"
-									class="l"></div>
-							</div>
-							일정에 대한 상세 소개
-							<div class="point">
-								<b>주소</b><span class="name"> 숙소 주소 입력 </span><span class="time"></span>
-							</div>
-						</div>
-					</li>
-					<li class="active">2일차 : 관광지/맛집/숙소 등등
-						<div class="i">
-							<div class="im">
-								<div class="arrow right"></div>
-								<div class="arrow left"></div>
-								<div
-									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/6456_hLk2VDw4.jpg)"
-									class="l show"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/40553619_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/52917867_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/serp/360x210/5813_XvvfqmqP.jpg)"
-									class="l"></div>
-								<div class="ann">사진에 대한 간략한 소개</div>
-							</div>
-							일정 상세 내용
-						</div>
-					</li>
-					<li class="active">3일차 : 관광지/맛집/숙소 등등
-						<div class="i">일정 상세 내용</div>
-					</li>
-					<li class="active">4일차 : 마지막
-						<div class="i">
-							사진이나 내용 들어갈 곳 <br> <br> -End of services-
-						</div>
-					</li>
-				</ol>
-			</div>
+			
 
 			<div class="b pad faq" data-total="67" data-onpage="3">
-				<h2>질문과 답변 고려중..</h2>
+				<h2>질문과 답변 </h2>
 				<p>이 투어에 대해 궁금한 점을 입력해보세요</p>
 				<form class="search-form">
 					<input type="text" name="search" placeholder="질문이 무엇입니까?"
@@ -319,9 +257,9 @@
 				</form>
 				<ul>
 					<li data-id="19030"><div class="date">2017년 12월 16일</div>
-						<h3 class="qst">왠지 이 기능 안넣을거 같지 않습니까?</h3>
+						<h3 class="qst">정확한 위치가 어떻게 되나요?</h3>
 						<div class="ans">
-							<p>모루게쒀여 약갼 안넣을거 같기두 하구..</p>
+							<p>상세주소와 지도 참고하시고 자세한 사항은 판매자 전화번호로 문의주세요^^</p>
 							<div class="use">
 								<a href="#" title="Helpful" class="help-sm" data-curr="1"><span
 									class="help-sm-label">도움이 됐어요</span><span
@@ -329,9 +267,9 @@
 							</div>
 						</div></li>
 					<li data-id="19031"><div class="date">2017년 12월 16일</div>
-						<h3 class="qst">지금 새벽 3시인데 졸리지 않습니까?</h3>
+						<h3 class="qst">패키지 상품은 무엇인가요?</h3>
 						<div class="ans">
-							<p>약갼 진샤 졸뤼긴 한데 모루게쒀여 할게 너무 많기두 하구~</p>
+							<p>관광지 맛집 숙소가 포함된 패키지 상품입니다^^</p>
 							<div class="use">
 								<a href="#" title="Helpful" class="help-sm" data-curr="0"><span
 									class="help-sm-label">도움이 됐어요</span><span

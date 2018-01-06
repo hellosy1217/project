@@ -232,7 +232,7 @@
 								</div>
 							</div>
 							<p></p>
-							<div itemprop="reviewBody">왈랄라랄ㄹ라</div>
+							<div itemprop="reviewBody">유익한 여행이었습니다. 좋아요!^^</div>
 
 							<div class="use cf">
 								<a class="but" data-vote="yes" data-curr="0">좋아요<span></span></a><a
@@ -245,7 +245,7 @@
 				</div>
 			</div>
 			<div class="b pad itn" data-tagible-script="">
-				<h2>여행 일정 (패키지 상품일때만 적용)</h2>
+				<h2>여행 일정 </h2>
 				<ol>
 					<li class="">소개
 						<div class="i">
@@ -309,7 +309,7 @@
 			</div>
 
 			<div class="b pad faq" data-total="67" data-onpage="3">
-				<h2>질문과 답변 고려중..</h2>
+				<h2>질문과 답변 </h2>
 				<p>이 투어에 대해 궁금한 점을 입력해보세요</p>
 				<form class="search-form">
 					<input type="text" name="search" placeholder="질문이 무엇입니까?"
@@ -319,9 +319,9 @@
 				</form>
 				<ul>
 					<li data-id="19030"><div class="date">2017년 12월 16일</div>
-						<h3 class="qst">왠지 이 기능 안넣을거 같지 않습니까?</h3>
+						<h3 class="qst">정확한 위치가 어떻게 되나요?</h3>
 						<div class="ans">
-							<p>모루게쒀여 약갼 안넣을거 같기두 하구..</p>
+							<p>상세주소와 지도 참고하시고 자세한 사항은 판매자 전화번호로 문의주세요^^</p>
 							<div class="use">
 								<a href="#" title="Helpful" class="help-sm" data-curr="1"><span
 									class="help-sm-label">도움이 됐어요</span><span
@@ -329,9 +329,9 @@
 							</div>
 						</div></li>
 					<li data-id="19031"><div class="date">2017년 12월 16일</div>
-						<h3 class="qst">지금 새벽 3시인데 졸리지 않습니까?</h3>
+						<h3 class="qst">패키지 상품은 무엇인가요?</h3>
 						<div class="ans">
-							<p>약갼 진샤 졸뤼긴 한데 모루게쒀여 할게 너무 많기두 하구~</p>
+							<p>관광지 맛집 숙소가 포함된 패키지 상품입니다^^</p>
 							<div class="use">
 								<a href="#" title="Helpful" class="help-sm" data-curr="0"><span
 									class="help-sm-label">도움이 됐어요</span><span
