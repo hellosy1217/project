@@ -163,9 +163,7 @@ public class PackageController {
 			mav.addObject("book_date", book_date);
 
 			mav.setViewName("user/package/booking");
-		} catch (
-
-		NullPointerException e) {
+		} catch (NullPointerException e) {
 			// 나중에 오류 메세지로 처리
 		}
 		return mav;

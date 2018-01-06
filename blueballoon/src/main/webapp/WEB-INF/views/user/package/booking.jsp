@@ -69,7 +69,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('bb_calendar','${beginDate}','${beginDate}','${beginDate}','${endDate}','${getPack.pack_days}');
+						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${beginDate}','${getPack.pack_days}','${getPack.pack_start_date}');
 					};</script>
 					<div id="seats">
 						<div class="content">
@@ -221,7 +221,7 @@
 					<ul class="route exp">
 						<li>${getPack.pack_title }<span>${getPack.pack_days}
 								days</span></li>
-						<li>패키지 기간<span class="date-start">시작일~종료일</span></li>
+						<li>패키지 기간<span class="date-start" id="book_period">시작일~종료일</span></li>
 					</ul>
 					<div class="price-main">
 						<div class="info">
