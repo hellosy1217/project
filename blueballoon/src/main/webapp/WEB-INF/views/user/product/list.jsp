@@ -127,14 +127,14 @@
 							<meta itemprop="name" content="TourRadar">
 					</a></li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">〉 <a href="#"
+						itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<a href="#"
 						itemprop="item"
 						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage},${prod_pick },1)"><span
 							itemprop="name">${cate_state}</span></a>
 					</li>
 					<c:if test="${!empty cate_city }">
 						<li itemprop="itemListElement" itemscope=""
-							itemtype="http://schema.org/ListItem">〉 <span
+							itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<span
 							itemprop="item"><span itemprop="name">${cate_city }</span></span>
 						</li>
 					</c:if>

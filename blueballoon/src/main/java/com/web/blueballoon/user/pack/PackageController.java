@@ -102,7 +102,7 @@ public class PackageController {
 		mav.addObject("endPage", endPage);
 
 		mav.addObject("listPack", listPack);
-		mav.setViewName("user/product/list");
+		mav.setViewName("user/package/list");
 
 		return mav;
 	}

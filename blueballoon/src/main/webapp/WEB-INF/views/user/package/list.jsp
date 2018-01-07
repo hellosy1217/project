@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html class="resp">
 <head>
 <title>여행상품 리스트</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/package/css/list1.css?ver=23"
+	href="${pageContext.request.contextPath}/resources/user/package/css/list1.css?ver=123"
 	rel="stylesheet" type="text/css" />
 <link
 	href="${pageContext.request.contextPath}/resources/user/package/css/list2.css?ver=1"
@@ -75,8 +76,25 @@
 	});
 </script>
 <script type="text/javascript">
-	function changePage(currentPage) {
-		location.href="product_list?currentPage="+currentPage
+	function change(cate_state,cate_city,prod_pick,currentPage) {
+		var lh = 'product_list?';
+		if(cate_state!=''){
+			lh += 'cate_state='+cate_state;
+		}
+		if(cate_city!=''){
+			if(cate_state!=null||cate_state!='')
+				lh+='&';
+			lh+='cate_city='+cate_city;
+		}
+		if(cate_state!=''||cate_city!='')
+			lh+='&';
+		lh+='prod_pick='+prod_pick;
+		
+		lh+='&currentPage='+currentPage;
+		
+		lh+='&sort='+document.getElementById('sort').options[ document.getElementById('sort').selectedIndex].value;
+
+		location.href=lh;
 	}
 </script>
 </head>
@@ -110,37 +128,106 @@
 							<meta itemprop="name" content="TourRadar">
 					</a></li>
 					<li itemprop="itemListElement" itemscope=""
-						itemtype="http://schema.org/ListItem">〉 <a
-						href="product_list?cate_state=${cate_state}" itemprop="item"><span
-							itemprop="name">${cate_state}</span></a>
+						itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<a
+						href="package_list" itemprop="item"><span itemprop="name">패키지
+								여행</span></a>
 					</li>
-					<c:if test="${!empty cate_city }">
+					<c:if test="${!empty cate_state }">
 						<li itemprop="itemListElement" itemscope=""
-							itemtype="http://schema.org/ListItem">〉 <span
-							itemprop="item"><span itemprop="name">${cate_city }</span></span>
+							itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<span
+							itemprop="item"><span itemprop="name">${cate_state }</span></span>
 						</li>
 					</c:if>
 				</ul>
 			</nav>
-
-			<h1>${cate_state } ${cate_city }</h1>
+			<c:choose>
+				<c:when test="${empty cate_state }">
+					<h1>패키지 여행</h1>
+				</c:when>
+				<c:otherwise>
+					<h1>${cate_state }</h1>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 
 	<div class="c">
 		<div class="stat">
-			<h2>여기 h2 지우면 화면 깨지는데 고쳐주세요... 지우고싶어요...</h2>
+			<c:set var="sor" value="최신순,인기순,가격 낮은 순,가격 높은 순" />
 			<div class="sort">
-				정렬기준 <select name="sort" data-default="popularity" onchange="sort()">
-					<option value="lendesc">최신순</option>
-					<option value="popularity">인기순</option>
-					<option value="rec">리뷰순</option>
+				정렬기준 <select name="sort" id="sort"
+					onchange="change('${cate_state}','${cate_city }',${prod_pick },1)">
+					<c:forTokens items="${sor}" delims="," var="srt">
+						<c:choose>
+							<c:when test="${srt eq sort}">
+								<option value="${srt }" selected="selected">${srt }</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${srt }">${srt }</option>
+							</c:otherwise>
+						</c:choose>
+					</c:forTokens>
 				</select>
 			</div>
 		</div>
+		<div class="as">
+			<aside id="params">
+				<div class="b blue">
+					<h5>필터링 기준 :</h5>
+				</div>
+				<div class="b op b_thm">
+					<h5>지역</h5>
+					<div class="c" id="cate_list">
+						<ul>
+							<c:set var="color"
+								value="#f39a2d;#96bc34;#e74c3c;#c681bc;#cccccc;#2c3e50;#ffc101" />
+							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
+							<c:forTokens items="${city}" delims="," var="c"
+								varStatus="status">
+								<li><c:forTokens items="${color}" var="col" delims=";"
+										varStatus="st">
+										<c:if test="${status.count eq st.count}">
+											<div class="th" style="background: ${col}"></div>
+										</c:if>
+									</c:forTokens> <a href="#" id="flip${status.count}" class="span">${c}</a>
+									<div class="tr" id="icon${status.count}"></div>
+									<ul class="sub" id="panel${status.count}"
+										style="margin-top: 15px;">
+										<c:forEach items="${listCate}" var="list">
+											<c:if test="${list.cate_state == c}">
+												<li><span><a
+														onclick="change('${list.cate_state}','${list.cate_city}',${prod_pick},${currentPage})">${list.cate_city}</a></span></li>
+											</c:if>
+										</c:forEach>
+									</ul></li>
+							</c:forTokens>
+						</ul>
+					</div>
+				</div>
+				<div class="b b_dep">
+					<h5 id="flip">가격</h5>
+					<div class="c" id="panel">
+						<ul style="padding-bottom: 15px;">
+							<li>₩<input type="text" placeholder="최소">₩<input
+								type="text" placeholder="최대"></li>
+							<li><input type="button" value="적용하기"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="b b_dep">
+					<h5 id="flipp">여행 후기</h5>
+					<div class="c" id="panell">
+						<ul style="padding-bottom: 15px;">
+							<li><a href="board_list" class="span">후기 보러가기</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+		</div>
+
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" begin="1" end="9" step="1" items="${listProd}">
+				<c:forEach var="prod" items="${listProd}">
 					<div class="spotListIn">
 						<a href="product_content?prod_num=${prod.prod_num}"
 							class="spotIn focusedLink">
@@ -170,111 +257,31 @@
 			</div>
 			<div class="pag">
 				<c:if test="${currentPage > 9}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage-1})">«<span>Previous</span></a>
+					<a
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage-1})"">«<span>Previous</span></a>
 				</c:if>
 				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
 					<c:choose>
 						<c:when test="${currentPage eq page}">
-							<a href="javascript:void(0)" onclick="changePage(${page})"
+							<a href="javascript:void(0)"
+								onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})"
 								class="active">${page}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="javascript:void(0)" onclick="changePage(${page})">${page}</a>
+							<a href="javascript:void(0)"
+								onclick="change('${cate_state}','${cate_city}',${prod_pick},${page})">${page}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${endPage ne pageNum}">
-					<a href="javascript:void(0)" onclick="changePage(${currentPage+1})"><span>Next
+					<a href="javascript:void(0)"
+						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage+1})"><span>Next
 					</span>»</a>
 				</c:if>
 			</div>
 			<a class="but blue p hid">Load more</a>
 		</div>
-		<div class="as">
-			<aside id="params">
-				<div class="b blue">
-					<c:choose>
-						<c:when test="${prod_pick eq 1}">
-							<h5>필터링 기준 : 관광지</h5>
-						</c:when>
-						<c:when test="${prod_pick eq 2 }">
-							<h5>필터링 기준 : 맛집</h5>
-						</c:when>
-						<c:when test="${prod_pick eq 3}">
-							<h5>필터링 기준 : 숙소</h5>
-						</c:when>
-						<c:otherwise>
-							<h5>필터링 기준 :</h5>
-						</c:otherwise>
-					</c:choose>
-				</div>
-				<div class="b b_dep">
-					<h5 id="flip">추천 여행지</h5>
-					<div class="c" id="panel">
-						<ul style="padding-bottom: 15px;">
-							<li data-pid="december-2017"><a href="pack_list"
-								class="span" onclick="return false">패키지 여행</a></li>
-							<c:set var="pick" value="관광지,맛집,숙소" />
-							<c:forTokens items="${pick}" delims="," varStatus="st" var="p">
-								<c:choose>
-									<c:when test="${!empty cate_city}">
-										<li><a
-											href="product_list?cate_state=${cate_state}&cate_city=${cate_city}&prod_pick=${st.count}"
-											class="span">${p}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li><a
-											href="product_list?cate_state=${cate_state}&prod_pick=${st.count}"
-											class="span">${p}</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forTokens>
 
-						</ul>
-					</div>
-				</div>
-				<div class="b op b_thm">
-					<h5>지역</h5>
-					<div class="c" id="cate_list">
-						<ul>
-							<c:set var="color"
-								value="#f39a2d;#96bc34;#e74c3c;#c681bc;#cccccc;#2c3e50;#ffc101" />
-							<c:set var="city" value="서울특별시,경기도,강원도,경상도,전라도,충청도,제주도" />
-							<c:forTokens items="${city}" delims="," var="c"
-								varStatus="status">
-								<li><c:forTokens items="${color}" var="col" delims=";"
-										varStatus="st">
-										<c:if test="${status.count eq st.count}">
-											<div class="th" style="background: ${col}"></div>
-										</c:if>
-									</c:forTokens> <a href="product_list?cate_city=${c}" id="flip${status.count}"
-									class="span" onclick="return false">${c}</a>
-									<div class="tr" id="icon${status.count}"></div>
-									<ul class="sub" id="panel${status.count}"
-										style="margin-top: 15px;">
-										<c:forEach items="${listCate}" var="list">
-											<c:if test="${list.cate_state == c}">
-												<li><span><a
-														href="product_list?cate_state=${c}&cate_city=${list.cate_city}">${list.cate_city}</a></span></li>
-											</c:if>
-										</c:forEach>
-									</ul></li>
-							</c:forTokens>
-						</ul>
-					</div>
-				</div>
-				<div class="b b_dep">
-					<h5 id="flipp">여행 후기</h5>
-					<div class="c" id="panell">
-						<ul style="padding-bottom: 15px;">
-							<li data-pid="december-2017"><a
-								href="/m/italy-december-2017" class="span"
-								onclick="return false">후기 보러가기</a></li>
-						</ul>
-					</div>
-				</div>
-			</aside>
-		</div>
 		<div class="e"></div>
 	</div>
 	</main>
