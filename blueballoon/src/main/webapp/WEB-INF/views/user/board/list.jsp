@@ -72,7 +72,8 @@ $(document).ready(function(){
          <%@include file="../../header3.jsp"%>
       </c:otherwise>
    </c:choose>
-   <main data-id="155404"> <!--   <div class="top">
+   <main data-id="155404"> 
+   <!--   <div class="top">
       <div class="im"
          style="background-image: url('//cdn.tourradar.com/im/r/pw/river/main-c.jpg')"></div>
       <div class="in">
@@ -81,18 +82,17 @@ $(document).ready(function(){
 
    </div>
  -->
-
+<a href="board_list"> 
    <div class="header">
       <div class="bgimg bg-all">
-         <img src="//cdn.tourradar.com/im/r/pw/river/main-c.jpg"
-            alt="Italy Tours and Trips 2018 ">
+        <img src="//cdn.tourradar.com/im/r/pw/river/main-c.jpg"
+            alt="Italy Tours and Trips 2018 "> 
       </div>
       <div class="c">
-
          <h1>travel review</h1>
       </div>
    </div>
-
+</a>
    <div class="c">
       <div class="list">
          <h2>Best Review</h2>
@@ -147,8 +147,8 @@ $(document).ready(function(){
             			<input class="search search2 search2_1" name="keyword" placeholder="검색어를 입력해 주세요." />
             		</i>
          		</div>
-         		<a class="but" onclick="searchForm.submit()">검색</a>
-         		</form>
+         		<!-- <a class="but" onclick="searchForm.submit()">검색</a> -->
+  			</form>
          	</div>
             <!-- <p>여기도 뭐 들어갈 건데 일단 보류</p> -->
             <ul>
