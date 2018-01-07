@@ -10,29 +10,6 @@
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/user/package/js/booking1.js?ver=12"></script>
-<script type="text/javascript">
-	function changeBookPerson(mode, min_date, max_date) {
-		if (f.book_person.value >= min_date && f.book_person.value <= max_date) {
-			if (mode == 'add') {
-				if (f.book_person.value != max_date)
-					f.book_person.value++;
-			} else {
-				if (f.book_person.value != min_date)
-					f.book_person.value--;
-			}
-			if (f.book_person.value == max_date) {
-				document.getElementById("plus").className = "number plus grey";
-			} else {
-				document.getElementById("plus").className = "number plus";
-			}
-			if (f.book_person.value == min_date) {
-				document.getElementById("minus").className = "number minus grey";
-			} else {
-				document.getElementById("minus").className = "number minus";
-			}
-		}
-	}
-</script>
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ec.js"></script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
@@ -69,7 +46,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${beginDate}','${getPack.pack_days}','${getPack.pack_start_date}');
+						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${beginDate}','${getPack.pack_days}','${date}','${person}');
 					};</script>
 					<div id="seats">
 						<div class="content">
@@ -95,15 +72,8 @@
 					</div>
 					<div class="info unselectable " unselectable="on">
 						<b class="in">인원</b>
-						<div class="in quantity">
-							<span class="number minus grey" id="minus"
-								onclick="changeBookPerson('remove',1,${max_person})"
-								style="margin-top: 2px;"></span> <input type="number"
-								name="book_person" id="book_person" value="1"
-								min="${max_person}" max="${max_person}" inputmode="numeric"
-								pattern="[0-9]*" readonly> <span class="number plus"
-								id="plus" onclick="changeBookPerson('add',1,${max_person})"
-								style="margin-top: 2px;"></span>
+						<div class="in quantity" id="book_person_num">
+							
 						</div>
 						<div class="in solo"></div>
 					</div>

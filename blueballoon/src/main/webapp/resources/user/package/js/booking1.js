@@ -6,11 +6,11 @@
  * selected	: 선택된 날 (YYYY-MM-DD)
  * pack_days	: 기간 (n)
  * pack_start_date	: 선택 가능 일
+ * person	: 인원
  */
 function bbCalendar(begin, end, start, current, selected, pack_days,
-		pack_start_date) {
+		pack_start_date, person) {
 	var bbCalendar = document.getElementById('bb_calendar');
-
 	// 선택 가능 일
 	var dateCount = 0;
 	var pack_start_split = '';
@@ -151,7 +151,12 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 				+ '\',  \''
 				+ selected_date
 				+ '\',\''
-				+ pack_days + '\',\'' + pack_start_date + '\')"></div>';
+				+ pack_days
+				+ '\',\''
+				+ pack_start_date
+				+ '\',\''
+				+ person
+				+ '\')"></div>';
 	}
 
 	// 왼쪽 화살표
@@ -169,7 +174,12 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 				+ '\',  \''
 				+ selected_date
 				+ '\',\''
-				+ pack_days + '\',\'' + pack_start_date + '\')"></div>';
+				+ pack_days
+				+ '\',\''
+				+ pack_start_date
+				+ '\',\''
+				+ person
+				+ '\')"></div>';
 	}
 
 	// 달 버튼
@@ -204,8 +214,9 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 							+ begin_date + '\', \'' + end_date + '\', \''
 							+ start_date + '\', \'' + cal_date + '\',  \''
 							+ selected_date + '\',\'' + pack_days + '\',\''
-							+ pack_start_date + '\')"><div><span></span>'
-							+ cal_year + '년 ' + cal_month + '월</div></li>';
+							+ pack_start_date + '\',\'' + person
+							+ '\')"><div><span></span>' + cal_year + '년 '
+							+ cal_month + '월</div></li>';
 				} else {
 					calendar += '<li id="month'
 							+ cal_month
@@ -213,8 +224,9 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 							+ begin_date + '\', \'' + end_date + '\', \''
 							+ start_date + '\', \'' + cal_date + '\',  \''
 							+ selected_date + '\',\'' + pack_days + '\',\''
-							+ pack_start_date + '\')"><div><span></span>'
-							+ cal_year + '년 ' + cal_month + '월</div></li>';
+							+ pack_start_date + '\',\'' + person
+							+ '\')"><div><span></span>' + cal_year + '년 '
+							+ cal_month + '월</div></li>';
 				}
 			}
 		}
@@ -284,6 +296,8 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 									+ pack_days
 									+ '\',\''
 									+ pack_start_date
+									+ '\',\''
+									+ person
 									+ '\')"><div class="container"><div class="day">'
 									+ dateNum
 									+ '</div><div class="next"></div></div></td>';
@@ -334,6 +348,8 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 									+ pack_days
 									+ '\',\''
 									+ pack_start_date
+									+ '\',\''
+									+ person
 									+ '\')" style="cusor:pointer;"><div class="container"><div class="day">'
 									+ dateNum
 									+ '</div><div class="next"></div></div></td>';
@@ -385,6 +401,8 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 								+ pack_days
 								+ '\',\''
 								+ pack_start_date
+								+ '\',\''
+								+ person
 								+ '\')"  style="cusor:pointer;"><div class="container"><div class="day">'
 								+ dateNum
 								+ '</div><div class="next"></div></div></td>';
@@ -420,4 +438,46 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 	period += s[0] * 1 + '년 ' + s[1] * 1 + '월 ' + s[2] * 1 + '일';
 	document.getElementById('book_period').innerHTML = period;
 
+	bbPerson(pack_start_date, selected_date, person, 1);
+}
+function bbPerson(pack_start_date, selected_date, person, perNum) {
+	var bbPerson = document.getElementById('book_person_num');
+
+	var num = 0;
+	if (typeof (pack_start_date) !== 'undefined') {
+		pack_start_split = pack_start_date.split(',');
+		for ( var i in pack_start_split) {
+			if (pack_start_split[i] == selected_date) {
+				num = i;
+			}
+		}
+	}
+	var max_person = 0;
+	if (typeof (person) !== 'undefined') {
+		var person_split = person.split(',');
+		max_person = person_split[num];
+	}
+
+	var persons = '';
+
+	if (perNum == 1) {
+		persons += persons += '<span class="number minus grey" id="minus"';
+	} else {
+		persons += '<span class="number minus" id="minus" onclick="bbPerson(\''
+				+ pack_start_date + '\',\'' + selected_date + '\',\'' + person
+				+ '\',\'' + (perNum * 1 - 1) + '\')"';
+	}
+	persons += 'style="margin-top: 2px;"></span> <input type="number" name="book_person" id="book_person" value="'
+			+ perNum + '"';
+	persons += 'min="' + max_person + '" max="' + max_person
+			+ '" inputmode="numeric" pattern="[0-9]*" readonly>';
+	if (perNum == max_person) {
+		persons += '<span class="number plus grey" id="plus" style="margin-top: 2px;"></span>';
+	} else {
+		persons += '<span class="number plus" id="plus" onclick="bbPerson(\''
+				+ pack_start_date + '\',\'' + selected_date + '\',\'' + person
+				+ '\',\'' + (perNum * 1 + 1)
+				+ '\')" style="margin-top: 2px;"></span>';
+	}
+	bbPerson.innerHTML = persons;
 }

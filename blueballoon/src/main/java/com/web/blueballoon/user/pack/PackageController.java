@@ -151,16 +151,34 @@ public class PackageController {
 				}
 			}
 
+			for (int i = book_date.size(); i >= 0; i++) {
+				if (book_date.get(i).getBook_person() == getPack.getPack_person()) {
+					book_date.remove(i);
+				}
+			}
+			
 			Collections.sort(book_date, new Comparator<BBBookDateDTO>() {
 				public int compare(BBBookDateDTO o1, BBBookDateDTO o2) {
 					return o1.getBook_date().compareTo(o2.getBook_date());
 				}
 			});
 
+			String date = "";
+			String person = "";
+			for (int i = 0; i < book_date.size(); i++) {
+				date += book_date.get(i).getBook_date();
+				person += (getPack.getPack_person() - book_date.get(i).getBook_person());
+				if (i != book_date.size() - 1) {
+					date += ",";
+					person += ",";
+				}
+			}
+
 			StringTokenizer str2 = new StringTokenizer(getPack.getPack_period(), ",");
 			mav.addObject("beginDate", str2.nextToken());
 			mav.addObject("endDate", str2.nextToken());
-			mav.addObject("book_date", book_date);
+			mav.addObject("date", date);
+			mav.addObject("person", person);
 
 			mav.setViewName("user/package/booking");
 		} catch (NullPointerException e) {
