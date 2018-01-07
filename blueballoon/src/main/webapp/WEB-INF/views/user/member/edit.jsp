@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +110,7 @@
 								<div class="row">
 									<div class="title">비밀번호</div>
 									<div class="value">
-										<input type="text" disabled/><a href="#password_popup" id="password_link">변경</a>
+										<input type="text" disabled value="${pwlen}"/><a href="#password_popup" id="password_link">변경</a>
 									</div>
 								</div>
 								<div class="row">

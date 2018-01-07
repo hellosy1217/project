@@ -15,16 +15,16 @@
 		<div id="row-1">
 			<div class="content">
 				<div class="rh wgr">
-					<a href="/why?top=best-selection" target="_blank"><div
+					<a href="#" target="_blank"><div
 							class="circle">✓</div>최고의 선택<span class="show1">&amp;
 							PRICES</span></a>
 				</div>
 				<div class="rh wgr hide1">
-					<a href="/why?top=best-prices" target="_blank"><div
+					<a href="#" target="_blank"><div
 							class="circle">✓</div>최고의 가격</a>
 				</div>
 				<div class="rh last wgr">
-					<a href="/why?top=trusted-payments" target="_blank"><div
+					<a href="#" target="_blank"><div
 							class="circle">✓</div>최고의 만족</a>
 				</div>
 				<div id="block-7" class="hide3">
@@ -49,7 +49,7 @@
        <path
 								d="M8.233 58.996l.9 2.767h2.908l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.353 1.71.898 2.766-2.353-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.466 0l.899 2.767h2.909l-2.353 1.71.899 2.766-2.354-1.71-2.353 1.71.899-2.766-2.354-1.71h2.91zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909zm16.467 0l.899 2.767h2.909l-2.354 1.71.9 2.766-2.354-1.71-2.353 1.71.898-2.766-2.353-1.71h2.909z"></path></g></g></g></svg></span>
 								<span style="display: inline-block; float: right; font-size: 14px;">+82
-						02 311 3006 Toll free</span>
+						02 311 3006</span>
 				</div>
 				<div id="why_blocks">
 					<div class="hidden">

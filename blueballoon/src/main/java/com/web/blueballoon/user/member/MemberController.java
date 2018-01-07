@@ -138,10 +138,18 @@ public class MemberController {
 	@RequestMapping(value = "member_edit", method = RequestMethod.GET)
 	public ModelAndView updateFormMember(HttpServletRequest arg0, HttpSession session, HttpServletResponse arg1)
 			throws Exception {
+		mav.clear();
 		session = arg0.getSession();
 		String member_email = (String) session.getAttribute("member_email");
 		BBMemberDTO dto = memberMapper.getMember(member_email);
-		return new ModelAndView("user/member/edit", "getMember", dto);
+		String pwlen = "";
+		for (int i = 0; i < dto.getMember_passwd().length(); i++) {
+			pwlen += "●";
+		}
+		mav.addObject("pwlen", pwlen);
+		mav.addObject("getMember", dto);
+		mav.setViewName("user/member/edit");
+		return mav;
 	}
 
 	// 멤버 정보 수정.
