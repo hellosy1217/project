@@ -15,6 +15,8 @@ public class BBBoardDTO {
 	private int board_score;
 	private int pick_num;
 	private String board_image;
+	private String board_packImg;
+	private String board_memberImg;
 
 	public int getBoard_num() {
 		return board_num;
@@ -128,4 +130,21 @@ public class BBBoardDTO {
 		this.board_image = board_image;
 	}
 
+	public String getBoard_packImg() {
+		return board_packImg;
+	}
+
+	public void setBoard_packImg(String board_packImg) {
+		this.board_packImg = board_packImg;
+	}
+
+	public String getBoard_memberImg() {
+		return board_memberImg;
+	}
+
+	public void setBoard_memberImg(String board_memberImg) {
+		this.board_memberImg = board_memberImg;
+	}
+	
+	
 }

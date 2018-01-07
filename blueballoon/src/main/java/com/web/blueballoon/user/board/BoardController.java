@@ -498,18 +498,19 @@ public class BoardController {
          BindingResult result) {
       mav.clear();
       mav.addObject("board_num", dto.getBoard_num());
-      mav.setViewName("user/board/message");
       HttpSession session = req.getSession();
       String memberEmail = (String) session.getAttribute("member_email");
       if (memberEmail == null) {
          mav.addObject("msg", "로그인을 해주세요");
          mav.addObject("url", "member_login");
+         mav.setViewName("user/board/message");
          return mav;
       }
       dto.setMember_email(memberEmail);
       if (dto.getComment_content() == null || dto.getComment_content().trim().equals("")) {
          mav.addObject("msg", "내용을 입력해주세요");
          mav.addObject("url", "board_content");
+         mav.setViewName("user/board/message");
          return mav;
       }
       // 태그 문자 처리 & 공백 문자 처리& 줄바꿈 문자처리
@@ -519,9 +520,7 @@ public class BoardController {
       dto.setComment_content(content);
       // session에 저장된 member_email을 BBBoardDTO에 저장
       int res = boardMapper.insertComment(dto);
-      mav.addObject("msg", "댓글이 입력되었습니다.");
-      mav.addObject("url", "board_content");
-      return mav;
+  	return new ModelAndView("redirect:/board_content?board_num="+dto.getBoard_num());
    } 
 
    @RequestMapping(value = "comment_delete")
