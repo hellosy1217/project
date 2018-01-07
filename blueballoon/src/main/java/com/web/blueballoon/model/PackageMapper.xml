@@ -7,9 +7,17 @@
 		select * from bb_package
 	</select>
 	<select id="getPack" parameterType="int" resultType="BBPackageDTO">
-		select * from bb_package where pack_num=#{pack_num}
+		select *
+		from bb_package where pack_num=#{pack_num}
 	</select>
+	<select id="packLikeCount" resultType="int" parameterType="int">
+		select count(*) from bb_product_like where pack_num=#{pack_num}
+	</select>
+	<select id="packLike" resultType="int" parameterType="BBLikeDTO">
+  		select * from bb_product_like where pack_num = #{pack_num} and member_num = #{member_num}
+  	</select>
 	<select id="listPackBook" resultType="BBPackageBookDTO">
-		select * from bb_package_book
+		select * from
+		bb_package_book
 	</select>
 </mapper>

@@ -2,160 +2,103 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
-<script type="text/javascript">
-	$(function() {
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
-		//시작일
-		$('#fromDate').datepicker(
-				{
-					dateFormat : "yy-mm-dd",
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-							"7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-					buttonText : "날짜선택",
-					dateFormat : "yy-mm-dd", // 날짜의 형식
-					changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-					minDate : 0,
-					maxDate : 365, // 0 : 오늘 이후 날짜 선택 불가 : 최대 선택 가능한 날짜.
-					onClose : function(selectedDate) {
-						// 시작일(fromDate) datepicker가 닫힐때
-						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#toDate").datepicker("option", "minDate", selectedDate);
-					}
-				});
-
-		//종료일
-		$('#toDate').datepicker(
-				{
-					dateFormat : "yy-mm-dd",
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-							"7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-					dateFormat : "yy-mm-dd",
-					changeMonth : true,
-					mode: 'multiple',
-					minDate : 0,
-					maxDate : 365, // 오늘 이후 날짜 선택 불가
-					onClose : function(selectedDate) {
-						// 종료일(toDate) datepicker가 닫힐때
-						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-						$("#fromDate").datepicker("option", "maxDate", selectedDate);
-					}
-				});
-		$('.datepicker').datepicker(
-				{
-					dateFormat : "yy-mm-dd",
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-							"7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-					dateFormat : "yy-mm-dd",
-					changeMonth : true,
-					minDate : 0,
-					maxDate : 365, // 오늘 이후 날짜 선택 불가
-					onClose : function(selectedDate) {
-						// 종료일(toDate) datepicker가 닫힐때
-						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-						$(".datepicker").datepicker("option", "maxDate", selectedDate);
-					}
-				});
-		
-		$('body').on('focus',".datepicker", function(){
-		    $('.datepicker').datepicker({
-		    	dateFormat : "yy-mm-dd",
-		    	monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
-					"7월", "8월", "9월", "10월", "11월", "12월" ],
-			dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-			dateFormat : "yy-mm-dd",
-			changeMonth : true,
-			minDate : 0,
-			maxDate : 365,
-		    });
-		});
-		//패키지 시작일
-		//$('.datepicker').removeClass('hasDatepicker').datepicker(
-	});
-</script>
-<script type="text/javascript">
-function addInput(inputNo) {
-	var strInput = "";
-	inputBox.innerHTML = "";
-	for (var i=1; i <= inputNo; i++) {
-	  strInput += "<textarea name='pack_content'+i rows='6' cols='100'></textarea>&nbsp;&nbsp;";
-	}
-	inputBox.innerHTML = strInput; 
-	}
+<script
+	src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js">
 	
-function addInputTimes(inputNo) {
-	var strInput = "";
-	inputStart.innerHTML = "";
-	for (var i=1; i <= inputNo; i++) {
-	  strInput += "<input type='text' name='pack_start_date' class='datepicker'><br>";
+</script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/admin/js/admin1.js?ver=12"></script>
+<script type="text/javascript">
+	function addInput(inputNo) {
+		var strInput = "";
+		inputBox.innerHTML = "";
+		for (var i = 1; i <= inputNo; i++) {
+			strInput += "<textarea id='content'+i rows='6' cols='100'></textarea>&nbsp;&nbsp;";
+		}
+		inputBox.innerHTML = strInput;
 	}
-	inputStart.innerHTML = strInput; 
-	 $(document).find("input[id=datepicker]").removeClass('hasDatepicker').datepicker();     
+
+	function addInputTimes(inputNo) {
+		var strInput = "";
+		inputStart.innerHTML = "";
+		for (var i = 1; i <= inputNo; i++) {
+			strInput += "<input type='text' name='pack_start_date' class='datepicker'><br>";
+		}
+		inputStart.innerHTML = strInput;
+		$(document).find("input[id=datepicker]").removeClass('hasDatepicker')
+				.datepicker();
 	}
 </script>
 <script type="text/javascript">
 	function addRow(inputNo) {
-		for (var i = 0; i < inputNo ; i++){
-			  $(".datepicker").append("<input type='text' name='pack_start_date' class='datepicker' value=''><br>");
-			  $(document).find("input[id=datepicker]").removeClass('hasDatepicker').datepicker();   
-			  $('.datepicker').each(function(){ $(this).datepicker(); });  
-				}
+		for (var i = 0; i < inputNo; i++) {
+			$(".datepicker")
+					.append(
+							"<input type='text' name='pack_start_date' class='datepicker' value=''><br>");
+			$(document).find("input[id=datepicker]").removeClass(
+					'hasDatepicker').datepicker();
+			$('.datepicker').each(function() {
+				$(this).datepicker();
+			});
 		}
-	</script>
+	}
+</script>
 <script type="text/javascript">
-		function check(){
-			if (f.pack_title.value==""){
-				swal(
-						 'Oops...',
-						 '패키지 이름을 입력해주세요!',
-						 'error'
-						)
-				f.pack_title.focus()
-				return false
+	function insert() {
+		num = document.f.pack_days.value;
+		var htm = '';
+		for (var i = 1; i <= num; i++) {
+			var c = 'content' + i;
+			if (document.getElementById(c).value != '') {
+				htm += document.getElementById(c).value;
+				htm += '#@!,';
 			}
-			if (f.pack_phone.value==""){
-				swal(
-						 'Oops...',
-						 '담당자 번호를 입력해 주세요!',
-						 'error'
-						)
-				f.pack_phone.focus()
-				return false
-			}
-			if (f.pack_price.value==""){
-				swal(
-						 'Oops...',
-						 '패키지 가격을 입력해 주세요!',
-						 'error'
-						)
-				f.pack_price.focus()
-				return false
-			}
-			return true
 		}
-	</script>
+		document.f.pack_content.value = htm;
+		check();
+	}
+	function check() {
+		if (f.pack_title.value == "") {
+			swal('Oops...', '패키지 이름을 입력해주세요!', 'error')
+			f.pack_title.focus()
+			return false
+		}
+		if (f.pack_phone.value == "") {
+			swal('Oops...', '담당자 번호를 입력해 주세요!', 'error')
+			f.pack_phone.focus()
+			return false
+		}
+		if (f.pack_price.value == "") {
+			swal('Oops...', '패키지 가격을 입력해 주세요!', 'error')
+			f.pack_price.focus()
+			return false
+		}
+
+		document.f.submit();
+	}
+</script>
 <div align="center">
-	<form name="f" action="BB_pack_insert" method="post" onsubmit="return check()" enctype="multipart/form-data">
-		<table>
+	<form name="f" action="BB_pack_insert" method="post"
+		enctype="multipart/form-data">
+		<table border="1">
 			<caption>패키지 상품 등록</caption>
 			<tr>
 				<th>패키지 이름</th>
-				<td><input type="text" name="pack_title" placeholder="ex.맛깔나는 서울맛집투어 "></td>
+				<td><input type="text" name="pack_title"
+					placeholder="ex.맛깔나는 서울맛집투어 "></td>
 				<th>패키지 지역</th>
 				<td><select id="category" name="pack_place">
-                  		<option value="서울특별시">서울특별시</option>
+						<option value="서울특별시">서울특별시</option>
 						<option value="강원도">강원도</option>
 						<option value="경기도">경기도</option>
 						<option value="경상도">경상도</option>
 						<option value="전라도">전라도</option>
 						<option value="제주도">제주도</option>
 						<option value="충청도">충청도</option>
-               </select></td>
+				</select></td>
 			</tr>
 			<tr>
 				<th>담당 이메일</th>
@@ -178,38 +121,44 @@ function addInputTimes(inputNo) {
 			</tr>
 			<tr>
 				<th>패키지 출발 횟수</th>
-				<td>
-				<select id="times" onchange="addInputTimes(this.value);">
-					<c:forEach var="per" begin="1" end="10" step="1">
-						<option value="${per}">${per}회</option>
-					</c:forEach>
+				<td><select id="times" onchange="addInputTimes(this.value);">
+						<c:forEach var="per" begin="1" end="10" step="1">
+							<option value="${per}">${per}회</option>
+						</c:forEach>
 				</select></td>
 				<th>패키지 출발일</th>
-				<td id="inputStart"><input type="text" name="pack_period" class="datepicker"><br></td>
+				<td id="inputStart"><input type="text" name="pack_period"
+					class="datepicker"><br></td>
 			</tr>
 			<tr>
 				<th>패키지 일수</th>
-				<td>
-				<select name="pack_days" id="mySelectMenu" onchange="addInput(this.value);">
-					<c:forEach var="per" begin="1" end="20" step="1">
-						<option value="${per}">${per}일</option>
-					</c:forEach>
+				<td><select name="pack_days" id="mySelectMenu"
+					onchange="addInput(this.value);">
+						<c:forEach var="per" begin="1" end="20" step="1">
+							<option value="${per}">${per}일</option>
+						</c:forEach>
 				</select></td>
-				<th>패키지 총인원</th><td>
-				<select name="pack_person">
-					<c:forEach var="per" begin="1" end="100" step="1">
-						<option value="${per}">${per}명</option>
-					</c:forEach>
-				</select>
-				</td>
+				<th>패키지 총인원</th>
+				<td><select name="pack_person">
+						<c:forEach var="per" begin="1" end="100" step="1">
+							<option value="${per}">${per}명</option>
+						</c:forEach>
+				</select></td>
 			</tr>
-			<tr><th colspan="2">일차 대로 패키지 설명을 작성해 주세요.</th></tr>
+			<tr>
+				<th colspan="2">일차 대로 패키지 설명을 작성해 주세요.</th>
+			</tr>
 			<tr>
 				<th width=15%>패키지 설명</th>
-				<td height="30" id="inputBox"><textarea name="pack_content" rows="6" cols="100"></textarea></td>
+				<td height="30" id="inputBox"><textarea rows="6" cols="100"
+						id="content1"></textarea> <input type="hidden" name="pack_content"
+					id="pack_con"></td>
 			</tr>
 			<tr>
-			<td colspan="2" align="center"><input type="submit" value="등록">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></tr>
+				<td colspan="2" align="center"><input type="button" value="등록"
+					onclick="insert()">&nbsp;&nbsp;&nbsp;&nbsp;<input
+					type="reset" value="취소">
+			</tr>
 		</table>
 	</form>
 </div>

@@ -139,6 +139,8 @@ public class PackageController {
 		}
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
+		
+		
 		mav.addObject("getPack", dto);
 		mav.setViewName("user/package/content");
 		return mav;

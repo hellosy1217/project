@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <title>여행상품 상세페이지</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/package/css/content.css?ver=1233"
+	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=1233"
 	rel="stylesheet" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -81,30 +81,28 @@
 	<div class="c">
 		<nav>
 			<ul>
-				<li><a itemprop="item" href="main">Home
-						<meta itemprop="name" content="TourRadar">
-				</a></li>
-				<c:forTokens items="${getProd.prod_cate}" delims="-" var="c"
-					varStatus="status">
-					<li>&nbsp;&nbsp;〉&nbsp; <c:choose>
-							<c:when test="${status.count==1}">
-								<a href="product_list?cate_state=${c}" itemprop="item">
-							</c:when>
-							<c:otherwise>
-								<a href="product_list?cate_city=${c}" itemprop="item">
-							</c:otherwise>
-						</c:choose><span itemprop="name">${c}</span></a></li>
-				</c:forTokens>
+				<li><a itemprop="item" href="main">Home </a></li>
+				<li itemprop="itemListElement" itemscope=""
+					itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<a
+					href="package_list" itemprop="item"><span itemprop="name">패키지
+							여행</span></a>
+				</li>
+				<c:if test="${!empty cate_state }">
+					<li itemprop="itemListElement" itemscope=""
+						itemtype="http://schema.org/ListItem">&nbsp&nbsp〉&nbsp<span
+						itemprop="item"><span itemprop="name">${cate_state }</span></span>
+					</li>
+				</c:if>
 				<li>&nbsp;&nbsp;〉&nbsp; <a
-					href="product_content?prod_num=${getProd.prod_num}" itemprop="item"><span
-						itemprop="name">${getProd.prod_name}</span></a></li>
+					href="package_content?pack_num=${getPack.pack_num}" itemprop="item"><span
+						itemprop="name">${getPack.pack_title}</span></a></li>
 			</ul>
 		</nav>
 		<h1 itemprop="name" class="ttip" title="" data-action="click"
-			data-html="Tour code: AA-AIA">${getProd.prod_name}</h1>
+			data-html="Tour code: AA-AIA">${getPack.pack_title}</h1>
 
 	</div>
-	<div class="c" style="height: 3500px;">
+	<div class="c" style="height: 2300px;">
 		<div class="br">
 			<div class="b val">
 				<h2 style="margin-bottom: 20px;">지도보기</h2>
@@ -134,47 +132,37 @@
 			<div class="b img">
 				<div class="pic has-thumbnails" style="height: 400px;">
 					<img
-						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${getProd.prod_pick}/${getProd.prod_str_img}">
+						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${getPack.pack_str_img}">
 				</div>
 			</div>
 			<div class="b pad hgl">
 
 				<dl class="properties">
 					<dt class="label">상품 이름</dt>
-					<dd class="value age">${getProd.prod_name}</dd>
+					<dd class="value age">${getPack.pack_title}</dd>
 					<dt class="label">지역</dt>
-					<dd class="value accommodation">
-					<c:forTokens items="${getProd.prod_cate}" delims="-" var="c">
-					${c} 
-					</c:forTokens>
-					</dd>
-					<dt class="label">주소</dt>
-					<dd class="value">${getProd.prod_old_address}</dd>
+					<dd class="value accommodation">${getPack.pack_place }</dd>
 					<dt class="label">이메일</dt>
-					<dd class="value transport">${getProd.prod_email}</dd>
+					<dd class="value transport">${getPack.pack_email}</dd>
 					<dt class="label">전화번호</dt>
-					<dd class="value transport">${getProd.prod_phone}</dd>
+					<dd class="value transport">${getPack.pack_phone}</dd>
+					<dt class="label">기간</dt>
+					<dd class="value">${getPack.pack_days}</dd>
 					<dt class="label">가격</dt>
 					<dd class="value transport">
-					<fmt:formatNumber value="${getProd.prod_price}" pattern="#,###.##"/>원
+						<fmt:formatNumber value="${getPack.pack_price}" pattern="#,###.##" />
+						원
 					</dd>
 					<dt class="label">상품 분류</dt>
-					<!--<dd class="value transport">${getProd.prod_pick}</dd>-->
-					<c:if test="${getProd.prod_pick == 1}">
-						<dd class="value transport">지역</dd>
-					</c:if>
-					<c:if test="${getProd.prod_pick == 2}">
-						<dd class="value transport">맛집</dd>
-					</c:if>
-					<c:if test="${getProd.prod_pick == 3}">
-						<dd class="value transport">숙소</dd>
-					</c:if>
+					<dd class="value transport">패키지</dd>
 				</dl>
 				<h2 class="sm">상세 정보</h2>
 				<br>
-				<p style="width: 500px; display: inline-block;">${getProd.prod_content}</p>
+				<p style="width: 500px; display: inline-block;">
+	
+				</p>
 				<div class="likeC">
-					<a href="product_like?prod_num=${getProd.prod_num}">
+					<a href="package_like?pack_num=${getPack.pack_num}">
 						<div id="like">
 							<c:if test="${like == 'Y'}">
 								<i class="fa fa-thumbs-o-up like_icon" style="color: #409cd1;"></i>
@@ -190,7 +178,7 @@
 					</div>
 				</div>
 				<div style="padding-top: 45px;">
-					<a class="but r write" href="package_booking?pack_num=1"
+					<a class="but r write" href="package_booking?pack_num=22"
 						target="_blank" rel="nofollow"
 						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>
@@ -204,8 +192,9 @@
 					<div class="star half"></div>
 				</div>
 				<h2>리뷰</h2>
-				<a class="but r write" href="board_write?prod_num=${getProd.prod_num}"
-					target="_blank" rel="nofollow">리뷰 작성하기</a>
+				<a class="but r write"
+					href="board_write?prod_num=${getPack.pack_num}" target="_blank"
+					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
 						itemtype="http://schema.org/Review"><meta
@@ -232,7 +221,7 @@
 								</div>
 							</div>
 							<p></p>
-							<div itemprop="reviewBody">유익한 여행이었습니다. 좋아요!^^</div>
+							<div itemprop="reviewBody">아주 유익한 여행이었습니다. 좋아요^^</div>
 
 							<div class="use cf">
 								<a class="but" data-vote="yes" data-curr="0">좋아요<span></span></a><a
@@ -244,72 +233,10 @@
 					<a class="board_list?prod_num=">리뷰 더보기</a>
 				</div>
 			</div>
-			<div class="b pad itn" data-tagible-script="">
-				<h2>여행 일정 </h2>
-				<ol>
-					<li class="">소개
-						<div class="i">
-							<p>여행 일정에 대한 소개</p>
-						</div>
-					</li>
-				</ol>
-				<ol class="det">
-					<li class="active">1일차 : 관광지/맛집/숙소 등등
-						<div class="i">
-							<div class="im">
-								<div class="arrow right"></div>
-								<div class="arrow left"></div>
-								<div
-									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/5804_TCtEXRle.jpg)"
-									class="l show"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/6004117_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/18714839_280.jpg)"
-									class="l"></div>
-							</div>
-							일정에 대한 상세 소개
-							<div class="point">
-								<b>주소</b><span class="name"> 숙소 주소 입력 </span><span class="time"></span>
-							</div>
-						</div>
-					</li>
-					<li class="active">2일차 : 관광지/맛집/숙소 등등
-						<div class="i">
-							<div class="im">
-								<div class="arrow right"></div>
-								<div class="arrow left"></div>
-								<div
-									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/6456_hLk2VDw4.jpg)"
-									class="l show"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/40553619_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/52917867_280.jpg)"
-									class="l"></div>
-								<div
-									data-bg="background-image:url(//cdn.tourradar.com/s3/serp/360x210/5813_XvvfqmqP.jpg)"
-									class="l"></div>
-								<div class="ann">사진에 대한 간략한 소개</div>
-							</div>
-							일정 상세 내용
-						</div>
-					</li>
-					<li class="active">3일차 : 관광지/맛집/숙소 등등
-						<div class="i">일정 상세 내용</div>
-					</li>
-					<li class="active">4일차 : 마지막
-						<div class="i">
-							사진이나 내용 들어갈 곳 <br> <br> -End of services-
-						</div>
-					</li>
-				</ol>
-			</div>
+
 
 			<div class="b pad faq" data-total="67" data-onpage="3">
-				<h2>질문과 답변 </h2>
+				<h2>질문과 답변</h2>
 				<p>이 투어에 대해 궁금한 점을 입력해보세요</p>
 				<form class="search-form">
 					<input type="text" name="search" placeholder="질문이 무엇입니까?"

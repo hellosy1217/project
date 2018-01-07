@@ -25,11 +25,11 @@ public class PackageMapper {
 	}
 
 	public int like(BBLikeDTO dto) {
-		return sqlSession.selectOne("like", dto);
+		return sqlSession.selectOne("packLike", dto);
 	}
 
 	public int likeCount(int pack_num) {
-		return sqlSession.selectOne("likeCount", pack_num);
+		return sqlSession.selectOne("packLikeCount", pack_num);
 	}
 
 	public List<BBPackageBookDTO> listPackBook() {
