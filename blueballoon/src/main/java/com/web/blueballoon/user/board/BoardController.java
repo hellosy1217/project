@@ -194,7 +194,6 @@ public class BoardController {
          return mav;
       }//리뷰 상단에 상품에 대한 이미지와 이름을 받기 위해
       List<BBPackageDTO> listPack = packageMapper.listPack();
-      List<BBProductDTO> listProd = ProductMapper.listProd();
       String pack_title = null;
       String str_img = null;
       for (int j = 0; j < listPack.size(); j++) {
@@ -204,6 +203,8 @@ public class BoardController {
          }
       }
       int prod_num = 0;
+      String prod_name = null;
+      mav.addObject("prod_name", prod_name);
       mav.addObject("pack_title", pack_title);
       mav.addObject("str_img", str_img);
       mav.addObject("prod_num", prod_num);
@@ -387,16 +388,27 @@ public class BoardController {
       BBBoardDTO dto = boardMapper.getBoard(Integer.parseInt(board_num));
       //상단에 상품 이미지와 사진을 보여주기 위해.
       List<BBProductDTO> listProd = ProductMapper.listProd();
+      List<BBPackageDTO> listPack = packageMapper.listPack();
       String prod_name = null;
       String str_img = null;
       int prod_pick = 0;
+      int pnum = dto.getProd_num();
+      int packNum = dto.getPack_num();
+      if(pnum != 0) {
       for (int j = 0; j < listProd.size(); j++) {
-         int pnum = dto.getProd_num();
          if (pnum == listProd.get(j).getProd_num()) {
             prod_name =listProd.get(j).getProd_name();
             str_img = listProd.get(j).getProd_str_img();
             prod_pick = listProd.get(j).getProd_pick();
          }
+      }
+      }else if(pnum == 0) {
+    	  for (int j = 0; j < listPack.size(); j++) {
+    	         if (packNum == listPack.get(j).getPack_num()) {
+    	            prod_name = listPack.get(j).getPack_title();
+    	            str_img = listPack.get(j).getPack_str_img();
+    	         }
+    	      }
       }
       mav.addObject("prod_name", prod_name);
       mav.addObject("str_img", str_img);
