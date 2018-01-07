@@ -144,7 +144,7 @@ window.onload = function() {
 		onsubmit="return check()" enctype="multipart/form-data">
 		<input type="hidden" name="pack_num" value="${pack.pack_num}">
 		<table class="c">
-			<caption>패키지 상품 수정</caption>
+			<caption>패키지 상품 상세보기</caption>
 			<tr>
 				<th>패키지 이름</th>
 				<td><input type="text" name="pack_title"

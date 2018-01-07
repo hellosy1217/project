@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../top.jsp"%>
-<script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <h2 align="center">패키지 목록</h2>
 <script type="text/javascript">
 	function checkDel(pack_num){

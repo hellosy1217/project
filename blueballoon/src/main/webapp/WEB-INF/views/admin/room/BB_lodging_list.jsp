@@ -5,7 +5,7 @@
 <%@ include file="../top.jsp"%>
 <link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
 <h2 align="center">숙소 예약 목록</h2>
-<div align="center">
+<div align="center" class="c">
 	<table border="1" width="700">
 		<tr>
 			<th width="10%">번호</th>
