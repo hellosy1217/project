@@ -54,7 +54,7 @@
 			var c = 'content' + i;
 			if (document.getElementById(c).value != '') {
 				htm += document.getElementById(c).value;
-				htm += '#@!,';
+				htm += '℃';
 			}
 		}
 		document.f.pack_content.value = htm;
