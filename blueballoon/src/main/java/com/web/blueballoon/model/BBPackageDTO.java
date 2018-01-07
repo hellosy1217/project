@@ -15,6 +15,7 @@ public class BBPackageDTO {
 	private String pack_place;
 	private int pack_person;
 	private int pack_times;
+	private int pack_likeCount;
 
 	/*
 	 * pack_num : 패키지 고유 번호 pack_title : 패키지 이름 pack_email : 판매자 이메일 pack_phone :
@@ -132,6 +133,14 @@ public class BBPackageDTO {
 
 	public void setPack_person(int pack_person) {
 		this.pack_person = pack_person;
+	}
+
+	public int getPack_likeCount() {
+		return pack_likeCount;
+	}
+
+	public void setPack_likeCount(int pack_likeCount) {
+		this.pack_likeCount = pack_likeCount;
 	}
 
 }

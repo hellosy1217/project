@@ -20,7 +20,7 @@
   		select * from bb_product_like where prod_num = #{prod_num} and member_num = #{member_num}
   	</select>
   	<insert id="insertLike" parameterType="BBLikeDTO">
-  		insert into bb_product_like values (#{prod_num}, #{member_num})
+  		insert into bb_product_like values (#{prod_num}, #{pack_num}, #{member_num})
   	</insert>
   	<select id="likeCount" resultType="int" parameterType="int">
   		select count(*) from bb_product_like where prod_num=#{prod_num}
