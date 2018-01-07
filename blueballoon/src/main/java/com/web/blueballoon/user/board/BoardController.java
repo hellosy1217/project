@@ -424,11 +424,9 @@ public class BoardController {
       mav.clear();
       System.out.println("컨트롤러 진입");
       BBBoardDTO bdto = boardMapper.getBoard(dto.getBoard_num());
-      String star = req.getParameter("star");
-      if (star == null) {
+      int star = dto.getBoard_score();
+      if (star == 0) {
          dto.setBoard_score(bdto.getBoard_score());
-      } else {
-         dto.setBoard_score(Integer.parseInt(star));
       }
       // 사진을 받았다면 지우고 새로운 사진을 저장
       System.out.println("기존값 불러온 것들");
