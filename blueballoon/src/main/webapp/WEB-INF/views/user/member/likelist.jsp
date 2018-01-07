@@ -33,7 +33,7 @@
 				<div class="im">
 					<span class="initials" style="background: #afd54d">N</span>
 				</div>
-				<h1>내가 찜한 목록 </h1>
+				<h1>좋아요 목록 </h1>
 			</div>
 		</div>
 		<ul class="tabs cf">

@@ -6,6 +6,7 @@ public class BBLikeDTO {
 	private int member_num;
 	private String prod_str_img;
 	private String pack_str_img;
+	private int prod_pick;
 
 	public int getProd_num() {
 		return prod_num;
@@ -46,4 +47,13 @@ public class BBLikeDTO {
 	public void setPack_str_img(String pack_str_img) {
 		this.pack_str_img = pack_str_img;
 	}
+
+	public int getProd_pick() {
+		return prod_pick;
+	}
+
+	public void setProd_pick(int prod_pick) {
+		this.prod_pick = prod_pick;
+	}
+	
 }

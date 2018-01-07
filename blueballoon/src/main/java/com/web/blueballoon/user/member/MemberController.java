@@ -238,6 +238,7 @@ public class MemberController {
 			if(tmp.getProd_num() != 0) {
 				BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
 				tmp.setProd_str_img(dto.getProd_str_img());
+				tmp.setProd_pick(dto.getProd_pick());
 				System.out.println("like List prod img : " + tmp.getProd_str_img());
 			}else if(tmp.getPack_num() != 0) {
 				BBPackageDTO packDTO = memberMapper.getPackage(tmp.getPack_num());
@@ -326,7 +327,7 @@ public class MemberController {
 		if (res > 0) {
 			mav.addObject("msg", "비밀번호 변경 성공!");
 			mav.addObject("req", "close"); // 팝업창 닫기
-			mav.addObject("url", "member_profile");
+			mav.addObject("url", "member_edit");
 			mav.setViewName("user/member/profile");
 		} else {
 			mav.addObject("msg", "비밀번호 변경 실패!");
