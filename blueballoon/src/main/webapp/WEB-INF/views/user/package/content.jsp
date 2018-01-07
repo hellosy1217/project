@@ -260,7 +260,7 @@
 					<input type="text" name="search" placeholder="질문이 무엇입니까?"
 						autocomplete="off" style="margin-right: -4px;">
 					<ul class="types" style="display: none;"></ul>
-					<button type="submit" class="but blue">검색</button>
+					<button type="submit" class="but blue">등록</button>
 				</form>
 				<ul>
 					<li data-id="19030"><div class="date">2017년 12월 16일</div>

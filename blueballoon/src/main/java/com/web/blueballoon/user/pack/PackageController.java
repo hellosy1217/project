@@ -26,6 +26,7 @@ import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
+import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.user.service.PackageMapper;
 import com.web.blueballoon.user.service.ProductMapper;
@@ -69,6 +70,32 @@ public class PackageController {
 
 		// 상품 목록
 		List<BBPackageDTO> listPack = PackageMapper.listPack();
+		
+		// 상품 정렬
+		try {
+			String sort = ServletRequestUtils.getStringParameter(arg0, "sort");
+			if (!sort.equals(null) || !sort.equals("")) {
+				mav.addObject("sort", sort);
+				List<BBLikeDTO> likeList = PackageMapper.packLikeList();
+				if (sort.equals("인기순")) {
+					for (int i = 0; i < listPack.size(); i++) {
+						for (int j = 0; j < likeList.size(); j++) {
+							if (listPack.get(i).getPack_num() == likeList.get(j).getPack_num()) {
+								listPack.get(i).setPack_likeCount(listPack.get(i).getPack_likeCount() + 1);
+							}
+						}
+					}
+					Collections.sort(listPack, new Comparator<BBPackageDTO>() {
+						public int compare(BBPackageDTO o1, BBPackageDTO o2) {
+							return o1.getPack_likeCount() > o2.getPack_likeCount() ? -1
+									: o1.getPack_likeCount() < o2.getPack_likeCount() ? 1 : 0;
+						}
+					});
+				}
+			}
+		} catch (NullPointerException e) {
+			mav.addObject("sort", "최신순");
+		}
 
 		// 총 페이지 수
 		int pageNum = listPack.size();
@@ -119,7 +146,7 @@ public class PackageController {
 		mav.clear();
 		int pack_num = ServletRequestUtils.getIntParameter(arg0, "pack_num");
 		BBPackageDTO dto = PackageMapper.getPack(pack_num);
-		int likeCount = PackageMapper.likeCount(pack_num);
+		int likeCount = PackageMapper.packLikeCount(pack_num);
 		mav.addObject("likeCount", likeCount);
 		try {
 			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
@@ -134,7 +161,7 @@ public class PackageController {
 			likedto.setPack_num(pack_num);
 			likedto.setMember_num(member_num);
 			try {
-				int result = PackageMapper.like(likedto);
+				int result = PackageMapper.packLike(likedto);
 				mav.addObject("like", "Y");
 			} catch (NullPointerException e1) {
 				mav.addObject("like", "N");
@@ -163,7 +190,7 @@ public class PackageController {
 			dto.setProd_num(pack_num);
 			dto.setMember_num(member_num);
 			try {
-				int result = PackageMapper.like(dto);
+				int result = PackageMapper.packLike(dto);
 				mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
 			} catch (NullPointerException e1) {
 				ProductMapper.insertLike(dto);

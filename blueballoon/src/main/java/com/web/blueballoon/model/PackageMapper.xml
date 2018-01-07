@@ -16,6 +16,9 @@
 	<select id="packLike" resultType="int" parameterType="BBLikeDTO">
   		select * from bb_product_like where pack_num = #{pack_num} and member_num = #{member_num}
   	</select>
+  	<select id="packLikeList" resultType="BBLikeDTO">
+  		select * from bb_product_like
+  	</select>
 	<select id="listPackBook" resultType="BBPackageBookDTO">
 		select * from
 		bb_package_book
