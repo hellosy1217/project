@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,10 +140,37 @@ public class PackageController {
 		}
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
-		
-		
+
 		mav.addObject("getPack", dto);
 		mav.setViewName("user/package/content");
+		return mav;
+	}
+
+	// 좋아요 기능
+	@RequestMapping(value = "package_like", method = RequestMethod.GET)
+	public ModelAndView like(HttpServletRequest arg0, HttpServletResponse arg1, HttpSession session) throws Exception {
+		mav.clear();
+		int pack_num = ServletRequestUtils.getIntParameter(arg0, "pack_num");
+		mav.addObject("pack_num", pack_num);
+		try {
+			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			BBLikeDTO dto = new BBLikeDTO();
+			dto.setProd_num(pack_num);
+			dto.setMember_num(member_num);
+			try {
+				int result = PackageMapper.like(dto);
+				mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
+			} catch (NullPointerException e1) {
+				ProductMapper.insertLike(dto);
+				mav.setViewName("redirect:/package_content?pack_num=" + pack_num);
+				return mav;
+			}
+			mav.addObject("url", "package_content?pack_num=" + pack_num);
+		} catch (NullPointerException e) {
+			mav.addObject("msg", "로그인을 해주세요.");
+			mav.addObject("url", "member_login");
+		}
+		mav.setViewName("user/package/message");
 		return mav;
 	}
 
@@ -190,12 +218,6 @@ public class PackageController {
 				}
 			}
 
-			for (int i = book_date.size(); i >= 0; i++) {
-				if (book_date.get(i).getBook_person() == getPack.getPack_person()) {
-					book_date.remove(i);
-				}
-			}
-
 			Collections.sort(book_date, new Comparator<BBBookDateDTO>() {
 				public int compare(BBBookDateDTO o1, BBBookDateDTO o2) {
 					return o1.getBook_date().compareTo(o2.getBook_date());
@@ -216,6 +238,7 @@ public class PackageController {
 			StringTokenizer str2 = new StringTokenizer(getPack.getPack_period(), ",");
 			mav.addObject("beginDate", str2.nextToken());
 			mav.addObject("endDate", str2.nextToken());
+			mav.addObject("selectedDate",book_date.get(0).getBook_date());
 			mav.addObject("date", date);
 			mav.addObject("person", person);
 

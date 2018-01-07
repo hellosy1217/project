@@ -46,7 +46,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
-						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${beginDate}','${getPack.pack_days}','${date}','${person}');
+						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${selectedDate}','${getPack.pack_days}','${date}','${person}');
 					};</script>
 					<div id="seats">
 						<div class="content">

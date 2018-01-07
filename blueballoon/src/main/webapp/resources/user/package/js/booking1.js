@@ -11,15 +11,6 @@
 function bbCalendar(begin, end, start, current, selected, pack_days,
 		pack_start_date, person) {
 	var bbCalendar = document.getElementById('bb_calendar');
-	// 선택 가능 일
-	var dateCount = 0;
-	var pack_start_split = '';
-	if (typeof (pack_start_date) !== 'undefined') {
-		pack_start_split = pack_start_date.split(',');
-		for ( var i in pack_start_split) {
-			dateCount++;
-		}
-	}
 
 	// 시작일 구하기
 	var begin_date = begin;
@@ -240,13 +231,21 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 	for (var i = 0; i < week; i++) {
 		calendar += '<tr>';
 		for (var j = 0; j < 7; j++, dateNum++) {
+			var click_date = currentYear + '-';
+			if (currentMonth < 10) {
+				click_date += '0';
+			}
+			click_date += currentMonth + '-';
+			if (dateNum < 10) {
+				click_date += '0';
+			}
+			click_date += dateNum;
 			if (dateNum < 1 || dateNum > currentLastDate) {
 				calendar += '<td class="day' + dateNum + '"> </td>';
 				continue;
 			}
-
 			if (currentYear == selectedYear && currentMonth == selectedMonth) {
-				if (selectedDate == dateNum) {
+				if (dateNum == selectedDate) {
 					if (dateNum == currentLastDate) {
 						calendar += '<td id="day'
 								+ dateNum
@@ -260,29 +259,80 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 								+ dateNum
 								+ '</div><div class="next"></div></div></td>';
 					}
-				} else if (dateNum > selectedDate
-						&& dateNum < (selectedDate * 1 + pack_days * 1)) {
-					var count = 0;
-					for (var k = 0; k < dateCount; k++) {
-						var possible_date = pack_start_split[k];
-						if (typeof (pack_start_split[k]) !== 'undefined') {
-							possible = pack_start_split[k].split('-');
-							possible[1] = possible[1] - 1;
-							possible = new Date(possible[0], possible[1],
-									possible[2]);
+				} else {
+					if (selectedDate < dateNum
+							&& dateNum < (selectedDate * 1 + pack_days * 1)) {
+						if (dateNum == currentLastDate) {
+							// 넥스트 넣어주기
+							if (selectedCheck(pack_start_date, currentYear,
+									currentMonth, dateNum)) {
+								calendar += '<td id="day'
+										+ dateNum
+										+ '" class="all possible onway next" onclick="bbCalendar(\''
+										+ begin_date
+										+ '\', \''
+										+ end_date
+										+ '\', \''
+										+ start_date
+										+ '\', \''
+										+ current_date
+										+ '\',  \''
+										+ click_date
+										+ '\',\''
+										+ pack_days
+										+ '\',\''
+										+ pack_start_date
+										+ '\',\''
+										+ person
+										+ '\')"><div class="container"><div class="day">'
+										+ dateNum
+										+ '</div><div class="next"></div></div></td>';
+							} else {
+								calendar += '<td id="day'
+										+ dateNum
+										+ '" class="all empty onway next" ><div class="container"><div class="day">'
+										+ dateNum
+										+ '</div><div class="next"></div></div></td>';
+							}
+						} else {
+							// 넥스트 빼기
+							if (selectedCheck(pack_start_date, currentYear,
+									currentMonth, dateNum)) {
+								calendar += '<td id="day'
+										+ dateNum
+										+ '" class="all possible onway" onclick="bbCalendar(\''
+										+ begin_date
+										+ '\', \''
+										+ end_date
+										+ '\', \''
+										+ start_date
+										+ '\', \''
+										+ current_date
+										+ '\',  \''
+										+ click_date
+										+ '\',\''
+										+ pack_days
+										+ '\',\''
+										+ pack_start_date
+										+ '\',\''
+										+ person
+										+ '\')"><div class="container"><div class="day">'
+										+ dateNum
+										+ '</div><div class="next"></div></div></td>';
+							} else {
+								calendar += '<td id="day'
+										+ dateNum
+										+ '" class="all empty onway" ><div class="container"><div class="day">'
+										+ dateNum
+										+ '</div><div class="next"></div></div></td>';
+							}
 						}
-						var possibleYear = possible.getFullYear();
-						var possibleMonth = possible.getMonth() + 1;
-						var possibleDate = possible.getDate();
-						possible.setDate(1);
-						var possibleDay = possible.getDay();
-
-						if (possibleYear * 1 == currentYear * 1
-								&& possibleMonth * 1 == currentMonth * 1
-								&& dateNum * 1 == possibleDate * 1) {
+					} else {
+						if (selectedCheck(pack_start_date, currentYear,
+								currentMonth, dateNum)) {
 							calendar += '<td id="day'
 									+ dateNum
-									+ '" class="all selected onway" onclick="bbCalendar(\''
+									+ '" class="all possible" onclick="bbCalendar(\''
 									+ begin_date
 									+ '\', \''
 									+ end_date
@@ -291,7 +341,7 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 									+ '\', \''
 									+ current_date
 									+ '\',  \''
-									+ pack_start_split[k]
+									+ click_date
 									+ '\',\''
 									+ pack_days
 									+ '\',\''
@@ -301,123 +351,39 @@ function bbCalendar(begin, end, start, current, selected, pack_days,
 									+ '\')"><div class="container"><div class="day">'
 									+ dateNum
 									+ '</div><div class="next"></div></div></td>';
-							count++;
-						} else if (possibleYear * 1 == currentYear * 1
-								&& possibleMonth * 1 == currentMonth * 1
-								&& dateNum * 1 != possibleDate * 1
-								&& k * 1 == dateCount * 1 - 1 && count == 0) {
+						} else {
 							calendar += '<td id="day'
 									+ dateNum
-									+ '" class="all empty onway"><div class="container"><div class="day">'
+									+ '" class="all empty" ><div class="container"><div class="day">'
 									+ dateNum
 									+ '</div><div class="next"></div></div></td>';
 						}
 					}
-				} else {
-					var count = 0;
-					for (var k = 0; k < dateCount; k++) {
-						var possible_date = pack_start_split[k];
-						if (typeof (pack_start_split[k]) !== 'undefined') {
-							possible = pack_start_split[k].split('-');
-							possible[1] = possible[1] - 1;
-							possible = new Date(possible[0], possible[1],
-									possible[2]);
-						}
-						var possibleYear = possible.getFullYear();
-						var possibleMonth = possible.getMonth() + 1;
-						var possibleDate = possible.getDate();
-						possible.setDate(1);
-						var possibleDay = possible.getDay();
 
-						if (possibleYear * 1 == currentYear * 1
-								&& possibleMonth * 1 == currentMonth * 1
-								&& dateNum * 1 == possibleDate * 1) {
-							calendar += '<td id="day'
-									+ dateNum
-									+ '" class="all selected" onmouseover="this.style.backgroundColor=\'#409cd1\'"  onmouseout="this.style.backgroundColor=\'white\'" onclick="bbCalendar(\''
-									+ begin_date
-									+ '\', \''
-									+ end_date
-									+ '\', \''
-									+ start_date
-									+ '\', \''
-									+ current_date
-									+ '\',  \''
-									+ pack_start_split[k]
-									+ '\',\''
-									+ pack_days
-									+ '\',\''
-									+ pack_start_date
-									+ '\',\''
-									+ person
-									+ '\')" style="cusor:pointer;"><div class="container"><div class="day">'
-									+ dateNum
-									+ '</div><div class="next"></div></div></td>';
-							count++;
-						} else if (possibleYear * 1 == currentYear * 1
-								&& possibleMonth * 1 == currentMonth * 1
-								&& dateNum * 1 != possibleDate * 1
-								&& k * 1 == dateCount * 1 - 1 && count == 0) {
-							calendar += '<td id="day'
-									+ dateNum
-									+ '" class="all empty"><div class="container"><div class="day">'
-									+ dateNum
-									+ '</div><div class="next"></div></div></td>';
-						}
-					}
 				}
 			} else {
-				var count = 0;
-				for (var k = 0; k < dateCount; k++) {
-					var possible_date = pack_start_split[k];
-					if (typeof (pack_start_split[k]) !== 'undefined') {
-						possible = pack_start_split[k].split('-');
-						possible[1] = possible[1] - 1;
-						possible = new Date(possible[0], possible[1],
-								possible[2]);
-					}
-					var possibleYear = possible.getFullYear();
-					var possibleMonth = possible.getMonth() + 1;
-					var possibleDate = possible.getDate();
-					possible.setDate(1);
-					var possibleDay = possible.getDay();
-
-					if (possibleYear * 1 == currentYear * 1
-							&& possibleMonth * 1 == currentMonth * 1
-							&& dateNum * 1 == possibleDate * 1) {
-						calendar += '<td id="day'
-								+ dateNum
-								+ '" class="all selected" onmouseover="this.style.backgroundColor=\'#409cd1\'" onmouseout="this.style.backgroundColor=\'white\'" onclick="bbCalendar(\''
-								+ begin_date
-								+ '\', \''
-								+ end_date
-								+ '\', \''
-								+ start_date
-								+ '\', \''
-								+ current_date
-								+ '\',  \''
-								+ pack_start_split[k]
-								+ '\',\''
-								+ pack_days
-								+ '\',\''
-								+ pack_start_date
-								+ '\',\''
-								+ person
-								+ '\')"  style="cusor:pointer;"><div class="container"><div class="day">'
-								+ dateNum
-								+ '</div><div class="next"></div></div></td>';
-
-					} else {
-						calendar += '<td id="day'
-								+ dateNum
-								+ '" class="all empty"><div class="container"><div class="day">'
-								+ dateNum
-								+ '</div><div class="next"></div></div></td>';
-						break;
-					}
+				if (selectedCheck(pack_start_date, currentYear, currentMonth,
+						dateNum)) {
+					calendar += '<td id="day' + dateNum
+							+ '" class="all possible" onclick="bbCalendar(\''
+							+ begin_date + '\', \'' + end_date + '\', \''
+							+ start_date + '\', \'' + current_date + '\',  \''
+							+ click_date + '\',\'' + pack_days + '\',\''
+							+ pack_start_date + '\',\'' + person
+							+ '\')" ><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
+				} else {
+					calendar += '<td id="day'
+							+ dateNum
+							+ '" class="all empty"><div class="container"><div class="day">'
+							+ dateNum
+							+ '</div><div class="next"></div></div></td>';
 				}
 			}
+
 		}
+
 		calendar += '</tr>';
 	}
 
@@ -480,4 +446,30 @@ function bbPerson(pack_start_date, selected_date, person, perNum) {
 				+ '\')" style="margin-top: 2px;"></span>';
 	}
 	bbPerson.innerHTML = persons;
+}
+
+function selectedCheck(pack_start_date, year, month, date) {
+	var pack_start_split = '';
+	if (typeof (pack_start_date) !== 'undefined') {
+		pack_start_split = pack_start_date.split(',');
+		for ( var i in pack_start_split) {
+			if (typeof (pack_start_split[i]) !== 'undefined') {
+				possible = pack_start_split[i].split('-');
+				possible[1] = possible[1] - 1;
+				possible = new Date(possible[0], possible[1], possible[2]);
+			}
+			var possibleYear = possible.getFullYear();
+			var possibleMonth = possible.getMonth() + 1;
+			var possibleDate = possible.getDate();
+			possible.setDate(1);
+			var possibleDay = possible.getDay();
+
+			if (possibleYear == year && possibleMonth == month
+					&& possibleDate == date) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

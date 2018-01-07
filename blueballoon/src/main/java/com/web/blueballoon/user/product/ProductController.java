@@ -1,6 +1,5 @@
 package com.web.blueballoon.user.product;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -229,7 +228,7 @@ public class ProductController {
 				mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
 			} catch (NullPointerException e1) {
 				ProductMapper.insertLike(dto);
-				mav.setViewName("redirect:/product_content?prod_num" + prod_num);
+				mav.setViewName("redirect:/product_content?prod_num=" + prod_num);
 				return mav;
 			}
 			mav.addObject("url", "product_content");
@@ -237,7 +236,7 @@ public class ProductController {
 			mav.addObject("msg", "로그인을 해주세요.");
 			mav.addObject("url", "member_login");
 		}
-		mav.setViewName("/message");
+		mav.setViewName("user/product/message");
 		return mav;
 	}
 

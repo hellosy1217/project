@@ -159,7 +159,16 @@
 				<h2 class="sm">상세 정보</h2>
 				<br>
 				<p style="width: 500px; display: inline-block;">
-	
+					<!-- 🥁🥁🥁🥁🥁🥁🥁여기 패키지 일자별로 나눠놨어요!!! 뜯어서 쓰세요!!!🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁 -->
+					<c:forTokens items="${getPack.pack_content }" delims="℃" var="pcc"
+						varStatus="vss">
+						<br>${vss.count}일차<br><br>
+						<c:forTokens items="${pcc }" var="pcontent" delims=",/">
+						${pcontent }<br>
+						</c:forTokens>
+						<br>
+					</c:forTokens>
+					<!-- 🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁 -->
 				</p>
 				<div class="likeC">
 					<a href="package_like?pack_num=${getPack.pack_num}">
@@ -178,10 +187,71 @@
 					</div>
 				</div>
 				<div style="padding-top: 45px;">
-					<a class="but r write" href="package_booking?pack_num=22"
+					<a class="but r write" href="package_booking?pack_num=${getPack.pack_num }"
 						target="_blank" rel="nofollow"
 						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>
+			</div>
+			<div class="b pad itn" data-tagible-script="">
+				<h2>여행 일정 (패키지 상품일때만 적용)</h2>
+				<ol>
+					<li class="">소개
+						<div class="i">
+							<p>여행 일정에 대한 소개</p>
+						</div>
+					</li>
+				</ol>
+				<ol class="det">
+					<li class="active">1일차 : 관광지/맛집/숙소 등등
+						<div class="i">
+							<div class="im">
+								<div
+									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/5804_TCtEXRle.jpg)"
+									class="l show"></div>
+								<div
+									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/6004117_280.jpg)"
+									class="l"></div>
+								<div
+									data-bg="background-image:url(//cdn.tourradar.com/s3/city/1938/18714839_280.jpg)"
+									class="l"></div>
+							</div>
+							일정에 대한 상세 소개
+							<div class="point">
+								<b>주소</b><span class="name"> 숙소 주소 입력 </span><span class="time"></span>
+							</div>
+						</div>
+					</li>
+					<li class="active">2일차 : 관광지/맛집/숙소 등등
+						<div class="i">
+							<div class="im">
+								<div class="arrow right"></div>
+								<div class="arrow left"></div>
+								<div
+									style="background-image: url(//cdn.tourradar.com/s3/serp/360x210/6456_hLk2VDw4.jpg)"
+									class="l show"></div>
+								<div
+									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/40553619_280.jpg)"
+									class="l"></div>
+								<div
+									data-bg="background-image:url(//cdn.tourradar.com/s3/city/6232/52917867_280.jpg)"
+									class="l"></div>
+								<div
+									data-bg="background-image:url(//cdn.tourradar.com/s3/serp/360x210/5813_XvvfqmqP.jpg)"
+									class="l"></div>
+								<div class="ann">사진에 대한 간략한 소개</div>
+							</div>
+							일정 상세 내용
+						</div>
+					</li>
+					<li class="active">3일차 : 관광지/맛집/숙소 등등
+						<div class="i">일정 상세 내용</div>
+					</li>
+					<li class="active">4일차 : 마지막
+						<div class="i">
+							사진이나 내용 들어갈 곳 <br> <br> -End of services-
+						</div>
+					</li>
+				</ol>
 			</div>
 			<div class="b pad rev" data-total="51" data-onpage="10">
 				<div class="atm-m-stars">
@@ -233,8 +303,6 @@
 					<a class="board_list?prod_num=">리뷰 더보기</a>
 				</div>
 			</div>
-
-
 			<div class="b pad faq" data-total="67" data-onpage="3">
 				<h2>질문과 답변</h2>
 				<p>이 투어에 대해 궁금한 점을 입력해보세요</p>
