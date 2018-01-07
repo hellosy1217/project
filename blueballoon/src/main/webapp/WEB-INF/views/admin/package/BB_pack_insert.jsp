@@ -83,7 +83,7 @@
 <div align="center">
 	<form name="f" action="BB_pack_insert" method="post"
 		enctype="multipart/form-data">
-		<table border="1">
+		<table>
 			<caption>패키지 상품 등록</caption>
 			<tr>
 				<th>패키지 이름</th>
