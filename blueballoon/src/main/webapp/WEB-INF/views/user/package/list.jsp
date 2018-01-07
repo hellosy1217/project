@@ -215,7 +215,7 @@
 								<input type="text" placeholder="최대">
 							</li>
 							<li class="btn" style="margin-top:5px;">
-								<a class="r write">적용하기</a>
+								<a class="but blue">적용하기</a>
 							</li>
 						</ul>
 					</div>

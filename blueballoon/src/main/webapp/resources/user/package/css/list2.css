@@ -2492,12 +2492,11 @@ aside .b ul li.won input {
     padding: 6px;
 }
 aside .b ul li.btn a {
-	background: #ddd;
+	background: #459dcf;
     border-radius: 3px;
     text-align: center;
     padding: 13px 0;
     clear: both;
-    color: #333;
     display: block;
     width: 100%;
     border-weight: bold;
