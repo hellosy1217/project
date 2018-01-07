@@ -36,13 +36,13 @@
 			<td align="center" colspan="3">${getProduct.prod_price}</td>
 		</tr>
 		<tr>
-			<th width="15%" >이미지</th>
+			<th>이미지</th>
 			<c:if test="${empty getProduct.prod_str_img}">
 				<td colspan="3" align="center">"이미지가 없습니다."</td>
 			</c:if>
 			<c:if test="${not empty getProduct.prod_str_img}">
 			<td colspan="3" align="center">
-				<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product3/${getProduct.prod_str_img}" width="80" height="80">
+				<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product3/${getProduct.prod_str_img}" width="300" height="250">
 			</td>
 			</c:if>
 		</tr>
