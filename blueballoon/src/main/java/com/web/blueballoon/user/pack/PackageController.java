@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookDateDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.user.service.PackageMapper;
@@ -107,6 +108,42 @@ public class PackageController {
 		return mav;
 	}
 
+	@RequestMapping(value = "package_content", method = RequestMethod.GET)
+	public ModelAndView content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		mav.clear();
+		int pack_num = ServletRequestUtils.getIntParameter(arg0, "pack_num");
+		BBPackageDTO dto = PackageMapper.getPack(pack_num);
+		int likeCount = PackageMapper.likeCount(pack_num);
+		mav.addObject("likeCount", likeCount);
+		try {
+			int member_num = (Integer) arg0.getSession().getAttribute("member_num");
+			String member_email = (String) arg0.getSession().getAttribute("member_email");
+			char member_name = (Character) arg0.getSession().getAttribute("member_name");
+
+			mav.addObject("member_num", member_num);
+			mav.addObject("member_email", member_email);
+			mav.addObject("member_name", member_name);
+
+			BBLikeDTO likedto = new BBLikeDTO();
+			likedto.setPack_num(pack_num);
+			likedto.setMember_num(member_num);
+			try {
+				int result = PackageMapper.like(likedto);
+				mav.addObject("like", "Y");
+			} catch (NullPointerException e1) {
+				mav.addObject("like", "N");
+			}
+		} catch (NullPointerException e2) {
+			mav.addObject("like", "N");
+			mav.addObject("member_num", 0);
+		}
+		List<BBCategoryDTO> listCate = ProductMapper.listCate();
+		mav.addObject("listCate", listCate);
+		mav.addObject("getPack", dto);
+		mav.setViewName("user/package/content");
+		return mav;
+	}
+
 	@RequestMapping(value = "package_booking", method = RequestMethod.GET)
 	public ModelAndView booking(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		mav.clear();
@@ -156,7 +193,7 @@ public class PackageController {
 					book_date.remove(i);
 				}
 			}
-			
+
 			Collections.sort(book_date, new Comparator<BBBookDateDTO>() {
 				public int compare(BBBookDateDTO o1, BBBookDateDTO o2) {
 					return o1.getBook_date().compareTo(o2.getBook_date());

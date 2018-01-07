@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 
@@ -21,6 +22,14 @@ public class PackageMapper {
 
 	public BBPackageDTO getPack(int pack_num) {
 		return sqlSession.selectOne("getPack",pack_num);
+	}
+
+	public int like(BBLikeDTO dto) {
+		return sqlSession.selectOne("like", dto);
+	}
+
+	public int likeCount(int pack_num) {
+		return sqlSession.selectOne("likeCount", pack_num);
 	}
 
 	public List<BBPackageBookDTO> listPackBook() {
