@@ -2610,7 +2610,8 @@ main[data-type=oper] .header .header-info.full {
 .as {
 	width: 22.8%;
 	float: left;
-	position: relative
+	position: relative;
+	margin-top: 43px;
 }
 
 aside .cl {

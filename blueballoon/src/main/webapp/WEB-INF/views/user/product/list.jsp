@@ -253,7 +253,7 @@
 										style="font-size: 16px;"></i></li>
 									<li class="good">
 										<p>
-											<i>${likeCount}</i>
+											<i>${prod.prod_likeCount}</i>
 										</p>
 									</li>
 								</ul>

@@ -227,31 +227,26 @@
 
 		<div class="list">
 			<div class="prod_list" style="height: 1000px;">
-				<c:forEach var="prod" items="${listProd}">
+				<c:forEach var="pack" items="${listPack}">
 					<div class="spotListIn">
-						<a href="product_content?prod_num=${prod.prod_num}"
-							class="spotIn focusedLink">
-							<div class="thumb">
+						<a href="package_content?pack_num=${pack.pack_num}"
+							class="spotIn focusedLink"><div class="thumb">
 								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod.prod_pick}/${prod.prod_str_img}"
+									src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${pack.pack_str_img}"
 									alt="" width="245" style="margin-top: 0px;">
-							</div> <span class="spot"><c:forTokens items="${prod.prod_cate}"
-									delims="-" var="pc">
-									${pc} 
-									</c:forTokens></span> <strong class="title">${prod.prod_name}</strong> <span
-							class="cover"></span>
+							</div> <span class="spot">${pack.pack_place }</span> <strong
+							class="title">${pack.pack_title}</strong> <span class="cover"></span>
 							<div class="likeArea simple">
 								<ul>
 									<li><i class="fa fa-thumbs-up" aria-hidden="true"
 										style="font-size: 16px;"></i></li>
 									<li class="good">
 										<p>
-											<i>${likeCount}</i>
+											<i>${pack.pack_likeCount}</i>
 										</p>
 									</li>
 								</ul>
-							</div>
-						</a>
+							</div></a>
 					</div>
 				</c:forEach>
 			</div>
@@ -288,8 +283,7 @@
 	<footer>
 		<div class="c">
 			<div class="cop">
-				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
-					notice</a>
+				Copyright © BlueBalloon. All rights reserved.
 			</div>
 		</div>
 	</footer>

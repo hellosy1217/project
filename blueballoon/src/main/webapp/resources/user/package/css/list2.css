@@ -1620,11 +1620,11 @@ main[data-type=oper] .header .header-info.full {
 }
 
 .stat {
-	padding: 35px 0
+	padding: 20px 0;
 }
 
 .stat .but, .stat ul {
-	display: none
+	display: none;
 }
 
 .stat .sort, .stat h2 {
@@ -1663,7 +1663,8 @@ main[data-type=oper] .header .header-info.full {
 .list {
 	width: 75.5%;
 	float: right;
-	padding-bottom: 56px
+	padding-bottom: 56px;
+	margin-top: 20px;
 }
 
 .list.em {
@@ -1772,7 +1773,7 @@ main[data-type=oper] .header .header-info.full {
 	border-color: transparent #ad392d transparent transparent
 }
 
-.list>ul>li:not (.oper ) .pc.asphalt {
+.list>ul>li:not (.oper ) .pcphalt {
 	border-color: transparent #333 transparent transparent
 }
 
@@ -2320,10 +2321,11 @@ main[data-type=oper] .header .header-info.full {
 	color: #fff
 }
 
-.as {
+ {
 	width: 22.8%;
 	float: left;
-	position: relative
+	position: relative;
+	margin-top: 40px;
 }
 
 aside .cl {
@@ -2481,9 +2483,12 @@ aside .b ul li:last-child {
 }
 
 aside .b ul li .span, aside .b ul li span {
-	color: #333;
 	text-decoration: none;
 	margin-right: 3px
+}
+
+aside .b ul li span a {
+ 	color: #333;
 }
 
 aside .b ul li .span.cnt, aside .b ul li span.cnt {
@@ -2957,7 +2962,7 @@ aside .b .sl {
 		{
 		display: block
 	}
-	main .as {
+	main  {
 		width: 100%
 	}
 	main .c.nopad {
