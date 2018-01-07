@@ -122,7 +122,7 @@
 									<div class="title">생년월일</div>
 									<div class="value">
 										<input type="text" name="member_birth" value="${getMember.member_birth}"
-											value="" id="date" />
+											id="date" />
 									</div>
 								</div>
 								<div class="row">

@@ -3,11 +3,12 @@
 <!-- memberAll.jsp -->
 <%@ include file="../top.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<div align="center">
+<link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
+	<div align="center" class="c">
 		<hr color="green" width="300">
 		<h2>회 원 목 록 보 기</h2>
 		<hr color="green" width="300">
-		<table width="100%" class="outline">
+		<table width="1000" border="1">
 			<tr>
 				<th>번호</th>
 				<th>이름</th>
@@ -29,8 +30,15 @@
 				<tr align="center">
 					<td>${dto.member_num}</td>
 					<td>${dto.member_name}</td>
-					<td><img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/member/${dto.member_str_img}"
-						width="80" height="60" /></td>
+					<td>	<c:choose>
+							<c:when test="${empty dto.member_str_img}">
+								<img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg" width="85" height="65">
+							</c:when>
+							<c:otherwise>
+							<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${dto.member_str_img}" width="85" height="65">
+							</c:otherwise>
+						</c:choose>
+					</td>
 					<td>${dto.member_email}</td>
 					<td>${dto.member_phone}</td>
 					<td>${dto.member_birth}</td>

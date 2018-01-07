@@ -9,7 +9,7 @@
    <form name="f" action="BB_room_insert" method="post" enctype="multipart/form-data">
     <input type="hidden" name="prod_num" value="${getRoom.prod_num}">
       <table width="500" border="2">
-         <caption>방 등록</caption>
+         <caption>방 상세보기</caption>
          <tr>
             <th width="20%">숙소 명</th>
             <td>${getRoom.room_name}</td>
@@ -44,7 +44,7 @@
          </tr>
          <tr>
             <th>방 상세 설명</th>
-            <td><textarea>${getRoom.room_content}</textarea></td>
+            <td><textarea rows="10" cols="100">${getRoom.room_content}</textarea></td>
          </tr>
       </table>
       <a href="BB_lodging_content?prod_num=${getRoom.prod_num}">목록으로</a>
