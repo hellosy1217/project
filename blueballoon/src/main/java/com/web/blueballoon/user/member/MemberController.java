@@ -111,9 +111,9 @@ public class MemberController {
 			mav.setViewName("user/member/message");
 			return mav;
 		}
-		//새로운 임시 비밀번호 생성
+		// 새로운 임시 비밀번호 생성
 		String newPasswd = UUID.randomUUID().toString();
-		//임시 비밀번호 DTO에 담아서 DB에 전송 준비
+		// 임시 비밀번호 DTO에 담아서 DB에 전송 준비
 		checkUser.setMember_passwd(newPasswd.substring(0, 19));
 
 		System.out.println(checkUser.getMember_passwd());
@@ -125,7 +125,7 @@ public class MemberController {
 			mav.setViewName("user/member/message");
 			return mav;
 		}
-		//DB 값이 바꼈으면 이메일 전송
+		// DB 값이 바꼈으면 이메일 전송
 		sendMessage.findToEmail(checkUser.getMember_email(), checkUser.getMember_passwd());
 		mav.addObject("msg", "메일이 발송 되었습니다. 새로운 비밀번호로 로그인 해주세요.");
 		mav.addObject("url", "member_login");
@@ -149,7 +149,7 @@ public class MemberController {
 	public ModelAndView updateProMember(@ModelAttribute BBMemberDTO dto,
 			@RequestParam("userpick") MultipartFile multipartFiles, BindingResult result, HttpSession session)
 			throws Exception {
-
+		mav.clear();
 		BBMemberDTO editDTO = memberMapper.getMember(dto.getMember_email());
 		int check = (int) multipartFiles.getSize();
 
@@ -192,14 +192,13 @@ public class MemberController {
 			dto.setMember_email(null);
 		}
 		if (res > 0) {
-			mav.addObject("msg", "회원정보 수정 성공!!");
 			session.setAttribute("member_name", dto.getMember_name().toUpperCase().charAt(0));
-			mav.addObject("url", "main");
+			mav.setViewName("redirect:/member_profile");
 		} else {
-			mav.addObject("msg", "회원정보 수정 실패!!");
+			mav.addObject("msg", "회원정보 수정 실패!");
 			mav.addObject("url", "member_edit");
+			mav.setViewName("user/member/message");
 		}
-		mav.setViewName("user/member/message");
 		return mav;
 	}
 
@@ -226,13 +225,13 @@ public class MemberController {
 		String member_email = (String) arg0.getSession().getAttribute("member_email");
 
 		List<BBLikeDTO> likeList = memberMapper.listLikeProducts(member_num);
-		//상품 이미지 관련 해서 list에 추가 
-		for(BBLikeDTO tmp : likeList) {
+		// 상품 이미지 관련 해서 list에 추가
+		for (BBLikeDTO tmp : likeList) {
 			BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
 			tmp.setProd_str_img(dto.getProd_str_img());
-			System.out.println("like List prod img : "+tmp.getProd_str_img());
+			System.out.println("like List prod img : " + tmp.getProd_str_img());
 		}
-		
+
 		mav.addObject("likeList", likeList);
 		mav.addObject("member_email", member_email);
 		mav.addObject("member_num", member_num);
@@ -268,55 +267,57 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member_contact_us", method = RequestMethod.POST)
-	public ModelAndView contact_us_pro(HttpSession session, @RequestParam String email_title, @RequestParam String email_content) {
+	public ModelAndView contact_us_pro(HttpSession session, @RequestParam String email_title,
+			@RequestParam String email_content) {
 		mav.clear();
-		if(email_content==null || email_content.trim().equals("") 
-			|| email_title ==null || email_title.trim().equals("")) {
-			mav.addObject("msg","잘못 된 접근입니다. 메인 페이지로 이동합니다.");
-			mav.addObject("url","main");
+		if (email_content == null || email_content.trim().equals("") || email_title == null
+				|| email_title.trim().equals("")) {
+			mav.addObject("msg", "잘못 된 접근입니다. 메인 페이지로 이동합니다.");
+			mav.addObject("url", "main");
 			mav.setViewName("user/member/message");
 		}
-		
-		String clientEmail = (String)session.getAttribute("member_email");
-		
-		boolean res =sendMessage.sendToEmail(clientEmail,"blueballoonteam@gmail.com", email_title,email_content);
+
+		String clientEmail = (String) session.getAttribute("member_email");
+
+		boolean res = sendMessage.sendToEmail(clientEmail, "blueballoonteam@gmail.com", email_title, email_content);
 		// 채워야함
-		if(res) {
+		if (res) {
 			mav.addObject("msg", "전송 완료!");
 			mav.addObject("req", "close"); // 팝업창 닫기
 			mav.addObject("url", "main");
 			mav.setViewName("user/member/contact_us");
-		}else {
-			mav.addObject("msg","전송 실패! 관리자(070-8282-1004로 문의주세요!!" );
+		} else {
+			mav.addObject("msg", "전송 실패! 관리자(070-8282-1004로 문의주세요!!");
 			mav.addObject("req", "main");
 			mav.setViewName("user/member/contact_us");
 		}
 		return mav;
 	}
-	
-	@RequestMapping(value="member_change_passwd", method = RequestMethod.POST)
-	public ModelAndView changePasswd(HttpSession session, @RequestParam String newPasswd1, @RequestParam String newPasswd2 ) {
-		
-		if(newPasswd1==null ||newPasswd1.trim().equals("") || newPasswd2 == null || newPasswd2.trim().equals("")) {
+
+	@RequestMapping(value = "member_change_passwd", method = RequestMethod.POST)
+	public ModelAndView changePasswd(HttpSession session, @RequestParam String newPasswd1,
+			@RequestParam String newPasswd2) {
+
+		if (newPasswd1 == null || newPasswd1.trim().equals("") || newPasswd2 == null || newPasswd2.trim().equals("")) {
 			mav.addObject("msg", "잘못된 접근입니다. ");
-			mav.addObject("url","member_edit");
+			mav.addObject("url", "member_edit");
 			mav.setViewName("user/member/message");
 		}
-		String clientEmail = (String)session.getAttribute("member_email");
+		String clientEmail = (String) session.getAttribute("member_email");
 		BBMemberDTO dto = memberMapper.getMember(clientEmail);
 		int res = 0;
-		if(newPasswd1.equals(newPasswd2)) {
+		if (newPasswd1.equals(newPasswd2)) {
 			dto.setMember_passwd(newPasswd1);
 			res = memberMapper.changePasswd(dto);
 		}
-		if(res > 0) {
-			mav.addObject("msg","비밀번호 변경 성공!");
+		if (res > 0) {
+			mav.addObject("msg", "비밀번호 변경 성공!");
 			mav.addObject("req", "close"); // 팝업창 닫기
 			mav.addObject("url", "member_edit");
 			mav.setViewName("user/member/edit");
-		}else {
-			mav.addObject("msg","비밀번호 변경 실패!");
-			mav.addObject("url","member_edit");
+		} else {
+			mav.addObject("msg", "비밀번호 변경 실패!");
+			mav.addObject("url", "member_edit");
 			mav.setViewName("user/member/message");
 		}
 		return mav;
