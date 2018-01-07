@@ -20,6 +20,28 @@
 	src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/js/responsive.min.js"></script>
 <script src="https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js"> </script >
 <script type="text/javascript">
+	$(function() {
+		$.datepicker.setDefaults($.datepicker.regional['ko']);
+		$('#birthDate').datepicker(
+				{
+					dateFormat : "yy-mm-dd",
+					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
+							"7월", "8월", "9월", "10월", "11월", "12월" ],
+					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+					dateFormat : "yy-mm-dd",
+					changeMonth : true,
+					minDate : 0,
+					maxDate : 360, // 오늘 이후 날짜 선택 불가
+					onClose : function(selectedDate) {
+						// 종료일(toDate) datepicker가 닫힐때
+						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+						$("#fromDate").datepicker("option", "maxDate",
+								selectedDate);
+					}
+				});
+	});
+</script>
+<script type="text/javascript">
 	var js_params = {
 		"pending_count" : 0,
 		"pending_date" : false,
@@ -123,7 +145,7 @@
 									<div class="title">생년월일</div>
 									<div class="value">
 										<input type="text" name="member_birth" value="${getMember.member_birth}"
-											id="date" />
+											id="birthDate" />
 									</div>
 								</div>
 								<div class="row">
