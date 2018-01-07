@@ -2242,8 +2242,8 @@ main .book .block.payment.hold .head {
 	width: 100%
 }
 
-main .book .block.payment .end {
-	padding-top: 20px
+main .book .block.payment .checkbox{
+	padding-top: 0px;
 }
 
 main .book .block.payment .logos {

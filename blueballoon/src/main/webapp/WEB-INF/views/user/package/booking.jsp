@@ -5,6 +5,8 @@
 <html class=" logged">
 <head>
 <title>BlueBalloon - booking: ${getPack.pack_title}</title>
+<link type="text/css" rel="stylesheet"
+	href="//cdn.tourradar.com/include/pw/book_now/async.v1514557673.css">
 <link
 	href="${pageContext.request.contextPath}/resources/user/package/css/booking1.css?ver=12"
 	rel="stylesheet" type="text/css" />
@@ -17,8 +19,6 @@
 	src="//cdn.tourradar.com/include/js/zepto.v1514557673.min.js"></script>
 <script async=""
 	src="//cdn.tourradar.com/include/js/zepto-fx.v1514557673.min.js"></script>
-<link type="text/css" rel="stylesheet"
-	href="//cdn.tourradar.com/include/pw/book_now/async.v1514557673.css">
 <script type="text/javascript">
 	function popitup() {
 		var popupX = (window.screen.width / 2) - (500 / 2);
@@ -149,6 +149,70 @@
 							</div>
 						</div>
 					</form>
+				</div>
+				<div class="block payment ">
+					<div class="head">
+						<div class="point">3</div>
+						<h3>결제 정보</h3>
+						<div class="logos"><img
+								id="PayPal"
+								src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/PayPal.png">
+						</div>
+					</div>
+					<div class="info">
+						<div class="col">
+							<div class="best-price text">
+								최고의 가격
+								<div class="stext">최저가 보장</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="earn text">
+								예약 수수료 <span class="travel-credits">0</span>원
+								<div class="stext">카드 수수료 없음</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="no-fees text">
+								편리한 결제
+								<div class="stext">빠른 결제</div>
+							</div>
+						</div>
+					</div>
+					<div class="payment-fields">
+						<form class="fields ">
+							<input type="hidden" name="paymentProvider" value="Braintree">
+							<div class="row" data-field="paymentMethod">
+								<div class="cell title">결제 방법</div>
+								<div class="cell">
+									<div class="add">
+										<select id="payment_method" name="payment_method">
+											<option value="PayPal">PayPal</option></select>
+										<div class="secure with-tip">
+											<div class="tip">
+												<div>
+													<strong>안전한 결제</strong>
+												</div>
+												페이팔 결제로 쉽고 빠르게
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="end">
+						<div class="checkbox">
+							<input type="checkbox" id="terms-agree" value="1"><label
+								for="terms-agree" class="terms-agree"> 저는
+								Blueballoon의 <a class="termsCoPopup"
+								data-id="terms_conditions">이용약관</a>에 동의합니다.
+							</label><span></span>
+						</div>
+						<div class="book-button">
+							<a href="booking()" class="but blue" data-type="Book">예약하기</a>
+						</div>
+					</div>
 				</div>
 				<c:if test="${member_num eq 0}">
 					<div class="block price-main ">
