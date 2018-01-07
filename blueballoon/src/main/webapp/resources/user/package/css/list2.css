@@ -2478,6 +2478,31 @@ aside .b ul li {
 	line-height: 18px
 }
 
+aside .b ul li.won,
+aside .b ul li.btn {
+	padding-left: 0px;
+}
+aside .b ul li.won span {
+	margin-right: 0px;
+	
+}
+aside .b ul li.won input {
+	width:86px;
+	font-size: 13px;
+    padding: 6px;
+}
+aside .b ul li.btn a {
+	background: #ddd;
+    border-radius: 3px;
+    text-align: center;
+    padding: 13px 0;
+    clear: both;
+    color: #333;
+    display: block;
+    width: 100%;
+    border-weight: bold;
+}
+
 aside .b ul li:last-child {
 	padding-bottom: 0
 }

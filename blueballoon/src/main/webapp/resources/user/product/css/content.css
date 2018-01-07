@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+/* 패키지 content */
+main .b.itn>ol>li.active div.i:first-child {
+	padding-top: 20px !important;
+}
+main .b.itn>ol>li.active .i {
+	padding-top: 0 !important;
+	
+}
+
 /*지도 css*/
 .map_wrap {position:relative;overflow:hidden;}
 .radius_border{border:1px solid #919191;border-radius:5px;}     

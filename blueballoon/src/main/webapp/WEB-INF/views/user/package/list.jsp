@@ -9,7 +9,7 @@
 	href="${pageContext.request.contextPath}/resources/user/package/css/list1.css?ver=123"
 	rel="stylesheet" type="text/css" />
 <link
-	href="${pageContext.request.contextPath}/resources/user/package/css/list2.css?ver=1"
+	href="${pageContext.request.contextPath}/resources/user/package/css/list2.css?ver=21"
 	rel="stylesheet" type="text/css" />
 <!-- 좋아요 버튼 아이콘  -->
 <link rel="stylesheet"
@@ -208,9 +208,15 @@
 					<h5 id="flip">가격</h5>
 					<div class="c" id="panel">
 						<ul style="padding-bottom: 15px;">
-							<li>₩<input type="text" placeholder="최소">₩<input
-								type="text" placeholder="최대"></li>
-							<li><input type="button" value="적용하기"></li>
+							<li class="won">
+								<span>₩</span>
+								<input type="text" placeholder="최소">
+								<span>₩</span>
+								<input type="text" placeholder="최대">
+							</li>
+							<li class="btn" style="margin-top:5px;">
+								<a class="r write">적용하기</a>
+							</li>
 						</ul>
 					</div>
 				</div>
