@@ -119,13 +119,28 @@
 	margin-top: 6px;
 }
 
-#commentForm tr.re {
+#comment {
+	background-color: #fafafa;
+	margin-bottom: 20px;
+}
+#comment .re {
 	border-bottom: 1px solid #ddd;
     padding: 20px 0;
+    width: 90%;
+    margin-left: 36px;
 }
-
-#commentForm tr.re td {
-    padding: 20px 0;
+#comment .re:last-child {
+	border-bottom: none;
+}
+#comment .re p {
+	text-align: left;
+}
+#comment .re p a {
+    font-size: 13px;
+    width: 56px;
+    float: right;
+    margin-top: -16px;
+    padding: 5px 0;
 }
 
 main .header {

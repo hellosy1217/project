@@ -153,7 +153,7 @@
                                  </td>
                            </tr>
                            <tr>
-                              <td style="float:right; margin:20px 0;">
+                              <td style="float:right; margin: 10px 0 20px;">
                               <a class="but" style="width: 100px; padding-top:7px; padding-bottom:9px;" onclick="comment1.submit()">댓글 등록</a>
                               </td>
                            </tr>
@@ -161,10 +161,10 @@
                      </form>
                   </div>
 
-                  <div>
-                  	<table border="0" width="100%" >
+                  <div id="comment">
+                  	
                      <c:forEach var="cdto" items="${map.getCommentList}">
-                        <tr class="re">
+                        <div class="re">
                         	<!--  이메일 대신 이름보여주기
                         	<c:forEach var="cmember" items="${map.commentMember}">
                         		<c:if test="${cdto.member_email eq cmember.member_email}">
@@ -172,20 +172,18 @@
                         		</c:if>
                         	</c:forEach>
                       -->
-                        	<td style="font-weight: bold; font-size: 16px;">${cdto.member_email}</td>
-                           <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_content}</td>
-                           <td style="font-size: 15px; padding-left: 20px;">${cdto.comment_reg_date}</td>
-                        
-                           <c:if test="${map.memberEmail == cdto.member_email}">
-                           <td style="float:right;">
-                              <a class="but" id="deleteComment" href="comment_delete?comment_num=${cdto.comment_num}" 
-                              style="width: 65px; margin-right: 4px">삭제</a>
-                           </td>
-                           </c:if>
+                        	<p style="font-weight: bold; font-size: 15px;">${cdto.member_email}</p>
+                           <p style="font-size: 14px;">${cdto.comment_content}</p>
+                           <p style="font-size: 14px; color: #928e8e; margin-bottom:0;">
+                           	${cdto.comment_reg_date}                           
+                          		<c:if test="${map.memberEmail == cdto.member_email}">
+                              		<a class="but" id="deleteComment" href="comment_delete?comment_num=${cdto.comment_num}">삭제</a>
+                           		</c:if>                           
+                           </p>   
                            
-                        </tr>
+                        </div>
                      </c:forEach>
-                     </table>
+                    
                   </div>
                </div>
             </div>
