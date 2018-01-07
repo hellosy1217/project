@@ -446,8 +446,19 @@ function bbPerson(pack_start_date, selected_date, person, perNum) {
 				+ '\')" style="margin-top: 2px;"></span>';
 	}
 	bbPerson.innerHTML = persons;
-}
 
+	var sumPrice = (document.getElementById('pack_price').value * perNum);
+	document.getElementById('sum_price').innerHTML = numberWithCommas(sumPrice)
+			+ ' 원';
+	var bbSaving = sumPrice * 0.05;
+	document.getElementById('bb_saving').innerHTML = numberWithCommas(bbSaving)
+			+ ' 원';
+	document.getElementById('total_price').innerHTML = numberWithCommas(sumPrice
+			- bbSaving)
+			+ ' 원';
+	document.getElementById('green').innerHTML = '-'
+			+ numberWithCommas(bbSaving) + '원';
+}
 function selectedCheck(pack_start_date, year, month, date) {
 	var pack_start_split = '';
 	if (typeof (pack_start_date) !== 'undefined') {
@@ -472,4 +483,70 @@ function selectedCheck(pack_start_date, year, month, date) {
 		return false;
 	}
 
+}
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function birth(member_birth) {
+	var year = 0;
+	var month = 0;
+	var day = 0;
+	if (member_birth != '' && (typeof (member_birth) !== 'undefined')) {
+		birth = member_birth.split('-');
+		year = birth[0];
+		month = birth[1];
+		day = birth[2];
+	}
+	var selectBox = '<select name="field7-year" class="third" id="member_year" onchange="changeBirth()">';
+	if (year == 0) {
+		selectBox += '<option selected="" disabled="" value="">Year</option>';
+	}
+	for (var i = 1918; i < 2015; i++) {
+		selectBox += '<option value="' + i + '"';
+		if (i == year) {
+			selectBox += 'selected="selected"'
+		}
+		selectBox += '>' + i + '년</option>';
+	}
+	selectBox += '</select><select name="field7-month" class="third" onchange="changeBirth()" id="member_month">';
+	if (month == 0) {
+		selectBox += '<option selected="" disabled="" value="">Month</option>';
+	}
+	for (var i = 1; i < 13; i++) {
+		selectBox += '<option value="' + i + '"';
+		if (i == month) {
+			selectBox += 'selected="selected"'
+		}
+		selectBox += '>' + i + '월</option>';
+	}
+	selectBox += '</select><select name="field7-day" class="third" id="member_day" onchange="changeBirth()">';
+	if (day == 0) {
+		selectBox += '<option selected="" disabled="" value="">Day</option>';
+	}
+	for (var i = 1; i < 32; i++) {
+		selectBox += '<option value="' + i + '"';
+		if (i == day) {
+			selectBox += 'selected="selected"'
+		}
+		selectBox += '>' + i + '일</option>';
+	}
+	selectBox += '</select>';
+
+	document.getElementById('birth_selectbox').innerHTML = selectBox;
+}
+function changeBirth() {
+	var year = document.getElementById('member_year').options[document
+			.getElementById('member_year').selectedIndex].value;
+	var month = document.getElementById('member_month').options[document
+			.getElementById('member_month').selectedIndex].value;
+	var day = document.getElementById('member_day').options[document
+			.getElementById('member_day').selectedIndex].value;
+	if (month < 10) {
+		month = '0' + month;
+	}
+	if (day < 10) {
+		day = '0' + day;
+	}
+	document.getElementById('member_birth').value = year + '-' + month + '-'
+			+ day;
 }

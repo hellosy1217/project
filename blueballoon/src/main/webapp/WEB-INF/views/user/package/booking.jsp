@@ -58,6 +58,7 @@
 				<div class="block departure" id="bb_calendar">
 					<script type="text/javascript">
 					window.onload = function () {
+						birth('${getMember.member_birth}');
 						bbCalendar('${beginDate}','${endDate}','${beginDate}','${beginDate}','${selectedDate}','${getPack.pack_days}','${date}','${person}');
 					};</script>
 					<div id="seats">
@@ -104,7 +105,8 @@
 											</label>
 											<div class="cell validity-con" data-type="string">
 												<input type="text" autocomplete="section-1 given-name"
-													name="member_name" placeholder="Enter FullName" value="${getMember.member_name }" id="t2-1">
+													name="member_name" placeholder="Enter FullName"
+													value="${getMember.member_name }" id="t2-1">
 											</div>
 										</div>
 										<div class="row" data-seo="email" data-id="5"
@@ -115,8 +117,8 @@
 												Email </label>
 											<div class="cell validity-con" data-type="email">
 												<input type="email" autocomplete="section-1 email"
-													name="member_email" placeholder="Enter email address" value="${getMember.member_email }"
-													id="t5-1">
+													name="member_email" placeholder="Enter email address"
+													value="${getMember.member_email }" id="t5-1">
 											</div>
 										</div>
 										<div class="row" data-seo="phone-number" data-id="6"
@@ -127,7 +129,8 @@
 												휴대전화 </label>
 											<div class="cell validity-con" data-type="phone">
 												<input class="tel" type="tel" name="member_phone"
-													placeholder="e.g. 010-1234-5678" value="${getMember.member_phone }" id="t6-1"
+													placeholder="e.g. 010-1234-5678"
+													value="${getMember.member_phone }" id="t6-1"
 													autocomplete="section-1 tel">
 											</div>
 										</div>
@@ -136,26 +139,10 @@
 											data-error-wrong="Please enter date of birth"
 											data-required="1">
 											<label class="cell title unselectable" for="t7-1">
-												생년월일 </label>
+												생년월일 </label><input type="hidden" id="member_birth"
+												name="member_birth" value="${getMember.member_birth}">
 											<div class="cell validity-con input-grp" data-type="date"
-												data-direction="past">
-												<select name="field7-year" class="third"><option
-														selected="" disabled="" value="">Year</option>
-													<c:forEach var="y" begin="1918" end="2018" step="1">
-														<option value="${y }">${y }년</option>
-													</c:forEach>
-												</select><select name="field7-month" class="third"><option
-														selected="" disabled="" value="">Month</option>
-													<c:forEach var="m" begin="1" end="12" step="1">
-														<option value="${m }">${m }월</option>
-													</c:forEach>
-												</select><select name="field7-day" class="third" id="t7-1"><option
-														selected="" disabled="" value="">Day</option>
-													<c:forEach var="d" begin="1" end="31" step="1">
-														<option value="${d }">${d }일</option>
-													</c:forEach>
-												</select>
-											</div>
+												data-direction="past" id="birth_selectbox"></div>
 										</div>
 									</div>
 								</section>
@@ -169,8 +156,8 @@
 							<h3>BlueBalloon Savings</h3>
 						</div>
 						<ul class="prices promo des" data-value="memberSaving">
-							<li class="discount exp">지금 회원가입하시면 <b class="green">-가격</b>
-								만큼 회원 할인을 받으실 수 있습니다.
+							<li class="discount exp">지금 회원가입하시면 <b class="green"
+								id="green">-가격</b> 만큼 회원 할인을 받으실 수 있습니다.
 							</li>
 							<li class="link"><a href="member_join">가입하기</a></li>
 						</ul>
@@ -207,6 +194,8 @@
 							<ul class="prices">
 								<li>패키지 가격
 									<div class="pr">
+										<input id="pack_price" type="hidden"
+											value="${getPack.pack_price}">
 										<fmt:formatNumber value="${getPack.pack_price}"
 											pattern="#,###.##" />
 										원
@@ -221,11 +210,7 @@
 						<ul class="prices promo">
 							<li class="discount exp"><b class="blue txt">BlueBalloon
 									Savings</b><b class="green"><span> 회원 할인가 </span>
-									<div class="pr">
-										<fmt:formatNumber value="${getPack.pack_price*0.05}"
-											pattern="#,###.##" />
-										원
-									</div></b></li>
+									<div class="pr" id="bb_saving"></div></b></li>
 						</ul>
 					</div>
 				</div>
@@ -251,7 +236,7 @@
 						이용약관 동의 후 이용 신청에 대하여 사이트가 승낙함으로써 성립합니다. <br> 제 4 조 (이용신청)<br>
 						신청자가 본 서비스를 이용하기 위해서는 사이트 소정의 가입신청 양식에서 요구하는 이용자 정보를 기록하여 제출해야
 						합니다.<br> 가입신청 양식에 기재하는 모든 이용자 정보는 모두 실제 데이터인 것으로 간주됩니다. 실명이나
-						실제 정보를 입력하지 않은 사용자는 법적인 보호를 받을 수 없으며, 서비스의 제한을 받을 수 있습니다.  <a>더보기</a>
+						실제 정보를 입력하지 않은 사용자는 법적인 보호를 받을 수 없으며, 서비스의 제한을 받을 수 있습니다. <a>더보기</a>
 					</div>
 					<div class="text">한국소비자원</div>
 					<div class="text grey">충청북도 음성군 맹동면 용두로 54 충북혁신도시 한국소비자원</div>
