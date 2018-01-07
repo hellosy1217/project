@@ -92,7 +92,6 @@ public class MemberController {
 	@RequestMapping(value = "member_find", method = RequestMethod.POST)
 	public ModelAndView findPro(HttpServletRequest arg0, @RequestParam String member_email) {
 		// 이메일 쏴주는 폼과 uuid 발송, 또한 그 해당 계정이 있는지 여부, 해당 계정 비번도 UUID로 바꿔줘야함.
-		System.out.println("오니??");
 		System.out.println(member_email);
 		BBMemberDTO checkUser = null;
 		if (member_email == null || member_email.trim().equals("")) {
