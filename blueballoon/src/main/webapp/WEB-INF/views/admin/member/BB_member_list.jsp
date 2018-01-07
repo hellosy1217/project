@@ -4,10 +4,11 @@
 <%@ include file="../top.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/css/responsive.min.css" rel="stylesheet" />
+<div class="wl">
 	<div align="center" class="c">
-		<hr color="green" width="300">
+		<div class="c">
 		<h2>회 원 목 록 보 기</h2>
-		<hr color="green" width="300">
+		</div>
 		<table width="1000" border="1">
 			<tr>
 				<th>번호</th>
@@ -51,5 +52,6 @@
 			</c:forEach>
 		</table>
 	</div>
+</div>
 <%@ include file="../bottom.jsp"%> 
 

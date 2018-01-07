@@ -141,7 +141,7 @@
 		<div class="c">
 			<h2>광주불주먹 외 4명</h2>
 			<div class="t">
-			<c:forTokens items="${team }" delims="," var="tm" varStatus="stt">
+			<c:forTokens items="${team}" delims="," var="tm" varStatus="stt">
 				<div class="wp">
 					<img class="lazy"
 						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${stt.count }.png" />
