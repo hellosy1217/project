@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.model.BBProductDTO;
 
 
@@ -58,5 +59,9 @@ public class MemberMapper {
 
 	public BBProductDTO getProduct(int prod_num) {
 		return sqlSession.selectOne("getBBProduct", prod_num);
+	}
+
+	public BBPackageDTO getPackage(int pack_num) {
+		return sqlSession.selectOne("getBBPackage",pack_num);
 	}
 }

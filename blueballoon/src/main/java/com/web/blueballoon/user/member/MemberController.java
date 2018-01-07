@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
@@ -234,9 +235,14 @@ public class MemberController {
 		List<BBLikeDTO> likeList = memberMapper.listLikeProducts(member_num);
 		// 상품 이미지 관련 해서 list에 추가
 		for (BBLikeDTO tmp : likeList) {
-			BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
-			tmp.setProd_str_img(dto.getProd_str_img());
-			System.out.println("like List prod img : " + tmp.getProd_str_img());
+			if(tmp.getProd_num() != 0) {
+				BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
+				tmp.setProd_str_img(dto.getProd_str_img());
+				System.out.println("like List prod img : " + tmp.getProd_str_img());
+			}else if(tmp.getPack_num() != 0) {
+				BBPackageDTO packDTO = memberMapper.getPackage(tmp.getPack_num());
+				tmp.setPack_str_img(packDTO.getPack_str_img());
+			}
 		}
 
 		mav.addObject("likeList", likeList);
@@ -320,8 +326,8 @@ public class MemberController {
 		if (res > 0) {
 			mav.addObject("msg", "비밀번호 변경 성공!");
 			mav.addObject("req", "close"); // 팝업창 닫기
-			mav.addObject("url", "member_edit");
-			mav.setViewName("user/member/edit");
+			mav.addObject("url", "member_profile");
+			mav.setViewName("user/member/profile");
 		} else {
 			mav.addObject("msg", "비밀번호 변경 실패!");
 			mav.addObject("url", "member_edit");

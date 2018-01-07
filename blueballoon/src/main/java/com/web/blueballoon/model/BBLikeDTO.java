@@ -5,6 +5,7 @@ public class BBLikeDTO {
 	private int pack_num;
 	private int member_num;
 	private String prod_str_img;
+	private String pack_str_img;
 
 	public int getProd_num() {
 		return prod_num;
@@ -38,4 +39,11 @@ public class BBLikeDTO {
 		this.prod_str_img = prod_str_img;
 	}
 
+	public String getPack_str_img() {
+		return pack_str_img;
+	}
+
+	public void setPack_str_img(String pack_str_img) {
+		this.pack_str_img = pack_str_img;
+	}
 }

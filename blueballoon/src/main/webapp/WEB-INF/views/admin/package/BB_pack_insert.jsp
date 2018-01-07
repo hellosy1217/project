@@ -48,19 +48,7 @@
 </script>
 <script type="text/javascript">
 	function insert() {
-		num = document.f.pack_days.value;
-		var htm = '';
-		for (var i = 1; i <= num; i++) {
-			var c = 'content' + i;
-			if (document.getElementById(c).value != '') {
-				htm += document.getElementById(c).value;
-				htm += '℃';
-			}
-		}
-		document.f.pack_content.value = htm;
-		check();
-	}
-	function check() {
+		
 		if (f.pack_title.value == "") {
 			swal('Oops...', '패키지 이름을 입력해주세요!', 'error')
 			f.pack_title.focus()
@@ -76,7 +64,18 @@
 			f.pack_price.focus()
 			return false
 		}
-
+		
+		var num = document.f.pack_days.value;
+		var htm = '';
+		for (var i = 1; i <= num; i++) {
+			var c = 'content' + i;
+			if (document.getElementById(c).value != '') {
+				htm += document.getElementById(c).value;
+				htm += '℃';
+			}
+		}
+		document.f.pack_content.value = htm;
+		
 		document.f.submit();
 	}
 </script>
