@@ -19,6 +19,18 @@
 	src="//cdn.tourradar.com/include/js/zepto-fx.v1514557673.min.js"></script>
 <link type="text/css" rel="stylesheet"
 	href="//cdn.tourradar.com/include/pw/book_now/async.v1514557673.css">
+<script type="text/javascript">
+	function popitup() {
+		var popupX = (window.screen.width / 2) - (500 / 2);
+		var popupY= (window.screen.height /2) - (420 / 2);
+
+		new_window = window.open('member_contact_us', 'contact_us', 'resizable=no,status=no, height=420, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		if (window.focus) {
+			new_window.focus()
+		}
+		return false;
+	}
+</script>
 </head>
 <body class="tb" data-r="1" data-b-sale="">
 	<header>
@@ -30,8 +42,8 @@
 				booking tours made <b>easy</b>
 			</div>
 			<div class="right">
-				<a href="#" onclick="return false" class="tel">+82 전화번호</a><a
-					href="#" onclick="return false" class="help">고객센터</a>
+				<a href="#" class="tel">+82 02 311 3006</a><a href="#" class="help"
+					onclick="popitup()">문의하기</a>
 			</div>
 		</div>
 	</header>
@@ -72,9 +84,7 @@
 					</div>
 					<div class="info unselectable " unselectable="on">
 						<b class="in">인원</b>
-						<div class="in quantity" id="book_person_num">
-							
-						</div>
+						<div class="in quantity" id="book_person_num"></div>
 						<div class="in solo"></div>
 					</div>
 					<form>
@@ -94,7 +104,7 @@
 											</label>
 											<div class="cell validity-con" data-type="string">
 												<input type="text" autocomplete="section-1 given-name"
-													name="name" placeholder="Enter FullName" value="" id="t2-1">
+													name="member_name" placeholder="Enter FullName" value="${getMember.member_name }" id="t2-1">
 											</div>
 										</div>
 										<div class="row" data-seo="email" data-id="5"
@@ -105,7 +115,7 @@
 												Email </label>
 											<div class="cell validity-con" data-type="email">
 												<input type="email" autocomplete="section-1 email"
-													name="field5[]" placeholder="Enter email address" value=""
+													name="member_email" placeholder="Enter email address" value="${getMember.member_email }"
 													id="t5-1">
 											</div>
 										</div>
@@ -116,8 +126,8 @@
 											<label class="cell title unselectable" for="t6-1">
 												휴대전화 </label>
 											<div class="cell validity-con" data-type="phone">
-												<input class="tel" type="tel" name="field6-tel"
-													placeholder="e.g. 010-1234-5678" value="" id="t6-1"
+												<input class="tel" type="tel" name="member_phone"
+													placeholder="e.g. 010-1234-5678" value="${getMember.member_phone }" id="t6-1"
 													autocomplete="section-1 tel">
 											</div>
 										</div>
@@ -171,16 +181,17 @@
 						<h3>도움이 필요하세요?</h3>
 					</div>
 					<div class="title tit">BlueBalloon 고객 센터</div>
-					<div class="text">고객상담에 대한 설명 들어갈 곳, 아래는 이미지 들어갈 부분</div>
+					<div class="text">저희가 도와드리겠습니다.</div>
 					<div class="t">
-						<c:forEach var="a" begin="1" end="5" step="1">
+						<c:forTokens items="김수민,김유정,성지연,주소연,지수정" delims=","
+							varStatus="stt">
 							<div class="wp">
 								<img
-									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/e.png"><span>이름</span>
+									src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${stt.count}.png"><span>이름</span>
 							</div>
-						</c:forEach>
+						</c:forTokens>
 					</div>
-					<div class="title">Call us +82 전화번호</div>
+					<div class="title">Call us +82 02 311 3006</div>
 				</div>
 			</div>
 			<div class="right">
@@ -231,9 +242,16 @@
 				<div class="block terms">
 					<h4>이용 약관</h4>
 					<div class="text">
-						이용 약관 내용 들어갈 곳 <a href="" target="_blank">???</a> ㅇㅇㅇㅇㅇㅇ <a
-							href="#" class="termsCoPopup" data-id="terms_agent">???</a>.
-						ㅇㅇㅇㅇㅇ
+						제 1 조 (목적)<br>이 약관은 Blueballoon(이하 "사이트"라 합니다)에서 제공하는
+						인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.<br>제
+						2 조 (약관의 효력 및 변경)<br>이 약관은 서비스 화면이나 기타의 방법으로 이용고객에게 공지함으로써
+						효력을 발생합니다.<br>사이트는 이 약관의 내용을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로
+						공지 또는 통지함으로써 효력을 발생합니다.<br>제 3 조 (이용계약의 성립)<br> ① 이용약관
+						하단의 동의 버튼을 누르면 이 약관에 동의하는 것으로 간주됩니다.<br> ② 이용계약은 서비스 이용희망자의
+						이용약관 동의 후 이용 신청에 대하여 사이트가 승낙함으로써 성립합니다. <br> 제 4 조 (이용신청)<br>
+						신청자가 본 서비스를 이용하기 위해서는 사이트 소정의 가입신청 양식에서 요구하는 이용자 정보를 기록하여 제출해야
+						합니다.<br> 가입신청 양식에 기재하는 모든 이용자 정보는 모두 실제 데이터인 것으로 간주됩니다. 실명이나
+						실제 정보를 입력하지 않은 사용자는 법적인 보호를 받을 수 없으며, 서비스의 제한을 받을 수 있습니다.  <a>더보기</a>
 					</div>
 					<div class="text">한국소비자원</div>
 					<div class="text grey">충청북도 음성군 맹동면 용두로 54 충북혁신도시 한국소비자원</div>

@@ -23,14 +23,19 @@ import com.web.blueballoon.HomeController;
 import com.web.blueballoon.model.BBBookDateDTO;
 import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBLikeDTO;
+import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.model.BBPackageBookDTO;
 import com.web.blueballoon.model.BBPackageDTO;
+import com.web.blueballoon.user.service.MemberMapper;
 import com.web.blueballoon.user.service.PackageMapper;
 import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
 public class PackageController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	@Autowired
+	private MemberMapper MemberMapper;
 
 	@Autowired
 	private PackageMapper PackageMapper;
@@ -182,6 +187,9 @@ public class PackageController {
 		try {
 			member_num = (Integer) arg0.getSession().getAttribute("member_num");
 			member_email = (String) arg0.getSession().getAttribute("member_email");
+
+			BBMemberDTO getMember = MemberMapper.getMember(member_email);
+			mav.addObject("getMember", getMember);
 		} catch (NullPointerException e) {
 			member_num = 0;
 			member_email = null;
@@ -238,7 +246,7 @@ public class PackageController {
 			StringTokenizer str2 = new StringTokenizer(getPack.getPack_period(), ",");
 			mav.addObject("beginDate", str2.nextToken());
 			mav.addObject("endDate", str2.nextToken());
-			mav.addObject("selectedDate",book_date.get(0).getBook_date());
+			mav.addObject("selectedDate", book_date.get(0).getBook_date());
 			mav.addObject("date", date);
 			mav.addObject("person", person);
 
