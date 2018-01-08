@@ -96,6 +96,22 @@
 
 		location.href=lh;
 	}
+	function onlyNumber(event){
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+			return;
+		else
+			return false;
+	}
+	function removeChar(event) {
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+			return;
+		else
+			event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
 </script>
 </head>
 <body class="tb resp" data-b-sale="0">
@@ -206,19 +222,20 @@
 				</div>
 				<div class="b b_dep">
 					<h5 id="flip">가격</h5>
-					<div class="c" id="panel">
-						<ul style="padding-bottom: 15px;">
-							<li class="won">
-								<span>₩</span>
-								<input type="text" placeholder="최소">
-								<span>₩</span>
-								<input type="text" placeholder="최대">
-							</li>
-							<li class="btn" style="margin-top:5px;">
-								<a class="but blue">적용하기</a>
-							</li>
-						</ul>
-					</div>
+					<form>
+						<div class="c" id="panel">
+							<ul style="padding-bottom: 15px;">
+								<li class="won"><span>₩</span> <input type="text"
+									placeholder="최소" onkeydown='return onlyNumber(event)'
+									onkeyup='removeChar(event)' maxlength="8"> <span>₩</span> <input
+									type="text" placeholder="최대"
+									onkeydown='return onlyNumber(event)'
+									onkeyup='removeChar(event)' maxlength="8"></li>
+								<li class="btn" style="margin-top: 5px;"><a
+									class="but blue">적용하기</a></li>
+							</ul>
+						</div>
+					</form>
 				</div>
 				<div class="b b_dep">
 					<h5 id="flipp">여행 후기</h5>
@@ -288,8 +305,7 @@
 	</main>
 	<footer>
 		<div class="c">
-			<div class="cop">
-				Copyright © BlueBalloon. All rights reserved.
+			<div class="cop">Copyright © BlueBalloon. All rights reserved.
 			</div>
 		</div>
 	</footer>
