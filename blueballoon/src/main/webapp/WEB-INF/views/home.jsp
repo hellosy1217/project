@@ -21,6 +21,18 @@
 		bbSearch('searchForm');
 	};
 </script> -->
+<script type="text/javascript">
+	function popitup() {
+		var popupX = (window.screen.width / 2) - (500 / 2);
+		var popupY= (window.screen.height /2) - (420 / 2);
+
+		new_window = window.open('member_contact_us', 'contact_us', 'resizable=no,status=no, height=420, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		if (window.focus) {
+			new_window.focus()
+		}
+		return false;
+	}
+</script>
 </head>
 <body class="tb" data-b-sale="">
 	<c:choose>
@@ -156,7 +168,7 @@
 				</c:forTokens>
 			</div>
 			<div class="t">
-				우리 팀은 사용자를 위해 모든 여행 정보를 제공하는 팀입니다.<a href="contact.html">Contact
+				우리 팀은 사용자를 위해 모든 여행 정보를 제공하는 팀입니다.<a href="popitup()">Contact
 					us</a>
 			</div>
 		</div>
