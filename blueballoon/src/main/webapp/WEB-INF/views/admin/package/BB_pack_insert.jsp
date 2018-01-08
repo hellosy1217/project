@@ -94,7 +94,11 @@
 	<form name="f" action="BB_pack_insert" method="post"
 		enctype="multipart/form-data">
 		<table>
-			<caption>패키지 상품 등록</caption>
+			<caption style="
+font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0;
+">패키지 상품 등록</caption>
 			<tr>
 				<th>패키지 이름</th>
 				<td><input type="text" name="pack_title"

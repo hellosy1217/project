@@ -13,6 +13,7 @@
 #pack_insert table th {
 	width: 130px;
 	text-align: left;
+	font-weight: 500;
 }
 #pack_insert table td {
 	width: 275px;
