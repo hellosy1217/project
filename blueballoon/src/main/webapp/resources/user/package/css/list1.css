@@ -1441,8 +1441,8 @@ main .header nav ul span {
 }
 
 main .header h1 {
-	font-family: Georgia, Nimbus Roman No9 L, serif;
-	font-weight: 700;
+	font-family: Helvetica, Arial, FreeSans, sans-serif;
+    font-weight: 500;
 	font-size: 36px;
 	color: #fff;
 	text-align: center;
