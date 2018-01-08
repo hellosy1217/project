@@ -58,11 +58,33 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-	$(document).ready(function() {
-		$("#flip").click(function() {
-			$("#panel").slideToggle("slow");
-		});
+$(document).ready(function(){
+	  // code
 	});
+//메뉴 클릭시
+$(document).ready(function() {
+	$("#flip1").click(function() {
+		$("#panel1").slideToggle("slow");
+	});
+	$("#flip2").click(function() {
+		$("#panel2").slideToggle("slow");
+	});
+	$("#flip3").click(function() {
+		$("#panel3").slideToggle("slow");
+	});
+	$("#flip4").click(function() {
+		$("#panel4").slideToggle("slow");
+	});
+	$("#flip5").click(function() {
+		$("#panel5").slideToggle("slow");
+	});
+	$("#flip6").click(function() {
+		$("#panel6").slideToggle("slow");
+	});
+	$("#flip7").click(function() {
+		$("#panel7").slideToggle("slow");
+	});
+});
 </script>
 </head>
 <body class="tb" data-b-sale="">
@@ -156,7 +178,7 @@
 					<dt class="label">상품 분류</dt>
 					<dd class="value transport">패키지</dd>
 				</dl>
-				
+
 				<div class="likeC" style="margin-left: 450px; margin-top: -10px;">
 					<a href="package_like?pack_num=${getPack.pack_num}">
 						<div id="like">
@@ -173,34 +195,28 @@
 						좋아요 <span>${likeCount}</span>
 					</div>
 				</div>
-				<div style="float:right;">
-					<a class="but r write" href="package_booking?pack_num=${getPack.pack_num }"
+				<div style="float: right;">
+					<a class="but r write"
+						href="package_booking?pack_num=${getPack.pack_num }"
 						target="_blank" rel="nofollow"
 						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
 				</div>
 			</div>
 			<div class="b pad itn" data-tagible-script="">
 				<h2>여행 일정</h2>
-				<ol>
-					<li class="">소개
-						<div class="i">
-							<p>여행 일정에 대한 소개</p>
-						</div>
-					</li>
-				</ol>
 				<ol class="det">
-					
 					<c:forTokens items="${getPack.pack_content }" delims="℃" var="pcc"
 						varStatus="vss">
-						<li class="active">
-							${vss.count}일차		
-							<c:forTokens items="${pcc }" var="pcontent" delims=",/">
-								<div class="i">${pcontent }</div><br>
-							</c:forTokens>	
-						</li>	
+						<li class="active" id="flip${vss.count }">${vss.count}일차
+							<div class="i" id="panel${vss.count }" style="display: none;">
+								<c:forTokens items="${pcc }" var="pcontent" delims=",/">
+								${pcontent }<br>
+								</c:forTokens>
+							</div>
+						</li>
 					</c:forTokens>
-					
-					
+
+
 				</ol>
 			</div>
 			<div class="b pad rev" data-total="51" data-onpage="10">
@@ -327,24 +343,25 @@
 		var geocoder = new daum.maps.services.Geocoder();
 
 		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('${getPack.pack_place}', function(result,
-				status) {
+		geocoder.addressSearch('${getPack.pack_place}',
+				function(result, status) {
 
-			// 정상적으로 검색이 완료됐으면 
-			if (status === daum.maps.services.Status.OK) {
+					// 정상적으로 검색이 완료됐으면 
+					if (status === daum.maps.services.Status.OK) {
 
-				var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+						var coords = new daum.maps.LatLng(result[0].y,
+								result[0].x);
 
-				// 결과값으로 받은 위치를 마커로 표시합니다
-				var marker = new daum.maps.Marker({
-					map : map,
-					position : coords
+						// 결과값으로 받은 위치를 마커로 표시합니다
+						var marker = new daum.maps.Marker({
+							map : map,
+							position : coords
+						});
+
+						// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						map.setCenter(coords);
+					}
 				});
-
-				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				map.setCenter(coords);
-			}
-		});
 
 		// 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
 		function setMapType(maptype) {
