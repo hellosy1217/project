@@ -6,7 +6,7 @@
 <head>
 <title>여행상품 상세페이지</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=123"
+	href="${pageContext.request.contextPath}/resources/user/product/css/content.css?ver=1234"
 	rel="stylesheet" />
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -220,13 +220,6 @@ $(document).ready(function() {
 				</ol>
 			</div>
 			<div class="b pad rev" data-total="51" data-onpage="10">
-				<div class="atm-m-stars">
-					<div class="star full"></div>
-					<div class="star full"></div>
-					<div class="star full"></div>
-					<div class="star full"></div>
-					<div class="star half"></div>
-				</div>
 				<h2>리뷰</h2>
 				<a class="but r write"
 					href="packBoard_write?pack_num=${getPack.pack_num}" target="_blank"

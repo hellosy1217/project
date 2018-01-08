@@ -2846,15 +2846,15 @@ ol {
 }
 
 h2 {
-	font-family: Georgia, Nimbus Roman No9 L, serif;
-	font-weight: 700;
-	font-size: 24px;
-	line-height: 36px;
-	margin: 5px 0 24px
+	font-family: Helvetica, Arial, FreeSans, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    margin: 5px 0 24px;
 }
 
 h2.sm {
-	    font-size: 20px;
+	font-size: 20px;
     line-height: 21px;
     margin-top: 0;
     margin-bottom: 0;

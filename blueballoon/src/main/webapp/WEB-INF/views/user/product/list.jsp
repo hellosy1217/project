@@ -5,7 +5,7 @@
 <head>
 <title>여행상품 리스트</title>
 <link
-	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=123"
+	href="${pageContext.request.contextPath}/resources/user/product/css/list1.css?ver=23"
 	rel="stylesheet" type="text/css" />
 <link
 	href="${pageContext.request.contextPath}/resources/user/product/css/list2.css?ver=1"
