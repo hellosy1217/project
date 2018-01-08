@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
+<head>
+<link
+	href="${pageContext.request.contextPath}/resources/admin/css/admin.css?ver=123"
+	rel="stylesheet" />
+
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -16,7 +21,7 @@
 		var strInput = "";
 		inputBox.innerHTML = "";
 		for (var i = 1; i <= inputNo; i++) {
-			strInput += "<textarea id='content'+i rows='6' cols='100'></textarea>&nbsp;&nbsp;";
+			strInput += "<div><textarea id='acontent'+i rows='6' cols='100'></textarea></div>";
 		}
 		inputBox.innerHTML = strInput;
 	}
@@ -79,7 +84,13 @@
 		document.f.submit();
 	}
 </script>
-<div align="center">
+</head>
+
+<body>
+
+<%@ include file="../top.jsp"%>
+
+<div id="pack_insert">
 	<form name="f" action="BB_pack_insert" method="post"
 		enctype="multipart/form-data">
 		<table>
@@ -87,7 +98,7 @@
 			<tr>
 				<th>패키지 이름</th>
 				<td><input type="text" name="pack_title"
-					placeholder="ex.맛깔나는 서울맛집투어 "></td>
+					placeholder="ex.맛깔나는 서울맛집투어 " class="inp"></td>
 				<th>패키지 지역</th>
 				<td><select id="category" name="pack_place">
 						<option value="서울특별시">서울특별시</option>
@@ -101,22 +112,22 @@
 			</tr>
 			<tr>
 				<th>담당 이메일</th>
-				<td><input type="email" name="pack_email"></td>
+				<td><input type="email" name="pack_email" class="inp"></td>
 				<th>담당 전화</th>
 				<td><input type="text" name="pack_phone"
-					placeholder="담당자 번호 입력해주세요."></td>
+					placeholder="담당자 번호 입력해주세요." class="inp"></td>
 			</tr>
 			<tr>
 				<th>패키지 이미지</th>
 				<td><input type="file" name="pack_org_img"></td>
 				<th>패키지 가격</th>
-				<td><input type="text" name="pack_price"></td>
+				<td><input type="text" name="pack_price" class="inp"></td>
 			</tr>
 			<tr>
 				<th>패키지 시작 날짜</th>
-				<td><input type="text" name="pack_period" id="fromDate"></td>
+				<td><input type="text" name="pack_period" id="fromDate" class="inp"></td>
 				<th>패키지 끝 날짜</th>
-				<td><input type="text" name="pack_period" id="toDate"></td>
+				<td><input type="text" name="pack_period" id="toDate" class="inp"></td>
 			</tr>
 			<tr>
 				<th>패키지 출발 횟수</th>
@@ -126,8 +137,9 @@
 						</c:forEach>
 				</select></td>
 				<th>패키지 출발일</th>
-				<td id="inputStart"><input type="text" name="pack_period"
-					class="datepicker"><br></td>
+				<td id="inputStart">
+				<input type="text" name="pack_period"
+					class="datepicker inp"><br></td>
 			</tr>
 			<tr>
 				<th>패키지 일수</th>
@@ -145,13 +157,18 @@
 				</select></td>
 			</tr>
 			<tr>
-				<th colspan="2">일차 대로 패키지 설명을 작성해 주세요.</th>
+				<th colspan="3" class="text">일차 대로 패키지 설명을 작성해 주세요.</th>
 			</tr>
 			<tr>
 				<th width=15%>패키지 설명</th>
-				<td height="30" id="inputBox"><textarea rows="6" cols="100"
-						id="content1"></textarea> <input type="hidden" name="pack_content"
-					id="pack_con"></td>
+				<td id="inputBox" colspan="4">
+					<div>
+					<textarea rows="6" cols="100"
+						id="acontent1" style="width:500px;"></textarea> 
+					<input type="hidden" name="pack_content" id="pack_con" 
+						style="width:250px !important;">
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="button" value="등록"
@@ -162,3 +179,7 @@
 	</form>
 </div>
 <%@ include file="../bottom.jsp"%>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#pack_insert {
+	width: 810px;
+    margin: 0 auto;
+}
+
+#pack_insert table th,
+#pack_insert table td {
+	padding: 7px 0;
+}
+
+#pack_insert table th {
+	width: 130px;
+	text-align: left;
+}
+#pack_insert table td {
+	width: 275px;
+}
+
+#pack_insert table td input.inp,
+#pack_insert table td select {
+	width: 230px;
+	border-radius: 1px;
+}
+
+#pack_insert table tr input.inp {
+	margin-bottom: 0;
+	padding: 15px 10px;
+}
+
+#pack_insert .text {
+	padding-bottom: 2px;
+	padding-left: 131px;
+    font-size: 12px;
+    font-weight: 500;
+}
