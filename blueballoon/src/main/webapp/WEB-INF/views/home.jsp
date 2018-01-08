@@ -122,18 +122,23 @@
 	<div class="dl">
 		<div class="c">
 			<h2>특가 상품</h2>
-			<c:forEach begin="0" end="4" items="${listPack }" var="lp">
+			<c:forEach begin="0" end="4" items="${listPack }" var="lp"
+				varStatus="sssttt">
 				<a href="package_content?pack_num=${lp.pack_num}" class="con"
 					data-p="${lp.pack_num/3+lp.pack_days}"><img class="lazy"
 					src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${lp.pack_str_img}"
 					"
 					data-src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${lp.pack_str_img}"">
 					<div class="text">${lp.pack_title }</div></a>
+				<c:if
+					test="${(sssttt.count!=1&&pres<(lp.pack_num/3+lp.pack_days))||sssttt.count==1}">
+					<c:set var="pres" value="${lp.pack_num/3+lp.pack_days}" />
+				</c:if>
 			</c:forEach>
 		</div>
 		<div class="pc">
 			<div class="p">
-				Up to <span><span>41</span>% OFF</span>
+				Up to <span><span>${pres }</span>% OFF</span>
 			</div>
 		</div>
 	</div>

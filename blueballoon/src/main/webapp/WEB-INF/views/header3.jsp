@@ -81,7 +81,7 @@
 						<li><a href="member_profile">내 정보 보기</a></li>
 						<li><a href="member_edit">내 정보 수정</a></li>
 						<li><a href="member_likelist">좋아요 목록</a></li>
-						<li><a href="member_booking">예약 관리</a></li>
+						<!-- <li><a href="member_booking">예약 관리</a></li> -->
 						<li class="sep"><a href="member_logout">로그아웃</a></li>
 					</ul>
 				</nav></li>

@@ -224,6 +224,14 @@ public class MemberController {
 			return mav;
 		}
 		String member_email = (String) session.getAttribute("member_email");
+		int member_num = (Integer) session.getAttribute("member_num");
+		int count=0;
+		List<BBLikeDTO> likeList = productMapper.likeList();
+		for (int i = 0; i < likeList.size(); i++) {
+			if (likeList.get(i).getMember_num() == member_num)
+				count++;
+		}
+		mav.addObject("likeCount",count);
 		System.out.println("member_email : " + member_email);
 		BBMemberDTO dto = memberMapper.getMember(member_email);
 		mav.addObject("myMember", dto);

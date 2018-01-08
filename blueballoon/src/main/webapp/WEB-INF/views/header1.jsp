@@ -85,7 +85,7 @@
 					<ul class="bot">
 						<li><a href="member_login">로그인</a></li>
 						<li><a href="member_join">회원가입</a></li>
-						<li><a href="book_">예약관리</a></li>
+						<!-- <li><a href="book_">예약관리</a></li> -->
 					</ul>
 				</nav></li>
 		</ul>
