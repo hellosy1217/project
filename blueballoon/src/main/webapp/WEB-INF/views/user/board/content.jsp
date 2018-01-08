@@ -71,7 +71,7 @@
          <div class="inside" style="opacity: 100; margin-bottom: 70px;">
             <div class="inside-w">
                <div id="review">
-                  <div class="form-title">${map.prod_name} 여행 후기</div>
+                  <div class="form-title">${map.p_name} 여행 후기</div>
                   <div class="pbtn">
                     <c:choose>
                      	<c:when test="${map.getBoard.prod_num ne '0'}">
