@@ -62,7 +62,7 @@
 		<ul class="usp-list">
 			<li class="usp-el"><a href="#" class="selection">
 					<h3 class="title">최고의 선택</h3>
-					<ul class="reason-list">
+					<ul class="reason-list" style="margin-left: 25px;">
 						<li class="reason">여행을 사랑하고 ,풍부한 경험있는 운영자</li>
 						<li class="reason">색다른 체험, 다른 가치, 여운있는 추억</li>
 						<li class="reason">여행고수 2천명 이상의 선택을 받은 패키지 투어</li>
@@ -70,7 +70,7 @@
 			</a></li>
 			<li class="usp-el"><a href="#" class="prices">
 					<h3 class="title">최고의 가격</h3>
-					<ul class="reason-list">
+					<ul class="reason-list" style="margin-left: 90px;">
 						<li class="reason">가성비 만족도 1위</li>
 						<li class="reason">5천명 이상의 재 결제 고객보유</li>
 						<li class="reason">최소 가격에 최대의 감동</li>
@@ -78,7 +78,7 @@
 			</a></li>
 			<li class="usp-el"><a href="#" class="payments">
 					<h3 class="title">최고의 만족</h3>
-					<ul class="reason-list">
+					<ul class="reason-list" style="margin-left: 60px;">
 						<li class="reason">고객과의 소통을 통한 피드백</li>
 						<li class="reason">PayPal로 전 세계인들 모두 편리한 결제</li>
 						<li class="reason">24시간 카카오톡 상담으로 빠른 반응</li>
@@ -138,7 +138,7 @@
 	</div>
 	<div class="cs">
 		<div class="c">
-			<h2>광주불주먹 외 4명</h2>
+			<h2>Blueballoon Team</h2>
 			<div class="t">
 			<c:forTokens items="김수민,김유정,성지연,주소연,지수정" delims="," var="tm" varStatus="stt">
 				<div class="wp">
@@ -149,7 +149,7 @@
 				</c:forTokens>
 			</div>
 			<div class="t">
-				우리 팀은 광주불주먹 두니야님의 지휘아래에 편성된 팀입니다. 살려주세요. <a href="contact.html">Contact
+				우리 팀은 사용자를 위해 모든 여행 정보를 제공하는 팀입니다.<a href="contact.html">Contact
 					us</a>
 			</div>
 		</div>

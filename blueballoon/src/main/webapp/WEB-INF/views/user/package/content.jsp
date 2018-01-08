@@ -229,7 +229,7 @@ $(document).ready(function() {
 				</div>
 				<h2>리뷰</h2>
 				<a class="but r write"
-					href="board_write?prod_num=${getPack.pack_num}" target="_blank"
+					href="packBoard_write?pack_num=${getPack.pack_num}" target="_blank"
 					rel="nofollow">리뷰 작성하기</a>
 				<ul>
 					<li class="cf " data-id="74123" itemprop="review" itemscope=""
