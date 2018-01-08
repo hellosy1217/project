@@ -103,7 +103,23 @@ public class PackageController {
 									: o1.getPack_likeCount() < o2.getPack_likeCount() ? 1 : 0;
 						}
 					});
+				} else if (sort.equals("가격 낮은 순")) {
+					Collections.sort(listPack, new Comparator<BBPackageDTO>() {
+						public int compare(BBPackageDTO o1, BBPackageDTO o2) {
+							return o1.getPack_price() > o2.getPack_price() ? -1
+									: o1.getPack_price() < o2.getPack_price() ? 1 : 0;
+						}
+					});
+				} else if (sort.equals("가격 높은 순")) {
+					Collections.sort(listPack, new Comparator<BBPackageDTO>() {
+						public int compare(BBPackageDTO o1, BBPackageDTO o2) {
+							return o1.getPack_price() < o2.getPack_price() ? -1
+									: o1.getPack_price() > o2.getPack_price() ? 1 : 0;
+
+						}
+					});
 				}
+
 			}
 		} catch (NullPointerException e) {
 			mav.addObject("sort", "최신순");

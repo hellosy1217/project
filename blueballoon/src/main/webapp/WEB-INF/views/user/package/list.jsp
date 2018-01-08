@@ -163,7 +163,7 @@
 		<div class="stat">
 			<c:set var="sor" value="최신순,인기순,가격 낮은 순,가격 높은 순" />
 			<div class="sort">
-				정렬기준 <select name="sort" id="sort">
+				정렬기준 <select name="sort" id="sort" onchange="change('${cate_state }',${currentPage })">
 					<c:forTokens items="${sor}" delims="," var="srt">
 						<c:choose>
 							<c:when test="${srt eq sort}">
