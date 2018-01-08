@@ -60,7 +60,6 @@
 	<script>
 		ga('send', 'pageview');
 		console.log('PAGEVIEW');
-
 		(function(event, event2) {
 			function cb(e) {
 				this.removeEventListener(event, cb);
