@@ -7,6 +7,7 @@ public class BBLikeDTO {
 	private String prod_str_img;
 	private String pack_str_img;
 	private int prod_pick;
+	private String prod_name;
 
 	public int getProd_num() {
 		return prod_num;
@@ -55,5 +56,13 @@ public class BBLikeDTO {
 	public void setProd_pick(int prod_pick) {
 		this.prod_pick = prod_pick;
 	}
-	
+
+	public String getProd_name() {
+		return prod_name;
+	}
+
+	public void setProd_name(String prod_name) {
+		this.prod_name = prod_name;
+	}
+
 }
