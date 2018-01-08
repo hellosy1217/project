@@ -189,11 +189,7 @@
 						좋아요 <span>${likeCount}</span>
 					</div>
 				</div>
-				<div style="padding-top: 45px;">
-					<a class="but r write" href="package_booking?pack_num=22"
-						target="_blank" rel="nofollow"
-						style="width: 140px; position: unset; float: right;">바로 예약하기</a>
-				</div>
+
 			</div>
 			<div class="b pad rev" data-total="51" data-onpage="10">
 				
