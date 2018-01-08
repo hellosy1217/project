@@ -168,7 +168,7 @@
 				</c:forTokens>
 			</div>
 			<div class="t">
-				우리 팀은 사용자를 위해 모든 여행 정보를 제공하는 팀입니다.<a href="popitup()">Contact
+				우리 팀은 사용자를 위해 모든 여행 정보를 제공하는 팀입니다.<a onclick="popitup()">Contact
 					us</a>
 			</div>
 		</div>
