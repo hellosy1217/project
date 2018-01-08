@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html class=" logged">
 <head>
-<title>BlueBalloon - ${getMember.name}'s Like Lists</title>
+<title>BlueBalloon - Like Lists</title>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <link
 	href="${pageContext.request.contextPath}/resources/user/member/css/likelist1.css?ver=124"
@@ -31,32 +31,25 @@
 		<div class="own">
 			<div class="ownc">
 				<div class="im">
-					<span class="initials" style="background: #afd54d">N</span>
+					<span class="initials" style="background: #afd54d">${member_name}</span>
 				</div>
-				<h1>좋아요 목록 </h1>
+				<h1>좋아요 목록</h1>
 			</div>
 		</div>
-		<ul class="tabs cf">
-			<li><a href="#">Popular</a></li>
-			<li><a href="#">BlueBalloon Picks</a></li>
-			<li class="#">My Wish Lists</li>
-		</ul>
 		<ul class="cf list">
-			<a href="/wishlists/966138"><li><img
-					src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product/${myMember.member_str_img}"">
-					<div class="name">My Next Trip</div></li></a>
-			<a href="/wishlists/966139"><li><img
-					src="/im/r/ph/360x210.png">
-					<div class="name">Dream Tours</div></li></a>
-			<li class="add"><a class="but turq">Create new Wish List</a></li>
+			<c:forEach items="${likeList }" var="ll">
+				<a href="product_content?prod_num=${ll.prod_num }"><li><img
+						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${ll.prod_pick }/${ll.prod_str_img}">
+						<div class="name">${ll.prod_name }</div></li></a>
+			</c:forEach>
+			<li class="add"><a href="product_list" class="but turq">Create
+					new Wish List</a></li>
 		</ul>
 	</div>
 	</main>
 	<footer>
 		<div class="c">
-			<div class="cop">
-				Copyright © BlueBalloon. All rights reserved. <a href="/legalnotice">Legal
-					notice</a>
+			<div class="cop">Copyright © BlueBalloon. All rights reserved.
 			</div>
 
 		</div>

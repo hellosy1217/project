@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.blueballoon.model.BBCategoryDTO;
 import com.web.blueballoon.model.BBLikeDTO;
 import com.web.blueballoon.model.BBMemberDTO;
 import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.model.BBProductDTO;
 import com.web.blueballoon.user.service.MemberMapper;
+import com.web.blueballoon.user.service.ProductMapper;
 import com.web.blueballoon.util.AmazonFileUtils;
 import com.web.blueballoon.util.SendMessageUtil;
 
@@ -29,6 +31,8 @@ import com.web.blueballoon.util.SendMessageUtil;
 public class MemberController {
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private ProductMapper productMapper;
 	@Autowired
 	private AmazonFileUtils amazonUtil;
 	@Autowired
@@ -48,7 +52,6 @@ public class MemberController {
 
 		if (isLogin) {
 			BBMemberDTO login = memberMapper.getMember(dto.getMember_email());
-
 			if (login.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
 			} else {
@@ -232,8 +235,12 @@ public class MemberController {
 	public ModelAndView likelist(HttpServletRequest arg0) {
 		int member_num = (Integer) arg0.getSession().getAttribute("member_num");
 		String member_email = (String) arg0.getSession().getAttribute("member_email");
+		char member_name = (Character) arg0.getSession().getAttribute("member_name");
+		mav.addObject("member_name", member_name);
 
 		List<BBLikeDTO> likeList = memberMapper.listLikeProducts(member_num);
+		List<BBProductDTO> prodList = productMapper.listProd();
+
 		// 상품 이미지 관련 해서 list에 추가
 		for (BBLikeDTO tmp : likeList) {
 			if (tmp.getProd_num() != 0) {
@@ -245,7 +252,14 @@ public class MemberController {
 				tmp.setPack_str_img(packDTO.getPack_str_img());
 			}
 		}
+		for (int i = 0; i < likeList.size(); i++) {
+			if (likeList.get(i).getProd_num() == prodList.get(i).getProd_num()) {
+				likeList.get(i).setProd_name(prodList.get(i).getProd_name());
+			}
+		}
 
+		List<BBCategoryDTO> listCate = productMapper.listCate();
+		mav.addObject("listCate", listCate);
 		mav.addObject("likeList", likeList);
 		mav.addObject("member_email", member_email);
 		mav.addObject("member_num", member_num);
