@@ -87,6 +87,26 @@
 
 		location.href=lh;
 	}
+	function price(){
+		var min_price=document.getElementById('min_price').value;
+		var max_price=document.getElementById('max_price').value;
+		
+		if(min_price!=''){
+			if(min_price<10000){
+				alert("최소 가격은 10,000원 이상부터 입력 가능합니다.");
+			}else if(max_price==''){
+				alert("최대 가격을 입력해주세요.");
+			}
+		}else if(max_price!=''){
+			if(min_price==''){
+				alert("최소 가격을 입력해주세요.");
+			}else if(max_price<10000){
+				alert("최대 가격은 10,000원 이상부터 입력 가능합니다.");
+			}
+		}else{
+			alert("페이지이동");
+		}
+	}
 	function onlyNumber(event) {
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
@@ -163,7 +183,8 @@
 		<div class="stat">
 			<c:set var="sor" value="최신순,인기순,가격 낮은 순,가격 높은 순" />
 			<div class="sort">
-				정렬기준 <select name="sort" id="sort" onchange="change('${cate_state }',${currentPage })">
+				정렬기준 <select name="sort" id="sort"
+					onchange="change('${cate_state }',${currentPage })">
 					<c:forTokens items="${sor}" delims="," var="srt">
 						<c:choose>
 							<c:when test="${srt eq sort}">
@@ -209,12 +230,12 @@
 							<ul style="padding-bottom: 15px;">
 								<li class="won"><span>₩</span> <input type="text"
 									placeholder="최소" onkeydown='return onlyNumber(event)'
-									onkeyup='removeChar(event)' maxlength="8"> <span>₩</span>
-									<input type="text" placeholder="최대"
+									onkeyup='removeChar(event)' maxlength="8" id="min_price">
+									<span>₩</span> <input type="text" placeholder="최대"
 									onkeydown='return onlyNumber(event)'
-									onkeyup='removeChar(event)' maxlength="8"></li>
+									onkeyup='removeChar(event)' maxlength="8" id="max_price"></li>
 								<li class="btn" style="margin-top: 5px;"><a
-									class="but blue">적용하기</a></li>
+									class="but blue" onclick="price()">적용하기</a></li>
 							</ul>
 						</div>
 					</form>

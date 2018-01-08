@@ -458,6 +458,8 @@ function bbPerson(pack_start_date, selected_date, person, perNum) {
 			+ ' 원';
 	document.getElementById('green').innerHTML = '-'
 			+ numberWithCommas(bbSaving) + '원';
+	
+	document.getElementById('book_pers').innerHTML = perNum + '명';
 }
 function selectedCheck(pack_start_date, year, month, date) {
 	var pack_start_split = '';
