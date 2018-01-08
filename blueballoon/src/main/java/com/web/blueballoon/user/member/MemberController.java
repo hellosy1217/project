@@ -47,10 +47,11 @@ public class MemberController {
 		boolean isLogin = memberMapper.checkUser(dto); // true값이 성공
 
 		if (isLogin) {
-			if (dto.getMember_num() == 1) {
+			BBMemberDTO login = memberMapper.getMember(dto.getMember_email());
+
+			if (login.getMember_num() == 1) {
 				mav.setViewName("redirect:/admin_index");
 			} else {
-				BBMemberDTO login = memberMapper.getMember(dto.getMember_email());
 				req.getSession().setAttribute("member_num", login.getMember_num());
 				req.getSession().setAttribute("member_email", login.getMember_email());
 				req.getSession().setAttribute("member_name", login.getMember_name().toUpperCase().charAt(0));
@@ -235,12 +236,11 @@ public class MemberController {
 		List<BBLikeDTO> likeList = memberMapper.listLikeProducts(member_num);
 		// 상품 이미지 관련 해서 list에 추가
 		for (BBLikeDTO tmp : likeList) {
-			if(tmp.getProd_num() != 0) {
+			if (tmp.getProd_num() != 0) {
 				BBProductDTO dto = memberMapper.getProduct(tmp.getProd_num());
 				tmp.setProd_str_img(dto.getProd_str_img());
 				tmp.setProd_pick(dto.getProd_pick());
-				System.out.println("like List prod img : " + tmp.getProd_str_img());
-			}else if(tmp.getPack_num() != 0) {
+			} else if (tmp.getPack_num() != 0) {
 				BBPackageDTO packDTO = memberMapper.getPackage(tmp.getPack_num());
 				tmp.setPack_str_img(packDTO.getPack_str_img());
 			}
