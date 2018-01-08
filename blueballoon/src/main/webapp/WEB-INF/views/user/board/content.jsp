@@ -49,6 +49,13 @@
             location.href= 'product_content?prod_num=${map.getBoard.prod_num}';
          }
       })
+      $('#packageBut').click(function(){
+         var res = confirm('이 패키지페이지로 이동하시겠습니까?');
+         
+         if(res){
+            location.href= 'package_content?pack_num=${map.getBoard.pack_num}';
+         }
+      })
    });
    
    function emailHidden(email){
@@ -66,25 +73,43 @@
                <div id="review">
                   <div class="form-title">${map.prod_name} 여행 후기</div>
                   <div class="pbtn">
-                     <a class="but r write" id="productBut" 
-                     target="_blank" rel="nofollow" style="width:130px; padding:10px 0;">상품 보러가기</a>
+                    <c:choose>
+                     	<c:when test="${map.getBoard.prod_num ne '0'}">
+                     	<!-- 상품으로 가기 버튼-->
+                     	 <a class="but r write" id="productBut" 
+                    		 target="_blank" rel="nofollow" style="width:130px; padding:10px 0;">상품 보러가기</a>
+                     	</c:when>
+                     	<c:otherwise>
+                     	 <a class="but r write" id="packageBut" 
+                    		target="_blank" rel="nofollow" style="width:130px; padding:10px 0;">패키지 보러가기</a>
+                     	</c:otherwise>
+                     </c:choose>
                   </div>
                </div>
                
                <div class="pimg">
-                     <img
+                     <c:choose>
+                     	<c:when test="${map.prod_pick eq '0'}">
+                     	<!-- 패키지에 대한 후기라면-->
+                     	<img
+						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${map.str_img}">
+                     	</c:when>
+                     	<c:otherwise>
+                     	<img
                       src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${map.prod_pick}/${map.str_img}"
                      >
+                     	</c:otherwise>
+                     </c:choose>
                </div>
                
                <div class="bbox">
                <div class="circle">
                      <c:choose>
-                  <c:when test="${empty myMember.member_str_img}">
+                  <c:when test="${map.memberImg eq 'N'}">
                      <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
                   </c:when>
                   <c:otherwise>
-                     <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
+                     <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${map.getBoard.board_memberImg}">
                   </c:otherwise>
                </c:choose>
                      <p>${map.memberName}</p>
@@ -129,7 +154,7 @@
                            
                         </td>
                         <td style="float: right; font-size:13px;">
-                           <a class="but" id="commentBut" style="width: 100px; padding-top:7px; padding-bottom:9px;">답글 쓰기</a>
+                           <a class="but" id="commentBut" style="width: 100px; padding-top:7px; padding-bottom:9px;">댓글 쓰기</a>
                            <c:if test="${map.memberEmail == map.getBoard.member_email}">
                               <a class="but" id="editBut" href="board_update?board_num=${map.getBoard.board_num}" 
                                  style="width: 65px; margin-top: 15px; margin-right: 4px">글수정</a>
@@ -189,7 +214,7 @@
             </div>
          </div>
          
-         
+
       </div>
    </div>
    

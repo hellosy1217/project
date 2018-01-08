@@ -29,12 +29,12 @@
 			<div class="heading form1 form2 " style="width:700px">
 				<div class="operator" operator="1504">
 					<div class="img-cnt">
-						<c:set var="prodNum" value="${prod_num}"/>
+						<c:set var="prodPick" value="${prod_pick}"/>
 						<c:choose>
-						<c:when test="${prodNum eq '0'}">
+						<c:when test="${prodPick eq '0'}">
 						<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${str_img}">
 						</c:when>
-						<c:when test="${prodNum ne '0'}">
+						<c:when test="${prodPick ne '0'}">
 						<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${prod_pick}/${str_img}">
 						</c:when>
 						</c:choose>
@@ -44,15 +44,7 @@
 					<h1 class="orig" style="margin-top:25px">후기 수정하기</h1>
 					<ul class="subtitle clearfix">
 						<li class="com">
-						<c:set var="prodName" value="${prod_name}"/>
-						<c:choose>
-						<c:when test="${prodName eq 'null'}">
-						${pack_title}
-						</c:when>
-						<c:when test="${prodName ne 'null'}">
-						${prod_name}
-						</c:when>
-						</c:choose>
+						${pname}
 						</li>
 					</ul>
 				</div>

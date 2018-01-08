@@ -29,7 +29,7 @@
 			<div class="heading form1 form2 " style="width:700px">
 				<div class="operator" operator="1504">
 					<div class="img-cnt">
-						<c:set var="prodNum" value="${prod_num}"/>
+							<c:set var="prodNum" value="${prod_num}"/>
 						<c:choose>
 						<c:when test="${prodNum eq '0'}">
 						<img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${str_img}">

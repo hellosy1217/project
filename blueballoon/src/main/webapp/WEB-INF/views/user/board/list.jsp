@@ -100,20 +100,31 @@ $(document).ready(function(){
             <div class="item" data-id="163442">
                <a href="board_content?board_num=${best.board_num}">
                   <div class="preview">
-                     <img
+                      <c:choose>
+                     	<c:when test="${best.board_image ne 'null'}">
+                     	<!-- 상품-->
+                     	<img
                         src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product${best.pick_num}/${best.board_image}"
                         class="bg lazy">
+                     	</c:when>
+                     	<c:otherwise>
+                     	<img
+						src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${best.board_packImg}" class="bg lazy">
+                     	</c:otherwise>
+                     </c:choose>
                      <div class="mask"></div>
                   </div>
                  <div class="circle">
-                     <c:choose>
-                  <c:when test="${empty myMember.member_str_img}">
+                     <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
+                   <!-- <c:choose>
+                  <c:when test="${best.board_memberImg eq 'null'}">
                      <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
                   </c:when>
                   <c:otherwise>
-                     <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${myMember.member_str_img}">
+                     <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${best.board_memberImg}">
                   </c:otherwise>
                </c:choose>
+               -->
                   </div>
                   
                </a>
