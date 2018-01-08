@@ -56,6 +56,8 @@ public class HomeController {
 
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
+		List<BBPackageDTO> listPack = PackageMapper.listPack();
+		mav.addObject("listPack", listPack);
 		arg0.getSession().setAttribute("listCate", listCate);
 		mav.setViewName("home");
 		return mav;
