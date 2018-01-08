@@ -104,7 +104,7 @@
                
                <div class="bbox">
                <div class="circle">
-                     <c:choose>
+                   <!--  <c:choose>
                   <c:when test="${map.memberImg eq 'N'}">
                      <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
                   </c:when>
@@ -112,7 +112,9 @@
                      <img src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_member/${map.getBoard.board_memberImg}">
                   </c:otherwise>
                </c:choose>
-                     <p>${map.memberName}</p>
+               -->
+                <img src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/person.jpg">
+                <p>${map.memberName}</p>
                 </div>
                 
                 <div>
