@@ -61,27 +61,27 @@
 	<section class="usps-section">
 		<ul class="usp-list">
 			<li class="usp-el"><a href="#" class="selection">
-					<h3 class="title">Best Selection</h3>
+					<h3 class="title">최고의 선택</h3>
 					<ul class="reason-list">
-						<li class="reason">Compare 500+ carefully screened operators</li>
-						<li class="reason">Read 60,000+ genuine traveller reviews</li>
-						<li class="reason">Choose between 20,000+ tours</li>
+						<li class="reason">여행을 사랑하고 ,풍부한 경험있는 운영자</li>
+						<li class="reason">색다른 체험, 다른 가치, 여운있는 추억</li>
+						<li class="reason">여행고수 2천명 이상의 선택을 받은 패키지 투어</li>
 					</ul>
 			</a></li>
 			<li class="usp-el"><a href="#" class="prices">
-					<h3 class="title">Best Price</h3>
+					<h3 class="title">최고의 가격</h3>
 					<ul class="reason-list">
-						<li class="reason">Compare 500+ carefully screened operators</li>
-						<li class="reason">Read 60,000+ genuine traveller reviews</li>
-						<li class="reason">Choose between 20,000+ tours</li>
+						<li class="reason">가성비 만족도 1위</li>
+						<li class="reason">5천명 이상의 재 결제 고객보유</li>
+						<li class="reason">최소 가격에 최대의 감동</li>
 					</ul>
 			</a></li>
 			<li class="usp-el"><a href="#" class="payments">
-					<h3 class="title">Trusted Payments</h3>
+					<h3 class="title">최고의 만족</h3>
 					<ul class="reason-list">
-						<li class="reason">Compare 500+ carefully screened operators</li>
-						<li class="reason">Read 60,000+ genuine traveller reviews</li>
-						<li class="reason">Choose between 20,000+ tours</li>
+						<li class="reason">고객과의 소통을 통한 피드백</li>
+						<li class="reason">PayPal로 전 세계인들 모두 편리한 결제</li>
+						<li class="reason">24시간 카카오톡 상담으로 빠른 반응</li>
 					</ul>
 			</a></li>
 		</ul>

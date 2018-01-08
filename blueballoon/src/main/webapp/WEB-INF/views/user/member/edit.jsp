@@ -28,10 +28,11 @@
 					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
 							"7월", "8월", "9월", "10월", "11월", "12월" ],
 					dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+					changeYear : true,
 					dateFormat : "yy-mm-dd",
 					changeMonth : true,
-					minDate : 0,
-					maxDate : 360, // 오늘 이후 날짜 선택 불가
+					minDate: -32850,
+					maxDate : -2920,
 					onClose : function(selectedDate) {
 						// 종료일(toDate) datepicker가 닫힐때
 						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 

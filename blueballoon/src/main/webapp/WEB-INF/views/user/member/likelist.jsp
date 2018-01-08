@@ -43,7 +43,7 @@
 		</ul>
 		<ul class="cf list">
 			<a href="/wishlists/966138"><li><img
-					src="/im/r/ph/360x210.png">
+					src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_product/${myMember.member_str_img}"">
 					<div class="name">My Next Trip</div></li></a>
 			<a href="/wishlists/966139"><li><img
 					src="/im/r/ph/360x210.png">
