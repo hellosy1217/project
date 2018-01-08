@@ -1,5 +1,7 @@
 package com.web.blueballoon;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.blueballoon.model.BBCategoryDTO;
-import com.web.blueballoon.model.BBMemberDTO;
+import com.web.blueballoon.model.BBPackageDTO;
 import com.web.blueballoon.user.service.MemberMapper;
+import com.web.blueballoon.user.service.PackageMapper;
 import com.web.blueballoon.user.service.ProductMapper;
 
 @Controller
@@ -28,6 +31,9 @@ public class HomeController {
 
 	@Autowired
 	private ProductMapper ProductMapper;
+
+	@Autowired
+	private PackageMapper PackageMapper;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest arg0, HttpServletResponse arg1) {
@@ -77,6 +83,8 @@ public class HomeController {
 		List<BBCategoryDTO> listCate = ProductMapper.listCate();
 		mav.addObject("listCate", listCate);
 
+		List<BBPackageDTO> listPack = PackageMapper.listPack();
+		mav.addObject("listPack", listPack);
 		mav.setViewName("home");
 		return mav;
 	}

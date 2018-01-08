@@ -122,17 +122,18 @@
 	<div class="dl">
 		<div class="c">
 			<h2>특가 상품</h2>
-			<c:forEach begin="1" end="5">
-				<a href="product_content" class="con" data-p="56"><img
-					class="lazy"
-					src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png"
-					data-src="//cdn.tourradar.com/im/r/pw/home/cont/europe_dark.png">
-					<div class="text">서울/경기</div></a>
+			<c:forEach begin="0" end="4" items="${listPack }" var="lp">
+				<a href="package_content?pack_num=${lp.pack_num}" class="con"
+					data-p="${lp.pack_num/3+lp.pack_days}"><img class="lazy"
+					src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${lp.pack_str_img}"
+					"
+					data-src="https://s3.ap-northeast-2.amazonaws.com/bbproject2017/bb_package/${lp.pack_str_img}"">
+					<div class="text">${lp.pack_title }</div></a>
 			</c:forEach>
 		</div>
 		<div class="pc">
 			<div class="p">
-				Up to <span><span>56</span>% OFF</span>
+				Up to <span><span>41</span>% OFF</span>
 			</div>
 		</div>
 	</div>
@@ -140,12 +141,13 @@
 		<div class="c">
 			<h2>Blueballoon Team</h2>
 			<div class="t">
-			<c:forTokens items="김수민,김유정,성지연,주소연,지수정" delims="," var="tm" varStatus="stt">
-				<div class="wp">
-					<img class="lazy"
-						src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${stt.count }.png" />
-					<span>${tm }</span>
-				</div>
+				<c:forTokens items="김수민,김유정,성지연,주소연,지수정" delims="," var="tm"
+					varStatus="stt">
+					<div class="wp">
+						<img class="lazy"
+							src="https://s3.ap-northeast-2.amazonaws.com/hellosy1217.blueballoon/common/img/${stt.count }.png" />
+						<span>${tm }</span>
+					</div>
 				</c:forTokens>
 			</div>
 			<div class="t">
@@ -376,8 +378,7 @@
 	</main>
 	<footer>
 		<div class="c">
-			<div class="cop">
-				Copyright © BlueBalloon. All rights reserved.
+			<div class="cop">Copyright © BlueBalloon. All rights reserved.
 			</div>
 		</div>
 	</footer>
