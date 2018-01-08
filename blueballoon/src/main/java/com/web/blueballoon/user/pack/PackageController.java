@@ -70,7 +70,19 @@ public class PackageController {
 
 		// 상품 목록
 		List<BBPackageDTO> listPack = PackageMapper.listPack();
-		
+		try {
+			String cate_state = ServletRequestUtils.getStringParameter(arg0, "cate_state");
+			mav.addObject("cate_state", cate_state);
+			if (cate_state != null) {
+				for (int i = listPack.size() - 1; i >= 0; i--) {
+					if (!listPack.get(i).getPack_place().equals(cate_state)) {
+						listPack.remove(i);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+		}
+
 		// 상품 정렬
 		try {
 			String sort = ServletRequestUtils.getStringParameter(arg0, "sort");

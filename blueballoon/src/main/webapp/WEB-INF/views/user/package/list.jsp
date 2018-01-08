@@ -76,30 +76,22 @@
 	});
 </script>
 <script type="text/javascript">
-	function change(cate_state,cate_city,prod_pick,currentPage) {
-		var lh = 'product_list?';
+	function change(cate_state,currentPage) {
+		var lh = 'package_list?';
 		if(cate_state!=''){
-			lh += 'cate_state='+cate_state;
+			lh+='&cate_state='+cate_state;
 		}
-		if(cate_city!=''){
-			if(cate_state!=null||cate_state!='')
-				lh+='&';
-			lh+='cate_city='+cate_city;
-		}
-		if(cate_state!=''||cate_city!='')
-			lh+='&';
-		lh+='prod_pick='+prod_pick;
-		
 		lh+='&currentPage='+currentPage;
 		
 		lh+='&sort='+document.getElementById('sort').options[ document.getElementById('sort').selectedIndex].value;
 
 		location.href=lh;
 	}
-	function onlyNumber(event){
+	function onlyNumber(event) {
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
-		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		if ((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105)
+				|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
 			return;
 		else
 			return false;
@@ -107,7 +99,7 @@
 	function removeChar(event) {
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
-		if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		if (keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
 			return;
 		else
 			event.target.value = event.target.value.replace(/[^0-9]/g, "");
@@ -171,8 +163,7 @@
 		<div class="stat">
 			<c:set var="sor" value="최신순,인기순,가격 낮은 순,가격 높은 순" />
 			<div class="sort">
-				정렬기준 <select name="sort" id="sort"
-					onchange="change('${cate_state}','${cate_city }',${prod_pick },1)">
+				정렬기준 <select name="sort" id="sort">
 					<c:forTokens items="${sor}" delims="," var="srt">
 						<c:choose>
 							<c:when test="${srt eq sort}">
@@ -205,17 +196,8 @@
 										<c:if test="${status.count eq st.count}">
 											<div class="th" style="background: ${col}"></div>
 										</c:if>
-									</c:forTokens> <a href="#" id="flip${status.count}" class="span">${c}</a>
-									<div class="tr" id="icon${status.count}"></div>
-									<ul class="sub" id="panel${status.count}"
-										style="margin-top: 15px;">
-										<c:forEach items="${listCate}" var="list">
-											<c:if test="${list.cate_state == c}">
-												<li><span><a
-														onclick="change('${list.cate_state}','${list.cate_city}',${prod_pick},${currentPage})">${list.cate_city}</a></span></li>
-											</c:if>
-										</c:forEach>
-									</ul></li>
+									</c:forTokens> <a href="#" id="flip${status.count}" class="span"
+									onclick="change('${c}',${currentPage})">${c}</a></li>
 							</c:forTokens>
 						</ul>
 					</div>
@@ -227,8 +209,8 @@
 							<ul style="padding-bottom: 15px;">
 								<li class="won"><span>₩</span> <input type="text"
 									placeholder="최소" onkeydown='return onlyNumber(event)'
-									onkeyup='removeChar(event)' maxlength="8"> <span>₩</span> <input
-									type="text" placeholder="최대"
+									onkeyup='removeChar(event)' maxlength="8"> <span>₩</span>
+									<input type="text" placeholder="최대"
 									onkeydown='return onlyNumber(event)'
 									onkeyup='removeChar(event)' maxlength="8"></li>
 								<li class="btn" style="margin-top: 5px;"><a
@@ -275,25 +257,22 @@
 			</div>
 			<div class="pag">
 				<c:if test="${currentPage > 9}">
-					<a
-						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage-1})"">«<span>Previous</span></a>
+					<a onclick="change('${cate_state}',currentPage*1-1)">«<span>Previous</span></a>
 				</c:if>
 				<c:forEach var="page" begin="${startPage}" end="${endPage}" step="1">
 					<c:choose>
 						<c:when test="${currentPage eq page}">
-							<a href="javascript:void(0)"
-								onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage})"
-								class="active">${page}</a>
+							<a href="javascript:void(0)" class="active">${page}</a>
 						</c:when>
 						<c:otherwise>
 							<a href="javascript:void(0)"
-								onclick="change('${cate_state}','${cate_city}',${prod_pick},${page})">${page}</a>
+								onclick="change('${cate_state}',${page})">${page}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${endPage ne pageNum}">
 					<a href="javascript:void(0)"
-						onclick="change('${cate_state}','${cate_city}',${prod_pick},${currentPage+1})"><span>Next
+						onclick="change('${cate_state}',${pageNum*1+1})"><span>Next
 					</span>»</a>
 				</c:if>
 			</div>
