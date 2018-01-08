@@ -348,9 +348,14 @@ public class BoardController {
 		}
 		//회원 이미지
 		List<BBMemberDTO> listMember = adminMapper.listMember();
+		System.out.println("listMemberSize = "+ listMember.size());
+		System.out.println("boarddto가 가진 이메일 =" + boarddto.getMember_email());
 		for (int j = 0; j < listMember.size(); j++) {
 			if (boarddto.getMember_email() == listMember.get(j).getMember_email()) {
 				boarddto.setBoard_memberImg(listMember.get(j).getMember_str_img());
+				System.out.println("가지고 있던 이메일 = "+ boarddto.getMember_email());
+				System.out.println("리스트에서 일차하는 이메일 = "+ listMember.get(j).getMember_email());
+				System.out.println("멤버에서 찾은 멤버이미지 = "+ listMember.get(j).getMember_str_img());
 			}
 		}      
 		System.out.println("멤버이미지 = "+boarddto.getBoard_memberImg());
@@ -385,7 +390,6 @@ public class BoardController {
 		mav.clear();
 		mav.addObject("board_num", Integer.parseInt(board_num));
 		mav.addObject("url", "board_content");
-		mav.setViewName("user/board/message");
 		// cookie변수를 만들어서 값을 저장, 값이 있으면 조회수 증가 안됨
 		boolean isCheck = false;
 		Cookie[] cookies = req.getCookies();
@@ -395,7 +399,8 @@ public class BoardController {
 					// board_num쿠키가 있는 경우
 					isCheck = true;
 					mav.addObject("msg", "이미 좋아요를 눌렀습니다.");
-					break;
+					mav.setViewName("user/board/message");
+					return mav;
 				}
 			}
 		}
@@ -405,7 +410,7 @@ public class BoardController {
 			c.setMaxAge(24 * 60 * 60);// 하루 저장
 			resp.addCookie(c);
 		}
-		return mav;
+		return new ModelAndView("redirect:/board_content?board_num="+Integer.parseInt(board_num));
 	}
 
 	@RequestMapping(value = "board_delete")
