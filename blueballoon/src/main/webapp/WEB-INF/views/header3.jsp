@@ -21,10 +21,8 @@
 </script>
 <div class="ups">
 	<div class="c">
-		<span class="hide-sm pull-left"><a
-			href="package_booking?pack_num=22">일단은 예약</a></span><span class="hide-sm"><a
-			href="admin_index">일단은 admin</a></span><span class="pull-right"><a
-			href="#" onclick="popitup()">contact us</a></span>
+		<span class="pull-right"><a href="#" onclick="popitup()">contact
+				us</a></span>
 	</div>
 </div>
 <header>
